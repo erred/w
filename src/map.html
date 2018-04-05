@@ -1,0 +1,47 @@
+<!doctype html>
+<html ⚡ lang="en">
+    <head>
+        {{ template "amp-boilerplate" }}
+
+        <title>Sean Liao</title>
+        <link rel="canonical" href="https://seankhliao.com">
+
+        <style amp-custom>
+            {{ template "custom-css" }}
+
+            /* ===== Custom ===== */
+            .map {
+                width: 98%;
+                height: 75vh;
+            }
+            svg {
+                width: 100%;
+                height: 100%;
+            }
+
+            .land {
+                fill: var(--g3);
+            }
+            #GB,#HK,#ID,#IN,#JP,#PH,#RU,#SE,#SG,#TW,#TL{
+                fill: var(--green);
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <article class="bg-g1">
+                <h2>
+                    <a class="icon" href="/">
+                        <amp-img width="32px" height="32px" layout="fixed" src="static/img/icon-home.png"></amp-img>
+                    </a>
+                    | Places I've been
+                </h2>
+                <div class="map">
+
+{{ template "map-svg" }}
+
+                </div>
+            </article>
+        </section>
+    </body>
+</html>

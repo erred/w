@@ -1,0 +1,143 @@
+{{ define "custom-css" }}
+
+            /* ===== Reset ===== */
+            * { 
+                box-sizing: border-box;
+            }
+            /* ===== Globals ===== */
+            :root {
+                /* ===== Color ===== */
+                --g1: #15191b;
+                --g2: #263238;
+                --g3: #35464d;
+                --g4: #B0BEC5;
+                --g5: #CFD8DC;
+
+                --purple: #a06be0;
+                --brown: #bb8b64;
+                --red: #df3d3d ;
+                --orange: #dda536;
+                --green: #349264;
+                --blue: #568be5;
+
+                /* ===== Typography ===== */
+                --type: "Raleway", "Arial", sans-serif;
+                font-size: 125%;
+            }
+
+            /* ===== Layout ===== */
+            body {
+                display: flex;
+                flex-direction: column;
+                margin: 0;
+            }
+            section {
+                display: flex;
+                flex-direction: row;
+                height: max-content;
+                width: 100%;
+            }
+            @media (max-width: 899px) {
+                section {
+                    flex-direction: column;
+                }
+            }
+            header, article {
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                min-height: 100vh;
+                padding: 2rem;
+                width: 100%;
+            }
+
+            /* ===== Typography ===== */
+            body {
+                font-family: var(--type);
+                color: var(--g4);
+            }
+            h1, h2, h3, h4 {
+                color: var(--g5);
+                margin-bottom: 0.5rem;
+                margin-top: 0.75em;
+            }
+            h1 {
+                font-size: 3rem;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            h3 {
+                font-size: 1.5rem;
+            }
+            h4 {
+                font-size: 1rem;
+            }
+            p {
+                color: var(--g4);
+                margin-bottom: 0.25rem;
+                margin-top: 0.25rem;
+            }
+            a {
+                text-decoration: underline;
+                color: inherit;
+            }
+            .icon {
+                text-decoration: none;
+            }
+            ul {
+                list-style: none;
+                padding: 0;
+            }
+            li:before {
+                content: "»";
+                padding-right: 1ch;
+            }
+
+            /* ===== Utils ===== */
+            .bg-g1 {
+                background-color: var(--g1);
+            }
+            .bg-g2 {
+                background-color: var(--g2);
+            }
+            .bg-g3 {
+                background-color: var(--g3);
+            }
+            .c-g1 {
+                color: var(--g1);
+            }
+            .c-g2 {
+                color: var(--g2);
+            }
+            .c-g3 {
+                color: var(--g3);
+            }
+            .c-g4 {
+                color: var(--g4);
+            }
+            .c-g5 {
+                color: var(--g5);
+            }
+
+            .c-purple {
+                color: var(--purple);
+            }
+            .c-brown {
+                color: var(--brown);
+            }
+            .c-red {
+                color: var(--red);
+            }
+            .c-orange {
+                color: var(--orange);
+            }
+            .c-green {
+                color: var(--green);
+            }
+            .c-blue {
+                color: var(--blue);
+            }
+
+{{ end }}

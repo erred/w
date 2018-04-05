@@ -1,0 +1,79 @@
+<!doctype html>
+<html ⚡ lang="en">
+    <head>
+        {{ template "amp-boilerplate" }}
+
+        <title>Sean Liao</title>
+
+        <style amp-custom>
+            {{ template "custom-css" }}
+
+            /* ===== Custom ===== */
+            .content-left {
+                align-items: flex-start;
+            }
+
+            .links-block {
+                margin-top: 2rem;
+                width: 75%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <header class="bg-g1">
+                <h2>Hungry <span class="c-purple">Developer</span></h2>
+                <h4>Will <span class="c-blue">code</span> for <span class="c-green">food</span></h4>
+
+                <div class="links-block">
+                    <a class="icon" href="https://github.com/seankhliao">
+                        <amp-img width="32px" height="32px" layout="fixed" src="static/img/icon-github.png"></amp-img>
+                    </a>
+                    <a class="icon" href="/">
+                        <amp-img width="32px" height="32px" layout="fixed" src="static/img/icon-home.png"></amp-img>
+                    </a>
+                    <a class="icon" href="mailto:seankhliao@gmail.com">
+                        <amp-img width="32px" height="32px" layout="fixed" src="static/img/icon-email.png"></amp-img>
+                    </a>
+                </div>
+            </header>
+            <article class="bg-g2 content-left">
+                <div>
+                    <h3>I am...</h3>
+                    <ul>
+                        <li><span class="c-purple">Sean Liao</span></li>
+                        <li>Software dev who lives and dies on the <span class="c-red">bleeding edge</span></li>
+                        <li>Watches the backend / security / networking / ux spaces</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>I can...</h3>
+                    <div class="chip-block">
+                        <div class="chips">Go</div>
+                        <div class="chips">Linux</div>
+                        <div class="chips">Python</div>
+                        <div class="chips">C/C++</div>
+                        <div class="chips">HTML/CSS/JS</div>
+                        <div class="chips">Git</div>
+                    </div>
+                </div>
+                <div>
+                    <h3>I'm located...</h3>
+                    <ul>
+                        <li>Taipei, Taiwan</li>
+                        <li>Willing to relocate</li>
+                        <li>Even better if I have to travel a lot</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Education</h3>
+                    <h4>2018 BBA Information Management</h4>
+                    <p>National Taiwan University</p>
+                </div>
+            </article>
+        </section>
+    </body>
+</html>

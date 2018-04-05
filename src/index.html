@@ -1,0 +1,76 @@
+<!doctype html>
+<html ⚡ lang="en">
+    <head>
+        {{ template "amp-boilerplate" }}
+        <title>Sean Liao</title>
+        <link rel="canonical" href="https://seankhliao.com">
+
+        <style amp-custom>
+            {{ template "custom-css" }}
+            /* ===== Custom ===== */
+
+            .links-block {
+                margin-top: 2rem;
+                width: 75%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <header class="bg-g1">
+                <h2>Sean <span class="c-purple">Liao</span></h2>
+
+                <div class="links-block">
+                    <a class="icon" href="https://github.com/seankhliao">
+                        <amp-img width="32px" height="32px" layout="fixed" src="static/img/icon-github.png"></amp-img>
+                    </a>
+                    <a class="icon" href="/cv">
+                        <amp-img width="32px" height="32px" layout="fixed" src="static/img/icon-description.png"></amp-img>
+                    </a>
+                    <a class="icon" href="mailto:seankhliao@gmail.com">
+                        <amp-img width="32px" height="32px" layout="fixed" src="static/img/icon-email.png"></amp-img>
+                    </a>
+                </div>
+            </header>
+        </section>
+        <section>
+            <header class="bg-g2">
+                <p>
+                    Is currently {out of a job, farming}.
+                </p>
+                <p>
+                    Has been a {photographer, designer, live {sound, lighting} technician}
+                </p>
+            </header>
+            <article class="bg-g3">
+                <h3><a href="/cv">CV</a></h3>
+                <p>
+                    A man needs a job
+                </p>
+            </article>
+        </section>
+        <section>
+            <article class="bg-g1">
+                <h3><a href="/map">Map</a></h3>
+                <p>
+                    Where have I been...?
+                </p>
+            </article>
+        </section>
+        <section>
+            <header class="bg-g3">
+                <h3>Projects</h3>
+                <p>Should find a way to list these</p>
+            </header>
+            <article class="bg-g2">
+                <h3><a href="/design">Design</a></h3>
+                <p>
+                    Site colors
+                </p>
+            </article>
+        </section>
+    </body>
+</html>
