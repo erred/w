@@ -5,6 +5,8 @@
     "ignore": [
       "firebase.json",
       "makefile",
+      "icon.tif",
+      "README.md",
       "**/.*",
       "**/node_modules/**"
     ]
