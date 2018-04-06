@@ -14,7 +14,7 @@ deploy:
 	firebase deploy
 
 setup:
-	go get github.com/seankhliao/gotx
+	go get -u github.com/seankhliao/gotx
 	firebase login
 
 
