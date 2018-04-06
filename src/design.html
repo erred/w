@@ -3,13 +3,32 @@
     <head>
         {{ template "amp-boilerplate" }}
 
-        <title>Sean Liao</title>
+        {{ template "head" obj `
+{
+    "title":"Design | Sean Liao",
+    "description": "site design manual",
+    "url": "seankhliao.com/design",
+    "imageUrl": ""
+}
+` }}
 
         <style amp-custom>
             {{ template "custom-css" }}
         </style>
     </head>
     <body>
+        <section class="bg-g1">
+            <article>
+                <h1>
+                    <a href="/">
+                        <i title="home" class="material-icons icon">home</i>
+                    </a>
+                    |
+                    <i title="design" class="material-icons icon">invert_colors</i>
+                    Design
+                </h1>
+            </article>
+        </section>
         <section class="bg-g1">
             <header>
                 <h1>h1 Text</h1>

@@ -83,7 +83,7 @@
                 text-decoration: underline;
                 color: inherit;
             }
-            .icon {
+            h1 a, h2 a, h3 a, h4 a {
                 text-decoration: none;
             }
             ul {
@@ -138,6 +138,16 @@
             }
             .c-blue {
                 color: var(--blue);
+            }
+
+            .icon {
+                font-size: inherit;
+                color: var(--g5);
+                vertical-align: middle;
+            }
+
+            .align-img {
+                transform: translateY(8px);
             }
 
 {{ end }}

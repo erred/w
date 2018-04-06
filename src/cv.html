@@ -3,7 +3,14 @@
     <head>
         {{ template "amp-boilerplate" }}
 
-        <title>Sean Liao</title>
+        {{ template "head" obj `
+{
+    "title":"CV | Sean Liao",
+    "description": "Sean Liao's CV",
+    "url": "seankhliao.com/cv",
+    "imageUrl": ""
+}
+` }}
 
         <style amp-custom>
             {{ template "custom-css" }}
@@ -13,12 +20,8 @@
                 align-items: flex-start;
             }
 
-            .links-block {
-                margin-top: 2rem;
-                width: 75%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
+            .align-img {
+                transform: translateY(4px);
             }
         </style>
     </head>
@@ -28,29 +31,46 @@
                 <h2>Hungry <span class="c-purple">Developer</span></h2>
                 <h4>Will <span class="c-blue">code</span> for <span class="c-green">food</span></h4>
 
-                <div class="links-block">
-                    <a class="icon" href="https://github.com/seankhliao">
-                        <amp-img width="32px" height="32px" layout="fixed" src="static/img/icon-github.png"></amp-img>
-                    </a>
-                    <a class="icon" href="/">
-                        <amp-img width="32px" height="32px" layout="fixed" src="static/img/icon-home.png"></amp-img>
-                    </a>
-                    <a class="icon" href="mailto:seankhliao@gmail.com">
-                        <amp-img width="32px" height="32px" layout="fixed" src="static/img/icon-email.png"></amp-img>
-                    </a>
-                </div>
+                <h2>
+<a title="github" href="https://github.com/seankhliao">
+    <amp-img class="align-img" width="32px" height="32px" layout="fixed" src="static/img/icon-github.png"></amp-img>
+</a>
+
+<a title="home" href="/">
+    <i class="material-icons icon">home</i>
+</a>
+
+<a title="email: seankhliao@gmail.com" href="mailto:seankhliao@gmail.com">
+    <i class="material-icons icon">email</i>
+</a>
+                </h2>
             </header>
             <article class="bg-g2 content-left">
                 <div>
-                    <h3>I am...</h3>
+                    <h3>
+                        <i class="material-icons icon">account_circle</i>
+                        I am...
+                    </h3>
                     <ul>
-                        <li><span class="c-purple">Sean Liao</span></li>
-                        <li>Software dev who lives and dies on the <span class="c-red">bleeding edge</span></li>
-                        <li>Watches the backend / security / networking / ux spaces</li>
+                        <li>
+                            <i class="material-icons icon">account_box</i>
+                            Sean <span class="c-purple">Liao</span>
+                        </li>
+                        <li>
+                            <i class="material-icons icon">code</i>
+                            Software dev who lives and dies on the <span class="c-red">bleeding edge</span>
+                        </li>
+                        <li>
+                            <i class="material-icons icon">remove_red_eye</i>
+                            Watches the backend / security / networking / ux spaces
+                        </li>
                     </ul>
                 </div>
                 <div>
-                    <h3>I can...</h3>
+                    <h3>
+                        <i class="material-icons icon">work</i>
+                        I can...
+                    </h3>
                     <div class="chip-block">
                         <div class="chips">Go</div>
                         <div class="chips">Linux</div>
@@ -61,15 +81,30 @@
                     </div>
                 </div>
                 <div>
-                    <h3>I'm located...</h3>
+                    <h3>
+                        <i class="material-icons icon">my_location</i>
+                        I'm located...
+                    </h3>
                     <ul>
-                        <li>Taipei, Taiwan</li>
-                        <li>Willing to relocate</li>
-                        <li>Even better if I have to travel a lot</li>
+                        <li>
+                            <i class="material-icons icon">person_pin_circle</i>
+                            Taipei, Taiwan
+                        </li>
+                        <li>
+                            <i class="material-icons icon">location_searching</i>
+                            Willing to relocate
+                        </li>
+                        <li>
+                            <i class="material-icons icon">flight_takeoff</i>
+                            Even better if I have to travel a lot
+                        </li>
                     </ul>
                 </div>
                 <div>
-                    <h3>Education</h3>
+                    <h3>
+                        <i class="material-icons icon">school</i>
+                        Education
+                    </h3>
                     <h4>2018 BBA Information Management</h4>
                     <p>National Taiwan University</p>
                 </div>

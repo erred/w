@@ -2,38 +2,38 @@
 <html ⚡ lang="en">
     <head>
         {{ template "amp-boilerplate" }}
-        <title>Sean Liao</title>
-        <link rel="canonical" href="https://seankhliao.com">
+
+        {{ template "head" obj `
+{
+    "title":"Sean Liao",
+    "description": "Personal site of Sean Liao",
+    "url": "seankhliao.com",
+    "imageUrl": ""
+}
+` }}
 
         <style amp-custom>
             {{ template "custom-css" }}
-            /* ===== Custom ===== */
-
-            .links-block {
-                margin-top: 2rem;
-                width: 75%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
         </style>
     </head>
     <body>
         <section>
             <header class="bg-g1">
-                <h2>Sean <span class="c-purple">Liao</span></h2>
+                <h1>Sean <span class="c-purple">Liao</span></h1>
 
-                <div class="links-block">
-                    <a class="icon" href="https://github.com/seankhliao">
-                        <amp-img width="32px" height="32px" layout="fixed" src="static/img/icon-github.png"></amp-img>
-                    </a>
-                    <a class="icon" href="/cv">
-                        <amp-img width="32px" height="32px" layout="fixed" src="static/img/icon-description.png"></amp-img>
-                    </a>
-                    <a class="icon" href="mailto:seankhliao@gmail.com">
-                        <amp-img width="32px" height="32px" layout="fixed" src="static/img/icon-email.png"></amp-img>
-                    </a>
-                </div>
+                <h2>
+<a title="github" href="https://github.com/seankhliao">
+    <amp-img class="align-img" width="36px" height="36px" layout="fixed" src="static/img/icon-github.png"></amp-img>
+</a>
+
+<a title="cv" href="/cv">
+    <i class="material-icons icon">description</i>
+</a>
+
+<a title="email: seankhliao@gmail.com" href="mailto:seankhliao@gmail.com">
+    <i class="material-icons icon">email</i>
+</a>
+                </h2>
             </header>
         </section>
         <section>
@@ -46,7 +46,12 @@
                 </p>
             </header>
             <article class="bg-g3">
-                <h3><a href="/cv">CV</a></h3>
+                <h2>
+                    <a href="/cv">
+                        <i title="cv" class="material-icons icon">description</i>
+                        CV
+                    </a>
+                </h2>
                 <p>
                     A man needs a job
                 </p>
@@ -54,19 +59,34 @@
         </section>
         <section>
             <article class="bg-g1">
-                <h3><a href="/map">Map</a></h3>
+                <h2>
+                    <a href="/map">
+                        <i title="map" class="material-icons icon">map</i>
+                        Map
+                    </a>
+                </h2>
                 <p>
                     Where have I been...?
                 </p>
             </article>
         </section>
         <section>
-            <header class="bg-g3">
-                <h3>Projects</h3>
+            <article class="bg-g3">
+                <h2>
+                    <a href="/projects">
+                        <i title="projects" class="material-icons icon">build</i>
+                        Projects
+                    </a>
+                </h2>
                 <p>Should find a way to list these</p>
-            </header>
+            </article>
             <article class="bg-g2">
-                <h3><a href="/design">Design</a></h3>
+                <h2>
+                    <a href="/design">
+                        <i title="design" class="material-icons icon">invert_colors</i>
+                        Design
+                    </a>
+                </h2>
                 <p>
                     Site colors
                 </p>

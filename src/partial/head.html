@@ -1,0 +1,58 @@
+{{ define "head" }}
+{{/*
+{
+    "title":"a title",
+    "description": "a short description",
+    "url": "https://link.to/this/page",
+    "imageUrl": ""
+}
+
+*/}}
+
+{{- $base := "https://seankhliao.com" -}}
+{{- $icon := printf "%s%s" $base "/static/icons/icon-192.png" -}}
+
+{{- $title := index $ "title" -}}
+{{- $description := index $ "description" -}}
+{{- $pageUrl := index $ "url" -}}
+{{- $imageUrl := or (index $ "imageUrl") $icon }}
+
+        <title>{{ $title }}</title>
+
+        <meta name="description" content="{{ $description }}">
+        <meta name="theme-color" content="#15191b">
+
+        <link rel="canonical" href="{{ $pageUrl }}">
+        <link rel="manifest" href="/manifest.json">
+
+        <!-- icons --> 
+        <link rel="icon" href="{{ $icon}}">
+        <link rel="apple-touch-icon" href="{{ $icon }}">
+
+        <!-- facebook -->
+        <meta property="og:url" content="{{ $pageUrl }}">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="{{ $title }}">
+        <meta property="og:image" content="{{ $imageUrl }}">
+        <meta property="og:description" content="{{ $description }}">
+        <meta property="og:site_name" content="Sean Liao">
+        <meta property="og:locale" content="en_US">
+
+        <!-- twitter -->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:creator" content="@seankhliao">
+        <meta name="twitter:url" content="{{ $pageUrl }}">
+        <meta name="twitter:title" content="{{ $title }}">
+        <meta name="twitter:description" content="{{ $description }}">
+        <meta name="twitter:image" content="{{ $imageUrl }}">
+
+        <!-- schema.org / google -->
+        <link rel="author" href="">
+        <link rel="publisher" href="">
+        <meta itemprop="name" content="{{ $title }}">
+        <meta itemprop="description" content="{{ $description }}">
+        <meta itemprop="image" content="{{ $imageUrl }}">
+
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+{{ end }}
