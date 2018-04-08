@@ -16,6 +16,20 @@
             {{ template "custom-css" }}
 
             /* ===== Custom ===== */
+            .space-li {
+                margin: 0.5em;
+            }
+            .chip-block {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .chips {
+                display: inline-block;
+                background-color: var(--g1);
+                border-radius: 1em;
+                padding: 0.2em 0.4em;
+                margin: 0.1em;
+            }
             .content-left {
                 align-items: flex-start;
             }
@@ -71,14 +85,34 @@
                         <i class="material-icons icon">work</i>
                         I can...
                     </h3>
-                    <div class="chip-block">
-                        <div class="chips">Go</div>
-                        <div class="chips">Linux</div>
-                        <div class="chips">Python</div>
-                        <div class="chips">C/C++</div>
-                        <div class="chips">HTML/CSS/JS</div>
-                        <div class="chips">Git</div>
-                    </div>
+                    <ul>
+                        <li class="space-li">
+                            <i class="material-icons icon">translate</i>
+                            Language (human):
+                            <div class="chip-block">
+                                <div class="chips">English</div>
+                                <div class="chips">Chinese</div>
+                            </div>
+                        </li>
+                        <li class="space-li">
+                            <i class="material-icons icon">code</i>
+                            Language (programming):
+                            <div class="chip-block">
+                                <div class="chips">Go</div>
+                                <div class="chips">Python</div>
+                                <div class="chips">C/C++</div>
+                                <div class="chips">HTML/CSS/JS</div>
+                            </div>
+                        </li>
+                        <li class="space-li">
+                            <i class="material-icons icon">build</i>
+                            Tools:
+                            <div class="chip-block">
+                                <div class="chips">linux</div>
+                                <div class="chips">git</div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
                 <div>
                     <h3>

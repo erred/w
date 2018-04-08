@@ -16,6 +16,14 @@
             {{ template "custom-css" }}
 
             /* ===== Custom ===== */
+            .ul-2col {
+                columns: 2;
+            }
+            @media (max-width: 899px) {
+                .ul-2col {
+                    columns: 1;
+                }
+            }
             .map {
                 width: 98%;
                 height: 75vh;
@@ -47,12 +55,33 @@
             </header>
         </section>
         <section>
-            <article class="bg-g1">
+            <article class="bg-g2">
                 <div class="map">
 
 {{ template "map-svg" }}
 
                 </div>
+            </article>
+        </section>
+        <section>
+            <article class="bg-g1">
+                <h2>
+                    <i class="material-icons icon">flag</i>
+                    Countries
+                </h2>
+                <ul class="ul-2col">
+                    <li>Hong Kong</li>
+                    <li>Indonesia</li>
+                    <li>India</li>
+                    <li>Japan</li>
+                    <li>Philipines</li>
+                    <li>Russia</li>
+                    <li>Sweden</li>
+                    <li>Singapore</li>
+                    <li>Taiwan</li>
+                    <li>Timor-Leste</li>
+                    <li>UK</li>
+                </ul>
             </article>
         </section>
     </body>

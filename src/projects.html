@@ -1,0 +1,128 @@
+<!doctype html>
+<html ⚡ lang="en">
+    <head>
+        {{ template "amp-boilerplate" }}
+
+        {{ template "head" obj `
+{
+    "title":"Projects | Sean Liao",
+    "description": "List of projects on github",
+    "url": "seankhliao.com/projects",
+    "imageUrl": ""
+}
+` }}
+{{ $gh := "https://github.com/seankhliao" }}
+
+        <style amp-custom>
+            {{ template "custom-css" }}
+            
+            /* ===== Custom ===== */
+            .ul-2col {
+                columns: 2;
+            }
+            @media (max-width: 899px) {
+                .ul-2col {
+                    columns: 1;
+                }
+            }
+            .ul-2col > li {
+-webkit-column-break-inside: avoid;
+          page-break-inside: avoid;
+               break-inside: avoid;
+            }
+            .ul-2col > li:before {
+                content: "";
+                padding: unset;
+            }
+
+        </style>
+    </head>
+    <body>
+        <section class="bg-g1">
+            <header>
+                <h1>
+                    <a href="/">
+                        <i title="home" class="material-icons icon">home</i>
+                    </a>
+                    | 
+                    <i title="map" class="material-icons icon">map</i>
+                    Projects I've worked on
+                </h1>
+            </header>
+        </section>
+        <section>
+            <article class="bg-g2">
+                <h3>
+                    <a href="{{ $gh }}/.config">
+                        <i class="material-icons icon">settings</i>
+                        .config
+                    </a>
+                </h3>
+                <p>Dotfiles: (note to self: keep these updated!)</p>
+            </article>
+            <article class="bg-g3">
+                <h3>
+                    <a href="{{ $gh }}/lockers">
+                        <i class="material-icons icon">inbox</i>
+                        Lockers
+                    </a>
+                </h3>
+                <p>Describing how many lockers our department has</p>
+            </article>
+        </section>
+        <section class="bg-g1">
+            <article>
+                <h2>Projects in Go</h2>
+                <ul class="ul-2col">
+                    <li>
+                        <h3>
+                            <a href="{{ $gh }}/go3status">
+                                <i class="material-icons icon">notifications</i>
+                                go3status
+                            </a>
+                        </h3>
+                        <p>simple (feature-poor) status bar</p> 
+                    </li>
+                    <li>
+                        <h3>
+                            <a href="{{ $gh }}/go-i3bar-protocol">
+                                <i class="material-icons icon">description</i>
+                                go-i3bar-protocol
+                            </a>
+                        </h3>
+                        <p>Types for implementing the i3bar</p>
+                    </li>
+                    <li>
+                        <h3>
+                            <a href="{{ $gh }}/ifttt-notify">
+                                <i class="material-icons icon">notifications_active</i>
+                                ifttt-notify
+                            </a>
+                        </h3>
+                        <p>cli to trigger ifttt maker webhook events</p>
+                    </li>
+                </ul>
+            </article>
+        </section>
+        <section>
+            <header class="bg-g3">
+                <h3>
+                    <a href="{{ $gh }}/com.seankhliao">
+                        <i class="material-icons icon">home</i>
+                        com.seankhliao
+                    </a>
+                </h3>
+                <p>This site</p>
+            </header>
+            <article class="bg-g2">
+                <h3>
+                    <a href="{{ $gh }}/gotx">
+                        <i class="material-icons icon">build</i>
+                        gotx
+                    </a>
+                </h3>
+                <p>Rudimentary static site gen for this site</p>
+            </article> 
+        </section>
+    </body>
+</html>

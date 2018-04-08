@@ -7,6 +7,10 @@
     "imageUrl": ""
 }
 
+
+TODO:
+    ga page tracking
+
 */}}
 
 {{- $base := "https://seankhliao.com" -}}
@@ -16,6 +20,13 @@
 {{- $description := index $ "description" -}}
 {{- $pageUrl := index $ "url" -}}
 {{- $imageUrl := or (index $ "imageUrl") $icon }}
+{{- $fonts := "https://fonts.googleapis.com/icon?family=Material+Icons|Raleway" -}}
+{{- $manifest := "/manifest.json" -}}
+
+        <link rel="preload" href="{{ $fonts }}" as="font" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ $fonts }}">
+        <link rel="preload" href="{{ $manifest }}">
+        <link rel="manifest" href="{{ $manifest }}">
 
         <title>{{ $title }}</title>
 
@@ -23,7 +34,6 @@
         <meta name="theme-color" content="#15191b">
 
         <link rel="canonical" href="{{ $pageUrl }}">
-        <link rel="manifest" href="/manifest.json">
 
         <!-- icons --> 
         <link rel="icon" href="{{ $icon}}">
@@ -45,14 +55,12 @@
         <meta name="twitter:title" content="{{ $title }}">
         <meta name="twitter:description" content="{{ $description }}">
         <meta name="twitter:image" content="{{ $imageUrl }}">
-
+{{/*
         <!-- schema.org / google -->
         <link rel="author" href="">
         <link rel="publisher" href="">
         <meta itemprop="name" content="{{ $title }}">
         <meta itemprop="description" content="{{ $description }}">
         <meta itemprop="image" content="{{ $imageUrl }}">
-
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+*/}}
 {{ end }}
