@@ -2,7 +2,16 @@
   "hosting": {
     "cleanUrls": true,
     "trailingSlash": false,
-    "public": "/",
-    "ignore": ["firebase.json", "makefile", "./.*"]
+    "public": "./",
+    "ignore": [
+      "firebase.json",
+      "makefile",
+      ".git/**/*",
+      ".firebase/**/*",
+      ".gitignore",
+      ".firebaserc",
+      ".eslintrc.json",
+      ".tern-project"
+    ]
   }
 }

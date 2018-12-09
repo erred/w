@@ -9,13 +9,24 @@
 
     <link
       rel="preload"
-      href="https://fonts.googleapis.com/icon?family=Archivo:400,700|Lora"
-      as="style"
+      href="/Archivo.ttf"
+      as="font"
+      type="font/ttf"
       crossorigin="anonymous"
     />
     <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Archivo:400,700|Lora"
+      rel="preload"
+      href="/Archivo-Bold.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="/Lora.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin="anonymous"
     />
 
     <title>Sean Liao</title>
@@ -79,6 +90,42 @@
     </script>
 
     <style>
+      @font-face {
+        font-family: "Archivo";
+        font-style: normal;
+        font-weight: 400;
+        src: local("Archivo Regular"), local("Archivo-Regular"),
+          url(/Archivo.ttf) format("ttf"),
+          url(https://fonts.gstatic.com/s/archivo/v3/k3kQo8UDI-1M0wlSfdnoLg.woff2)
+            format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+          U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193,
+          U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: "Archivo";
+        font-style: normal;
+        font-weight: 700;
+        src: local("Archivo Bold"), local("Archivo-Bold"),
+          url(/Archivo-Bold.ttf) format("ttf"),
+          url(https://fonts.gstatic.com/s/archivo/v3/k3kVo8UDI-1M0wlSdWLNO0bhLA.woff2)
+            format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+          U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193,
+          U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: "Lora";
+        font-style: normal;
+        font-weight: 400;
+        src: local("Lora Regular"), local("Lora-Regular"),
+          url(/Lora.ttf) format("ttf"),
+          url(https://fonts.gstatic.com/s/lora/v12/0QIvMX1D_JOuMwr7Iw.woff2)
+            format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+          U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193,
+          U+2212, U+2215, U+FEFF, U+FFFD;
+      }
       * {
         box-sizing: border-box;
       }
