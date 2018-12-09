@@ -1,14 +1,8 @@
 {
   "hosting": {
     "cleanUrls": true,
-    "public": "public",
-    "ignore": [
-      "firebase.json",
-      "makefile",
-      "icon.tif",
-      "README.md",
-      "**/.*",
-      "**/node_modules/**"
-    ]
+    "trailingSlash": false,
+    "public": "/",
+    "ignore": ["firebase.json", "makefile", "./.*"]
   }
 }

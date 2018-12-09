@@ -1,20 +1,10 @@
-.DEFAULT_GOAL := all
-.PHONY: all build clean deploy setup
-
-all: clean build
+.PHONY: build deploy serve
 
 build:
-	gotx -src src -out public
-	rmdir public/partial
-
-clean:
-	rm -rf public/*
+	yarn run polymer build
 
 deploy:
 	firebase deploy
 
-setup:
-	go get -u github.com/seankhliao/gotx
-	firebase login
-
-
+serve:
+	yarn run polymer serve --hostname 0.0.0.0

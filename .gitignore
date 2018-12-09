@@ -1,2 +1,4 @@
-firebase-debug.log
-public/
+.firebase/
+.firebaserc
+.tern-project
+.eslintrc.json
