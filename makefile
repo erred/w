@@ -1,10 +1,8 @@
 .PHONY: build deploy serve
 
 build:
-	yarn run polymer build
+	inkscape -z -D -y 0 -e map.png -w 2100 -h 1350 map.svg
 
 deploy:
 	firebase deploy
 
-serve:
-	yarn run polymer serve --hostname 0.0.0.0

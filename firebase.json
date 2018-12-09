@@ -3,9 +3,21 @@
     "cleanUrls": true,
     "trailingSlash": false,
     "public": "./",
+    "headers": [
+      {
+        "source": "**/*.@(png|ttf|woff)",
+        "headers": [{ "key": "Cache-Control", "value": "max-age=31536000" }]
+      },
+      {
+        "source": "**/*.@(webp)",
+        "headers": [{ "key": "Cache-Control", "value": "max-age=2592000" }]
+      }
+    ],
     "ignore": [
       "firebase.json",
       "makefile",
+      "map.svg",
+      "map.png",
       ".git/**/*",
       ".firebase/**/*",
       ".gitignore",
