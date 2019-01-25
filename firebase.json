@@ -14,14 +14,15 @@
       }
     ],
     "ignore": [
+      "cloudbuild.yaml",
       "firebase.json",
       "makefile",
       "map.svg",
       "map.png",
       ".git/**/*",
       ".firebase/**/*",
-      ".gitignore",
       ".firebaserc",
+      ".gitignore",
       ".eslintrc.json",
       ".tern-project"
     ]
