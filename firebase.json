@@ -16,12 +16,12 @@
     "ignore": [
       "cloudbuild.yaml",
       "firebase.json",
-      "makefile",
+      "Makefile",
       "map.svg",
-      "map.png",
-      ".git/**/*",
       ".firebase/**/*",
       ".firebaserc",
+      ".gcloudignore",
+      ".git/**/*",
       ".gitignore",
       ".eslintrc.json",
       ".tern-project"

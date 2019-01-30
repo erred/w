@@ -9,21 +9,21 @@
     <link rel="preload" href="map.webp" as="image" />
     <link
       rel="preload"
-      href="/Archivo.ttf"
+      href="./Archivo.ttf"
       as="font"
       type="font/ttf"
       crossorigin="anonymous"
     />
     <link
       rel="preload"
-      href="/Archivo-Bold.ttf"
+      href="./Archivo-Bold.ttf"
       as="font"
       type="font/ttf"
       crossorigin="anonymous"
     />
     <link
       rel="preload"
-      href="/Lora.ttf"
+      href="./Lora.ttf"
       as="font"
       type="font/ttf"
       crossorigin="anonymous"
@@ -42,17 +42,16 @@
     />
 
     <link rel="canonical" href="https://seankhliao.com" />
-    <!-- <link rel="manifest" href="{{ $manifest }}" /> -->
 
     <!-- icons -->
-    <link rel="icon" href="/icon-512.png" />
-    <link rel="apple-touch-icon" href="icon-512.png" />
+    <link rel="icon" href="./icon-512.png" />
+    <link rel="apple-touch-icon" href="./icon-512.png" />
 
     <!-- facebook -->
     <meta property="og:url" content="https://seankhliao.com" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Sean Liao" />
-    <meta property="og:image" content="https://seankhliao.com/icon-512.png" />
+    <meta property="og:image" content="./icon-512.png" />
     <meta
       property="og:description"
       content="This is me, Sean Liao, hungry software dev, will code for food"
@@ -69,7 +68,7 @@
       name="twitter:description"
       content="This is me, Sean Liao, hungry software dev, will code for food"
     />
-    <meta name="twitter:image" content="https://seankhliao.com/icon-512.png" />
+    <meta name="twitter:image" content="./icon-512.png" />
 
     <!-- schema.org / google -->
     <link rel="author" href="Sean Liao" />
@@ -78,7 +77,7 @@
       itemprop="description"
       content="This is me, Sean Liao, hungry software dev, will code for food"
     />
-    <meta itemprop="image" content="https://seankhliao/icon-512.png" />
+    <meta itemprop="image" content="./icon-512.png" />
 
     <script
       async
@@ -206,9 +205,13 @@
       }
 
       /* ===== map ===== */
-      img {
+      picture {
         width: 100%;
         margin: 10vh 2vw;
+      }
+      picture img {
+        width: 100%;
+        height: auto;
       }
     </style>
   </head>
@@ -280,6 +283,9 @@
         </li>
       </ul>
     </article>
-    <img src="./map.webp" />
+    <picture>
+      <source srcset="./map.webp" type="image/webp" />
+      <img src="./map.png" />
+    </picture>
   </body>
 </html>
