@@ -2,14 +2,14 @@
   "hosting": {
     "cleanUrls": true,
     "trailingSlash": false,
-    "public": "./",
+    "public": "dist/",
     "headers": [
       {
-        "source": "**/*.@(png|ttf|woff)",
+        "source": "**/*.@(ttf|woff)",
         "headers": [{ "key": "Cache-Control", "value": "max-age=31536000" }]
       },
       {
-        "source": "**/*.@(webp)",
+        "source": "**/*.@(webp|png)",
         "headers": [{ "key": "Cache-Control", "value": "max-age=2592000" }]
       }
     ],
@@ -17,14 +17,9 @@
       "cloudbuild.yaml",
       "firebase.json",
       "Makefile",
-      "map.svg",
-      ".firebase/**/*",
-      ".firebaserc",
       ".gcloudignore",
       ".git/**/*",
-      ".gitignore",
-      ".eslintrc.json",
-      ".tern-project"
+      ".gitignore"
     ]
   }
 }
