@@ -6,12 +6,11 @@ build:
 	mkdir dist
 	cp -t dist static/* 
 	cp -t dist src/index.html
-	convert src/map.svg \
-		-background none -density 1200 -resize 2100x1350 \
+	convert -background none -density 1200 -resize 2100x1350 \
+		src/map.svg \
 		-write dist/map.webp \
 		dist/map.png
-	convert src/icon.tif \
-		-flatten \
+	convert src/icon.tif -flatten \
 		\( +clone -resize 512x512 -quality 60 -write dist/icon-512.png +delete \) \
 		\( +clone -resize 256x256 -quality 60 -write dist/icon-256.png +delete \) \
 		\( +clone -resize 192x192 -quality 60 -write dist/icon-192.png +delete \) \
