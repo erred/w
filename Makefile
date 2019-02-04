@@ -4,8 +4,8 @@ all: clean build
 .PHONY: build
 build:
 	mkdir dist
-	cp -t dist static/* 
-	cp -t dist src/index.html
+	cp static/* dist
+	cp src/index.html dist
 	convert -background none -density 1200 -resize 2100x1350 \
 		src/map.svg \
 		-write dist/map.webp \
