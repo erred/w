@@ -7,6 +7,7 @@ build:
 	cp static/* dist
 	cp src/manifest.json dist
 	cp src/index.html dist
+	cp src/lessons.html dist
 	convert -background none -density 1200 -resize 2100x1350 \
 		src/map.svg \
 		-write dist/map.webp \
