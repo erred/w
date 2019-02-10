@@ -239,23 +239,27 @@
 
     <article>
       <h3>Google Cloud Platform</h3>
-        <h4>Set a <span>Budget</span></h4>
-        <p>
-          Surprise bills are not the nice kind of surprises
-        </p>
-      <h3>Google Cloud Functions</h3>
-        <h4>Watch the <span>Workload</span></h4>
-        <p>
-          Don't put CPU heavy or (network) IO heavy tasks here. You pay for both
-          CPU and wait times.
-        </p>
-      <h3>Google Kubernetes Engine</h3>
-      <section>
-        <h4>Avoid <span>fi-micro</span> nodes</h4>
-        <p>
-          At least if you want your cluster not to be held hostage by system
-          resources.
-        </p>
+      <h4>Billing / Set a <span>Budget</span></h4>
+      <p>
+        Surprise bills are not the nice kind of surprises
+      </p>
+      <h4>GCF / Watch the <span>Workload</span></h4>
+      <p>
+        Don't put CPU heavy or (network) IO heavy tasks here. You pay for both
+        CPU and wait times.
+      </p>
+      <h4>GKE / Avoid <span>fi-micro</span> nodes</h4>
+      <p>
+        At least if you want your cluster not to be held hostage by system
+        resources.
+      </p>
+
+      <h3>Resource Contention</h3>
+      <h4><span>One</span> thing for one resource</h4>
+      <p>
+        It doesn't matter if your crawler / front end is infinitely horintally
+        scalable if they're all stuck waiting for the DB
+      </p>
     </article>
   </body>
 </html>
