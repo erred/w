@@ -5,9 +5,7 @@ all: clean build
 build:
 	mkdir dist
 	cp static/* dist
-	cp src/manifest.json dist
 	cp src/*.html dist
-	cp src/*.css dist
 	convert -background none -density 1200 -resize 2100x1350 \
 		src/map.svg \
 		-write dist/map.webp \
