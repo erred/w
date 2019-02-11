@@ -22,6 +22,6 @@ substitutions:
   _CF_ZONE: "6bac96a6822dc2e0293ad5ce09767e19"
   _CF_EMAIL: "seankhliao@gmail.com"
 secrets:
-  - kmsKeyName: projects/$PROJECT_ID/locations/global/keyRings/cloudflare/cryptoKeys/encryptor
+  - kmsKeyName: projects/com-seankhliao/locations/global/keyRings/cloudflare/cryptoKeys/encryptor
     secretEnv:
       CF_KEY: "CiQAeiEgKL63llOyfQ61eEJCgByS2zKgKifCbGQvhOjRXpm43EgSTgCzQKMGzjeuTRYJ/92IcClaWClkY8wmyOuTb2JVwqY/Q9EExmZ6JYI6GnGH1mtNotTdPCI0HploePWXinimtbhwcBQcbnC9ZAb7ZPeJyg=="
