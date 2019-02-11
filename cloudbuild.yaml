@@ -11,7 +11,7 @@ steps:
       - "-c"
       - >
         curl
-        -sv
+        -s
         -X POST
         -H "X-Auth-Email: $_CF_EMAIL"
         -H "X-Auth-Key: $$CF_KEY"
