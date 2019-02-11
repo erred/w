@@ -1,12 +1,13 @@
 steps:
-  - name: "gcr.io/$PROJECT_ID/site-builder"
-  - name: "gcr.io/$PROJECT_ID/firebase"
-    args:
-      - "deploy"
-      - "-P"
-      - "$PROJECT_ID"
+  # - name: "gcr.io/$PROJECT_ID/site-builder"
+  # - name: "gcr.io/$PROJECT_ID/firebase"
+  #   args:
+  #     - "deploy"
+  #     - "-P"
+  #     - "$PROJECT_ID"
   - name: "gcr.io/cloud-builders/curl"
     args:
+      - "-sv"
       - "-X"
       - "POST"
       - "https://api.cloudflare.com/client/v4/zones/${_CF_ZONE}/purge_cache"
@@ -14,6 +15,8 @@ steps:
       - "X-Auth-Email: ${_CF_EMAIL}"
       - "-H"
       - "X-Auth-Key: $${CF_KEY}"
+      - "-H"
+      - "Content-Type: application/json"
       - "--data"
       - '{"purge_everything": true}'
     secretEnv:
