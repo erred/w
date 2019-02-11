@@ -9,9 +9,9 @@ steps:
     args:
       - "-X"
       - "POST"
-      - "https://api.cloudflare.com/client/v4/zones/${CF_ZONE}/purge_cache"
+      - "https://api.cloudflare.com/client/v4/zones/${_CF_ZONE}/purge_cache"
       - "-H"
-      - "X-Auth-Email: ${CF_EMAIL}"
+      - "X-Auth-Email: ${_CF_EMAIL}"
       - "-H"
       - "X-Auth-Key: $${CF_KEY}"
       - "--data"
@@ -19,8 +19,8 @@ steps:
     secretEnv:
       - CF_KEY
 substitutions:
-  CF_ZONE: "6bac96a6822dc2e0293ad5ce09767e19"
-  CF_EMAIL: "seankhliao@gmail.com"
+  _CF_ZONE: "6bac96a6822dc2e0293ad5ce09767e19"
+  _CF_EMAIL: "seankhliao@gmail.com"
 secrets:
   - kmsKeyName: projects/$PROJECT_ID/locations/global/keyRings/cloudflare/cryptoKeys/encryptor
     secretEnv:
