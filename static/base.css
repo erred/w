@@ -62,11 +62,11 @@ h2 {
   font-size: 4vmin;
 }
 h3 {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 1.563em;
 }
 h4 {
-  font-family: var(--sans);
+  font-family: var(--serif);
   font-size: 1.25em;
 }
 a,
@@ -82,7 +82,7 @@ header a:visited {
   text-decoration: none;
 }
 ul {
-  list-style: none;
+  list-style: none none outside;
   margin-top: 0;
   padding: 0;
 }
@@ -91,7 +91,7 @@ li {
 }
 li:before {
   content: "»";
-  padding-right: 1ch;
+  margin: 0 0 0 -2ch;
 }
 span {
   color: var(--primary);
