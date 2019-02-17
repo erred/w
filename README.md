@@ -15,3 +15,67 @@ handcrafted personal static site
 ## TODO
 
 - Use a static site generator
+
+### General
+
+- link: icons
+- link: preload
+
+### Compression
+
+Setup compression / minification
+
+- js / css / html minification
+- HTTP gzip / brotli compression
+
+### Content Security Policy
+
+Enforce content verification
+
+- Try with Content-Security-Policy-Report-Only
+- integrate into build process (meta) / server (header)
+- Setup report collection infra
+
+### Feature Policy
+
+Experimental, enforce feature (non)-usage
+
+### Head tags
+
+- `<meta charset="">`
+- `<meta name="viewport" content="">`
+- `<link rel="preload" href="" as="">`
+  - preconnect: setup tcp connection
+  - preload: mandatory high priority content
+  - prefetch: resource used lated
+  - prerender: next nav target
+- `<title></title>`
+- `<meta name="description" content="">`
+- `<meta name="theme-color" content="">`
+- `<link rel="canonical" href="">`
+- `<link rel="manifest" href="">`
+- `<link rel="icon">`
+
+### Search Engine Optimization
+
+- Decide on domain / subdomain
+- No ES6, googlebot
+- Sitemaps / autosubmit
+
+#### AMP
+
+decide
+
+#### Open Graph
+
+for Facebook
+
+#### JSON-LD
+
+for Google
+
+- Article
+- Breadcrumb
+- Logo
+- Q&A page
+- Social Profile
