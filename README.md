@@ -5,21 +5,15 @@
 
 handcrafted personal static site
 
-## CI / CD
-
-1. copy appropriate files
-2. convert images
-3. deploy to firebase
-4. purge cloudflare cache
-
 ## TODO
 
-- Use a static site generator
+### CI / CD
 
-### General
-
-- link: icons
-- link: preload
+- [ ] Use a static site generator
+- [ ] cache site build
+- [x] convert images
+- [x] deploy to firebase
+- [x] purge cloudflare cache
 
 ### Compression
 
@@ -54,7 +48,7 @@ Experimental, enforce feature (non)-usage
 - `<meta name="theme-color" content="">`
 - `<link rel="canonical" href="">`
 - `<link rel="manifest" href="">`
-- `<link rel="icon">`
+- `<link rel="icon" href="">`
 
 ### Search Engine Optimization
 
