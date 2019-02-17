@@ -26,4 +26,4 @@ substitutions:
 secrets:
   - kmsKeyName: projects/com-seankhliao/locations/global/keyRings/cloudflare/cryptoKeys/encryptor
     secretEnv:
-      CF_KEY: "CiQAeiEgKL63llOyfQ61eEJCgByS2zKgKifCbGQvhOjRXpm43EgSTgCzQKMGzjeuTRYJ/92IcClaWClkY8wmyOuTb2JVwqY/Q9EExmZ6JYI6GnGH1mtNotTdPCI0HploePWXinimtbhwcBQcbnC9ZAb7ZPeJyg=="
+      CF_KEY: "CiQAeiEgKGumQ2dUmTrDKmLKMKTQbqyr03g+lguS4SozmvH7eGISTgA7ASTuoRmqrj0PZR1dqVsHhnaejX3Pkx237rH8GQq2yp58XJVfqjJg+/dCJhbo/wunFempcP8NpJ84yBjcs1v2d4gerrG+AWyVKeqlpQ=="
