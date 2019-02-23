@@ -1,11 +1,16 @@
 # com-seankhliao
 
-[![Build](https://img.shields.io/badge/endpoint.svg?url=https://badger.seankhliao.com/r/github_seankhliao_com-seankhliao)](https://console.cloud.google.com/cloud-build/builds?project=com-seankhliao&query=source.repo_source.repo_name%20%3D%20%22github_seankhliao_com-seankhliao%22)
-[![License](https://img.shields.io/github/license/seankhliao/com-seankhliao.svg?style=for-the-badge)](LICENSE)
-
 handcrafted personal static site
 
-## TODO
+[![License](https://img.shields.io/github/license/seankhliao/com-seankhliao.svg?style=for-the-badge&maxAge=31536000)](LICENSE)
+[![GoDoc](https://img.shields.io/badge/godoc-reference-5272B4.svg?style=for-the-badge&maxAge=31536000)](https://godoc.org/github.com/seankhliao/com-seankhliao)
+[![Build](https://badger.seankhliao.com/i/github_seankhliao_com-seankhliao)](https://badger.seankhliao.com/l/github_seankhliao_com-seankhliao)
+
+## About
+
+who am i?
+
+## Todo
 
 ### CI / CD
 
