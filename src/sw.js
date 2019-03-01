@@ -12,18 +12,31 @@ this.addEventListener("install", event => {
 });
 
 self.addEventListener("fetch", e => {
+  let cached = false;
+
   e.respondWith(
     caches.open(cacheName).then(cache => {
       cache.match(e.request).then(response => {
-        return response || Promise.reject("no-match");
+        if (response) {
+          cached = true;
+        }
+        return (
+          response ||
+          fetch(e.request).then(response => {
+            cache.put(e.request, response);
+            return response;
+          })
+        );
       });
     })
   );
-  e.waitUntil(
-    caches.open(cacheName).then(cache => {
-      fetch(e.request).then(response => {
-        cache.put(e.request, response);
-      });
-    })
-  );
+  if (cached) {
+    e.waitUntil(
+      caches.open(cacheName).then(cache => {
+        fetch(e.request).then(response => {
+          cache.put(e.request, response);
+        });
+      })
+    );
+  }
 });
