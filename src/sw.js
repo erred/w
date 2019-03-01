@@ -1,7 +1,7 @@
 "use strict";
 
 const cacheName = "cache-1";
-const toCache = ["index.html", "base.css"];
+const toCache = ["base.css"];
 
 this.addEventListener("install", event => {
   event.waitUntil(
@@ -10,37 +10,10 @@ this.addEventListener("install", event => {
     })
   );
 });
-
-self.addEventListener("fetch", e => {
-  let cached = false;
-  e.respondWith(
-    caches.match(e.request).then(res => {
-      if (res) {
-        cache = true;
-        return res;
-      }
-      return fetch(e.request).then(res => {
-        if (!response || response.status !== 200 || response.type !== "basic") {
-          return response;
-        }
-        let res2cache = res.clone();
-        caches.open(cacheName).then(cache => {
-          cache.put(e.request, res2cache);
-        });
-        return res;
-      });
+this.addEventListener("fetch", event => {
+  event.respondWith(
+    caches.match(event.request).then(function(response) {
+      return response || fetch(event.request);
     })
   );
-  if (cached) {
-    e.waitUntil(
-      fetch(e.request).then(res => {
-        if (!response || response.status !== 200 || response.type !== "basic") {
-          return;
-        }
-        caches.open(cacheName).then(cache => {
-          cache.put(e.request, res);
-        });
-      })
-    );
-  }
 });
