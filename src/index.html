@@ -2,46 +2,28 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width,minimum-scale=1,initial-scale=1"
-    />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
     <link rel="preload" href="/base.css" as="style" />
     <link rel="preload" href="/map.webp" as="image" />
 
     <title>Sean Liao</title>
 
-    <meta
-      name="description"
-      content="This is me, Sean Liao, hungry software dev, will code for food"
-    />
+    <meta name="description" content="This is me, Sean Liao, hungry software dev, will code for food" />
     <meta name="theme-color" content="#000000" />
 
-    <link rel="canonical" href="https://seankhliao.com" />
-    <link rel="manifest" href="/manifest.json" />
+    <link rel="canonical" href="https://seankhliao.com/" />
+    <link rel="manifest" href="./manifest.json" />
 
     <!-- icons -->
-    <link rel="apple-touch-icon" href="/icon-512.png" />
-    <link rel="icon" type="imgae/png" sizes="512x512" href="/icon-512.png" />
-    <link rel="icon" type="imgae/png" sizes="192x192" href="/icon-192.png" />
-    <link rel="icon" type="imgae/png" sizes="64x64" href="/icon-64.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/icon-16.png" />
-    <link rel="shortcut icon" href="/icon.ico" />
+    <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="./icon-64.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./icon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./icon-16.png" />
+    <link rel="apple-touch-icon" href="./icon-512.png" />
+    <link rel="shortcut icon" href="./icon.ico" />
 
-    <!-- schema.org / google -->
-    <link rel="author" href="Sean Liao" />
-    <meta itemprop="name" content="Sean Liao" />
-    <meta
-      itemprop="description"
-      content="This is me, Sean Liao, hungry software dev, will code for food"
-    />
-    <meta itemprop="image" content="/icon-512.png" />
-
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=UA-114337586-1"
-    ></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114337586-1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -51,15 +33,10 @@
       gtag("config", "UA-114337586-1");
     </script>
     <script>
-      if ("serviceWorker" in navigator) {
-        window.addEventListener("load", function() {
-          navigator.serviceWorker.register("/sw.js");
-        });
-      }
+      navigator.serviceWorker && navigator.serviceWorker.register("./sw.js");
     </script>
 
-    <link rel="stylesheet" href="/base.css" />
-    <!-- <link rel="stylesheet" href="../static/base.css" /> -->
+    <link rel="stylesheet" href="./base.css" />
     <style>
       article {
         margin: 10vh auto;
@@ -105,101 +82,55 @@
       <h4><span class="hl">Code</span> 4 Food</h4>
       <ul>
         <li>
-          <a href="/learned">Learned</a>
+          <a href="./learned">Learned</a>
           &mdash; time and money have taught me many things
         </li>
       </ul>
 
       <h4>Where to <span>Find</span> Me</h4>
       <ul>
-        <li>
-          <a href="mailto:seankhliao@gmail.com">Email</a> &mdash; please no spam
-        </li>
-        <li>
-          <a href="https://github.com/seankhliao">Github</a> &mdash; browsing
-          for fun stuff to contribute to
-        </li>
-        <li>
-          <a href="https://github.com/erred">Github Org</a> &mdash; of old code,
-          decluttering my main profile
-        </li>
+        <li><a href="mailto:seankhliao@gmail.com">Email</a> &mdash; please no spam</li>
+        <li><a href="https://github.com/seankhliao">Github</a> &mdash; browsing for fun stuff to contribute to</li>
+        <li><a href="https://github.com/erred">Github Org</a> &mdash; of old code, decluttering my main profile</li>
       </ul>
 
       <h4>Get Into My <span>Mind</span></h4>
       <ul>
         <li>
-          <a
-            href="https://open.spotify.com/user/spotify/playlist/37i9dQZF1EjwWZRNXDwjdE"
-            >Spotify 2018 Playlist</a
-          >
+          <a href="https://open.spotify.com/user/spotify/playlist/37i9dQZF1EjwWZRNXDwjdE">Spotify 2018 Playlist</a>
           &mdash; getting sadder
         </li>
         <li>
-          <a
-            href="https://open.spotify.com/user/spotify/playlist/37i9dQZF1E9SEgcQFsXQMv"
-            >Spotify 2017 Playlist</a
-          >
+          <a href="https://open.spotify.com/user/spotify/playlist/37i9dQZF1E9SEgcQFsXQMv">Spotify 2017 Playlist</a>
           &mdash; more pop?
         </li>
         <li>
-          <a
-            href="https://open.spotify.com/user/spotify/playlist/37i9dQZF1CyMhRDKkjuojM"
-            >Spotify 2016 Playlist</a
-          >
+          <a href="https://open.spotify.com/user/spotify/playlist/37i9dQZF1CyMhRDKkjuojM">Spotify 2016 Playlist</a>
           &mdash; pop?
         </li>
-        <li>
-          <a href="https://instagram.com/seankhliao">Instagram</a> &mdash;
-          private, stream of consciousness
-        </li>
+        <li><a href="https://instagram.com/seankhliao">Instagram</a> &mdash; private, stream of consciousness</li>
       </ul>
 
       <h4><span>Travel</span> Log</h4>
       <p>Really going places</p>
       <ul>
-        <!-- prettier-ignore -->
-        <li>
-          England &mdash; <span>2009 - 2011</span>
-        </li>
-        <li>
-          Hong Kong &mdash; 2017-08
-        </li>
-        <li>
-          Indonesia &mdash; 2017-02, 2017-08, 2018-02, 2018-12
-        </li>
-        <li>
-          India &mdash; 2015-08
-        </li>
-        <li>
-          Japan &mdash; 2018-03
-        </li>
-        <li>
-          S. Korea &mdash; 2018-06
-        </li>
-        <li>
-          Philipines &mdash; 2017-08
-        </li>
-        <!-- prettier-ignore -->
-        <li>
-          Russia &mdash; <span>2000 - 2005</span>
-        </li>
-        <li>
-          Sweden &mdash; 2018-01
-        </li>
-        <li>
-          Singapore &mdash; 2017-01
-        </li>
-        <li>
-          Taiwan &mdash; <span>1996 - 2000, 2005 - 2009, 2011 - 2019</span>
-        </li>
-        <li>
-          Timor-Leste &mdash; 2018-02
-        </li>
+        <li>England &mdash; <span>2009 - 2011</span></li>
+        <li>Hong Kong &mdash; 2017-08</li>
+        <li>Indonesia &mdash; 2017-02, 2017-08, 2018-02, 2018-12</li>
+        <li>India &mdash; 2015-08</li>
+        <li>Japan &mdash; 2018-03</li>
+        <li>S. Korea &mdash; 2018-06</li>
+        <li>Philipines &mdash; 2017-08</li>
+        <li>Russia &mdash; <span>2000 - 2005</span></li>
+        <li>Sweden &mdash; 2018-01</li>
+        <li>Singapore &mdash; 2017-01</li>
+        <li>Taiwan &mdash; <span>1996 - 2000, 2005 - 2009, 2011 - 2019</span></li>
+        <li>Timor-Leste &mdash; 2018-02</li>
       </ul>
     </article>
     <picture>
-      <source srcset="/map.webp" type="image/webp" />
-      <img src="/map.png" alt="map of countries I've visited" />
+      <source srcset="./map.webp" type="image/webp" />
+      <img src="./map.png" alt="map of countries I've visited" />
     </picture>
   </body>
 </html>
