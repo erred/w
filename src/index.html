@@ -3,8 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
-    <link rel="preload" href="/base.css" as="style" />
-    <link rel="preload" href="/map.webp" as="image" />
+
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Archivo:400,400i|Lora:700" />
+    <link rel="preload" as="style" href="./base.css"/>
+    <link rel="preload" as="image" href="./map.webp" />
 
     <title>Sean Liao</title>
 
@@ -36,65 +38,44 @@
       navigator.serviceWorker && navigator.serviceWorker.register("./sw.js");
     </script>
 
+    <link href="https://fonts.googleapis.com/css?family=Archivo:400,400i|Lora:700" rel="stylesheet">
     <link rel="stylesheet" href="./base.css" />
     <style>
-      article {
-        margin: 10vh auto;
-        max-width: 40em;
-        width: 90vw;
-      }
-
-      picture {
-        margin: 10vh 1vw;
-      }
-      picture img {
-        width: 100%;
-      }
     </style>
   </head>
   <body>
     <header>
-      <a href="/">
-        <hgroup>
-          <h1><span>S</span></h1>
-          <h1><span>E</span></h1>
-          <h1><span>A</span></h1>
-          <h1><span>N</span></h1>
-          <h1></h1>
-          <h1></h1>
-          <h1></h1>
-          <h1></h1>
-          <h1>K</h1>
-          <h1>.</h1>
-          <h1>H</h1>
-          <h1>.</h1>
-          <h1>L</h1>
-          <h1>I</h1>
-          <h1>A</h1>
-          <h1>O</h1>
-        </hgroup>
-      </a>
+      <h1><a href="/">S</h1>
+      <h1><a href="/">E</a></h1>
+      <h1><a href="/">A</a></h1>
+      <h1><a href="/">N</a></h1>
+      <h2><a href="/"><span>K</span></a></h2>
+      <h2><a href="/"><span>.</span></a></h2>
+      <h2><a href="/"><span>H</span></a></h2>
+      <h2><a href="/"><span>.</span></a></h2>
+      <h2><a href="/">L</a></h2>
+      <h2><a href="/">I</a></h2>
+      <h2><a href="/">A</a></h2>
+      <h2><a href="/">O</a></h2>
     </header>
 
-    <article>
-      <h3>Hey, I'm Sean</h3>
+    <section>
+      <h4>Hey, I'm <span>Sean</span></h4>
+      <p>Perpetually bored software dev. Likes infrastructure stuff with a fondness for networking and Go. <em>Build first, regret later</em></p>
+      <p>Feels most at home on while travelling / on the road.</p>
+    </section>
 
-      <h4><span class="hl">Code</span> 4 Food</h4>
-      <ul>
-        <li>
-          <a href="./learned">Learned</a>
-          &mdash; time and money have taught me many things
-        </li>
-      </ul>
-
-      <h4>Where to <span>Find</span> Me</h4>
+    <section>
+      <h5>Where to <span>Find</span> Me</h5>
       <ul>
         <li><a href="mailto:seankhliao@gmail.com">Email</a> &mdash; please no spam</li>
         <li><a href="https://github.com/seankhliao">Github</a> &mdash; browsing for fun stuff to contribute to</li>
         <li><a href="https://github.com/erred">Github Org</a> &mdash; of old code, decluttering my main profile</li>
       </ul>
+    </section>
 
-      <h4>Get Into My <span>Mind</span></h4>
+    <section>
+      <h5>Get Into My <span>Mind</span></h5>
       <ul>
         <li>
           <a href="https://open.spotify.com/user/spotify/playlist/37i9dQZF1EjwWZRNXDwjdE">Spotify 2018 Playlist</a>
@@ -108,11 +89,20 @@
           <a href="https://open.spotify.com/user/spotify/playlist/37i9dQZF1CyMhRDKkjuojM">Spotify 2016 Playlist</a>
           &mdash; pop?
         </li>
-        <li><a href="https://instagram.com/seankhliao">Instagram</a> &mdash; private, stream of consciousness</li>
+        <!-- prettier-ignore -->
+        <li>
+          <a href="https://instagram.com/seankhliao">Instagram</a> &mdash; private, stream of consciousness
+        </li>
       </ul>
+    </section>
 
-      <h4><span>Travel</span> Log</h4>
-      <p>Really going places</p>
+    <picture>
+      <source srcset="./map.webp" type="image/webp" />
+      <img src="./map.png" alt="map of countries I've visited" />
+    </picture>
+
+    <section>
+      <h5>Travel <span>Log</span></h5>
       <ul>
         <li>England &mdash; <span>2009 - 2011</span></li>
         <li>Hong Kong &mdash; 2017-08</li>
@@ -127,10 +117,6 @@
         <li>Taiwan &mdash; <span>1996 - 2000, 2005 - 2009, 2011 - 2019</span></li>
         <li>Timor-Leste &mdash; 2018-02</li>
       </ul>
-    </article>
-    <picture>
-      <source srcset="./map.webp" type="image/webp" />
-      <img src="./map.png" alt="map of countries I've visited" />
-    </picture>
+    </section>
   </body>
 </html>

@@ -13,15 +13,6 @@
         "headers": [{ "key": "Cache-Control", "value": "max-age=2592000" }]
       }
     ],
-    "ignore": [
-      "cloudbuild.yaml",
-      "firebase.json",
-      "LICENSE",
-      "Makefile",
-      "README.md",
-      ".gcloudignore",
-      ".git/**/*",
-      ".gitignore"
-    ]
+    "ignore": ["cloudbuild.yaml", "firebase.json", "images/**", "LICENSE", "Makefile", "README.md", "src/**", "**/.*"]
   }
 }

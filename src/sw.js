@@ -1,15 +1,12 @@
 "use strict";
 
-var cacheVersion = 1;
-var currentCache = {
-  offline: "offline-cache" + cacheVersion
-};
-const offlineUrl = "index.html";
+const cacheName = "cache-1";
+const toCache = ["index.html", "base.css"];
 
 this.addEventListener("install", event => {
   event.waitUntil(
-    caches.open(currentCache.offline).then(function(cache) {
-      return cache.addAll(["./map.webp", offlineUrl]);
+    caches.open(cacheName).then(cache => {
+      return cache.addAll(toCache);
     })
   );
 });
@@ -19,8 +16,7 @@ this.addEventListener("fetch", event => {
   // so include a check for Accept: text/html header.
   if (
     event.request.mode === "navigate" ||
-    (event.request.method === "GET" &&
-      event.request.headers.get("accept").includes("text/html"))
+    (event.request.method === "GET" && event.request.headers.get("accept").includes("text/html"))
   ) {
     event.respondWith(
       fetch(event.request.url).catch(error => {
