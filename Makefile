@@ -5,9 +5,9 @@ all: clean build
 build:
 	mkdir dist
 	cp src/* dist
-	cp images/*.png dist
-	cp images/*.ico dist
-	cp images/*.webp dist
+	-cp images/*.png dist
+	-cp images/*.ico dist
+	-cp images/*.webp dist
 	convert -background none -density 1200 -resize 2100x1350 \
 		images/map.svg \
 		-write dist/map.webp \
