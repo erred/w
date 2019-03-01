@@ -12,7 +12,6 @@
         "source": "**/*.@(webp|png)",
         "headers": [{ "key": "Cache-Control", "value": "max-age=2592000" }]
       }
-    ],
-    "ignore": ["cloudbuild.yaml", "firebase.json", "images/**", "LICENSE", "Makefile", "README.md", "src/**", "**/.*"]
+    ]
   }
 }
