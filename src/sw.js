@@ -19,14 +19,11 @@ self.addEventListener("fetch", e => {
       cache.match(e.request).then(response => {
         if (response) {
           cached = true;
+        } else {
+          response = fetch(e.request);
+          cache.put(e.request, response);
         }
-        return (
-          response ||
-          fetch(e.request).then(response => {
-            cache.put(e.request, response);
-            return response;
-          })
-        );
+        return response;
       });
     })
   );
