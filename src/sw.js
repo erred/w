@@ -17,7 +17,7 @@ self.addEventListener("fetch", e => {
   e.respondWith(
     caches.open(cacheName).then(cache => {
       cache.match(e.request).then(response => {
-        return response || fetch(e.request);
+        return response || fetch(e.request).then(response => response);
       });
     })
   );
