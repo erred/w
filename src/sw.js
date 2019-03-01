@@ -12,22 +12,25 @@ this.addEventListener("install", event => {
 });
 
 self.addEventListener("fetch", e => {
-  let cached = false;
-
   e.respondWith(
     caches.open(cacheName).then(cache => {
       cache.match(e.request).then(response => {
-        return response || fetch(e.request).then(response => response);
+        console.log(response);
+        return (
+          response ||
+          fetch(e.request).then(response => {
+            console.log(response);
+            return response;
+          })
+        );
       });
     })
   );
-  if (cached) {
-    e.waitUntil(
-      caches.open(cacheName).then(cache => {
-        fetch(e.request).then(response => {
-          cache.put(e.request, response);
-        });
-      })
-    );
-  }
+  e.waitUntil(
+    caches.open(cacheName).then(cache => {
+      fetch(e.request).then(response => {
+        cache.put(e.request, response);
+      });
+    })
+  );
 });
