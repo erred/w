@@ -10,10 +10,30 @@ this.addEventListener("install", event => {
     })
   );
 });
-this.addEventListener("fetch", event => {
-  event.respondWith(
-    caches.match(event.request).then(function(response) {
-      return response || fetch(event.request);
+
+self.addEventListener("fetch", e => {
+  let update = true;
+  e.respondWith(
+    caches.open(cacheName).then(cache => {
+      return cache.match(e.request).then(res => {
+        return (
+          res ||
+          fetch(e.request).then(res => {
+            update = false;
+            cache.put(e.request, res.clone());
+            return res;
+          })
+        );
+      });
     })
   );
+  if (update) {
+    e.waitUntil(
+      caches.open(cacheName).then(cache => {
+        fetch(e.request).then(res => {
+          cache.put(e.request, res);
+        });
+      })
+    );
+  }
 });
