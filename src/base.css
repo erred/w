@@ -4,6 +4,7 @@
 :root {
   --black: #000000;
   --primary: #a06be0;
+  --gray: #999;
   --white: #eceff1;
   --sans: "Archivo", sans-serif;
   --serif: "Lora", serif;
@@ -26,11 +27,11 @@ section {
   grid-column: 2 / span 1;
 }
 
-picture img {
-  width: 100%;
-}
 picture {
   grid-column: 1 / span 3;
+}
+picture img {
+  width: 100%;
 }
 
 header {
@@ -82,15 +83,22 @@ header a:visited {
 }
 
 ul {
-  list-style: none none outside;
+  list-style: none;
   margin: 0;
 }
-li {
-  padding: 0.25em;
+ul > * {
+  margin: 0.5em;
 }
-li:before {
+ul > li:before {
   content: "»";
-  margin: 0 1ch 0 -2ch;
+  margin: 0 1ch 0 -3ch;
+  position: absolute;
+}
+
+blockquote {
+  margin: 1em;
+  padding: 0.25em 1em;
+  border-left: 1ch solid var(--gray);
 }
 
 span {
