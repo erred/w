@@ -46,6 +46,9 @@
       header {
         height: 30vh;
       }
+      h5 {
+        display: inline-block;
+      }
       fieldset {
         grid-column: 2 / span 1;
       }
@@ -97,6 +100,19 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+      }
+      legend:before,
+      form:before {
+        content: attr(data-done) " / " attr(data-total) " ";
+        font: 700 1.25em var(--sans);
+      }
+      legend[data-done="0"]:before,
+      form[data-done="0"]:before {
+        color: red;
+      }
+      legend[data-all="0"]:before,
+      form[data-all="0"]:before {
+        color: var(--primary);
       }
       input[type="reset"] {
         background: rgba(0, 0, 0, 0);
@@ -373,19 +389,55 @@
     </fieldset>
     <script>
       cb = document.querySelectorAll('input[type="checkbox"]');
-      cb.forEach(e => {
-        e.checked = window.localStorage.getItem(e.id) || false;
-      });
+      fs = document.querySelectorAll("fieldset");
+      fo = document.querySelector("form");
+
+      let updatec = el => {
+        scope = el ? el.closest("fieldset") : document;
+        target = el ? scope.querySelector("legend") : fo;
+        x = 0;
+        scope.querySelectorAll('input[type="checkbox"]').forEach(e => {
+          x += e.checked;
+        });
+        target.dataset.done = x;
+        target.dataset.all = target.dataset.total - target.dataset.done;
+        el && updatec();
+      };
+      let updatea = () => {
+        fo.dataset.total = cb.length;
+        fs.forEach(e => {
+          e.querySelector("legend").dataset.total = e.querySelectorAll('input[type="checkbox"]').length;
+          updatec(e);
+        });
+      };
+
+      // set subtotal
+      // fs.forEach(e => {
+      //   e.dataset.total = e.querySelectorAll('input[type="checkbox"]').length();
+      // });
+
+      // save state
       cb.forEach(e => {
         e.addEventListener("input", evt => {
           window.localStorage.setItem(e.id, e.checked);
+          updatec(e);
         });
       });
       document.querySelector('input[type="reset"]').addEventListener("click", () => {
         cb.forEach(e => {
+          e.checked = false;
           window.localStorage.removeItem(e.id);
         });
+        updatea();
       });
+      //
+      // ===== main
+      // restore state
+      cb.forEach(e => {
+        e.checked = window.localStorage.getItem(e.id) || false;
+      });
+      // update counters
+      updatea();
     </script>
   </body>
 </html>
