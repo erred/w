@@ -101,6 +101,13 @@ blockquote {
   border-left: 1ch solid var(--gray);
 }
 
+dt {
+  font: 700 1em var(--serif);
+}
+dd {
+  font-style: italic;
+}
+
 span {
   color: var(--primary);
 }

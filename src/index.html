@@ -35,7 +35,10 @@
       gtag("config", "UA-114337586-1");
     </script>
     <script>
-      navigator.serviceWorker && navigator.serviceWorker.register("./sw.js");
+      navigator.serviceWorker &&
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("./sw.js");
+        });
     </script>
 
     <link href="https://fonts.googleapis.com/css?family=Archivo:400,400i|Lora:700" rel="stylesheet">
