@@ -103,11 +103,16 @@ blockquote {
 
 dt {
   font: 700 1em var(--serif);
+  margin: 0.75em 0 0.25em 0;
 }
 dd {
   font-style: italic;
 }
 
-span {
+mark {
   color: var(--primary);
+  background-color: unset;
+}
+span {
+  color: var(--gray);
 }
