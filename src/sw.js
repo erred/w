@@ -1,7 +1,7 @@
 "use strict";
 
 const cacheName = "cache-1";
-const toCache = ["base.css"];
+const toCache = ["/", "./base.css"];
 
 this.addEventListener("install", event => {
   event.waitUntil(
