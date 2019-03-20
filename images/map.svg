@@ -12,6 +12,7 @@
         stroke-width: 0.5;
       }
 
+      #CA,
       #GB,
       #HK,
       #ID,
@@ -23,7 +24,8 @@
       #SE,
       #SG,
       #TW,
-      #TL {
+      #TL,
+      #US {
         fill: #a06be0;
       }
     </style>
