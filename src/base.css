@@ -64,6 +64,14 @@ h5 {
   font: 700 1.25em var(--serif);
   margin: 0;
 }
+h6 {
+  font: 700 1em var(--serif);
+  margin: 0;
+}
+
+p {
+  margin-top: 0;
+}
 
 a,
 a:visited {
