@@ -12,6 +12,18 @@
         "source": "**/*.@(webp|png)",
         "headers": [{ "key": "Cache-Control", "value": "max-age=2592000" }]
       }
+    ],
+    "redirects": [
+      {
+        "source": "/blog",
+        "destination": "https://blog.seankhliao.com",
+        "type": 302
+      },
+      {
+        "source": "/blog/:post*",
+        "destination": "https://blog.seankhliao.com/:post",
+        "type": 302
+      }
     ]
   }
 }
