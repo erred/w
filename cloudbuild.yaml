@@ -1,7 +1,7 @@
 steps:
   - name: "gcr.io/$PROJECT_ID/imagemagick:latest"
     waitFor: ["-"]
-    entrypoint: "bash"
+    entrypoint: "sh"
     args:
       - "-c"
       - >
