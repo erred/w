@@ -231,7 +231,7 @@ func (p *Processor) parsePost(tmpl, fp string) Post {
 		}
 	}
 
-	pt.Content = string(blackfriday.Run(bb[1]))
+	pt.Content = string(blackfriday.Run(bytes.TrimSpace(bb[1])))
 
 	nfn := strings.TrimSuffix(p.src2dst(fp), MdExt) + ".html"
 	f, err := p.newFile(nfn)
