@@ -21,6 +21,7 @@ var (
 	Src, Dst  string
 	TmplExt   string
 	MdExt     = ".md"
+	HtmlExt   = ".html"
 )
 
 func init() {
@@ -47,6 +48,7 @@ func main() {
 type Processor struct {
 	t             *template.Template
 	templatePaths []string
+	renderPaths   []string
 	copyPaths     []string
 	mdPaths       map[string][]string
 }
@@ -71,6 +73,14 @@ func (p *Processor) Process() error {
 	}
 
 	defer wg.Wait()
+
+	for _, fp := range p.renderPaths {
+		wg.Add(1)
+		go func(fp string) {
+			defer wg.Done()
+			p.renderFile(fp)
+		}(fp)
+	}
 
 	for _, fp := range p.copyPaths {
 		wg.Add(1)
@@ -108,6 +118,8 @@ func (p *Processor) walker(fp string, info os.FileInfo, err error) error {
 	} else if ext == MdExt {
 		dir := filepath.Dir(fp)
 		p.mdPaths[dir] = append(p.mdPaths[dir], fp)
+	} else if ext == HtmlExt {
+		p.renderPaths = append(p.renderPaths, fp)
 	} else {
 		p.copyPaths = append(p.copyPaths, fp)
 	}
@@ -129,7 +141,6 @@ func (p *Processor) md2html(dir string, fps []string) {
 
 	idx := map[string]interface{}{
 		"Posts": posts,
-		"Title": bd,
 		"URL":   strings.TrimPrefix(dir, Src),
 	}
 
@@ -200,6 +211,24 @@ func (p *Processor) parsePost(tmpl, fp string) Post {
 		return pt
 	}
 	return pt
+}
+
+func (p *Processor) renderFile(fn string) {
+	nfn := p.src2dst(fn)
+	f, err := p.newFile(nfn)
+	if err != nil {
+		log.Printf("renderFile newFile %v: %v\n", nfn, err)
+		return
+	}
+	t, err := p.t.ParseFiles(fn)
+	if err != nil {
+		log.Printf("renderFile parse %v as template: %v\n", fn, err)
+		return
+	}
+	t.ExecuteTemplate(f, fn, nil)
+	if err != nil {
+		log.Printf("renderFile execute %v: %v\n", fn, err)
+	}
 }
 
 func (p *Processor) copyFile(fn string) {
