@@ -31,25 +31,25 @@ steps:
       - "deploy"
       - "-P"
       - "$PROJECT_ID"
-  - name: "gcr.io/cloud-builders/curl"
-    entrypoint: "bash"
-    args:
-      - "-c"
-      - >-
-        curl
-        -s
-        -X POST
-        -H "X-Auth-Email: $_CF_EMAIL"
-        -H "X-Auth-Key: $$CF_KEY"
-        -H "Content-Type: application/json"
-        --data '{"purge_everything": true}'
-        "https://api.cloudflare.com/client/v4/zones/$_CF_ZONE/purge_cache"
-    secretEnv:
-      - CF_KEY
-substitutions:
-  _CF_ZONE: "6bac96a6822dc2e0293ad5ce09767e19"
-  _CF_EMAIL: "seankhliao@gmail.com"
-secrets:
-  - kmsKeyName: projects/com-seankhliao/locations/global/keyRings/cloudflare/cryptoKeys/encryptor
-    secretEnv:
-      CF_KEY: "CiQAeiEgKGumQ2dUmTrDKmLKMKTQbqyr03g+lguS4SozmvH7eGISTgA7ASTuoRmqrj0PZR1dqVsHhnaejX3Pkx237rH8GQq2yp58XJVfqjJg+/dCJhbo/wunFempcP8NpJ84yBjcs1v2d4gerrG+AWyVKeqlpQ=="
+#   - name: "gcr.io/cloud-builders/curl"
+#     entrypoint: "bash"
+#     args:
+#       - "-c"
+#       - >-
+#         curl
+#         -s
+#         -X POST
+#         -H "X-Auth-Email: $_CF_EMAIL"
+#         -H "X-Auth-Key: $$CF_KEY"
+#         -H "Content-Type: application/json"
+#         --data '{"purge_everything": true}'
+#         "https://api.cloudflare.com/client/v4/zones/$_CF_ZONE/purge_cache"
+#     secretEnv:
+#       - CF_KEY
+# substitutions:
+#   _CF_ZONE: "6bac96a6822dc2e0293ad5ce09767e19"
+#   _CF_EMAIL: "seankhliao@gmail.com"
+# secrets:
+#   - kmsKeyName: projects/com-seankhliao/locations/global/keyRings/cloudflare/cryptoKeys/encryptor
+#     secretEnv:
+#       CF_KEY: "CiQAeiEgKGumQ2dUmTrDKmLKMKTQbqyr03g+lguS4SozmvH7eGISTgA7ASTuoRmqrj0PZR1dqVsHhnaejX3Pkx237rH8GQq2yp58XJVfqjJg+/dCJhbo/wunFempcP8NpJ84yBjcs1v2d4gerrG+AWyVKeqlpQ=="
