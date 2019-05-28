@@ -9,5 +9,6 @@ FROM scratch
 
 WORKDIR /app
 COPY --from=build /app/app .
+WORKDIR /workspace
 
 ENTRYPOINT ["/app/app"]
