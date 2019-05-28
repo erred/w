@@ -1,4 +1,4 @@
-dist/
+dst/
 .cache/
 .firebase/
 .firebaserc
