@@ -5,11 +5,8 @@ steps:
     args:
       - "-c"
       - >-
-        mkdir -p dst;
-        convert -background none -density 1200 -resize 2100x1350
-        src/map.svg
-        -write dst/map.webp
-        dst/map.png;
+        mkdir -p dst || true;
+        convert -background none -density 1200 -resize 2100x1350 src/map.svg -write dst/map.webp dst/map.png;
         convert src/icon.tif -flatten \
         \( +clone -resize 512x512 -quality 60 -write dst/icon-512.png +delete \)
         \( +clone -resize 192x192 -quality 60 -write dst/icon-192.png +delete \)
