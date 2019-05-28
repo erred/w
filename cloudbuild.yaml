@@ -23,6 +23,7 @@ steps:
         '(' +clone -resize 32x32 -quality 60 -write dst/icon-32.png +delete ')'
         '(' +clone -resize 16x16 -quality 60 -write dst/icon-16.png +delete ')'
         -resize 16x16 -quality 60 dst/favicon.ico;
+
   - name: "gcr.io/$PROJECT_ID/site-builder:latest"
     waitFor: ["-"]
   - name: "gcr.io/$PROJECT_ID/firebase:latest"

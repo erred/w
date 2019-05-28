@@ -14,8 +14,8 @@ who am i?
 
 ### CI / CD
 
-- [ ] Use a static site generator
 - [ ] cache site build
+- [x] Use a static site generator
 - [x] convert images
 - [x] deploy to firebase
 - [x] purge cloudflare cache
