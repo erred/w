@@ -7,7 +7,14 @@ steps:
       - >-
         mkdir -p dst || true;
         convert -background none -density 1200 -resize 2100x1350 src/map.svg -write dst/map.webp dst/map.png;
-        convert src/icon.tif -flatten \
+  - name: "gcr.io/$PROJECT_ID/imagemagick:latest"
+    waitFor: ["-"]
+    entrypoint: "sh"
+    args:
+      - "-c"
+      - >-
+        mkdir -p dst || true;
+        convert src/icon.tif -flatten 
         '(' +clone -resize 512x512 -quality 60 -write dst/icon-512.png +delete ')'
         '(' +clone -resize 192x192 -quality 60 -write dst/icon-192.png +delete ')'
         '(' +clone -resize 128x128 -quality 60 -write dst/icon-128.png +delete ')'
