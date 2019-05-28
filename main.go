@@ -22,7 +22,7 @@ var (
 	TmplExt   string
 	MdExt     = ".md"
 	HtmlExt   = ".html"
-	BaseURL   = "https://seankhliao.com/"
+	BaseURL   = "https://seankhliao.com"
 )
 
 func init() {
@@ -89,7 +89,7 @@ func (p *Processor) Process() error {
 		wg.Add(1)
 		go func(fp string) {
 			defer wg.Done()
-			p.copyFile(fp)
+			copyFile(fp)
 		}(fp)
 	}
 
@@ -142,17 +142,7 @@ func (p *Processor) GenSitemap() {
 		if filepath.Ext(fp) != HtmlExt {
 			return nil
 		}
-
-		fp = strings.TrimSuffix(strings.TrimPrefix(fp, Dst+"/"), HtmlExt)
-		if filepath.Base(fp) == "index" {
-			if filepath.Dir(fp) == "." {
-				p.paths = append(p.paths, BaseURL[:len(BaseURL)-1])
-			} else {
-				p.paths = append(p.paths, BaseURL+filepath.Dir(fp))
-			}
-		} else {
-			p.paths = append(p.paths, BaseURL+fp)
-		}
+		p.paths = append(p.paths, canonicalURL(fp))
 		return nil
 	})
 
@@ -177,11 +167,11 @@ func (p *Processor) md2html(dir string, fps []string) {
 
 	idx := map[string]interface{}{
 		"Posts": posts,
-		"URL":   strings.TrimPrefix(dir, Src),
+		"URL":   relativeURL(dir),
 	}
 
-	nfn := filepath.Join(p.src2dst(dir), "index.html")
-	f, err := p.newFile(nfn)
+	nfn := filepath.Join(src2dst(dir), "index.html")
+	f, err := newFile(nfn)
 	if err != nil {
 		log.Printf("md2html newFile %v: %v\n", nfn, err)
 		return
@@ -205,7 +195,8 @@ func (p *Processor) parsePost(tmpl, fp string) Post {
 		return pt
 	}
 
-	pt.URL = strings.TrimPrefix(strings.TrimSuffix(fp, MdExt), Src)
+	nfn := strings.TrimSuffix(src2dst(fp), MdExt) + ".html"
+	pt.URL = relativeURL(nfn)
 
 	bb := bytes.SplitN(b, []byte("\n---\n"), 2)
 	if len(bb) != 2 {
@@ -233,8 +224,7 @@ func (p *Processor) parsePost(tmpl, fp string) Post {
 
 	pt.Content = string(blackfriday.Run(bytes.TrimSpace(bb[1])))
 
-	nfn := strings.TrimSuffix(p.src2dst(fp), MdExt) + ".html"
-	f, err := p.newFile(nfn)
+	f, err := newFile(nfn)
 	if err != nil {
 		log.Printf("parsePost newFile %v: %v\n", nfn, err)
 		return pt
@@ -250,8 +240,8 @@ func (p *Processor) parsePost(tmpl, fp string) Post {
 }
 
 func (p *Processor) renderFile(fn string) {
-	nfn := p.src2dst(fn)
-	f, err := p.newFile(nfn)
+	nfn := src2dst(fn)
+	f, err := newFile(nfn)
 	if err != nil {
 		log.Printf("renderFile newFile %v: %v\n", nfn, err)
 		return
@@ -267,9 +257,9 @@ func (p *Processor) renderFile(fn string) {
 	}
 }
 
-func (p *Processor) copyFile(fn string) {
-	nfn := p.src2dst(fn)
-	f, err := p.newFile(nfn)
+func copyFile(fn string) {
+	nfn := src2dst(fn)
+	f, err := newFile(nfn)
 	if err != nil {
 		log.Printf("copyFile newFile %v: %v\n", nfn, err)
 		return
@@ -287,11 +277,22 @@ func (p *Processor) copyFile(fn string) {
 	}
 }
 
-func (p *Processor) src2dst(f string) string {
-	return filepath.Join(Dst, strings.TrimPrefix(f, Src))
+func relativeURL(fp string) string {
+	fp = strings.TrimPrefix(fp, Src)
+	fp = strings.TrimPrefix(fp, Dst)
+	fp = strings.TrimSuffix(fp, HtmlExt)
+	fp = strings.TrimSuffix(fp, "index")
+	if len(fp) != 1 {
+		fp = strings.TrimSuffix(fp, "/")
+	}
+	return fp
+}
+func canonicalURL(fp string) string {
+	fp = BaseURL + relativeURL(fp)
+	return strings.TrimSuffix(fp, "/")
 }
 
-func (p *Processor) newFile(fn string) (*os.File, error) {
+func newFile(fn string) (*os.File, error) {
 	err := os.MkdirAll(filepath.Dir(fn), 0755)
 	if err != nil {
 		log.Printf("newFile mkdirall %v:%v\n", filepath.Dir(fn), err)
@@ -302,6 +303,9 @@ func (p *Processor) newFile(fn string) (*os.File, error) {
 		return nil, err
 	}
 	return f, nil
+}
+func src2dst(f string) string {
+	return filepath.Join(Dst, strings.TrimPrefix(f, Src))
 }
 
 type Post struct {
