@@ -225,7 +225,7 @@ func (p *Processor) renderFile(fn string) {
 		log.Printf("renderFile parse %v as template: %v\n", fn, err)
 		return
 	}
-	t.ExecuteTemplate(f, fn, nil)
+	t.ExecuteTemplate(f, filepath.Base(fn), nil)
 	if err != nil {
 		log.Printf("renderFile execute %v: %v\n", fn, err)
 	}
