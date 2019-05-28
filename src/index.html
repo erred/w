@@ -1,50 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
+{{ template "head" }}
+<title>seankhliao</title>
+<style>
+body {
+  grid-gap: 25vh 2em;
+}
+</style>
 
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Archivo:400,400i|Lora:700" />
-    <link rel="preload" as="style" href="./base.css" />
-    <link rel="preload" as="image" href="./map.webp" />
-
-    <title>Sean Liao</title>
-
-    <meta name="description" content="This is me, Sean Liao, hungry software dev, will code for food" />
-    <meta name="theme-color" content="#000000" />
-
-    <link rel="canonical" href="https://seankhliao.com/" />
-    <link rel="manifest" href="./manifest.json" />
-
-    <!-- icons -->
-    <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
-    <link rel="icon" type="image/png" sizes="64x64" href="./icon-64.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="./icon-32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="./icon-16.png" />
-    <link rel="apple-touch-icon" href="./icon-512.png" />
-    <link rel="shortcut icon" href="./icon.ico" />
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114337586-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "UA-114337586-1");
-    </script>
-    <script>
-      navigator.serviceWorker &&
-        window.addEventListener("load", () => {
-          navigator.serviceWorker.register("./sw.js");
-        });
-    </script>
-
-    <link href="https://fonts.googleapis.com/css?family=Archivo:400,400i|Lora:700" rel="stylesheet" />
-    <link rel="stylesheet" href="./base.css" />
-  </head>
-  <body>
     <header>
       <h1><a href="/" tabindex="-1">S</a></h1>
       <h1><a href="/" tabindex="-1">E</a></h1>
@@ -81,10 +42,10 @@
     <section>
       <h5>Where to <mark>Find</mark> Me</h5>
       <ul>
-        <li><a href="https://blog.seankhliao.com">Blog</a> &mdash; home of random thoughts</li>
-        <li><a href="mailto:seankhliao@gmail.com">Email</a> &mdash; mail, for <em>me</em>?</li>
-        <li><a href="https://github.com/seankhliao">Github</a> &mdash; build first, regret later</li>
-        <li><a href="https://github.com/erred">Github Org</a> &mdash; where old code goes to die</li>
+        <li><a href="/blog">Blog</a> — home of random thoughts</li>
+        <li><a href="mailto:sean@seankhliao.com">Email</a> — mail, for <em>me</em>?</li>
+        <li><a href="https://github.com/seankhliao">Github</a> — build first, regret later</li>
+        <li><a href="https://github.com/erred">Github Org</a> — where old code goes to die</li>
       </ul>
     </section>
 
@@ -93,46 +54,45 @@
       <ul>
         <li>
           <a href="https://open.spotify.com/user/spotify/playlist/37i9dQZF1EjwWZRNXDwjdE">Spotify 2018 Playlist</a>
-          &mdash; getting sadder
+          — getting sadder
         </li>
         <li>
           <a href="https://open.spotify.com/user/spotify/playlist/37i9dQZF1E9SEgcQFsXQMv">Spotify 2017 Playlist</a>
-          &mdash; more pop?
+          — more pop?
         </li>
         <li>
           <a href="https://open.spotify.com/user/spotify/playlist/37i9dQZF1CyMhRDKkjuojM">Spotify 2016 Playlist</a>
-          &mdash; pop?
+          — pop?
         </li>
-        <!-- prettier-ignore -->
         <li>
-          <a href="https://instagram.com/seankhliao">Instagram</a> &mdash; private, stream of consciousness
+          <a href="https://instagram.com/seankhliao">Instagram</a> — private, stream of consciousness
         </li>
       </ul>
     </section>
 
     <picture>
-      <source srcset="./map.webp" type="image/webp" />
-      <img src="./map.png" alt="map of countries I've visited" />
+      <source srcset="/map.webp" type="image/webp" />
+      <img src="/map.png" alt="map of countries I've visited" />
     </picture>
 
     <section>
       <h5>Travel <mark>Log</mark></h5>
       <ul>
-        <li>Canada &mdash; 2019-04</li>
-        <li>England &mdash; <mark>2009 - 2011</mark></li>
-        <li>Hong Kong &mdash; 2017-08</li>
-        <li>Indonesia &mdash; 2017-02, 2017-08, 2018-02, 2018-12</li>
-        <li>India &mdash; 2015-08</li>
-        <li>Japan &mdash; 2018-03</li>
-        <li>S. Korea &mdash; 2018-06</li>
-        <li>Philipines &mdash; 2017-08</li>
-        <li>Russia &mdash; <mark>2000 - 2005</mark></li>
-        <li>Sweden &mdash; 2018-01</li>
-        <li>Singapore &mdash; 2017-01</li>
-        <li>Taiwan &mdash; <mark>1996 - 2000, 2005 - 2009, 2011 - 2019</mark></li>
-        <li>Timor-Leste &mdash; 2018-02</li>
-        <li>United States &mdash; 2019-04</li>
+        <li>Canada — 2019-04</li>
+        <li>England — <mark>2009 - 2011</mark></li>
+        <li>Hong Kong — 2017-08</li>
+        <li>Indonesia — 2017-02, 2017-08, 2018-02, 2018-12</li>
+        <li>India — 2015-08</li>
+        <li>Japan — 2018-03</li>
+        <li>S. Korea — 2018-06</li>
+        <li>Philipines — 2017-08</li>
+        <li>Russia — <mark>2000 - 2005</mark></li>
+        <li>Sweden — 2018-01</li>
+        <li>Singapore — 2017-01</li>
+        <li>Taiwan — <mark>1996 - 2000, 2005 - 2009, 2011 - 2019</mark></li>
+        <li>Timor-Leste — 2018-02</li>
+        <li>United States — 2019-04</li>
       </ul>
     </section>
   </body>
-</html>
+{{ template "foot" }}

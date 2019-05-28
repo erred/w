@@ -1,0 +1,33 @@
+{{ define "head" }}
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+<meta name="theme-color" content="#000000">
+<meta name="description" content="{{ .Desc }}">
+
+<link rel="canonical" href="https://seankhliao.com{{ with .URL }}{{ . }}{{ end }}">
+<link rel="manifest" href="/manifest.json" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|Lora:700&display=swap">
+<link rel="stylesheet" href="/base.css">
+
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+<link rel="apple-touch-icon" href="/icon-512.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-114337586-1"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag() {dataLayer.push(arguments);};
+gtag("js", new Date());
+gtag("config", "UA-114337586-1");
+/* navigator.serviceWorker && window.addEventListener("load", () => {navigator.serviceWorker.register("./sw.js");}); */
+</script>
+{{ end }}
+
+
+{{ define "foot" }}
+</html>
+{{ end }}

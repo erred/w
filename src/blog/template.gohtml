@@ -1,0 +1,39 @@
+{{ define "blog-index" }}
+
+{{ template "head" . }}
+<title>blog | seankhliao</title>
+
+<h1><a href="https://seankhliao.com">seankhliao</a> / <mark>blog</mark></h1>
+<p>Artisanal, hand-crafted blog posts imbued with delayed regrets</p>
+
+<ul>
+{{ range .Posts }}
+    <li><time datetime="{{ .Date }}">{{ .Date }}</time> | <a href="{{ .URL }}">{{ .Title }}</a></li>
+{{ end }}
+</ul>
+
+{{ template "foot" . }}
+
+{{ end }}
+
+
+
+{{ define "blog-post" }}
+
+{{ template "head" . }}
+<title>{{ .Title }} | blog | seankhliao</title>
+
+<hgroup>
+  <h1><mark>{{ .Title }}</mark></h1>
+  <p>
+    <a href="/">seankhliao</a> /
+    <a href="/blog">blog</a> /
+    <time datetime="{{ .Date }}">{{ .Date }}</time>
+  </p>
+</hgroup>
+
+{{ .Content }}
+
+{{ template "foot" . }}
+
+{{ end }}
