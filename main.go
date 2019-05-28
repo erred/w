@@ -22,6 +22,7 @@ var (
 	TmplExt   string
 	MdExt     = ".md"
 	HtmlExt   = ".html"
+	BaseURL   = "https://seankhliao.com/"
 )
 
 func init() {
@@ -43,10 +44,12 @@ func main() {
 	p := NewProcessor()
 	p.Walk()
 	p.Process()
+	p.GenSitemap()
 }
 
 type Processor struct {
 	t             *template.Template
+	paths         []string
 	templatePaths []string
 	renderPaths   []string
 	copyPaths     []string
@@ -125,6 +128,39 @@ func (p *Processor) walker(fp string, info os.FileInfo, err error) error {
 	}
 
 	return nil
+}
+
+func (p *Processor) GenSitemap() {
+	filepath.Walk(Dst, func(fp string, info os.FileInfo, err error) error {
+		if err != nil {
+			log.Printf("GenSitemap called with %v\n", err)
+			return nil
+		}
+		if info.IsDir() {
+			return nil
+		}
+		if filepath.Ext(fp) != HtmlExt {
+			return nil
+		}
+
+		fp = strings.TrimSuffix(strings.TrimPrefix(fp, Dst+"/"), HtmlExt)
+		if filepath.Base(fp) == "index" {
+			if filepath.Dir(fp) == "." {
+				p.paths = append(p.paths, BaseURL[:len(BaseURL)-1])
+			} else {
+				p.paths = append(p.paths, BaseURL+filepath.Dir(fp))
+			}
+		} else {
+			p.paths = append(p.paths, BaseURL+fp)
+		}
+		return nil
+	})
+
+	sort.Strings(p.paths)
+	err := ioutil.WriteFile(filepath.Join(Dst, "sitemap.txt"), []byte(strings.Join(p.paths, "\n")), 0644)
+	if err != nil {
+		log.Printf("GenSitemap write sitemap: %v\n", err)
+	}
 }
 
 func (p *Processor) md2html(dir string, fps []string) {
@@ -256,7 +292,7 @@ func (p *Processor) src2dst(f string) string {
 }
 
 func (p *Processor) newFile(fn string) (*os.File, error) {
-	err := os.MkdirAll(filepath.Dir(fn), 0744)
+	err := os.MkdirAll(filepath.Dir(fn), 0755)
 	if err != nil {
 		log.Printf("newFile mkdirall %v:%v\n", filepath.Dir(fn), err)
 	}
