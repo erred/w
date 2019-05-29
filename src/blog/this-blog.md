@@ -15,7 +15,7 @@ Decorated with hair torn out from trying to get things to work.
 Hosted on [Github](https://github.com/seankhliao/com-seankhliao-blog).
 Written in markdown (mostly).
 
-##### CI/<mark>CD</mark>
+##### CI/_CD_
 
 Pushed commits trigger CI/CD on [Google Cloud Build](https://cloud.google.com/cloud-build/).
 Runs custom site generator ([parse markdown](https://github.com/russross/blackfriday), create html).

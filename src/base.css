@@ -6,7 +6,7 @@
   --primary: #a06be0;
   --gray: #999;
   --white: #eceff1;
-  background-color: var(--black);
+  background: var(--black);
   color: var(--white);
 
   /* --sans: "Archivo", sans-serif; */
@@ -117,10 +117,16 @@ blockquote {
 /* dd {                          */
 /*   font-style: italic;         */
 /* }                             */
+code {
+    background: rgba(255, 255, 255, 255, 0.25)
+    font: 1em var(--mono);
+}
 
+em,
 mark {
   color: var(--primary);
   background-color: unset;
+  font: 1em var(--mono);
 }
 time,
 span {

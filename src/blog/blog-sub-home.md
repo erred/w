@@ -4,7 +4,7 @@ desc = moving blog home
 
 ---
 
-#### Subdomain to <mark>Subdir</mark>
+#### Subdomain to _Subdir_
 
 Sure a subdomain is pretty,
 and it gives more choices in terms of hosting and infra.
