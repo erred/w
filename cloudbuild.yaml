@@ -36,7 +36,7 @@ steps:
 
   - name: "gcr.io/$PROJECT_ID/site-builder:latest"
     id: "static site gen"
-    waitFor: ["jsbuild"]
+    waitFor: ["js build readss"]
   - name: "gcr.io/$PROJECT_ID/firebase:latest"
     id: "deploy"
     args:
