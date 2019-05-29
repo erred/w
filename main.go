@@ -110,6 +110,9 @@ func (p *Processor) walker(fp string, info os.FileInfo, err error) error {
 		return nil
 	}
 	if info.IsDir() {
+		if strings.HasSuffix(fp, "-src") {
+			return filepath.SkipDir
+		}
 		return nil
 	}
 
