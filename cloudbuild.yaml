@@ -1,13 +1,6 @@
 steps:
   - name: "gcr.io/$PROJECT_ID/imagemagick:latest"
-    waitFor: ["-"]
-    entrypoint: "sh"
-    args:
-      - "-c"
-      - >-
-        mkdir -p dst || true;
-        convert -background none -density 1200 -resize 2100x1350 src/map.svg -write dst/map.webp dst/map.png;
-  - name: "gcr.io/$PROJECT_ID/imagemagick:latest"
+    id: "image icons"
     waitFor: ["-"]
     entrypoint: "sh"
     args:
@@ -23,17 +16,29 @@ steps:
         '(' +clone -resize 32x32 -quality 60 -write dst/icon-32.png +delete ')'
         '(' +clone -resize 16x16 -quality 60 -write dst/icon-16.png +delete ')'
         -resize 16x16 -quality 60 dst/favicon.ico;
-
+  - name: "gcr.io/$PROJECT_ID/imagemagick:latest"
+    id: "image map"
+    waitFor: ["-"]
+    entrypoint: "sh"
+    args:
+      - "-c"
+      - >-
+        mkdir -p dst || true;
+        convert -background none -density 1200 -resize 2100x1350 src/map.svg -write dst/map.webp dst/map.png;
   - name: "gcr.io/$PROJECT_ID/parcel:latest"
-    id: "jsbuild"
+    id: "js build readss"
     waitFor: ["-"]
     args:
+      - "build"
       - "-d"
       - "src/readss"
       - "src/readss-src/index.js"
+
   - name: "gcr.io/$PROJECT_ID/site-builder:latest"
+    id: "static site gen"
     waitFor: ["jsbuild"]
   - name: "gcr.io/$PROJECT_ID/firebase:latest"
+    id: "deploy"
     args:
       - "deploy"
       - "-P"
