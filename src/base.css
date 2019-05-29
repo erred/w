@@ -18,7 +18,7 @@
 /* ===== layout ===== */
 body {
   display: grid;
-  grid: auto-flow / 1fr minmax(16rem, 35rem) 1fr;
+  grid: auto-flow / 1fr minmax(14rem, 35rem) 1fr;
   grid-gap: 0 1em;
   margin: 0 0 10vh 0;
 }
