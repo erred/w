@@ -126,7 +126,7 @@ em,
 mark {
   color: var(--primary);
   background-color: unset;
-  font: 1em var(--mono);
+  font-style: normal;
 }
 time,
 span {
