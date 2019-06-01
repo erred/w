@@ -118,8 +118,8 @@ blockquote {
 /*   font-style: italic;         */
 /* }                             */
 code {
-    background: rgba(255, 255, 255, 255, 0.25)
-    font: 1em var(--mono);
+  background: rgba(255, 255, 255, 255, 0.25);
+  font: 1em var(--mono);
 }
 
 em,
