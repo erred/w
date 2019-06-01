@@ -2,6 +2,6 @@ steps:
   - name: "gcr.io/kaniko-project/executor:latest"
     dir: "site-builder"
     args:
+      - --cache
+      - --context=/workspace/site-builder
       - --destination=gcr.io/$PROJECT_ID/site-builder:latest
-      - --cache=true
-      - --cache-ttl=96h
