@@ -23,7 +23,7 @@
 <script>
 "use strict";
 window.dataLayer = window.dataLayer || [];
-gtag = (...a) => dataLayer.push(a)
+function gtag(){dataLayer.push(arguments);}
 gtag("js", new Date());
 gtag("config", "UA-114337586-1");
 /* navigator.serviceWorker && window.addEventListener("load", () => {navigator.serviceWorker.register("./sw.js");}); */
