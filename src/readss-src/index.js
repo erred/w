@@ -2,7 +2,7 @@ import { ListRequest, ListReply } from "./readss_pb.js";
 import { ListerClient } from "./readss_grpc_web_pb.js";
 
 window.addEventListener("load", () => {
-  let svc = new ListerClient("http://localhost:8090");
+  let svc = new ListerClient("http://api.seankhliao.com");
 
   let call = svc.list(new ListRequest(), null, (err, res) => {
     if (err) {
