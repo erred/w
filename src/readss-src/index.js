@@ -12,8 +12,10 @@ window.addEventListener("load", () => {
     let df = document.createDocumentFragment();
     res.getArticlesList().forEach(a => {
       let e = document.createElement("li");
-      console.log(a);
-      e.innerHTML = `<a href="${a.getUrl()}">${a.getTitle()}</a><br><time datetime="${a.getTime()}">${a.getTime()}</time> ${a.getReltime()} | <mark>${a.getSource()}</mark>`;
+      e.innerHTML = `
+        <a href="${a.getUrl()}">${a.getTitle()}</a>
+        <br>
+        <time datetime="${a.getTime()}">${a.getTime()}</time> ${a.getReltime()} | <mark>${a.getSource()}</mark>`;
       df.appendChild(e);
     });
     document.querySelector("#list").appendChild(df);
