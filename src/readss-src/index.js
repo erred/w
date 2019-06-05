@@ -13,7 +13,7 @@ window.addEventListener("load", () => {
     res.getArticlesList().forEach(a => {
       let e = document.createElement("li");
       console.log(a);
-      e.innerHTML = `<p><a href="${a.getUrl()}">${a.getTitle()}</a></p><p><time datetime="${a.getTime()}">${a.getTime()}</time> ${a.getReltime()} | <mark>${a.getSource()}</mark></p>`;
+      e.innerHTML = `<a href="${a.getUrl()}">${a.getTitle()}</a><br><time datetime="${a.getTime()}">${a.getTime()}</time> ${a.getReltime()} | <mark>${a.getSource()}</mark>`;
       df.appendChild(e);
     });
     document.querySelector("#list").appendChild(df);
