@@ -1,5 +1,5 @@
 title = nodes git
-date = 2019-06-07
+date = 2019-06-06
 desc = notes on git
 
 ---
