@@ -32,14 +32,6 @@ conventionally the dir has the `.git` extenstion: `repo.git`
 `--template`, or the config `init.templateDir`:
 copy the non dotfile contents of a directory
 
-##### git add
-
-nothing special
-
-##### git mv
-
-nothing special
-
 ##### git reset
 
 `git reset --soft $commit`:
@@ -51,10 +43,6 @@ uncommit, uncommitted things unstaged, working directory untouched
 `git reset --hard $commit`:
 uncommit, uncommitted things discarded, working directory changes discarded
 
-##### git rm
-
-nothing special
-
 ##### git bisect
 
 binary search through history to find first commit that introduced a change
@@ -65,22 +53,6 @@ binary search through history to find first commit that introduced a change
 - `git bisect reset`
 - `git bisect replay`: replay the output of `git bisect log` and continue where it left off
 - `git bisect run $script`: automate with the use of script
-
-##### git grep
-
-search through history
-
-##### git log
-
-show history
-
-##### git show
-
-show other stuff
-
-##### git status
-
-show diff between remote, history, staging, working tree
 
 ##### git branch
 
@@ -101,18 +73,6 @@ merge changes from \$branch onto current branch in a new commit
 `--squash`: create a new commit with the same effect as a merge
 
 `--allow-unrelated-histories`: merge different porjects into one
-
-##### git rebase
-
-replay commits onto \$branch
-
-#### git tag
-
-tag management
-
-##### git fetch
-
-get remote history
 
 ##### git pull
 
