@@ -9,6 +9,7 @@ window.addEventListener("load", () => {
       console.log(err);
       return;
     }
+    console.log(res.getArticlesList());
     let df = document.createDocumentFragment();
     res.getArticlesList().forEach(a => {
       let e = document.createElement("li");
@@ -19,5 +20,8 @@ window.addEventListener("load", () => {
       df.appendChild(e);
     });
     document.querySelector("#list").appendChild(df);
+  });
+  call.on("status", s => {
+    console.log(s);
   });
 });
