@@ -1,5 +1,5 @@
 title = inbox zero
-date = 2019-06-04
+date = 2019-06-05
 desc = clearing the queue
 
 ---
