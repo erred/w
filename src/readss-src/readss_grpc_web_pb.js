@@ -25,7 +25,7 @@ proto.readss = require('./readss_pb.js');
 proto.readss.ListerClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options['format'] = 'binary';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -61,7 +61,7 @@ proto.readss.ListerClient =
 proto.readss.ListerPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options['format'] = 'binary';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
