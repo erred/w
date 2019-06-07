@@ -19,6 +19,7 @@ window.addEventListener("load", () => {
         <time datetime="${a.getTime()}">${a.getTime()}</time> ${a.getReltime()} | <mark>${a.getSource()}</mark>`;
       df.appendChild(e);
     });
+    document.querySelector(".sk-cube-grid").remove();
     document.querySelector("#list").appendChild(df);
   });
   call.on("status", s => {
