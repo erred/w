@@ -14,7 +14,7 @@ RUN convert -background none -density 1200 -resize 2100x1350 /workspace/src/map.
 
 FROM gcr.io/com-seankhliao/parcel AS build-js
 WORKDIR /build
-RUN parcel build -d /workspace/src/readss index.js
+RUN parcel build /build /workspace/src/readss-src/index.js
 
 
 FROM gcr.io/com-seankhliao/site-builder AS build-site
