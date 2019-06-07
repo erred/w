@@ -9,18 +9,22 @@ window.addEventListener("load", () => {
       console.log(err);
       return;
     }
-    console.log(res.getArticlesList());
-    let df = document.createDocumentFragment();
-    res.getArticlesList().forEach(a => {
-      let e = document.createElement("li");
-      e.innerHTML = `
-        <a href="${a.getUrl()}">${a.getTitle()}</a>
-        <br>
-        <mark>${a.getSource()}</mark> <time datetime="${a.getTime()}">${a.getTime()} ${a.getReltime()}</time>`;
-      df.appendChild(e);
-    });
+    let ul = `
+<ul>
+${res
+  .getArticlesList()
+  .map(
+    a =>
+      `<a href="${a.getUrl()}>${a.getTitle()}</a><br><mark>${a.getSource()}</mark> <time datetime="${a.getTime()}">${a
+        .getTime()
+        .replace("-", "&#8209;")}$nbsp;${a.getReltime().replace("-", "&#8209;")}</time>`
+  )
+  .join("")}
+</ul>
+`;
+
     document.querySelector(".sk-cube-grid").remove();
-    document.querySelector("#list").appendChild(df);
+    document.querySelector("body").appendChild(ul);
   });
   call.on("status", s => {
     console.log(s);
