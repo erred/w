@@ -15,9 +15,7 @@ ${res
   .getArticlesList()
   .map(
     a =>
-      `<li><a href="${a.getUrl()}">${a.getTitle()}</a><br><mark>${a.getSource()}</mark> <time datetime="${a.getTime()}">${a
-        .getTime()
-        .replace("-", "&#8209;")}&nbsp;${a.getReltime().replace(" ", "&nbsp;")}</time></li>`
+      `<li><a href="${a.getUrl()}">${a.getTitle()}</a><br><mark>${a.getSource()}</mark> <time datetime="${a.getTime()}">${a.getTime()} ${a.getReltime()}</time></li>`
   )
   .join("")}
 </ul>
