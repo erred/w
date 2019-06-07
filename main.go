@@ -145,6 +145,9 @@ func (p *Processor) GenSitemap() {
 		if filepath.Ext(fp) != HtmlExt {
 			return nil
 		}
+		if relativeURL(fp) == "/404" {
+			return nil
+		}
 		p.paths = append(p.paths, canonicalURL(fp))
 		return nil
 	})
