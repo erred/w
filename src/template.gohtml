@@ -91,9 +91,17 @@ h2 {
   grid-row: -1 / span 1;
 }
 h3 {
-  /* font: 4vmin var(--sans); */
+  font: 4.5vmin var(--mono);
   grid-area: 2 / 1 / 2 / -2;
-  place-self: center end;
+  margin: 0;
+  place-self: end end;
+}
+header > p {
+  color: var(--gray);
+  font: 3.5vmin var(--mono);
+  grid-area: 3 / -7 / 3 / span 5;
+  place-self: start end;
+  text-align: right;
 }
 h4 {
   font: 700 2em var(--mono);
