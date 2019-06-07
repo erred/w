@@ -24,7 +24,7 @@ ${res
 `;
 
     document.querySelector(".sk-cube-grid").remove();
-    document.querySelector("body").appendChild(ul);
+    document.querySelector("body").insertAdjacentHTML("beforeend", ul);
   });
   call.on("status", s => {
     console.log(s);
