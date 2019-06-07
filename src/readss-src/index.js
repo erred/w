@@ -17,7 +17,7 @@ ${res
     a =>
       `<a href="${a.getUrl()}">${a.getTitle()}</a><br><mark>${a.getSource()}</mark> <time datetime="${a.getTime()}">${a
         .getTime()
-        .replace("-", "&#8209;")}$nbsp;${a.getReltime().replace("-", "&#8209;")}</time>`
+        .replace("-", "&#8209;")}&nbsp;${a.getReltime().replace("-", "&#8209;")}</time>`
   )
   .join("")}
 </ul>
