@@ -23,4 +23,4 @@ RUN parcel build -d src/readss src/readss-src/index.js
 FROM gcr.io/com-seankhliao/site-builder AS build-site
 
 WORKDIR /workspace
-RUN /bin/app
+RUN ["/bin/app"]
