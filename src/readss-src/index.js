@@ -16,7 +16,7 @@ window.addEventListener("load", () => {
       e.innerHTML = `
         <a href="${a.getUrl()}">${a.getTitle()}</a>
         <br>
-        <mark>${a.getSource()}</mark> | <time datetime="${a.getTime()}">${a.getTime()} ${a.getReltime()}</time>`;
+        <mark>${a.getSource()}</mark> <time datetime="${a.getTime()}">${a.getTime()} ${a.getReltime()}</time>`;
       df.appendChild(e);
     });
     document.querySelector(".sk-cube-grid").remove();
