@@ -1,30 +1,4 @@
 steps:
-  - name: "gcr.io/$PROJECT_ID/imagemagick:latest"
-    id: "image icons"
-    waitFor: ["-"]
-    entrypoint: "sh"
-    args:
-      - "-c"
-      - >-
-        mkdir -p dst || true;
-        convert src/icon.tif -flatten
-        '(' +clone -resize 512x512 -quality 60 -write dst/icon-512.png +delete ')'
-        '(' +clone -resize 192x192 -quality 60 -write dst/icon-192.png +delete ')'
-        '(' +clone -resize 128x128 -quality 60 -write dst/icon-128.png +delete ')'
-        '(' +clone -resize 64x64 -quality 60 -write dst/icon-64.png +delete ')'
-        '(' +clone -resize 48x48 -quality 60 -write dst/icon-48.png +delete ')'
-        '(' +clone -resize 32x32 -quality 60 -write dst/icon-32.png +delete ')'
-        '(' +clone -resize 16x16 -quality 60 -write dst/icon-16.png +delete ')'
-        -resize 48x48 -quality 60 dst/favicon.ico;
-  - name: "gcr.io/$PROJECT_ID/imagemagick:latest"
-    id: "image map"
-    waitFor: ["-"]
-    entrypoint: "sh"
-    args:
-      - "-c"
-      - >-
-        mkdir -p dst || true;
-        convert -background none -density 1200 -resize 2100x1350 src/map.svg -write dst/map.webp dst/map.png;
   - name: "gcr.io/$PROJECT_ID/parcel:latest"
     id: "js build readss"
     waitFor: ["-"]
@@ -43,24 +17,6 @@ steps:
       - "-P"
       - "$PROJECT_ID"
       - "deploy"
-    # secretEnv:
-    #   - FIREBASE_TOKEN
-#   - name: "gcr.io/cloud-builders/curl"
-#     entrypoint: "bash"
-#     args:
-#       - "-c"
-#       - >-
-#         curl
-#         -s
-#         -X POST
-#         -H "X-Auth-Email: $_CF_EMAIL"
-#         -H "X-Auth-Key: $$CF_KEY"
-#         -H "Content-Type: application/json"
-#         --data '{"purge_everything": true}'
-#         "https://api.cloudflare.com/client/v4/zones/$_CF_ZONE/purge_cache"
-# substitutions:
-#   _CF_ZONE: "6bac96a6822dc2e0293ad5ce09767e19"
-#   _CF_EMAIL: "seankhliao@gmail.com"
 secrets:
   # - kmsKeyName: projects/com-seankhliao/locations/global/keyRings/cloudbuilder/cryptoKeys/cloudflare-apikey
   #   secretEnv:
