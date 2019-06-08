@@ -14,17 +14,23 @@ window.addEventListener("load", () => {
 ${res
   .getArticlesList()
   .map(
-    a =>
-      `<li><a href="${a.getUrl()}">${a.getTitle()}</a><br><mark>${a.getSource()}</mark> <time datetime="${a.getTime()}">${a.getTime()} ${a.getReltime()}</time></li>`
+    a => `
+    <li>
+      <a href="${a.getUrl()}">${a.getTitle()}</a>
+      <br>
+      <mark>${a.getSource()}</mark>
+      <time datetime="${a.getTime()}">${a.getTime()} ${a.getReltime()}</time>
+    </li>
+    `
   )
   .join("")}
 </ul>
 `;
 
-    document.querySelector(".sk-cube-grid").remove();
+    document.querySelector(".loader").remove();
     document.querySelector("body").insertAdjacentHTML("beforeend", ul);
   });
-  call.on("status", s => {
-    console.log(s);
-  });
+  // call.on("status", s => {
+  //   console.log(s);
+  // });
 });
