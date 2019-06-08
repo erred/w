@@ -25,8 +25,19 @@
 
   if(!firebase.auth().currentUser){
     console.log("check currentUser signed out");
-    var ui = new firebaseui.auth.AuthUI(firebase.auth());
-    var uiConfig = {
+  } else {
+    console.log("check currentUser signed in");
+  }
+
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    document.querySelector("#firebaseui-auth-container").style.display = 'none';
+    console.log("onstatechanged signed in");
+    console.log(user);
+  } else {
+    let ui = new firebaseui.auth.AuthUI(firebase.auth());
+    let uiConfig = {
       callbacks: {
         signInSuccessWithAuthResult: function(authResult, redirectUrl) {
           console.log(authResult, redirectUrl);
@@ -45,24 +56,6 @@
       privacyPolicyUrl: '/privacy-policy'
     };
     ui.start('#firebaseui-auth-container', uiConfig);
-  } else {
-    console.log("check currentUser signed in");
-  }
-
-
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    console.log("onstatechanged signed in");
-    var displayName = user.displayName;
-    var email = user.email;
-    var emailVerified = user.emailVerified;
-    var photoURL = user.photoURL;
-    var isAnonymous = user.isAnonymous;
-    var uid = user.uid;
-    var providerData = user.providerData;
-    console.log(user);
-  } else {
-    console.log("onstatechanged signed out");
   }
 });
 </script>
