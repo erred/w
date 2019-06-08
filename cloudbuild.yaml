@@ -40,6 +40,8 @@ steps:
   - name: "gcr.io/$PROJECT_ID/firebase:latest"
     id: "deploy"
     args:
+      - "--token"
+      - "$$FIREBASE_TOKEN"
       - "deploy"
       - "-P"
       - "$PROJECT_ID"
