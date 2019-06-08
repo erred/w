@@ -69,4 +69,4 @@ secrets:
   #     CF_KEY: CiQArFEurvFS1BtWPUELUwksvrlHzVx1HWHUlfEg4EDZOUIAUXcSTgCHrf+W7ZQzT0EjlSPErhL6UF0G4Fr7UzGWB7QbAd2I+tZaoQrgSsob+R7ER+lghX2vGArxZIXJVIqIds0buJHA9Q58G/fypZyBE0v9nw==
   - kmsKeyName: projects/com-seankhliao/locations/global/keyRings/cloudbuilder/cryptoKeys/firebase-token
     secretEnv:
-      FIREBASE_TOKEN: CiQAEKtoAEMMv7v8yrTi0vU1knCqUD4LJ9j6uG2MtIiW/Tk0zRkSVgAbxOfAaJG6UPEZ2wpGeZxPtFlKDbI6JnyKu+jCgY0KtYg6P+UHFlZbrVK9+mkARUhbaJniuVf6WNsuI5BRGAadK8E5TU49spHoZf5td9vAWoff7TpU
+      FIREBASE_TOKEN: CiQAEKtoALSTR50hTVrPc8jFUYEimhdS0KwGB3OPGc6FvSfH4h0SVgAbxOfAhKuPOzmHSMRMgj0m0ixdXLK+fevlMqrTfeHGp8BD68JJElkZN0S/UoxqZtrnqdJgS2SMLz/eB50HnXur2FbJq75yRMTmF8ED6pCbippZiT5Q
