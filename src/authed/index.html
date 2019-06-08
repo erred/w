@@ -1,0 +1,62 @@
+{{ template "head" }}
+<title>authed | seankhliao</title>
+
+
+<script src="/__/firebase/6.1.1/firebase-app.js"></script>
+<script src="/__/firebase/6.1.1/firebase-auth.js"></script>
+<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+<script src="/__/firebase/init.js"></script>
+
+<script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyAIIB6_lqydvZlONVUSeNY1YxptUE49T0M",
+    authDomain: "com-seankhliao.firebaseapp.com",
+    databaseURL: "https://com-seankhliao.firebaseio.com",
+    projectId: "com-seankhliao",
+    storageBucket: "com-seankhliao.appspot.com",
+    messagingSenderId: "330311169810",
+    appId: "1:330311169810:web:6f914fab94f0b716"
+  };
+  firebase.initializeApp(firebaseConfig);
+
+var ui = new firebaseui.auth.AuthUI(firebase.auth());
+var uiConfig = {
+  callbacks: {
+    signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+      // User successfully signed in.
+      // Return type determines whether we continue the redirect automatically
+      // or whether we leave that to developer to handle.
+      console.log(authResult, redirectUrl);
+
+      return true;
+    },
+    uiShown: function() {
+      document.querySelector('.loader').style.display = 'none';
+    }
+  },
+  // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+   signInFlow: 'popup',
+  signInSuccessUrl: '/authed',
+  signInOptions: [
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+  ],
+
+  tosUrl: 'https://seankhliao.com/terms-of-service',
+  privacyPolicyUrl: 'https://seankhliao.com/privacy-policy'
+};
+
+ui.start('#firebaseui-auth-container', uiConfig);
+</script>
+
+{{ template "loader-style" }}
+
+<h4><a href="/">seankhliao</a> / <mark>authed</mark></h1>
+<p>authenticated test page</p>
+
+<div id="firebaseui-auth-container"></div>
+
+{{ template "loader" }}
+
+<!-- prettier-ignore -->
+{{ template "foot" }}
