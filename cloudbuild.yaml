@@ -1,52 +1,58 @@
 steps:
-  - name: "gcr.io/$PROJECT_ID/imagemagick:latest"
-    id: "image icons"
-    waitFor: ["-"]
-    entrypoint: "sh"
-    args:
-      - "-c"
-      - >-
-        mkdir -p dst || true;
-        convert src/icon.tif -flatten
-        '(' +clone -resize 512x512 -quality 60 -write dst/icon-512.png +delete ')'
-        '(' +clone -resize 192x192 -quality 60 -write dst/icon-192.png +delete ')'
-        '(' +clone -resize 128x128 -quality 60 -write dst/icon-128.png +delete ')'
-        '(' +clone -resize 64x64 -quality 60 -write dst/icon-64.png +delete ')'
-        '(' +clone -resize 48x48 -quality 60 -write dst/icon-48.png +delete ')'
-        '(' +clone -resize 32x32 -quality 60 -write dst/icon-32.png +delete ')'
-        '(' +clone -resize 16x16 -quality 60 -write dst/icon-16.png +delete ')'
-        -resize 48x48 -quality 60 dst/favicon.ico;
-  - name: "gcr.io/$PROJECT_ID/imagemagick:latest"
-    id: "image map"
-    waitFor: ["-"]
-    entrypoint: "sh"
-    args:
-      - "-c"
-      - >-
-        mkdir -p dst || true;
-        convert -background none -density 1200 -resize 2100x1350 src/map.svg -write dst/map.webp dst/map.png;
-  - name: "gcr.io/$PROJECT_ID/parcel:latest"
-    id: "js build readss"
-    waitFor: ["-"]
-    args:
-      - "build"
-      - "-d"
-      - "src/readss"
-      - "src/readss-src/index.js"
-
-  - name: "gcr.io/$PROJECT_ID/site-builder:latest"
-    id: "static site gen"
-    waitFor: ["js build readss"]
-  - name: "gcr.io/$PROJECT_ID/firebase:latest"
-    id: "deploy"
-    args:
-      - "--token"
-      - "$$FIREBASE_TOKEN"
-      - "deploy"
-      - "-P"
-      - "$PROJECT_ID"
+  - name: "gcr.io/cloud-builders/gcloud"
+    entrypoint: sh
+    args: ["-c" "echo $$FIREBASE_TOKEN; env"]
     secretEnv:
       - FIREBASE_TOKEN
+
+  # - name: "gcr.io/$PROJECT_ID/imagemagick:latest"
+  #   id: "image icons"
+  #   waitFor: ["-"]
+  #   entrypoint: "sh"
+  #   args:
+  #     - "-c"
+  #     - >-
+  #       mkdir -p dst || true;
+  #       convert src/icon.tif -flatten
+  #       '(' +clone -resize 512x512 -quality 60 -write dst/icon-512.png +delete ')'
+  #       '(' +clone -resize 192x192 -quality 60 -write dst/icon-192.png +delete ')'
+  #       '(' +clone -resize 128x128 -quality 60 -write dst/icon-128.png +delete ')'
+  #       '(' +clone -resize 64x64 -quality 60 -write dst/icon-64.png +delete ')'
+  #       '(' +clone -resize 48x48 -quality 60 -write dst/icon-48.png +delete ')'
+  #       '(' +clone -resize 32x32 -quality 60 -write dst/icon-32.png +delete ')'
+  #       '(' +clone -resize 16x16 -quality 60 -write dst/icon-16.png +delete ')'
+  #       -resize 48x48 -quality 60 dst/favicon.ico;
+  # - name: "gcr.io/$PROJECT_ID/imagemagick:latest"
+  #   id: "image map"
+  #   waitFor: ["-"]
+  #   entrypoint: "sh"
+  #   args:
+  #     - "-c"
+  #     - >-
+  #       mkdir -p dst || true;
+  #       convert -background none -density 1200 -resize 2100x1350 src/map.svg -write dst/map.webp dst/map.png;
+  # - name: "gcr.io/$PROJECT_ID/parcel:latest"
+  #   id: "js build readss"
+  #   waitFor: ["-"]
+  #   args:
+  #     - "build"
+  #     - "-d"
+  #     - "src/readss"
+  #     - "src/readss-src/index.js"
+  #
+  # - name: "gcr.io/$PROJECT_ID/site-builder:latest"
+  #   id: "static site gen"
+  #   waitFor: ["js build readss"]
+  # - name: "gcr.io/$PROJECT_ID/firebase:latest"
+  #   id: "deploy"
+  #   args:
+  #     - "--token"
+  #     - "$$FIREBASE_TOKEN"
+  #     - "deploy"
+  #     - "-P"
+  #     - "$PROJECT_ID"
+  #   secretEnv:
+  #     - FIREBASE_TOKEN
 #   - name: "gcr.io/cloud-builders/curl"
 #     entrypoint: "bash"
 #     args:
