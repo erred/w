@@ -1,7 +1,7 @@
 steps:
-  - name: "gcr.io/cloud-builders/gcloud"
-    entrypoint: sh
-    args: ["-c", "echo $$FIREBASE_TOKEN; env"]
+  - name: "gcr.io/$PROJECT_ID/firebase:latest"
+    args:
+      - list
     secretEnv:
       - FIREBASE_TOKEN
 
