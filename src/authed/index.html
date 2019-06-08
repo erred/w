@@ -18,41 +18,41 @@
     messagingSenderId: "330311169810",
     appId: "1:330311169810:web:6f914fab94f0b716"
   };
+
   if(!firebase.apps.length){
     firebase.initializeApp(firebaseConfig);
   }
 
-var ui = new firebaseui.auth.AuthUI(firebase.auth());
-var uiConfig = {
-  callbacks: {
-    signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-      // User successfully signed in.
-      // Return type determines whether we continue the redirect automatically
-      // or whether we leave that to developer to handle.
-      console.log(authResult, redirectUrl);
+  if(!firebase.auth().currentUser){
+    console.log("check currentUser signed out");
+    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+    var uiConfig = {
+      callbacks: {
+        signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+          console.log(authResult, redirectUrl);
+          return true;
+        },
+        uiShown: function() {
+          document.querySelector('.loader').style.display = 'none';
+        }
+      },
+      signInFlow: 'popup',
+      signInSuccessUrl: '/authed',
+      signInOptions: [
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      ],
+      tosUrl: '/terms-of-service',
+      privacyPolicyUrl: '/privacy-policy'
+    };
+    ui.start('#firebaseui-auth-container', uiConfig);
+  } else {
+    console.log("check currentUser signed in");
+  }
 
-      return true;
-    },
-    uiShown: function() {
-      document.querySelector('.loader').style.display = 'none';
-    }
-  },
-  // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
-  signInFlow: 'popup',
-  signInSuccessUrl: '/authed',
-  signInOptions: [
-    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-  ],
-
-  tosUrl: '/terms-of-service',
-  privacyPolicyUrl: '/privacy-policy'
-};
-
-ui.start('#firebaseui-auth-container', uiConfig);
 
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
-    // User is signed in.
+    console.log("onstatechanged signed in");
     var displayName = user.displayName;
     var email = user.email;
     var emailVerified = user.emailVerified;
@@ -61,10 +61,8 @@ firebase.auth().onAuthStateChanged(function(user) {
     var uid = user.uid;
     var providerData = user.providerData;
     console.log(user);
-    // ...
   } else {
-    // User is signed out.
-    // ...
+    console.log("onstatechanged signed out");
   }
 });
 </script>
