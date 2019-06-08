@@ -43,8 +43,8 @@ steps:
       - "-P"
       - "$PROJECT_ID"
       - "deploy"
-    secretEnv:
-      - FIREBASE_TOKEN
+    # secretEnv:
+    #   - FIREBASE_TOKEN
 #   - name: "gcr.io/cloud-builders/curl"
 #     entrypoint: "bash"
 #     args:
@@ -65,6 +65,6 @@ secrets:
   # - kmsKeyName: projects/com-seankhliao/locations/global/keyRings/cloudbuilder/cryptoKeys/cloudflare-apikey
   #   secretEnv:
   #     CF_KEY: CiQArFEurvFS1BtWPUELUwksvrlHzVx1HWHUlfEg4EDZOUIAUXcSTgCHrf+W7ZQzT0EjlSPErhL6UF0G4Fr7UzGWB7QbAd2I+tZaoQrgSsob+R7ER+lghX2vGArxZIXJVIqIds0buJHA9Q58G/fypZyBE0v9nw==
-  - kmsKeyName: projects/com-seankhliao/locations/global/keyRings/cloudbuilder/cryptoKeys/firebase-token
-    secretEnv:
-      FIREBASE_TOKEN: CiQAEKtoAHJ1UlpWGrGuE4q0cgJpYQ9ThK+X6N6dI5c2OcSUv2USVgDPUjQ1ETL4OxuKN4zUaNCEx4qb90HK56mX3AsmnstOBZUO2VdIDhPqBqoLYktdcLeA66fR3qkr5JyoscQWobFAnt06wuCYgBU/0UWZ1evPykOqNhoc
+  # - kmsKeyName: projects/com-seankhliao/locations/global/keyRings/cloudbuilder/cryptoKeys/firebase-token
+  #   secretEnv:
+  #     FIREBASE_TOKEN: CiQAEKtoAHJ1UlpWGrGuE4q0cgJpYQ9ThK+X6N6dI5c2OcSUv2USVgDPUjQ1ETL4OxuKN4zUaNCEx4qb90HK56mX3AsmnstOBZUO2VdIDhPqBqoLYktdcLeA66fR3qkr5JyoscQWobFAnt06wuCYgBU/0UWZ1evPykOqNhoc
