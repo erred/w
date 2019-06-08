@@ -45,6 +45,8 @@ steps:
       - "deploy"
       - "-P"
       - "$PROJECT_ID"
+    secretEnv:
+      - FIREBASE_TOKEN
 #   - name: "gcr.io/cloud-builders/curl"
 #     entrypoint: "bash"
 #     args:
@@ -58,8 +60,6 @@ steps:
 #         -H "Content-Type: application/json"
 #         --data '{"purge_everything": true}'
 #         "https://api.cloudflare.com/client/v4/zones/$_CF_ZONE/purge_cache"
-#     secretEnv:
-#       - CF_KEY
 # substitutions:
 #   _CF_ZONE: "6bac96a6822dc2e0293ad5ce09767e19"
 #   _CF_EMAIL: "seankhliao@gmail.com"
