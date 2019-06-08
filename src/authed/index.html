@@ -23,13 +23,6 @@
     firebase.initializeApp(firebaseConfig);
   }
 
-  if(!firebase.auth().currentUser){
-    console.log("check currentUser signed out");
-  } else {
-    console.log("check currentUser signed in");
-  }
-
-
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     document.querySelector("#firebaseui-auth-container").style.display = 'none';
