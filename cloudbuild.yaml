@@ -40,6 +40,8 @@ steps:
   - name: "gcr.io/$PROJECT_ID/firebase:latest"
     id: "deploy"
     args:
+      - "--token"
+      - "$$FIREBASE_TOKEN"
       - "deploy"
       - "-P"
       - "$PROJECT_ID"
@@ -61,7 +63,10 @@ steps:
 # substitutions:
 #   _CF_ZONE: "6bac96a6822dc2e0293ad5ce09767e19"
 #   _CF_EMAIL: "seankhliao@gmail.com"
-# secrets:
-#   - kmsKeyName: projects/com-seankhliao/locations/global/keyRings/cloudflare/cryptoKeys/encryptor
-#     secretEnv:
-#       CF_KEY: "CiQAeiEgKGumQ2dUmTrDKmLKMKTQbqyr03g+lguS4SozmvH7eGISTgA7ASTuoRmqrj0PZR1dqVsHhnaejX3Pkx237rH8GQq2yp58XJVfqjJg+/dCJhbo/wunFempcP8NpJ84yBjcs1v2d4gerrG+AWyVKeqlpQ=="
+secrets:
+  # - kmsKeyName: projects/com-seankhliao/locations/global/keyRings/cloudbuilder/cryptoKeys/cloudflare-apikey/cryptoKeyVersions/1
+  #   secretEnv:
+  #     CF_KEY: CiQArFEurvFS1BtWPUELUwksvrlHzVx1HWHUlfEg4EDZOUIAUXcSTgCHrf+W7ZQzT0EjlSPErhL6UF0G4Fr7UzGWB7QbAd2I+tZaoQrgSsob+R7ER+lghX2vGArxZIXJVIqIds0buJHA9Q58G/fypZyBE0v9nw==
+  - kmsKeyName: projects/com-seankhliao/locations/global/keyRings/cloudbuilder/cryptoKeys/firebase-token/cryptoKeyVersions/1
+    secretEnv:
+      FIREBASE_TOKEN: CiQAEKtoAEMMv7v8yrTi0vU1knCqUD4LJ9j6uG2MtIiW/Tk0zRkSVgAbxOfAaJG6UPEZ2wpGeZxPtFlKDbI6JnyKu+jCgY0KtYg6P+UHFlZbrVK9+mkARUhbaJniuVf6WNsuI5BRGAadK8E5TU49spHoZf5td9vAWoff7TpU
