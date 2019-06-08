@@ -45,7 +45,7 @@ steps:
         git config user.email $(gcloud auth list --filter=status:ACTIVE --format='value(account)') && 
         git add dst && 
         git commit -m "cloudbuild generate images" &&
-        git push origin master
+        git push git@github.com:seankhliao/com-seankhliao master
     secretEnv:
       - GH_KEY
 secrets:
