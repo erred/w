@@ -40,8 +40,6 @@ steps:
   - name: "gcr.io/$PROJECT_ID/firebase:latest"
     id: "deploy"
     args:
-      - "--token"
-      - "$$FIREBASE_TOKEN"
       - "deploy"
       - "-P"
       - "$PROJECT_ID"
@@ -69,4 +67,4 @@ secrets:
   #     CF_KEY: CiQArFEurvFS1BtWPUELUwksvrlHzVx1HWHUlfEg4EDZOUIAUXcSTgCHrf+W7ZQzT0EjlSPErhL6UF0G4Fr7UzGWB7QbAd2I+tZaoQrgSsob+R7ER+lghX2vGArxZIXJVIqIds0buJHA9Q58G/fypZyBE0v9nw==
   - kmsKeyName: projects/com-seankhliao/locations/global/keyRings/cloudbuilder/cryptoKeys/firebase-token
     secretEnv:
-      FIREBASE_TOKEN: CiQAEKtoALSTR50hTVrPc8jFUYEimhdS0KwGB3OPGc6FvSfH4h0SVgAbxOfAhKuPOzmHSMRMgj0m0ixdXLK+fevlMqrTfeHGp8BD68JJElkZN0S/UoxqZtrnqdJgS2SMLz/eB50HnXur2FbJq75yRMTmF8ED6pCbippZiT5Q
+      FIREBASE_TOKEN: CiQAEKtoANt2qyo3kBJb/1yl4Mys5mQOOzG6jZ7XGfZ04UTQffUSVgAbxOfA2yDWm34zLtItvE0paJtHiwry4pHHOWFjuFD//C6u135ULf64myqgeJD/91844b+ev25hqSPT76pKV+kQ3xTwbaJfvAneTF6u8BfZTOn4TXyK
