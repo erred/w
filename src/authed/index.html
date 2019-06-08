@@ -18,7 +18,9 @@
     messagingSenderId: "330311169810",
     appId: "1:330311169810:web:6f914fab94f0b716"
   };
-  firebase.initializeApp(firebaseConfig);
+  if(!firebase.apps.length){
+    firebase.initializeApp(firebaseConfig);
+  }
 
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
 var uiConfig = {
@@ -36,14 +38,14 @@ var uiConfig = {
     }
   },
   // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
-   signInFlow: 'popup',
+  signInFlow: 'popup',
   signInSuccessUrl: '/authed',
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
   ],
 
-  tosUrl: 'https://seankhliao.com/terms-of-service',
-  privacyPolicyUrl: 'https://seankhliao.com/privacy-policy'
+  tosUrl: '/terms-of-service',
+  privacyPolicyUrl: '/privacy-policy'
 };
 
 ui.start('#firebaseui-auth-container', uiConfig);
