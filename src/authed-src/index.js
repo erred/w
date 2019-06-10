@@ -4,8 +4,8 @@ import * as firebase from "firebase/app";
 import "firebase/auth";
 import "firebaseui";
 
-var firebaseConfig = {
-  apiKey: "AIzaSyAIIB6_lqydvZlONVUSeNY1YxptUE49T0M",
+const firebaseConfig = {
+  apiKey: "AIzaSyAZwB-8GDcap51t7cDUm1BDe3wN3f-DS3o",
   authDomain: "com-seankhliao.firebaseapp.com",
   databaseURL: "https://com-seankhliao.firebaseio.com",
   projectId: "com-seankhliao",
