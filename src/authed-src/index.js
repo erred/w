@@ -19,7 +19,7 @@ if (!firebase.apps.length) {
 }
 
 firebase.auth().onAuthStateChanged(user => (user ? signedIn(user) : signedOut()));
-var svc = new AuthedClient("https://api.seankhliao.com");
+var svc = new authedClient("https://api.seankhliao.com");
 
 function signedIn(user) {
   document.querySelector("#firebaseui-auth-container").style.display = "none";
