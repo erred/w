@@ -1,22 +1,9 @@
 import { Msg } from "./authed_pb.js";
 import { authedClient } from "./authed_grpc_web_pb.js";
-import * as firebase from "firebase/app";
-import "firebase/auth";
-import "firebaseui";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyAZwB-8GDcap51t7cDUm1BDe3wN3f-DS3o",
-  authDomain: "com-seankhliao.firebaseapp.com",
-  databaseURL: "https://com-seankhliao.firebaseio.com",
-  projectId: "com-seankhliao",
-  storageBucket: "com-seankhliao.appspot.com",
-  messagingSenderId: "330311169810",
-  appId: "1:330311169810:web:6f914fab94f0b716"
-};
-
-if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
-}
+// if (!firebase.apps.length) {
+//   firebase.initializeApp(firebaseConfig);
+// }
 
 firebase.auth().onAuthStateChanged(user => (user ? signedIn(user) : signedOut()));
 var svc = new authedClient("https://api.seankhliao.com");
