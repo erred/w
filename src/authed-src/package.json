@@ -1,0 +1,10 @@
+{
+  "name": "authed",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "firebase": "^6.1.1",
+    "google-protobuf": "^3.8.0",
+    "grpc-web": "^1.0.4"
+  }
+}

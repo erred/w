@@ -1,57 +1,8 @@
 {{ template "head" }}
+<link rel="preconnect" href="https://api.seankhliao.com/" crossorigin />
 <title>authed | seankhliao</title>
 
-
-<script src="/__/firebase/6.1.1/firebase-app.js"></script>
-<script src="/__/firebase/6.1.1/firebase-auth.js"></script>
-<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-<script src="/__/firebase/init.js"></script>
-
-<script>
-  var firebaseConfig = {
-    apiKey: "AIzaSyAIIB6_lqydvZlONVUSeNY1YxptUE49T0M",
-    authDomain: "com-seankhliao.firebaseapp.com",
-    databaseURL: "https://com-seankhliao.firebaseio.com",
-    projectId: "com-seankhliao",
-    storageBucket: "com-seankhliao.appspot.com",
-    messagingSenderId: "330311169810",
-    appId: "1:330311169810:web:6f914fab94f0b716"
-  };
-
-  if(!firebase.apps.length){
-    firebase.initializeApp(firebaseConfig);
-  }
-
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    document.querySelector("#firebaseui-auth-container").style.display = 'none';
-    console.log("onstatechanged signed in");
-    console.log(user);
-  } else {
-    let ui = new firebaseui.auth.AuthUI(firebase.auth());
-    let uiConfig = {
-      callbacks: {
-        signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-          console.log(authResult, redirectUrl);
-          return true;
-        },
-        uiShown: function() {
-          document.querySelector('.loader').style.display = 'none';
-        }
-      },
-      signInFlow: 'popup',
-      signInSuccessUrl: '/authed',
-      signInOptions: [
-        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-      ],
-      tosUrl: '/terms-of-service',
-      privacyPolicyUrl: '/privacy-policy'
-    };
-    ui.start('#firebaseui-auth-container', uiConfig);
-  }
-});
-</script>
+<script async src="/authed/index.js"></script>
 
 <h4><a href="/">seankhliao</a> / <mark>authed</mark></h1>
 <p>authenticated test page</p>

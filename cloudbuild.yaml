@@ -1,5 +1,13 @@
 steps:
   - name: "gcr.io/$PROJECT_ID/parcel:latest"
+    id: "js build authed"
+    waitFor: ["-"]
+    args:
+      - "build"
+      - "-d"
+      - "src/authed"
+      - "src/authed-src/index.js"
+  - name: "gcr.io/$PROJECT_ID/parcel:latest"
     id: "js build readss"
     waitFor: ["-"]
     args:
@@ -10,7 +18,6 @@ steps:
 
   - name: "gcr.io/$PROJECT_ID/site-builder:latest"
     id: "static site gen"
-    waitFor: ["js build readss"]
   - name: "gcr.io/$PROJECT_ID/firebase:latest"
     id: "deploy"
     args:
