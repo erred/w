@@ -1,7 +1,8 @@
 import { Msg } from "./authed_pb.js";
-import { AuthedClient } from "./authed_grpc_web_pb.js";
+import { authedClient } from "./authed_grpc_web_pb.js";
 import * as firebase from "firebase/app";
 import "firebase/auth";
+import "firebaseui";
 
 var firebaseConfig = {
   apiKey: "AIzaSyAIIB6_lqydvZlONVUSeNY1YxptUE49T0M",
