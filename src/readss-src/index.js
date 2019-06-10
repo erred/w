@@ -26,8 +26,11 @@ ${res
 </ul>
 `;
 
-    document.querySelector(".loader").remove();
     document.querySelector("body").insertAdjacentHTML("beforeend", ul);
+    let l = document.querySelector(".loader");
+    if (l) {
+      l.remove();
+    }
   });
   // call.on("status", s => {
   //   console.log(s);
