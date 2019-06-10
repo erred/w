@@ -22,7 +22,7 @@ function signedIn(user) {
 
       let options = { authorization: idToken };
 
-      let call = svc.Echo(msg, options, (err, res) => {
+      let call = svc.echo(msg, options, (err, res) => {
         if (err) {
           console.log(err);
           return;
