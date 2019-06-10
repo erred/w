@@ -1,9 +1,8 @@
 import { ListRequest, ListReply } from "./readss_pb.js";
 import { ListerClient } from "./readss_grpc_web_pb.js";
 
+var svc = new ListerClient("https://api.seankhliao.com");
 window.addEventListener("load", () => {
-  let svc = new ListerClient("https://api.seankhliao.com");
-
   let call = svc.list(new ListRequest(), null, (err, res) => {
     if (err) {
       console.log(err);
