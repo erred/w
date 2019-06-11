@@ -1,7 +1,14 @@
 steps:
-  - name: "gcr.io/kaniko-project/executor:latest"
-    dir: "site-builder"
+  - id: build
+    name: gcr.io/cloud-builders/docker:latest
+    dir: $_IMG
     args:
-      - --cache
-      - --context=/workspace/site-builder
-      - --destination=gcr.io/$PROJECT_ID/site-builder:latest
+      - build
+      - -t=gcr.io/$PROJECT_ID/$_IMG:$SHORT_SHA
+      - -t=gcr.io/$PROJECT_ID/$_IMG:latest
+      - .
+images:
+  - gcr.io/$PROJECT_ID/$_IMG:$SHORT_SHA
+  - gcr.io/$PROJECT_ID/$_IMG:latest
+substitutions:
+  _IMG: site-builder
