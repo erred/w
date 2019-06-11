@@ -1,5 +1,5 @@
 title = wanderlust
-date =
+date = 2019-06-13
 desc = travel or die
 
 ---
