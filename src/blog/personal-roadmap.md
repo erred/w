@@ -6,14 +6,22 @@ desc = planning ahead
 
 #### roadmap
 
-##### skills
+where to now?
 
-projects, education
+##### technical skills
+
+- scale back time spent on front end
+- continue with k8s / docker
+- increase time in networking
+- get better foundation in security
+- reevaluate certs
+- get Masters
 
 ##### work
 
-life, career
+- look into skillset for SRE / DevOps
+- research job listings / requirements
 
 ##### interpersonal
 
-friends
+- don't neglect firends
