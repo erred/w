@@ -8,6 +8,8 @@ desc = travel or die
 
 travel or die
 
+complacency breeds comtempt
+
 ##### But why?
 
 maybe it's the way I grew up,
