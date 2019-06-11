@@ -6,7 +6,7 @@ desc = benchmarking building containers in cloud build
 
 #### Benchmark building containers
 
-for my use case: small Gomicroservice repos with multistage build
+for my use case: small Go microservice repos with multistage build
 
 _conclusion_: use `docker build`
 
