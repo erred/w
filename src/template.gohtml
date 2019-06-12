@@ -29,7 +29,14 @@ gtag("config", "UA-114337586-1");
 /* navigator.serviceWorker && window.addEventListener("load", () => {navigator.serviceWorker.register("./sw.js");}); */
 
 grecaptcha.ready(()=> {
-    grecaptcha.execute('6LcYb6gUAAAAAAugirVvpmFxt8b-j3RfwcNDrchn', {action: 'pageview'}).then(token=> {
+    grecaptcha.render('body', {i
+        sitekey:'6LcYb6gUAAAAAAugirVvpmFxt8b-j3RfwcNDrchn',
+        theme: 'dark'
+    });
+    grecaptcha.execute('6LcYb6gUAAAAAAugirVvpmFxt8b-j3RfwcNDrchn', {
+        action: 'pageview'
+
+    }).then(token=> {
         fetch('https://api.seankhliao.com/recaptcha.v3', {
             method: 'POST',
             mode: 'cors',
