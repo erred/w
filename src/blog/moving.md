@@ -1,5 +1,5 @@
 title = moving
-date =
+date = 2019-06-16
 desc = 0 days since last move
 
 ---
