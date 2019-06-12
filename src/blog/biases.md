@@ -6,7 +6,7 @@ desc = self reflection
 
 #### TCK
 
-Recently I was introduced to the term TCK or Third Culture Kid,
+Recently I was introduced to the term TCK or [Third Culture Kid](https://en.wikipedia.org/wiki/Third_culture_kid),
 I think it adequately describes me
 
 ##### What bias?
