@@ -1,5 +1,5 @@
 title = biases
-date =
+date = 2019-06-15
 desc = self reflection
 
 ---
