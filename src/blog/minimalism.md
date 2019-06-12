@@ -1,5 +1,5 @@
 title = minimalism
-date =
+date = 2019-06-14
 desc = less is more is less
 
 ---
