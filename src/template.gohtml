@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|Lora:700&display=swap">
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114337586-1"></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6LcYb6gUAAAAAAugirVvpmFxt8b-j3RfwcNDrchn"></script>
 
 <meta name="theme-color" content="#000000">
 <meta name="description" content="{{ .Desc }}">
@@ -18,16 +19,27 @@
 <link rel="apple-touch-icon" href="/icon-512.png" />
 <link rel="shortcut icon" href="/favicon.ico" />
 
-{{ template "basecss" }}
-
 <script>
 "use strict";
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag("js", new Date());
 gtag("config", "UA-114337586-1");
+
 /* navigator.serviceWorker && window.addEventListener("load", () => {navigator.serviceWorker.register("./sw.js");}); */
+
+grecaptcha.ready(()=> {
+    grecaptcha.execute('6LcYb6gUAAAAAAugirVvpmFxt8b-j3RfwcNDrchn', {action: 'pageview'}).then(token=> {
+        fetch('https://api.seankhliao.com/recaptcha.v3', {
+            method: 'POST',
+            mode: 'cors',
+            body: token
+        }).then(res =>{console.log(res)});
+  });
+});
 </script>
+
+{{ template "basecss" }}
 {{ end }}
 
 
