@@ -1,5 +1,5 @@
 title = personal roadmap
-date =
+date = 2019-06-17
 desc = planning ahead
 
 ---
@@ -24,4 +24,4 @@ where to now?
 
 ##### interpersonal
 
-- don't neglect firends
+- don't neglect friends
