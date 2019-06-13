@@ -11,6 +11,10 @@
       {
         "source": "**/*.@(webp|png)",
         "headers": [{ "key": "Cache-Control", "value": "max-age=2592000" }]
+      },
+      {
+        "source": "/blog",
+        "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
       }
     ]
   }
