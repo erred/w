@@ -19,6 +19,18 @@
       {
         "source": "/blog/**",
         "headers": [{ "key": "Cache-Control", "value": "max-age=86400" }]
+      },
+      {
+        "source": "/",
+        "headers": [{ "key": "Link", "value": "</map.webp>; rel=preload; as=image" }]
+      },
+      {
+        "source": "/authed",
+        "headers": [{ "key": "Link", "value": "</authed/index.js>; rel=preload; as=script" }]
+      },
+      {
+        "source": "/readss",
+        "headers": [{ "key": "Link", "value": "</readss/index.js>; rel=preload; as=script" }]
       }
     ]
   }
