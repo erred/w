@@ -121,7 +121,7 @@ func (p *Processor) Process() {
 				log.Printf("Process parse %v as template: %v\n", page.u.Dst(), err)
 				continue
 			}
-			fmt.Println(t.DefinedTemplates())
+			// fmt.Println(t.DefinedTemplates())
 			err = t.ExecuteTemplate(f, "_page", page.M)
 			f.Close()
 			if err != nil {
