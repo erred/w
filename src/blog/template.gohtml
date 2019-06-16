@@ -13,7 +13,7 @@ ul > li:before {
 </style>
 
 <h1><a href="/">seankhliao</a> / <mark>blog</mark></h1>
-<p>Artisanal, hand-crafted blog posts imbued with delayed regrets</p>
+<p>Artisanal, <mark>hand-crafted</mark> blog posts imbued with delayed <mark>regrets</mark></p>
 
 <ul>
 {{ range .posts }}
@@ -34,11 +34,7 @@ ul > li:before {
 
 <hgroup>
   <h1><mark>{{ .title }}</mark></h1>
-  <p>
-    <a href="/">seankhliao</a> /
-    <a href="/blog">blog</a> /
-    <time datetime="{{ .date }}">{{ .date }}</time>
-  </p>
+  <p><a href="/">seankhliao</a> / <a href="/blog">blog</a> / <time datetime="{{ .date }}">{{ .date }}</time></p>
 </hgroup>
 
 {{ .content }}
