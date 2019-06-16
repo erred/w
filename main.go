@@ -175,7 +175,7 @@ func (p *Processor) md2html(dir string, fps []string) {
 
 	idx := map[string]interface{}{
 		"Posts": posts,
-		"URL":   relativeURL(dir),
+		"URL":   canonicalURL(bd),
 	}
 
 	nfn := filepath.Join(src2dst(dir), "index.html")
@@ -204,7 +204,8 @@ func (p *Processor) parsePost(tmpl, fp string) Post {
 	}
 
 	nfn := strings.TrimSuffix(src2dst(fp), MdExt) + ".html"
-	pt.URL = relativeURL(nfn)
+	pt.URL = canonicalURL(nfn)
+	pt.RelativeURL = relativeURL(nfn)
 
 	bb := bytes.SplitN(b, []byte("\n---\n"), 2)
 	if len(bb) != 2 {
@@ -259,7 +260,7 @@ func (p *Processor) renderFile(fn string) {
 		log.Printf("renderFile parse %v as template: %v\n", fn, err)
 		return
 	}
-	t.ExecuteTemplate(f, filepath.Base(fn), nil)
+	t.ExecuteTemplate(f, filepath.Base(fn), Post{URL: canonicalURL(fn)})
 	if err != nil {
 		log.Printf("renderFile execute %v: %v\n", fn, err)
 	}
@@ -317,9 +318,10 @@ func src2dst(f string) string {
 }
 
 type Post struct {
-	Title   string
-	URL     string
-	Desc    string
-	Date    string
-	Content string
+	Title       string
+	URL         string
+	Desc        string
+	Date        string
+	Content     string
+	RelativeURL string
 }
