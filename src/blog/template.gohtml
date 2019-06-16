@@ -17,7 +17,7 @@ ul > li:before {
 
 <ul>
 {{ range .Posts }}
-    <li><time datetime="{{ .Date }}">{{ .Date }}</time> | <a href="{{ .URL }}">{{ .Title }}</a></li>
+    <li><time datetime="{{ .Date }}">{{ .Date }}</time> | <a href="{{ .RelativeURL }}">{{ .Title }}</a></li>
 {{ end }}
 </ul>
 
