@@ -16,8 +16,8 @@ ul > li:before {
 <p>Artisanal, hand-crafted blog posts imbued with delayed regrets</p>
 
 <ul>
-{{ range .Posts }}
-    <li><time datetime="{{ .Date }}">{{ .Date }}</time> | <a href="{{ .RelativeURL }}">{{ .Title }}</a></li>
+{{ range .posts }}
+    <li><time datetime="{{ .Date }}">{{ .Date }}</time> | <a href="{{ .URL }}">{{ .Title }}</a></li>
 {{ end }}
 </ul>
 
@@ -30,18 +30,18 @@ ul > li:before {
 {{ define "blog-post" }}
 
 {{ template "head" . }}
-<title>{{ .Title }} | blog | seankhliao</title>
+<title>{{ .title }} | blog | seankhliao</title>
 
 <hgroup>
-  <h1><mark>{{ .Title }}</mark></h1>
+  <h1><mark>{{ .title }}</mark></h1>
   <p>
     <a href="/">seankhliao</a> /
     <a href="/blog">blog</a> /
-    <time datetime="{{ .Date }}">{{ .Date }}</time>
+    <time datetime="{{ .date }}">{{ .date }}</time>
   </p>
 </hgroup>
 
-{{ .Content }}
+{{ .content }}
 
 {{ template "foot" . }}
 
