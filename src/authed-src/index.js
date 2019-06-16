@@ -1,7 +1,7 @@
 import { Msg } from "./authed_pb.js";
 import { authedClient } from "./authed_grpc_web_pb.js";
 
-window.addEventListener("onload", () => {
+window.addEventListener("load", () => {
   firebase.auth().onAuthStateChanged(user => (user ? signedIn(user) : signedOut()));
 });
 
