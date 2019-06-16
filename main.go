@@ -259,7 +259,7 @@ func (p *Page) parseMD() error {
 		p.M[string(bytes.TrimSpace(l[0]))] = string(bytes.TrimSpace(l[1]))
 	}
 
-	p.M["content"] = string(blackfriday.Run(bb[1]))
+	p.M["content"] = string(blackfriday.Run(bb[1], blackfriday.WithRenderer(blackfriday.NewHTMLRenderer(blackfriday.HTMLRendererParameters{HeadingLevelOffset: 3, Flags: blackfriday.CommonHTMLFlags}))))
 	return nil
 }
 
