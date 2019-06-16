@@ -169,7 +169,9 @@ func (p *Processor) md2html(dir string, fps []string) {
 		posts = append(posts, p.parsePost(posttmpl, fp))
 	}
 
-	sort.Sort(Posts(posts))
+	sort.Slice(posts, func(i, j int) bool {
+		return posts[i].Date > posts[j].Date
+	})
 
 	idx := map[string]interface{}{
 		"Posts": posts,
@@ -321,10 +323,3 @@ type Post struct {
 	Date    string
 	Content string
 }
-
-// newer first
-type Posts []Post
-
-func (p Posts) Less(i, j int) bool { return p[i].Date > p[j].Date }
-func (p Posts) Len() int           { return len(p) }
-func (p Posts) Swap(i, j int)      { p[i], p[j] = p[j], p[i] }
