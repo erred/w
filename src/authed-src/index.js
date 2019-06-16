@@ -1,12 +1,9 @@
 import { Msg } from "./authed_pb.js";
 import { authedClient } from "./authed_grpc_web_pb.js";
 
-// if (!firebase.apps.length) {
-//   firebase.initializeApp(firebaseConfig);
-// }
-
-firebase.auth().onAuthStateChanged(user => (user ? signedIn(user) : signedOut()));
-var svc = new authedClient("https://api.seankhliao.com");
+window.addEventListener("onload", () => {
+  firebase.auth().onAuthStateChanged(user => (user ? signedIn(user) : signedOut()));
+});
 
 function signedIn(user) {
   document.querySelector("#firebaseui-auth-container").style.display = "none";
@@ -22,6 +19,7 @@ function signedIn(user) {
 
       let options = { authorization: idToken };
 
+      let svc = new authedClient("https://api.seankhliao.com");
       let call = svc.echo(msg, options, (err, res) => {
         if (err) {
           console.log(err);
