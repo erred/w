@@ -3,14 +3,13 @@ package main
 import (
 	"bytes"
 	"flag"
-	"io"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
 	"sort"
 	"strings"
-	"sync"
 	"text/template"
 
 	"github.com/russross/blackfriday/v2"
@@ -18,8 +17,9 @@ import (
 
 var (
 	IgnoreExt = make(map[string]struct{})
-	Src, Dst  string
-	TmplExt   string
+	Src       = "src"
+	Dst       = "dst"
+	TmplExt   = ".gohtml"
 	MdExt     = ".md"
 	HtmlExt   = ".html"
 	BaseURL   = "https://seankhliao.com"
@@ -28,11 +28,8 @@ var (
 func init() {
 	var ignoreExt string
 	flag.StringVar(&ignoreExt, "ignoreext", ".ico,.svg,.png,.jpg", "comma separated list of extensions to ignore")
-	flag.StringVar(&Src, "src", "src", "source directory")
-	flag.StringVar(&Dst, "dst", "dst", "output directory")
 	// name templates:
 	// $basedir-post :ex /src/bog/template.gohtml => "blog-post"
-	flag.StringVar(&TmplExt, "tmplext", ".gohtml", "extension for html templates")
 
 	flag.Parse()
 	for _, e := range strings.Split(ignoreExt, ",") {
@@ -42,68 +39,30 @@ func init() {
 
 func main() {
 	p := NewProcessor()
-	p.Walk()
+	if err := filepath.Walk(Src, p.walker); err != nil {
+		log.Fatal("main walker:", err)
+	}
 	p.Process()
-	p.GenSitemap()
 }
 
 type Processor struct {
-	t             *template.Template
-	paths         []string
-	templatePaths []string
-	renderPaths   []string
-	copyPaths     []string
-	mdPaths       map[string][]string
+	t *template.Template
+
+	q       []*Page            // work queue
+	indexes map[string][]*Page // generated index pages
+	sitemap []string           // pages to include in sitemap
 }
 
 func NewProcessor() *Processor {
 	return &Processor{
-		mdPaths: make(map[string][]string),
+		t:       template.New(""),
+		indexes: make(map[string][]*Page),
 	}
 }
 
-func (p *Processor) Walk() {
-	filepath.Walk(Src, p.walker)
-}
-func (p *Processor) Process() error {
-	var wg sync.WaitGroup
-	var err error
-
-	p.t, err = template.ParseFiles(p.templatePaths...)
-	if err != nil {
-		log.Printf("Process parseFiles %v\n", err)
-		return err
-	}
-
-	defer wg.Wait()
-
-	for _, fp := range p.renderPaths {
-		wg.Add(1)
-		go func(fp string) {
-			defer wg.Done()
-			p.renderFile(fp)
-		}(fp)
-	}
-
-	for _, fp := range p.copyPaths {
-		wg.Add(1)
-		go func(fp string) {
-			defer wg.Done()
-			copyFile(fp)
-		}(fp)
-	}
-
-	for dir, fps := range p.mdPaths {
-		wg.Add(1)
-		go func(dir string, fps []string) {
-			defer wg.Done()
-			p.md2html(dir, fps)
-		}(dir, fps)
-	}
-
-	return nil
-}
-
+// walker walks the src dir
+// parses templates
+// reads everything else into memory
 func (p *Processor) walker(fp string, info os.FileInfo, err error) error {
 	if err != nil {
 		log.Printf("walker called with %v\n", err)
@@ -118,210 +77,200 @@ func (p *Processor) walker(fp string, info os.FileInfo, err error) error {
 
 	ext := filepath.Ext(fp)
 	if _, ok := IgnoreExt[ext]; ok {
-		// noop
-	} else if ext == TmplExt {
-		p.templatePaths = append(p.templatePaths, fp)
-	} else if ext == MdExt {
-		dir := filepath.Dir(fp)
-		p.mdPaths[dir] = append(p.mdPaths[dir], fp)
-	} else if ext == HtmlExt {
-		p.renderPaths = append(p.renderPaths, fp)
-	} else {
-		p.copyPaths = append(p.copyPaths, fp)
+		return nil
+	}
+	if ext == TmplExt {
+		p.t, err = p.t.ParseFiles(fp)
+		if err != nil {
+			log.Printf("walker parse template %v: %v", fp, err)
+		}
+		return nil
 	}
 
+	page, err := NewPage(fp)
+	if err != nil {
+		log.Printf("walker newpage %v: %v", fp, err)
+		return nil
+	}
+	if ext == MdExt {
+		err = page.parseMD()
+		if err != nil {
+			log.Printf("walker parse markdown %v: %v", fp, err)
+			return nil
+		}
+		p.indexes[filepath.Dir(fp)] = append(p.indexes[filepath.Dir(fp)], page)
+	} else {
+		p.q = append(p.q, page)
+	}
 	return nil
 }
 
-func (p *Processor) GenSitemap() {
-	filepath.Walk(Dst, func(fp string, info os.FileInfo, err error) error {
+func (p *Processor) Process() {
+	for _, page := range p.q {
+		// fmt.Printf("processing %v %v\n", page.u, page.M)
+		f, err := newFile(page.u.Dst())
 		if err != nil {
-			log.Printf("GenSitemap called with %v\n", err)
-			return nil
+			log.Printf("Process newFile %v: %v", page.u.Dst(), err)
+			continue
 		}
-		if info.IsDir() {
-			return nil
-		}
-		if filepath.Ext(fp) != HtmlExt {
-			return nil
-		}
-		if relativeURL(fp) == "/404" {
-			return nil
-		}
-		p.paths = append(p.paths, canonicalURL(fp))
-		return nil
-	})
+		if strings.HasSuffix(page.u.Dst(), HtmlExt) {
+			p.sitemap = append(p.sitemap, page.u.Canonical())
 
-	sort.Strings(p.paths)
-	err := ioutil.WriteFile(filepath.Join(Dst, "sitemap.txt"), []byte(strings.Join(p.paths, "\n")), 0644)
-	if err != nil {
-		log.Printf("GenSitemap write sitemap: %v\n", err)
+			t, err := p.t.New("_page").Parse(string(page.b))
+			if err != nil {
+				log.Printf("Process parse %v as template: %v\n", page.u.Dst(), err)
+				continue
+			}
+			fmt.Println(t.DefinedTemplates())
+			err = t.ExecuteTemplate(f, "_page", page.M)
+			f.Close()
+			if err != nil {
+				log.Printf("Process execute %v: %v\n", page.u.Dst(), err)
+			}
+		} else {
+			_, err = f.Write(page.b)
+			f.Close()
+			if err != nil {
+				log.Printf("Process write %v: %v", page.u.Dst(), err)
+			}
+		}
 	}
+	type PL struct {
+		Date  string
+		Title string
+		URL   string
+	}
+	for dir, pages := range p.indexes {
+		idxpage := Page{
+			u: NewURL(dir + "/index.html"),
+			M: make(map[string]interface{}),
+		}
+		var posts []PL
+		for _, page := range pages {
+			// fmt.Printf("processing %v %v\n", page.u, page.M)
+			posts = append(posts, PL{page.M["date"].(string), page.M["title"].(string), page.u.Relative()})
+			f, err := newFile(page.u.Dst())
+			if err != nil {
+				log.Printf("Process newFile 2 %v: %v\n", page.u.Dst(), err)
+				continue
+			}
+			err = p.t.ExecuteTemplate(f, filepath.Base(dir)+"-post", page.M)
+			f.Close()
+			if err != nil {
+				log.Printf("Process execute 2 %v: %v\n", page.u.Dst(), err)
+				continue
+			}
+		}
+		sort.Slice(posts, func(i, j int) bool {
+			return posts[i].Date > posts[j].Date
+		})
+		idxpage.M["posts"] = posts
+		f, err := newFile(idxpage.u.Dst())
+		if err != nil {
+			log.Printf("Process newFile 3 %v: %v\n", idxpage.u.Dst(), err)
+			continue
+		}
+		err = p.t.ExecuteTemplate(f, filepath.Base(dir)+"-index", idxpage.M)
+		f.Close()
+		if err != nil {
+			log.Printf("Process execute 3 %v: %v\n", idxpage.u.Dst(), err)
+			continue
+		}
+
+	}
+
+	sort.Strings(p.sitemap)
+	err := ioutil.WriteFile(filepath.Join(Dst, "sitemap.txt"), []byte(strings.Join(p.sitemap, "\n")), 0644)
+	if err != nil {
+		log.Printf("Process sitemap: %v\n", err)
+	}
+
 }
 
-func (p *Processor) md2html(dir string, fps []string) {
-	var posts []Post
-	bd := filepath.Base(dir)
-	posttmpl := bd + "-post"
-	idxtmpl := bd + "-index"
-
-	for _, fp := range fps {
-		posts = append(posts, p.parsePost(posttmpl, fp))
-	}
-
-	sort.Slice(posts, func(i, j int) bool {
-		return posts[i].Date > posts[j].Date
-	})
-
-	idx := map[string]interface{}{
-		"Posts": posts,
-		"URL":   canonicalURL(bd),
-	}
-
-	nfn := filepath.Join(src2dst(dir), "index.html")
-	f, err := newFile(nfn)
-	if err != nil {
-		log.Printf("md2html newFile %v: %v\n", nfn, err)
-		return
-	}
-	defer f.Close()
-
-	err = p.t.ExecuteTemplate(f, idxtmpl, idx)
-	if err != nil {
-		log.Printf("md2html exec template %v for %v: %v", idxtmpl, nfn, err)
-		return
-	}
-
+type URL struct {
+	path    string
+	dstPath string
 }
 
-func (p *Processor) parsePost(tmpl, fp string) Post {
-	var pt Post
+// NewURL generates the url from a on disk file path
+// /x/y.md              -> /x/y
+// /index.html          -> /
+// /x.html              -> /x
+// /x/index.html        -> /x
+// /x/y.html            -> /x/y
+func NewURL(s string) URL {
+	var u URL
+	s = strings.TrimPrefix(s, Src)
 
-	b, err := ioutil.ReadFile(fp)
-	if err != nil {
-		log.Printf("parsePost readfile %v: %v\n", fp, err)
-		return pt
+	if strings.HasSuffix(s, MdExt) {
+		s = strings.TrimSuffix(s, MdExt) + HtmlExt
 	}
+	u.dstPath = Dst + s
 
-	nfn := strings.TrimSuffix(src2dst(fp), MdExt) + ".html"
-	pt.URL = canonicalURL(nfn)
-	pt.RelativeURL = relativeURL(nfn)
+	s = strings.TrimSuffix(s, HtmlExt)
+	s = strings.TrimSuffix(s, "/index")
+	if s == "" {
+		s = "/"
+	}
+	u.path = s
 
-	bb := bytes.SplitN(b, []byte("\n---\n"), 2)
+	return u
+}
+
+func (u URL) Dst() string {
+	return u.dstPath
+}
+
+func (u URL) Canonical() string {
+	return BaseURL + u.path
+}
+
+func (u URL) Relative() string {
+	return u.path
+}
+
+type Page struct {
+	u URL
+	b []byte
+	M map[string]interface{}
+}
+
+func NewPage(f string) (*Page, error) {
+	u := NewURL(f)
+	b, err := ioutil.ReadFile(f)
+	if err != nil {
+		return nil, fmt.Errorf("NewPage readFile %v: %v", f, err)
+	}
+	m := map[string]interface{}{"url": u.Canonical()}
+	return &Page{u, b, m}, nil
+}
+
+func (p *Page) parseMD() error {
+	bb := bytes.SplitN(p.b, []byte("\n---\n"), 2)
 	if len(bb) != 2 {
-		log.Printf("parsePost split expected --- in %v\n", fp)
-		return pt
+		return fmt.Errorf("parseMD split expected --- in %v\n", p.u.Dst())
 	}
+
 	for ln, line := range bytes.Split(bytes.TrimSpace(bb[0]), []byte("\n")) {
 		l := bytes.SplitN(line, []byte("="), 2)
 		if len(l) != 2 {
-			log.Printf("parsePost parse header %v line %v expected split by = \n", fp, ln)
-			return pt
+			return fmt.Errorf("parseMD metadata expected split by = in line %v in %v", ln, p.u.Dst())
 		}
-		v := string(bytes.TrimSpace(l[1]))
-		switch string(bytes.TrimSpace(l[0])) {
-		case "title":
-			pt.Title = v
-		case "date":
-			pt.Date = v
-		case "desc", "description":
-			pt.Desc = v
-		default:
-			log.Printf("parsePost parse header %v line %v unkown kv: %v\n", fp, ln, l)
-		}
+		p.M[string(bytes.TrimSpace(l[0]))] = string(bytes.TrimSpace(l[1]))
 	}
 
-	pt.Content = string(blackfriday.Run(bytes.TrimSpace(bb[1])))
-
-	f, err := newFile(nfn)
-	if err != nil {
-		log.Printf("parsePost newFile %v: %v\n", nfn, err)
-		return pt
-	}
-	defer f.Close()
-
-	err = p.t.ExecuteTemplate(f, tmpl, pt)
-	if err != nil {
-		log.Printf("parsePost exec template %v for %v: %v", tmpl, fp, err)
-		return pt
-	}
-	return pt
-}
-
-func (p *Processor) renderFile(fn string) {
-	nfn := src2dst(fn)
-	f, err := newFile(nfn)
-	if err != nil {
-		log.Printf("renderFile newFile %v: %v\n", nfn, err)
-		return
-	}
-	t, err := p.t.ParseFiles(fn)
-	if err != nil {
-		log.Printf("renderFile parse %v as template: %v\n", fn, err)
-		return
-	}
-	t.ExecuteTemplate(f, filepath.Base(fn), Post{URL: canonicalURL(fn)})
-	if err != nil {
-		log.Printf("renderFile execute %v: %v\n", fn, err)
-	}
-}
-
-func copyFile(fn string) {
-	nfn := src2dst(fn)
-	f, err := newFile(nfn)
-	if err != nil {
-		log.Printf("copyFile newFile %v: %v\n", nfn, err)
-		return
-	}
-	fo, err := os.Open(fn)
-	if err != nil {
-		log.Printf("copyFile Open %v: %v\n", fn, err)
-		return
-	}
-	defer fo.Close()
-
-	_, err = io.Copy(f, fo)
-	if err != nil {
-		log.Printf("copyFile copy %v tp %v: %v", fn, nfn, err)
-	}
-}
-
-func relativeURL(fp string) string {
-	fp = strings.TrimPrefix(fp, Src)
-	fp = strings.TrimPrefix(fp, Dst)
-	fp = strings.TrimSuffix(fp, HtmlExt)
-	fp = strings.TrimSuffix(fp, "index")
-	if len(fp) != 1 {
-		fp = strings.TrimSuffix(fp, "/")
-	}
-	return fp
-}
-func canonicalURL(fp string) string {
-	fp = BaseURL + relativeURL(fp)
-	return strings.TrimSuffix(fp, "/")
+	p.M["content"] = string(blackfriday.Run(bb[1]))
+	return nil
 }
 
 func newFile(fn string) (*os.File, error) {
 	err := os.MkdirAll(filepath.Dir(fn), 0755)
 	if err != nil {
-		log.Printf("newFile mkdirall %v:%v\n", filepath.Dir(fn), err)
+		return nil, fmt.Errorf("newFile mkdirall %v:%v", filepath.Dir(fn), err)
 	}
 	f, err := os.Create(fn)
 	if err != nil {
-		log.Printf("newFile create %v: %v\n", fn, err)
-		return nil, err
+		return nil, fmt.Errorf("newFile create %v: %v", fn, err)
 	}
 	return f, nil
-}
-func src2dst(f string) string {
-	return filepath.Join(Dst, strings.TrimPrefix(f, Src))
-}
-
-type Post struct {
-	Title       string
-	URL         string
-	Desc        string
-	Date        string
-	Content     string
-	RelativeURL string
 }
