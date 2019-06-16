@@ -7,9 +7,9 @@ steps:
     args:
       - -c
       - >-
-        echo "{{ define "fontcss" }}" > fontcss.gohtml &&
+        echo '{{ define "fontcss" }}' > fontcss.gohtml &&
         curl -L 'https://fonts.googleapis.com/css?family=Inconsolata:400,700|Lora:400,700&display=swap' >> fontcss.gohtml &&
-        echo "{{ end }}" >> fontcss.gohtml
+        echo '{{ end }}' >> fontcss.gohtml
 
   - name: gcr.io/$PROJECT_ID/imagemagick:latest
     id: "image icons"
