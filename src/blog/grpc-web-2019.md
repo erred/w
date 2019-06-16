@@ -4,23 +4,23 @@ desc = can i use grpc-web yet?
 
 ---
 
-#### grpc-web
+# grpc-web
 
 [grpc-web](https://github.com/grpc/grpc-web) has been out for some time,
 can we finally use it?
 
-##### what works
+## what works
 
 - client side unary requests
 - server side unary and streaming response
 - grpcwebtext
 
-##### what doesn't
+## what doesn't
 
 - client side streaming requests
 - authorization headers that don't have to be set per rpc call
 
-##### crash course client side
+## crash course client side
 
 write your `service.proto`
 
@@ -32,7 +32,7 @@ and `service_grpc_web_pb` will contain the client types
 initialize with `let svc = new ServiceClient();`,
 and use with `let call = svc.rpcName(msg, {metadata: options}, (err, res)=>{/* do something */})`
 
-##### crash course server side
+## crash course server side
 
 using [improbable-eng/grpc-web](https://github.com/improbable-eng/grpc-web/tree/master/go/grpcweb)
 

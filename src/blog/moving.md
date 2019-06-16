@@ -4,12 +4,12 @@ desc = 0 days since last move
 
 ---
 
-#### moving
+# moving
 
 On the road again,
 I have a love-hate relationship with moving
 
-##### Fresh start
+## Fresh start
 
 wipe the slate mostly clean,
 start again,
@@ -21,7 +21,7 @@ _hate_: you're starting from zero,
 or 0.1,
 the most tiring of which if building a network of friends
 
-##### Spring clean
+## Spring clean
 
 I don;t think I've ever moved in the _spring_,
 but you get the idea,
@@ -29,7 +29,7 @@ reevaluate the stuff you own,
 throw stuff out,
 maybe you'll discover that long lost _sock_
 
-##### friends
+## friends
 
 despite the _internet_,
 friendship is still very much tied to _proximity_,

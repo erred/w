@@ -4,47 +4,47 @@ desc = k8s concepts
 
 ---
 
-#### kubternetes
+# kubternetes
 
 the thing that eats up all your computers
 
-##### cluster
+## cluster
 
 collection of resources (computers) managed by kubernetes
 
-##### node
+## node
 
 a single compute resource (vm or hardware computer)
 to schedule tasks on
 
-##### containers
+## containers
 
 smallest packaging unit,
 everything is built on top
 
-##### pod
+## pod
 
 smallest schedulable unit,
 collection of _containers_ that run together,
 shares a filesystem and network stack
 
-##### deployment
+## deployment
 
 collection of identical _pods_
 
-##### service
+## service
 
 _unified interface_ to the multiple pods in a deployment
 
-##### ingress
+## ingress
 
 _exposed_ interface to the outside world,
 read and fulfilled by ingress controllers
 
-##### ingressroute
+## ingressroute
 
 fancier version of _ingress_
 
-##### ingress controller
+## ingress controller
 
 edge router that sits between cluster and outside world

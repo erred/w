@@ -4,12 +4,12 @@ desc = the checklist way
 
 ---
 
-#### Checklists
+# Checklists
 
 Checklists are useful,
 the reduce errors and [save lives](https://www.hsph.harvard.edu/news/magazine/fall08checklist/)
 
-##### I'll _remember_ to... what?
+## I'll _remember_ to... what?
 
 You might not have dementia,
 but remembering things is hard.
@@ -18,7 +18,7 @@ but what is that something?
 Checklists reduce cognitive load
 and give you a visual confirmation that everything is done
 
-##### Checklists are fun
+## Checklists are fun
 
 Who doesn;t like the sense of accomplishment
 from ticking off another line item,

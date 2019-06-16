@@ -4,11 +4,11 @@ desc = current preferred setup of Google Cloud Build
 
 ---
 
-#### Google Cloud Build
+# Google Cloud Build
 
 my current use of `cloudbuild.yaml`
 
-##### cloudbuild.yaml
+## cloudbuild.yaml
 
 ```
 steps:

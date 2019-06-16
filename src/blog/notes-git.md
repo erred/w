@@ -4,26 +4,26 @@ desc = notes on git
 
 ---
 
-#### git
+# git
 
 git is hard
 
-##### repositories
+## repositories
 
 have 2 parts: `.git/`: where git stuff is stored,
 and the 'working tree': a visible, working copy of everything, the files you work on
 
-##### state
+## state
 
 - history: committed changes
 - staging / index: tracked changes
 - working directory: untracked changes
 
-##### git clone
+## git clone
 
 `--recurse-submodules`: include any submodules
 
-##### git init
+## git init
 
 `--bare`: no working tree,
 store the git stuff directly in the directory,
@@ -32,7 +32,7 @@ conventionally the dir has the `.git` extenstion: `repo.git`
 `--template`, or the config `init.templateDir`:
 copy the non dotfile contents of a directory
 
-##### git reset
+## git reset
 
 `git reset --soft $commit`:
 uncommit, uncommitted things staged, working directory untouched
@@ -43,7 +43,7 @@ uncommit, uncommitted things unstaged, working directory untouched
 `git reset --hard $commit`:
 uncommit, uncommitted things discarded, working directory changes discarded
 
-##### git bisect
+## git bisect
 
 binary search through history to find first commit that introduced a change
 
@@ -54,11 +54,11 @@ binary search through history to find first commit that introduced a change
 - `git bisect replay`: replay the output of `git bisect log` and continue where it left off
 - `git bisect run $script`: automate with the use of script
 
-##### git branch
+## git branch
 
 branch listing and management
 
-##### git checkout
+## git checkout
 
 `git checkout $branch`: switch to branch, keep uncommitted changes
 
@@ -66,7 +66,7 @@ branch listing and management
 
 `git checkout $branch -- $paths...`: change `$paths` to match from `$branch`
 
-##### git merge
+## git merge
 
 merge changes from \$branch onto current branch in a new commit
 
@@ -74,7 +74,7 @@ merge changes from \$branch onto current branch in a new commit
 
 `--allow-unrelated-histories`: merge different porjects into one
 
-##### git pull
+## git pull
 
 get and apply remote changes
 
@@ -82,18 +82,18 @@ get and apply remote changes
 
 `--autostash`: auto stash and unstash changes
 
-##### git push
+## git push
 
 `--tags`: push tags
 
 `-u`: set upstream
 
-##### git cherry-pick
+## git cherry-pick
 
 on a clean working tree,
 apply changes from commits
 
-##### git clean
+## git clean
 
 remove untracked files
 
@@ -103,16 +103,16 @@ remove untracked files
 
 `-d`: remove directories, also requires `-f`
 
-##### git revert
+## git revert
 
 ass a new commit changing state to \$commit
 
-##### git stash
+## git stash
 
 `git stash (push)`: store changes, reset to HEAD
 
 `git stash apply`: replay changes
 
-##### git blame
+## git blame
 
 show who last touched each line

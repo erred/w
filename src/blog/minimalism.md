@@ -4,13 +4,13 @@ desc = less is more is less
 
 ---
 
-#### mnmlsm
+# mnmlsm
 
 The art of living with _less_
 
 Maybe it's satisfying that everything is clean and simple
 
-##### me
+## me
 
 I remember reading an article in primary school on extreme minimalism,
 an interview with college students living with little more than their suitcase,
@@ -22,7 +22,7 @@ To me, minimalism serves 2 purposes,
 1, to get _simplify_ life,
 2, to make _moving_ easier.
 
-##### simplify
+## simplify
 
 life's too short to clutter your mind with unimportant stuff,
 throw them all away.
@@ -32,21 +32,21 @@ make your choice up front,
 stick with it,
 follow through and _reap_ the rewards
 
-##### moving
+## moving
 
 last time I counted I avergaed _~2 years_ between moving houses,
 it's so much easier if you have less to lug around
 
 who wants to drag boxes of stuff you never use around anyways
 
-##### digital
+## digital
 
 lean in on the _digital stuff_,
 it doesn't take up space,
 it can live in the cloud,
 jus remember to periodically clean it our
 
-##### criticism
+## criticism
 
 Luxury,
 it can be more expensive if you're not careful,
