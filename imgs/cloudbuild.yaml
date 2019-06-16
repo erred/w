@@ -1,8 +1,20 @@
 steps:
-  - name: "gcr.io/$PROJECT_ID/imagemagick:latest"
+  - name: gcr.io/cloud-builders/curl:latest
+    id: "download fonts"
+    waitFor: ["-"]
+    dir: src
+    entrypoint: sh
+    args:
+      - -c
+      - >-
+        echo "{{ define "fontcss" }}" > fontcss.gohtml &&
+        curl -L 'https://fonts.googleapis.com/css?family=Inconsolata:400,700|Lora:700&display=swap' >> fontcss.gohtml &&
+        echo "{{ end }}" >> fontcss.gohtml
+
+  - name: gcr.io/$PROJECT_ID/imagemagick:latest
     id: "image icons"
     waitFor: ["-"]
-    entrypoint: "sh"
+    entrypoint: sh
     args:
       - "-c"
       - >-
@@ -43,7 +55,7 @@ steps:
         echo IdentityFile /root/.ssh/id_ed25519 >> config &&
         cd /workspace &&
         git config user.email $(gcloud auth list --filter=status:ACTIVE --format='value(account)') && 
-        git add dst && 
+        git add * &&
         git commit -m "cloudbuild generate images" &&
         git push git@github.com:seankhliao/com-seankhliao master
     secretEnv:

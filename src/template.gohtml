@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 
 <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|Lora:700&display=swap">
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-114337586-1"></script>
-<script src="https://www.google.com/recaptcha/api.js?render=6LcYb6gUAAAAAAugirVvpmFxt8b-j3RfwcNDrchn"></script>
+<!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|Lora:700&display=swap">-->
+<script defer src="https://www.googletagmanager.com/gtag/js?id=UA-114337586-1"></script>
+<script defer src="https://www.google.com/recaptcha/api.js?render=6LcYb6gUAAAAAAugirVvpmFxt8b-j3RfwcNDrchn"></script>
 
 <meta name="theme-color" content="#000000">
 <meta name="description" content="{{ .Desc }}">
@@ -42,6 +42,7 @@ grecaptcha.ready(()=> {
 });
 </script>
 
+{{ template "fontcss" }}
 {{ template "basecss" }}
 {{ end }}
 
