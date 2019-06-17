@@ -49,7 +49,7 @@ function signedOut() {
     signInFlow: "popup",
     signInSuccessUrl: "/authed",
     signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
-    tosUrl: "/terms-of-service",
+    tosUrl: "/terms",
     privacyPolicyUrl: "/privacy"
   };
   ui.start("#firebaseui-auth-container", uiConfig);
