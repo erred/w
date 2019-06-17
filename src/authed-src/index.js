@@ -50,7 +50,7 @@ function signedOut() {
     signInSuccessUrl: "/authed",
     signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
     tosUrl: "/terms-of-service",
-    privacyPolicyUrl: "/privacy-policy"
+    privacyPolicyUrl: "/privacy"
   };
   ui.start("#firebaseui-auth-container", uiConfig);
 }
