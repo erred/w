@@ -1,5 +1,5 @@
 title = privacy policy
-date =
+date = 2019-06-20
 desc = but privacy
 
 ---
@@ -14,6 +14,14 @@ _but you don't have any_
 - [uber](https://privacy.uber.com/policy)
 - [bbc](https://www.bbc.co.uk/usingthebbc/privacy/)
 - [google](https://policies.google.com/privacy)
-- [faber & faber](https://www.faber.co.uk/privacy)
 
 # what is included
+
+- scope
+- types of data collected
+- how data is used
+- third parties
+- cookies
+- data storage and security
+- rights
+- choices
