@@ -4,7 +4,7 @@ desc = biased overview of open source licenses
 
 ---
 
-#### licenses
+# licenses
 
 open source licenses,
 a confusing and contentious topic,
@@ -22,56 +22,56 @@ _MIT_ or _BSD-3_ hits the sweet spot between formality and freedom
 
 Listed below is generally in order of leat to most restrictive.
 
-##### CC0
+## CC0
 
 Do what you want,
 disclaims copyright
 
-##### The Unlicense
+## The Unlicense
 
 same as CC0
 
-##### MIT
+## MIT
 
 do what you want,
 just keep this (combined) license and copyright notice
 
-##### BSD-2
+## BSD-2
 
 same as MIT
 
-##### BSD-3
+## BSD-3
 
 same as MIT
 express prohibition of using project / contributors name without permission
 
-##### Apache-2
+## Apache-2
 
 same as MIT
 express grant of patent use by contributors
 
-##### MPL
+## MPL
 
 copyleft,
 source + mods of _orignally MPL code_ must remain available under MPL or stricter,
 source can be copied into other projects
 
-##### LGPL
+## LGPL
 
 copyleft,
 source + mods of _orignally LGPL code_ must remain available under MPL or stricter
 can only be dynamically linked by other projects
 
-##### GPL-2
+## GPL-2
 
 copyleft,
 source + mods + build + install of _entire derived work_ must remain available under GPL-2 or stricter
 
-##### GPL-3
+## GPL-3
 
 GPL-2,
 plus patents
 
-##### AGPL
+## AGPL
 
 GPL, but includes everything over the network
