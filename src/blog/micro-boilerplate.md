@@ -100,9 +100,9 @@ func init() {
 
         switch os.Getenv("LOG_FORMAT") {
         case "JSON":
-                log.SetFormatter(log.JSONFormatter)
+                log.SetFormatter(&log.JSONFormatter{})
         default:
-                log.SetFormatter(log.TextFormatter)
+                log.SetFormatter(&log.TextFormatter{})
         }
 }
 
