@@ -4,16 +4,20 @@ steps:
     waitFor: ["-"]
     args:
       - build
-      - -d=src
-      - -o=authed.js
+      - -d
+      - src
+      - -o
+      - authed.js
       - src/authed-src/index.js
   - name: gcr.io/$PROJECT_ID/parcel:latest
     id: "js build readss"
     waitFor: ["-"]
     args:
       - build
-      - -d=src
-      - -o=readss.js
+      - -d
+      - src
+      - -o
+      - readss.js
       - src/readss-src/index.js
 
   - name: gcr.io/$PROJECT_ID/site-builder:latest
