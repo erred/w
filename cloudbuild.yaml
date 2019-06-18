@@ -25,7 +25,8 @@ steps:
   - name: gcr.io/$PROJECT_ID/firebase:latest
     id: "deploy"
     args:
-      - -P=$PROJECT_ID
+      - -P
+      - $PROJECT_ID
       - deploy
 # secrets:
 #   - kmsKeyName: projects/com-seankhliao/locations/global/keyRings/cloudbuilder/cryptoKeys/cloudflare-apikey
