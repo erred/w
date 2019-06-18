@@ -1,7 +1,4 @@
 {
-  "name": "authed",
-  "version": "1.0.0",
-  "main": "index.js",
   "dependencies": {
     "firebase": "^6.2.0",
     "firebaseui": "^4.0.0",
