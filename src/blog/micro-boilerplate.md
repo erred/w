@@ -37,8 +37,8 @@ func main() {
 
 # healthcheck
 
-_liveliness_: you can only die once **(unlike cats)**,
-pod is restarted if it fails `livelinessProbe`
+_liveness_: you can only die once **(unlike cats)**,
+pod is restarted if it fails `livenessProbe`
 
 _readiness_: transient service unavailability should be signalled here,
 failure will mean _Service_ won't route to the pod,
@@ -56,9 +56,9 @@ spec:
     spec:
       ...
       containers:
-        - name: liveliness
+        - name: liveness
           ...
-          livelinessProbe:
+          livenessProbe:
             httpGet:
               path: /health     # /healthz
               port: http
