@@ -1,0 +1,28 @@
+{{ template "head" . }}
+<title>readss | seankhliao</title>
+
+<script defer src="/readss.js"></script>
+
+<style>
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  li a {
+    font-size: 1.2em;
+  }
+  li mark,
+  li time {
+    display: inline-block;
+  }
+  li mark {
+    margin: 0.5em 0 0 1em;
+  }
+</style>
+
+<h1><a href="/">seankhliao</a> / <mark>readss</mark></h1>
+<p>Auto updated feed of other people's blog posts</p>
+
+{{ template "loader" }}
+
+<!-- prettier-ignore-->
+{{ template "foot" }}

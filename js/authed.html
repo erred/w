@@ -1,0 +1,17 @@
+{{ template "head"  . }}
+<link rel="preconnect" href="https://cdn.firebase.com/" crossorigin />
+<title>authed | seankhliao</title>
+
+<script defer src="/authed.js"></script>
+
+<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+<h4><a href="/">seankhliao</a> / <mark>authed</mark></h1>
+<p>authenticated test page</p>
+
+<div id="firebaseui-auth-container"></div>
+
+{{ template "loader" }}
+
+<!-- prettier-ignore -->
+{{ template "foot" }}

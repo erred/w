@@ -6,9 +6,7 @@ steps:
       - build
       - -d
       - src
-      - -o
-      - authed.js
-      - src/authed-src/index.js
+      - js/authed.html
   - name: gcr.io/$PROJECT_ID/parcel:latest
     id: "js build readss"
     waitFor: ["-"]
@@ -16,9 +14,7 @@ steps:
       - build
       - -d
       - src
-      - -o
-      - readss.js
-      - src/readss-src/index.js
+      - js/readss.html
 
   - name: gcr.io/$PROJECT_ID/site-builder:latest
     id: "static site gen"
