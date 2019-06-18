@@ -1,33 +1,32 @@
 steps:
-  - name: "gcr.io/$PROJECT_ID/parcel:latest"
+  - name: gcr.io/$PROJECT_ID/parcel:latest
     id: "js build authed"
     waitFor: ["-"]
     args:
-      - "build"
-      - "-d"
-      - "src/authed"
-      - "src/authed-src/index.js"
-  - name: "gcr.io/$PROJECT_ID/parcel:latest"
+      - build
+      - -d=src
+      - -o=authed.js
+      - src/authed-src/index.js
+  - name: gcr.io/$PROJECT_ID/parcel:latest
     id: "js build readss"
     waitFor: ["-"]
     args:
-      - "build"
-      - "-d"
-      - "src/readss"
-      - "src/readss-src/index.js"
+      - build
+      - -d=src
+      - -o=readss.js
+      - src/readss-src/index.js
 
-  - name: "gcr.io/$PROJECT_ID/site-builder:latest"
+  - name: gcr.io/$PROJECT_ID/site-builder:latest
     id: "static site gen"
-  - name: "gcr.io/$PROJECT_ID/firebase:latest"
+  - name: gcr.io/$PROJECT_ID/firebase:latest
     id: "deploy"
     args:
-      - "-P"
-      - "$PROJECT_ID"
-      - "deploy"
-secrets:
-  # - kmsKeyName: projects/com-seankhliao/locations/global/keyRings/cloudbuilder/cryptoKeys/cloudflare-apikey
-  #   secretEnv:
-  #     CF_KEY: CiQArFEurvFS1BtWPUELUwksvrlHzVx1HWHUlfEg4EDZOUIAUXcSTgCHrf+W7ZQzT0EjlSPErhL6UF0G4Fr7UzGWB7QbAd2I+tZaoQrgSsob+R7ER+lghX2vGArxZIXJVIqIds0buJHA9Q58G/fypZyBE0v9nw==
-  # - kmsKeyName: projects/com-seankhliao/locations/global/keyRings/cloudbuilder/cryptoKeys/firebase-token
-  #   secretEnv:
-  #     FIREBASE_TOKEN: CiQAEKtoAHJ1UlpWGrGuE4q0cgJpYQ9ThK+X6N6dI5c2OcSUv2USVgDPUjQ1ETL4OxuKN4zUaNCEx4qb90HK56mX3AsmnstOBZUO2VdIDhPqBqoLYktdcLeA66fR3qkr5JyoscQWobFAnt06wuCYgBU/0UWZ1evPykOqNhoc
+      - -P=$PROJECT_ID
+      - deploy
+# secrets:
+#   - kmsKeyName: projects/com-seankhliao/locations/global/keyRings/cloudbuilder/cryptoKeys/cloudflare-apikey
+#     secretEnv:
+#       CF_KEY: CiQArFEurvFS1BtWPUELUwksvrlHzVx1HWHUlfEg4EDZOUIAUXcSTgCHrf+W7ZQzT0EjlSPErhL6UF0G4Fr7UzGWB7QbAd2I+tZaoQrgSsob+R7ER+lghX2vGArxZIXJVIqIds0buJHA9Q58G/fypZyBE0v9nw==
+#   - kmsKeyName: projects/com-seankhliao/locations/global/keyRings/cloudbuilder/cryptoKeys/firebase-token
+#     secretEnv:
+#       FIREBASE_TOKEN: CiQAEKtoAHJ1UlpWGrGuE4q0cgJpYQ9ThK+X6N6dI5c2OcSUv2USVgDPUjQ1ETL4OxuKN4zUaNCEx4qb90HK56mX3AsmnstOBZUO2VdIDhPqBqoLYktdcLeA66fR3qkr5JyoscQWobFAnt06wuCYgBU/0UWZ1evPykOqNhoc

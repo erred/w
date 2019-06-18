@@ -1,5 +1,5 @@
 import { Msg } from "./authed_pb.js";
-import { authedClient } from "./authed_grpc_web_pb.js";
+import { AuthedClient } from "./authed_grpc_web_pb.js";
 
 window.addEventListener("load", () => {
   firebase.auth().onAuthStateChanged(user => (user ? signedIn(user) : signedOut()));
@@ -19,7 +19,7 @@ function signedIn(user) {
 
       let options = { authorization: idToken };
 
-      let svc = new authedClient("https://api.seankhliao.com");
+      let svc = new AuthedClient("https://api.seankhliao.com");
       let call = svc.echo(msg, options, (err, res) => {
         if (err) {
           console.log(err);

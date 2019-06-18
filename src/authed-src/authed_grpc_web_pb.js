@@ -22,7 +22,7 @@ proto.authed = require('./authed_pb.js');
  * @struct
  * @final
  */
-proto.authed.authedClient =
+proto.authed.AuthedClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -58,7 +58,7 @@ proto.authed.authedClient =
  * @struct
  * @final
  */
-proto.authed.authedPromiseClient =
+proto.authed.AuthedPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -92,7 +92,7 @@ proto.authed.authedPromiseClient =
  *   !proto.authed.Msg,
  *   !proto.authed.Msg>}
  */
-const methodInfo_authed_Echo = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_Authed_Echo = new grpc.web.AbstractClientBase.MethodInfo(
   proto.authed.Msg,
   /** @param {!proto.authed.Msg} request */
   function(request) {
@@ -112,13 +112,13 @@ const methodInfo_authed_Echo = new grpc.web.AbstractClientBase.MethodInfo(
  * @return {!grpc.web.ClientReadableStream<!proto.authed.Msg>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.authed.authedClient.prototype.echo =
+proto.authed.AuthedClient.prototype.echo =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/authed.authed/Echo',
+      '/authed.Authed/Echo',
       request,
       metadata || {},
-      methodInfo_authed_Echo,
+      methodInfo_Authed_Echo,
       callback);
 };
 
@@ -131,13 +131,13 @@ proto.authed.authedClient.prototype.echo =
  * @return {!Promise<!proto.authed.Msg>}
  *     A native promise that resolves to the response
  */
-proto.authed.authedPromiseClient.prototype.echo =
+proto.authed.AuthedPromiseClient.prototype.echo =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/authed.authed/Echo',
+      '/authed.Authed/Echo',
       request,
       metadata || {},
-      methodInfo_authed_Echo);
+      methodInfo_Authed_Echo);
 };
 
 
