@@ -107,7 +107,7 @@ function userToHTML(u) {
 function eventToHTML(e) {
   let type = "unknown";
   switch (e.getType()) {
-    case EventType / FOLLOWERGAINED:
+    case EventType.FOLLOWERGAINED:
       type = "followed you";
       break;
     case EventType.FOLLOWERLOST:
