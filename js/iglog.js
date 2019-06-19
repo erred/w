@@ -59,6 +59,8 @@ function signedIn(user) {
                   .map(e => `<li>${eventToHTML(e)}</li>`)
                   .join("")}</ul>`;
             });
+            document.querySelector(".loader").style.display = "none";
+            document.querySelector("body").insertAdjacentHTML("beforeend", ul);
             break;
           case "followers":
             call = svc.followers(req, options, (err, res) => {
@@ -71,6 +73,8 @@ function signedIn(user) {
                   .getUsersList()
                   .map(u => `<li>${userToHTML(u)}</li>`)
                   .join("")}</ul>`;
+              document.querySelector(".loader").style.display = "none";
+              document.querySelector("body").insertAdjacentHTML("beforeend", ul);
             });
             break;
           case "following":
@@ -84,14 +88,16 @@ function signedIn(user) {
                   .getUsersList()
                   .map(u => `<li>${userToHTML(u)}</li>`)
                   .join("")}</ul>`;
+              document.querySelector(".loader").style.display = "none";
+              document.querySelector("body").insertAdjacentHTML("beforeend", ul);
             });
             break;
           default:
             ul = `unknown page`;
+            document.querySelector(".loader").style.display = "none";
+            document.querySelector("body").insertAdjacentHTML("beforeend", ul);
         }
       }
-      document.querySelector(".loader").style.display = "none";
-      document.querySelector("body").insertAdjacentHTML("beforeend", ul);
     })
     .catch(function(error) {
       console.log(error);
