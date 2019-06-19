@@ -1,4 +1,4 @@
-import { Request } from "./iglog_pb.js";
+import { Request, EventType } from "./iglog_pb.js";
 import { FollowatchClient } from "./iglog_grpc_web_pb.js";
 
 import * as firebase from "firebase/app";
