@@ -37,7 +37,7 @@ function signedIn(user) {
       let call = null;
 
       let p = window.location.pathname.split("/");
-      p.push("unkown");
+      p.push("unkmown");
       switch (p[2]) {
         case "events":
           call = svc.eventLog(req, options, (err, res) => {
