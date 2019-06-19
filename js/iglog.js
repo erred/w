@@ -47,7 +47,7 @@ function signedIn(user) {
       } else {
         switch (p[2]) {
           case "events":
-            call = svc.eventLog(req, options, (err, res) => {
+            let call = svc.eventLog(req, options, (err, res) => {
               if (err) {
                 console.log(err);
               }
@@ -59,7 +59,7 @@ function signedIn(user) {
                   .join("")}</ul>`;
             });
           case "followers":
-            call = svc.followers(req, options, (err, res) => {
+            let call = svc.followers(req, options, (err, res) => {
               if (err) {
                 console.log(err);
               }
@@ -71,7 +71,7 @@ function signedIn(user) {
                   .join("")}</ul>`;
             });
           case "following":
-            call = svc.following(req, options, (err, res) => {
+            let call = svc.following(req, options, (err, res) => {
               if (err) {
                 console.log(err);
               }
