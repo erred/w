@@ -59,6 +59,7 @@ function signedIn(user) {
                   .map(e => `<li>${eventToHTML(e)}</li>`)
                   .join("")}</ul>`;
             });
+            break;
           case "followers":
             call = svc.followers(req, options, (err, res) => {
               if (err) {
@@ -71,6 +72,7 @@ function signedIn(user) {
                   .map(u => `<li>${userToHTML(u)}</li>`)
                   .join("")}</ul>`;
             });
+            break;
           case "following":
             call = svc.following(req, options, (err, res) => {
               if (err) {
@@ -83,6 +85,7 @@ function signedIn(user) {
                   .map(u => `<li>${userToHTML(u)}</li>`)
                   .join("")}</ul>`;
             });
+            break;
           default:
             ul = `unknown page`;
         }
@@ -106,12 +109,16 @@ function eventToHTML(e) {
   switch (e.getType()) {
     case EventType / FOLLOWERGAINED:
       type = "followed you";
+      break;
     case EventType.FOLLOWERLOST:
       type = "unfollowed you";
+      break;
     case EventType.FOLLOWINGGAINED:
       type = "you followed";
+      break;
     case EventType.FOLLOWINGLOST:
       type = "you unfollowed";
+      break;
   }
   return `
 ${userToHTML(e.getUser())}
