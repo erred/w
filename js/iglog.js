@@ -37,68 +37,63 @@ function signedIn(user) {
       let call = null;
 
       let p = window.location.pathname.split("/");
-      if (p.length == 2) {
-        ul = `
+      p.push("unkown");
+      switch (p[2]) {
+        case "events":
+          call = svc.eventLog(req, options, (err, res) => {
+            if (err) {
+              console.log(err);
+            }
+            ul =
+              `<h5>EventLog</h5>` +
+              `<ul>${res
+                .getEventsList()
+                .map(e => `<li>${eventToHTML(e)}</li>`)
+                .join("")}</ul><p>done</p>`;
+            document.querySelector(".loader").style.display = "none";
+            document.querySelector("body").insertAdjacentHTML("beforeend", ul);
+          });
+          break;
+        case "followers":
+          call = svc.followers(req, options, (err, res) => {
+            if (err) {
+              console.log(err);
+            }
+            ul =
+              `<h5>Followers</h5>` +
+              `<ul>${res
+                .getUsersList()
+                .map(u => `<li>${userToHTML(u)}</li>`)
+                .join("")}</ul><p>done</p>`;
+            document.querySelector(".loader").style.display = "none";
+            document.querySelector("body").insertAdjacentHTML("beforeend", ul);
+          });
+          break;
+        case "following":
+          call = svc.following(req, options, (err, res) => {
+            if (err) {
+              console.log(err);
+            }
+            ul =
+              `<h5>Following</h5>` +
+              `<ul>${res
+                .getUsersList()
+                .map(u => `<li>${userToHTML(u)}</li>`)
+                .join("")}</ul><p>done</p>`;
+            document.querySelector(".loader").style.display = "none";
+            document.querySelector("body").insertAdjacentHTML("beforeend", ul);
+          });
+          break;
+        default:
+          ul = `
 <ul>
   <li><a href="/iglog/events">events</a> | what changed</li>
   <li><a href="/iglog/followers">followers</a> | who's following</li>
   <li><a href="/iglog/following">following</a> | who interests me</li>
 </ul>
         `;
-        document.querySelector(".loader").style.display = "none";
-        document.querySelector("body").insertAdjacentHTML("beforeend", ul);
-      } else {
-        switch (p[2]) {
-          case "events":
-            call = svc.eventLog(req, options, (err, res) => {
-              if (err) {
-                console.log(err);
-              }
-              ul =
-                `<h5>EventLog</h5>` +
-                `<ul>${res
-                  .getEventsList()
-                  .map(e => `<li>${eventToHTML(e)}</li>`)
-                  .join("")}</ul><p>done</p>`;
-              document.querySelector(".loader").style.display = "none";
-              document.querySelector("body").insertAdjacentHTML("beforeend", ul);
-            });
-            break;
-          case "followers":
-            call = svc.followers(req, options, (err, res) => {
-              if (err) {
-                console.log(err);
-              }
-              ul =
-                `<h5>Followers</h5>` +
-                `<ul>${res
-                  .getUsersList()
-                  .map(u => `<li>${userToHTML(u)}</li>`)
-                  .join("")}</ul><p>done</p>`;
-              document.querySelector(".loader").style.display = "none";
-              document.querySelector("body").insertAdjacentHTML("beforeend", ul);
-            });
-            break;
-          case "following":
-            call = svc.following(req, options, (err, res) => {
-              if (err) {
-                console.log(err);
-              }
-              ul =
-                `<h5>Following</h5>` +
-                `<ul>${res
-                  .getUsersList()
-                  .map(u => `<li>${userToHTML(u)}</li>`)
-                  .join("")}</ul><p>done</p>`;
-              document.querySelector(".loader").style.display = "none";
-              document.querySelector("body").insertAdjacentHTML("beforeend", ul);
-            });
-            break;
-          default:
-            ul = `unknown page`;
-            document.querySelector(".loader").style.display = "none";
-            document.querySelector("body").insertAdjacentHTML("beforeend", ul);
-        }
+          document.querySelector(".loader").style.display = "none";
+          document.querySelector("body").insertAdjacentHTML("beforeend", ul);
       }
     })
     .catch(function(error) {
