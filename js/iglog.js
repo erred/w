@@ -45,6 +45,8 @@ function signedIn(user) {
   <li><a href="/iglog/following">following</a> | who interests me</li>
 </ul>
         `;
+        document.querySelector(".loader").style.display = "none";
+        document.querySelector("body").insertAdjacentHTML("beforeend", ul);
       } else {
         switch (p[2]) {
           case "events":
@@ -53,11 +55,11 @@ function signedIn(user) {
                 console.log(err);
               }
               ul =
-                `<h3>EventLog</h3>` +
+                `<h5>EventLog</h5>` +
                 `<ul>${res
                   .getEventsList()
                   .map(e => `<li>${eventToHTML(e)}</li>`)
-                  .join("")}</ul>`;
+                  .join("")}</ul><p>done</p>`;
             });
             document.querySelector(".loader").style.display = "none";
             document.querySelector("body").insertAdjacentHTML("beforeend", ul);
@@ -68,11 +70,11 @@ function signedIn(user) {
                 console.log(err);
               }
               ul =
-                `<h3>Followers</h3>` +
+                `<h5>Followers</h5>` +
                 `<ul>${res
                   .getUsersList()
                   .map(u => `<li>${userToHTML(u)}</li>`)
-                  .join("")}</ul>`;
+                  .join("")}</ul><p>done</p>`;
               document.querySelector(".loader").style.display = "none";
               document.querySelector("body").insertAdjacentHTML("beforeend", ul);
             });
@@ -83,11 +85,11 @@ function signedIn(user) {
                 console.log(err);
               }
               ul =
-                `<h3>Followers</h3>` +
+                `<h5>Followers</h5>` +
                 `<ul>${res
                   .getUsersList()
                   .map(u => `<li>${userToHTML(u)}</li>`)
-                  .join("")}</ul>`;
+                  .join("")}</ul><p>done</p>`;
               document.querySelector(".loader").style.display = "none";
               document.querySelector("body").insertAdjacentHTML("beforeend", ul);
             });
@@ -107,7 +109,7 @@ function signedIn(user) {
 function userToHTML(u) {
   return `
 <a href="https://instagram.com/${u.getUsername()}">@${u.getUsername()}</a>
-<mark>${u.getDisplayname}</mark>
+<mark>${u.getDisplayname()}</mark>
   `;
 }
 function eventToHTML(e) {
