@@ -32,6 +32,12 @@
         "source": "/readss",
         "headers": [{ "key": "Link", "value": "</readss/index.js>; rel=preload; as=script" }]
       }
+    ],
+    "rewrites": [
+      {
+        "source": "/iglog{,/**}",
+        "destination": "/iglog.html"
+      }
     ]
   }
 }

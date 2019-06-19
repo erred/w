@@ -7,6 +7,7 @@ steps:
       - -d
       - src
       - js/authed.html
+      - js/iglog.html
       - js/readss.html
 
   - name: gcr.io/$PROJECT_ID/site-builder:latest
