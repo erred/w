@@ -60,9 +60,9 @@ function signedIn(user) {
                   .getEventsList()
                   .map(e => `<li>${eventToHTML(e)}</li>`)
                   .join("")}</ul><p>done</p>`;
+              document.querySelector(".loader").style.display = "none";
+              document.querySelector("body").insertAdjacentHTML("beforeend", ul);
             });
-            document.querySelector(".loader").style.display = "none";
-            document.querySelector("body").insertAdjacentHTML("beforeend", ul);
             break;
           case "followers":
             call = svc.followers(req, options, (err, res) => {
@@ -85,7 +85,7 @@ function signedIn(user) {
                 console.log(err);
               }
               ul =
-                `<h5>Followers</h5>` +
+                `<h5>Following</h5>` +
                 `<ul>${res
                   .getUsersList()
                   .map(u => `<li>${userToHTML(u)}</li>`)
