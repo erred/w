@@ -9,19 +9,16 @@ const fireConf = {
 };
 
 var uiConf = {
-    callbacks: {
-      uiShown: function() {
-        document.querySelector(".loader").style.display = "none";
-      }
-    },
-    signInFlow: "popup",
-    signInSuccessUrl: window.location.pathname,
-    signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
-    tosUrl: "/terms",
-    privacyPolicyUrl: "/privacy"
-  };
+  callbacks: {
+    uiShown: function() {
+      document.querySelector(".loader").style.display = "none";
+    }
+  },
+  signInFlow: "popup",
+  signInSuccessUrl: window.location.pathname,
+  signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
+  tosUrl: "/terms",
+  privacyPolicyUrl: "/privacy"
+};
 
-export {
-  fireConf
-  uiConf,
-}
+export { fireConf, uiConf };
