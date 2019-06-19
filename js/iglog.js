@@ -126,7 +126,7 @@ function eventToHTML(e) {
   return `
 ${userToHTML(e.getUser())}
 <br>
-<time datetime="${e.getTime()}">${e.getTime()}</time><span>${type}</span>`;
+<time datetime="${e.getTime()}">${e.getTime()}</time> | <span>${type}</span>`;
 }
 
 function signedOut() {
