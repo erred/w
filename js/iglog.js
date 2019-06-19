@@ -34,6 +34,7 @@ function signedIn(user) {
       let svc = new FollowatchClient("https://api.seankhliao.com");
       let req = new Request();
       let ul = ``;
+      let call = null;
 
       let p = window.location.pathname.split("/");
       if (p.length == 2) {
@@ -47,7 +48,7 @@ function signedIn(user) {
       } else {
         switch (p[2]) {
           case "events":
-            let call = svc.eventLog(req, options, (err, res) => {
+            call = svc.eventLog(req, options, (err, res) => {
               if (err) {
                 console.log(err);
               }
@@ -59,7 +60,7 @@ function signedIn(user) {
                   .join("")}</ul>`;
             });
           case "followers":
-            let call = svc.followers(req, options, (err, res) => {
+            call = svc.followers(req, options, (err, res) => {
               if (err) {
                 console.log(err);
               }
@@ -71,7 +72,7 @@ function signedIn(user) {
                   .join("")}</ul>`;
             });
           case "following":
-            let call = svc.following(req, options, (err, res) => {
+            call = svc.following(req, options, (err, res) => {
               if (err) {
                 console.log(err);
               }
