@@ -36,7 +36,7 @@ function signedIn(user) {
       let ul = ``;
 
       let p = window.location.pathname.split("/");
-      if (p.length == 1) {
+      if (p.length == 2) {
         ul = `
 <ul>
   <li><a href="/iglog/events">events</a> | what changed</li>
@@ -45,7 +45,7 @@ function signedIn(user) {
 </ul>
         `;
       } else {
-        switch (p[1]) {
+        switch (p[2]) {
           case "events":
             call = svc.eventLog(req, options, (err, res) => {
               if (err) {
