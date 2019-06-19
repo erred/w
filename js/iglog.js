@@ -1,3 +1,5 @@
+import { fireConf, uiConf } from "./config.js";
+
 import { Request, EventType } from "./iglog_pb.js";
 import { FollowatchClient } from "./iglog_grpc_web_pb.js";
 
@@ -6,30 +8,19 @@ import * as firebaseui from "firebaseui";
 
 import "firebase/auth";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyAZwB-8GDcap51t7cDUm1BDe3wN3f-DS3o",
-  authDomain: "com-seankhliao.firebaseapp.com",
-  databaseURL: "https://com-seankhliao.firebaseio.com",
-  projectId: "com-seankhliao",
-  storageBucket: "com-seankhliao.appspot.com",
-  messagingSenderId: "330311169810",
-  appId: "1:330311169810:web:6f914fab94f0b716"
-};
-
 window.addEventListener("load", () => {
-  firebase.initializeApp(firebaseConfig);
+  firebase.initializeApp(fireConf);
   firebase.auth().onAuthStateChanged(user => (user ? signedIn(user) : signedOut()));
 });
 
 function signedIn(user) {
   document.querySelector("#firebaseui-auth-container").style.display = "none";
-  console.log("onstatechanged signed in");
   document.querySelector(".loader").style.display = "block";
 
   firebase
     .auth()
     .currentUser.getIdToken(/* forceRefresh */ true)
-    .then(function(idToken) {
+    .then(idToken => {
       let options = { authorization: idToken };
       let svc = new FollowatchClient("https://api.seankhliao.com");
       let req = new Request();
@@ -40,65 +31,54 @@ function signedIn(user) {
       p.push("unkmown");
       switch (p[2]) {
         case "events":
-          call = svc.eventLog(req, options, (err, res) => {
-            if (err) {
-              console.log(err);
-            }
-            ul =
-              `<h5>EventLog</h5>` +
-              `<ul>${res
-                .getEventsList()
-                .map(e => `<li>${eventToHTML(e)}</li>`)
-                .join("")}</ul><p>done</p>`;
-            document.querySelector(".loader").style.display = "none";
-            document.querySelector("body").insertAdjacentHTML("beforeend", ul);
-          });
+          call = svc.eventLog(req, options, handleShow(showEvents));
           break;
         case "followers":
-          call = svc.followers(req, options, (err, res) => {
-            if (err) {
-              console.log(err);
-            }
-            ul =
-              `<h5>Followers</h5>` +
-              `<ul>${res
-                .getUsersList()
-                .map(u => `<li>${userToHTML(u)}</li>`)
-                .join("")}</ul><p>done</p>`;
-            document.querySelector(".loader").style.display = "none";
-            document.querySelector("body").insertAdjacentHTML("beforeend", ul);
-          });
+          call = svc.followers(req, options, handleShow(showUsers));
           break;
         case "following":
-          call = svc.following(req, options, (err, res) => {
-            if (err) {
-              console.log(err);
-            }
-            ul =
-              `<h5>Following</h5>` +
-              `<ul>${res
-                .getUsersList()
-                .map(u => `<li>${userToHTML(u)}</li>`)
-                .join("")}</ul><p>done</p>`;
-            document.querySelector(".loader").style.display = "none";
-            document.querySelector("body").insertAdjacentHTML("beforeend", ul);
-          });
+          call = svc.following(req, options, handleShow(showUsers));
           break;
         default:
-          ul = `
-<ul>
-  <li><a href="/iglog/events">events</a> | what changed</li>
-  <li><a href="/iglog/followers">followers</a> | who's following</li>
-  <li><a href="/iglog/following">following</a> | who interests me</li>
-</ul>
-        `;
-          document.querySelector(".loader").style.display = "none";
-          document.querySelector("body").insertAdjacentHTML("beforeend", ul);
+          showDefault();
       }
     })
     .catch(function(error) {
       console.log(error);
     });
+}
+
+function handleShow(handler) {
+  return function(err, res) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    handler(res);
+  };
+}
+function showEvents(res) {
+  showContent(`
+    <h5>EventLog</h5>
+    <p><span>total: ${res.getEventsList().length}</span></p>
+    ${showList(res.getEventsList(), e => `<li>${eventToHTML(e)}</li>`)}`);
+}
+function showUsers(res) {
+  showContent(`
+    <h5>Following</h5>
+    <p><span>total: ${res.getUsersList().length}</span></p>
+    ${showList(res.getUsersList(), u => `<li>${userToHTML(u)}</li>`)}`);
+}
+function showList(list, lambda) {
+  return `
+    <ul>
+      ${list.map(lambda).join("")}
+    </ul>
+  `;
+}
+function showContent(ul) {
+  document.querySelector(".loader").style.display = "none";
+  document.querySelector("body").insertAdjacentHTML("beforeend", ul);
 }
 
 function userToHTML(u) {
@@ -107,6 +87,7 @@ function userToHTML(u) {
 <mark>${u.getDisplayname()}</mark>
   `;
 }
+
 function eventToHTML(e) {
   let type = "unknown";
   switch (e.getType()) {
@@ -129,6 +110,15 @@ ${userToHTML(e.getUser())}
 <time datetime="${e.getTime()}">${e.getTime()}</time> | <span>${type}</span>`;
 }
 
+function showDefault() {
+  showContent(`
+    <ul>
+      <li><a href="/iglog/events">events</a> | what changed</li>
+      <li><a href="/iglog/followers">followers</a> | who's following</li>
+      <li><a href="/iglog/following">following</a> | who interests me</li>
+    </ul>`);
+}
+
 function signedOut() {
   let ui = new firebaseui.auth.AuthUI(firebase.auth());
   let uiConfig = {
@@ -142,7 +132,7 @@ function signedOut() {
       }
     },
     signInFlow: "popup",
-    signInSuccessUrl: "/authed",
+    signInSuccessUrl: window.location.pathname,
     signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
     tosUrl: "/terms",
     privacyPolicyUrl: "/privacy"
