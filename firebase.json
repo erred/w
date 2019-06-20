@@ -26,11 +26,15 @@
       },
       {
         "source": "/authed",
-        "headers": [{ "key": "Link", "value": "</authed/index.js>; rel=preload; as=script" }]
+        "headers": [{ "key": "Link", "value": "</authed.js>; rel=preload; as=script" }]
+      },
+      {
+        "source": "/iglog{,/**}",
+        "headers": [{ "key": "Link", "value": "</iglog.js>; rel=preload; as=script" }]
       },
       {
         "source": "/readss",
-        "headers": [{ "key": "Link", "value": "</readss/index.js>; rel=preload; as=script" }]
+        "headers": [{ "key": "Link", "value": "</readss.js>; rel=preload; as=script" }]
       }
     ],
     "rewrites": [
