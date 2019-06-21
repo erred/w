@@ -1,0 +1,59 @@
+title = authnz
+date = 2019-06-21
+desc = authentication and authorization
+
+---
+
+_authn_: authentication is proving your identity
+
+_authz_: authorization is proving your permission to access something
+
+# RBAC
+
+role based access control
+
+- every active thing (accessor) has an identity, commonly implemented as _service accounts_
+- every passive things (accessed) has permissions needed to access them
+- _roles_ are groups of permissions which can be assigned to identities
+
+## GCP
+
+_service accounts_ are assigned roles in the [iam/admin](https://console.cloud.google.com/iam-admin/iam) page
+
+_roles_ and their permissions can be edited in the [iam/roles](https://console.cloud.google.com/iam-admin/roles) page
+
+## Kubernetes
+
+_service accounts_ can be created through the `ServiceAccount` kind
+
+_roles_ can be created through the `Role` and `ClusterRole` kinds
+
+_roles_ can be assigned to service accounts through `RoleBinding` and `ClusterRoleBinding` kinds
+
+# ACL
+
+access control lists
+
+similar to RBAC,
+but directly maps permissions to users.
+ACL with only groups is identical to RBAC
+
+# in the wild
+
+## _single_ key
+
+Your access token / key is tied to your identity,
+and sometimes limited in specific permissions,
+examples:
+
+- SSH key
+- Magic link emails
+
+## _multi_ key
+
+You have a (public) stable id and a (volatile) secret,
+examples:
+
+- username + password
+- id + secret
+- id + access token: often you are given a long lasting refresh token used to obtain a short lived access token
