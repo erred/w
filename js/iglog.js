@@ -100,16 +100,16 @@ function eventToHTML(e) {
   let type = "unknown";
   switch (e.getType()) {
     case EventType.FOLLOWERGAINED:
-      type = '<span style="color:#349264">+follower </span>';
+      type = '<span class="g">+follower </span>';
       break;
     case EventType.FOLLOWERLOST:
-      type = '<span style="color:#df3d3d">-follower </span>';
+      type = '<span class="r">-follower </span>';
       break;
     case EventType.FOLLOWINGGAINED:
-      type = '<span style="color:#349264">+following</span>';
+      type = '<span class="g">+following</span>';
       break;
     case EventType.FOLLOWINGLOST:
-      type = '<span style="color:#df3d3d">-following</span>';
+      type = '<span class="r">-following</span>';
       break;
   }
   return `
