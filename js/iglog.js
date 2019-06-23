@@ -28,9 +28,23 @@ function signedIn(user) {
   document.querySelector("#firebaseui-auth-container").style.display = "none";
   document.querySelector(".loader").style.display = "block";
 
+  document.querySelector("footer").insertAdjacentHTML("beforeend", `| <a id="logout" href="#">logout</a>`);
+  document.querySelector("#logout").addEventListener("click", e => {
+    e.preventDefault();
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        location.reload();
+      })
+      .catch(e => {
+        console.log("logout", e);
+      });
+  });
+
   firebase
     .auth()
-    .currentUser.getIdToken(/* forceRefresh */ true)
+    .currentUser.getIdToken()
     .then(idToken => {
       let options = { authorization: idToken };
       let svc = new FollowatchClient("https://api.seankhliao.com");
