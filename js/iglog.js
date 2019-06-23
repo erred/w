@@ -10,7 +10,18 @@ import "firebase/auth";
 
 window.addEventListener("load", () => {
   firebase.initializeApp(fireConf);
-  firebase.auth().onAuthStateChanged(user => (user ? signedIn(user) : signedOut()));
+
+  let p = window.location.pathname.split("/");
+  p.push("unkmown");
+  switch (p[2]) {
+    case "events":
+    case "followers":
+    case "following":
+      firebase.auth().onAuthStateChanged(user => (user ? signedIn(user) : signedOut()));
+      break;
+    default:
+      showDefault();
+  }
 });
 
 function signedIn(user) {
@@ -28,7 +39,6 @@ function signedIn(user) {
       let call = null;
 
       let p = window.location.pathname.split("/");
-      p.push("unkmown");
       switch (p[2]) {
         case "events":
           call = svc.eventLog(req, options, handleShow(showEvents));
@@ -39,8 +49,6 @@ function signedIn(user) {
         case "following":
           call = svc.following(req, options, handleShow(showUsers));
           break;
-        default:
-          showDefault();
       }
     })
     .catch(function(error) {
@@ -78,7 +86,7 @@ function showList(list, lambda) {
 }
 function showContent(ul) {
   document.querySelector(".loader").style.display = "none";
-  document.querySelector("body").insertAdjacentHTML("beforeend", ul);
+  document.querySelector("main").insertAdjacentHTML("beforeend", ul);
 }
 
 function userToHTML(u) {
@@ -92,22 +100,22 @@ function eventToHTML(e) {
   let type = "unknown";
   switch (e.getType()) {
     case EventType.FOLLOWERGAINED:
-      type = "followed you";
+      type = '<span color="#349264">+follower </span>';
       break;
     case EventType.FOLLOWERLOST:
-      type = "unfollowed you";
+      type = '<span color="#df3d3d">-follower </span>';
       break;
     case EventType.FOLLOWINGGAINED:
-      type = "you followed";
+      type = '<span color="#349264">+following</span>';
       break;
     case EventType.FOLLOWINGLOST:
-      type = "you unfollowed";
+      type = '<span color="#df3d3d">-following</span>';
       break;
   }
   return `
 ${userToHTML(e.getUser())}
 <br>
-<time datetime="${e.getTime()}">${e.getTime()}</time> | <span>${type}</span>`;
+<span>${type}</span> | <time datetime="${e.getTime()}">${e.getTime()}</time>`;
 }
 
 function showDefault() {

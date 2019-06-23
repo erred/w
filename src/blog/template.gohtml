@@ -10,42 +10,21 @@ ul {
 ul > li:before {
     display: none;
 }
-header {
-    margin-bottom: 30vh;
-}
 </style>
 
-    <header>
-      <h1><a href="/" tabindex="-1">S</a></h1>
-      <h1><a href="/" tabindex="-1">E</a></h1>
-      <h1><a href="/" tabindex="-1">A</a></h1>
-      <h1><a href="/" tabindex="-1">N</a></h1>
-      <h2>
-        <a href="/" tabindex="-1"><mark>K</mark></a>
-      </h2>
-      <h2>
-        <a href="/" tabindex="-1"><mark>.</mark></a>
-      </h2>
-      <h2>
-        <a href="/" tabindex="-1"><mark>H</mark></a>
-      </h2>
-      <h2>
-        <a href="/" tabindex="-1"><mark>.</mark></a>
-      </h2>
-      <h2><a href="/" tabindex="-1">L</a></h2>
-      <h2><a href="/" tabindex="-1">I</a></h2>
-      <h2><a href="/" tabindex="-1">A</a></h2>
-      <h2><a href="/" tabindex="-1">O</a></h2>
-      <h3><a href="/blog">b<mark>log</mark></a></h3>
-    </header>
+<header>
+    {{ template "header-name" }}
+    <h3><a href="/blog">b<mark>log</mark></a></h3>
+    <p>Artisanal, <mark>hand-crafted</mark> blog posts imbued with delayed <mark>regrets</mark></p>
+</header>
 
-<p>Artisanal, <mark>hand-crafted</mark> blog posts imbued with delayed <mark>regrets</mark></p>
-
-<ul>
-{{ range .posts }}
-    <li><time datetime="{{ .Date }}">{{ .Date }}</time> | <a href="{{ .URL }}">{{ .Title }}</a></li>
-{{ end }}
-</ul>
+<main>
+    <ul>
+    {{ range .posts }}
+        <li><time datetime="{{ .Date }}">{{ .Date }}</time> | <a href="{{ .URL }}">{{ .Title }}</a></li>
+    {{ end }}
+    </ul>
+</main>
 
 {{ template "foot" . }}
 
@@ -58,12 +37,14 @@ header {
 {{ template "head" . }}
 <title>{{ .title }} | blog | seankhliao</title>
 
-<hgroup>
-  <h1><mark>{{ .title }}</mark></h1>
-  <p><a href="/">seankhliao</a> / <a href="/blog">blog</a> / <time datetime="{{ .date }}">{{ .date }}</time></p>
-</hgroup>
+<main>
+    <hgroup>
+      <h1><mark>{{ .title }}</mark></h1>
+      <p><a href="/">seankhliao</a> / <a href="/blog">blog</a> / <time datetime="{{ .date }}">{{ .date }}</time></p>
+    </hgroup>
 
-{{ .content }}
+    {{ .content }}
+</main>
 
 {{ template "foot" . }}
 

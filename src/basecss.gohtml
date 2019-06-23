@@ -17,33 +17,21 @@
   font: 18px var(--mono);
 }
 
-/* ===== layout ===== */
+/* ===== layout general ===== */
 body {
-  display: grid;
-  grid: auto-flow / 1fr minmax(280px, 840px) 1fr;
-  grid-gap: 0 1em;
-  margin: 0 0 10vh 0;
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 0;
 }
 
-body > * {
-  grid-column: 2 / span 1;
-}
 
-body > picture,
-body > .gist {
-  grid-column: 1 / span 3;
-}
-picture img {
-  width: 100%;
-}
-
+/* ===== layout header ===== */
 header {
   display: grid;
   grid: repeat(auto-fill, 10vmin) / repeat(auto-fill, 10vmin);
   grid-column: 1 / span 3;
-  height: 60vh;
-  margin: 10vh 2vw 10vh 2vw;
-  place-content: center;
+  height: 80vh;
+  place-content: center center;
 }
 h1 {
   font: 700 5vmin var(--serif);
@@ -66,6 +54,26 @@ header > p {
   place-self: start end;
   text-align: right;
 }
+
+
+/* ===== layout main ===== */
+main {
+  display: grid;
+  grid: auto-flow / 1fr minmax(280px, 840px) 1fr;
+  grid-gap: 0 1em;
+  margin: 20vh 0;
+}
+main > * {
+  grid-column: 2 / span 1;
+}
+main > picture,
+main > pre {
+    grid-column: 1 / span 3;
+}
+picture img {
+  width: 100%;
+}
+
 h4 {
   font: 700 2em var(--mono);
   margin: 1.5em 0 0.25em 0;
@@ -82,6 +90,14 @@ p {
   line-height: 1.5;
   margin: 0 0 0.25em 0;
 }
+
+
+/* ===== layout footer ===== */
+footer {
+    margin: 10vh auto 3vh;
+}
+
+
 
 /* ===== style ===== */
 a,
@@ -124,12 +140,11 @@ blockquote {
 pre {
   background: #404040;
   font: 1em var(--mono);
-  grid-column: 1 / span 3;
   overflow-x: scroll;
   padding: 1em;
 }
 pre::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 code {
   background: #404040;
@@ -137,7 +152,7 @@ code {
   padding: 0.25em 0.5em;
 }
 pre code {
-    padding: 0;
+  padding: 0;
 }
 
 em,
@@ -150,6 +165,8 @@ time,
 span {
   color: var(--gray);
 }
+
+
 /* ===== hide recaptcha ===== */
 .grecaptcha-badge { visibility: hidden; }
 </style>

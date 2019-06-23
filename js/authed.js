@@ -29,16 +29,21 @@ function signedIn(user) {
 
       let svc = new AuthedClient("https://api.seankhliao.com");
       let call = svc.echo(msg, options, (err, res) => {
+        let msg = ``;
         if (err) {
           console.log(err);
-          return;
+          msg = `<p>${err}</p>`;
+        } else {
+          msg = `<p>${res.getMsg()}</p>`;
         }
         document.querySelector(".loader").style.display = "none";
-        document.querySelector("body").insertAdjacentHTML("beforeend", `<p>${res.getMsg()}</p>`);
+        document.querySelector("main").insertAdjacentHTML("beforeend", msg);
       });
     })
     .catch(function(error) {
       console.log(error);
+      document.querySelector(".loader").style.display = "none";
+      document.querySelector("main").insertAdjacentHTML("beforeend", `<p>${err}</p>`);
     });
 }
 

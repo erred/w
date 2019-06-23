@@ -1,77 +1,67 @@
-{{ template "head"  . }}
+{{ template "head" . }}
 <title>privacy | seankhliao</title>
 <style>
-body {
-  grid-gap: 25vh 1em;
-}
+  main {
+    grid-gap: 25vh 1em;
+  }
 </style>
 
-    <header>
-      <h1><a href="/" tabindex="-1">S</a></h1>
-      <h1><a href="/" tabindex="-1">E</a></h1>
-      <h1><a href="/" tabindex="-1">A</a></h1>
-      <h1><a href="/" tabindex="-1">N</a></h1>
-      <h2>
-        <a href="/" tabindex="-1"><mark>K</mark></a>
-      </h2>
-      <h2>
-        <a href="/" tabindex="-1"><mark>.</mark></a>
-      </h2>
-      <h2>
-        <a href="/" tabindex="-1"><mark>H</mark></a>
-      </h2>
-      <h2>
-        <a href="/" tabindex="-1"><mark>.</mark></a>
-      </h2>
-      <h2><a href="/" tabindex="-1">L</a></h2>
-      <h2><a href="/" tabindex="-1">I</a></h2>
-      <h2><a href="/" tabindex="-1">A</a></h2>
-      <h2><a href="/" tabindex="-1">O</a></h2>
-      <h3><mark>Privacy</mark> Policy</h3>
-    </header>
+<header>
+  {{ template "header-name" }}
+  <h3><mark>Privacy</mark> Policy</h3>
+</header>
 
+<main>
+  <section>
+    <h4>Scope</h4>
+    <p>Anyone viewing my anything under my site <a href="https://seankhliao.com">seankhliao.com</a></p>
+  </section>
 
-    <section>
-      <h4>Scope</h4>
-      <p>Anyone viewing my anything under my site <a href="https://seankhliao.com">seankhliao.com</a></p>
-    </section>
+  <section>
+    <h4><mark>Data</mark> Collection</h4>
+    <p>
+      Google Analytics, Google reCAPTCHA, Cloudflare Analytics collect anonymized data through the use of server logs
+      and client side cookies
+    </p>
+    <ul>
+      <li>Traffic source</li>
+      <li>Session information</li>
+      <li>Device profile</li>
+      <li>and some more</li>
+    </ul>
+  </section>
 
-    <section>
-      <h4><mark>Data</mark> Collection</h4>
-      <p>Google Analytics, Google reCAPTCHA, Cloudflare Analytics collect anonymized data through the use of server logs and client side cookies</p>
-      <ul>
-        <li>Traffic source</li>
-        <li>Session information</li>
-        <li>Device profile</li>
-        <li>and some more</li>
-      </ul>
-    </section>
+  <section>
+    <h4>Data <mark>Use</mark></h4>
+    <p>
+      (Aggregate) Tracking information grants me a better understanding od who visits my site, what brought them here,
+      and what they are viewing. This data informs my decisions on the design and content of this site.
+    </p>
+    <p>
+      All activity is bound by the
+      <a href="https://www.google.com/analytics/terms/">Google Analytics Terms of Service</a>
+    </p>
+  </section>
 
-    <section>
-      <h4>Data <mark>Use</mark></h4>
-      <p>(Aggregate) Tracking information grants me a better understanding od who visits my site, what brought them here, and what they are viewing. This data informs my decisions on the design and content of this site.</p>
-      <p>All activity is bound by the <a href="https://www.google.com/analytics/terms/">Google Analytics Terms of Service</a></p>
-    </section>
+  <section>
+    <h4>Choices and <mark>Actions</mark></h4>
+    <p>You can turn off cookies in your browser</p>
+  </section>
 
-    <section>
-      <h4>Choices and <mark>Actions</mark></h4>
-      <p>You can turn off cookies in your browser</p>
-    </section>
+  <section>
+    <h4>Additional <mark>Info</mark></h4>
+    <p>Third party privacy policies</p>
+    <ul>
+      <li><a href="https://www.cloudflare.com/privacypolicy/">Cloudflare</a> privacy policy</li>
+      <li><a href="https://policies.google.com/privacy?hl=en">Google</a> privacy policy</li>
+    </ul>
+    <p>Third party terms of service</p>
+    <ul>
+      <li><a href="https://www.cloudflare.com/website-terms/">Cloudflare</a> terms of service</li>
+      <li><a href="https://policies.google.com/terms?hl=en">Google</a> terms of service</li>
+      <li><a href="https://www.google.com/analytics/terms/us.html">Google Analytics</a> terms of service</li>
+    </ul>
+  </section>
+</main>
 
-    <section>
-      <h4>Additional <mark>Info</mark></h4>
-      <p>Third party privacy policies</p>
-      <ul>
-        <li><a href="https://www.cloudflare.com/privacypolicy/">Cloudflare</a> privacy policy</li>
-        <li><a href="https://policies.google.com/privacy?hl=en">Google</a> privacy policy</li>
-      </ul>
-      <p>Third party terms of service</p>
-      <ul>
-        <li><a href="https://www.cloudflare.com/website-terms/">Cloudflare</a> terms of service</li>
-        <li><a href="https://policies.google.com/terms?hl=en">Google</a> terms of service</li>
-        <li><a href="https://www.google.com/analytics/terms/us.html">Google Analytics</a> terms of service</li>
-      </ul>
-    </section>
-
-  </body>
 {{ template "foot" }}

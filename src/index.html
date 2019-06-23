@@ -1,88 +1,78 @@
-{{ template "head"  . }}
+{{ template "head" . }}
 <title>seankhliao</title>
 <style>
-body {
-  grid-gap: 25vh 1em;
-}
+  main {
+    grid-gap: 25vh 1em;
+  }
 </style>
 
-    <header>
-      <h1><a href="/" tabindex="-1">S</a></h1>
-      <h1><a href="/" tabindex="-1">E</a></h1>
-      <h1><a href="/" tabindex="-1">A</a></h1>
-      <h1><a href="/" tabindex="-1">N</a></h1>
-      <h2>
-        <a href="/" tabindex="-1"><mark>K</mark></a>
-      </h2>
-      <h2>
-        <a href="/" tabindex="-1"><mark>.</mark></a>
-      </h2>
-      <h2>
-        <a href="/" tabindex="-1"><mark>H</mark></a>
-      </h2>
-      <h2>
-        <a href="/" tabindex="-1"><mark>.</mark></a>
-      </h2>
-      <h2><a href="/" tabindex="-1">L</a></h2>
-      <h2><a href="/" tabindex="-1">I</a></h2>
-      <h2><a href="/" tabindex="-1">A</a></h2>
-      <h2><a href="/" tabindex="-1">O</a></h2>
-    </header>
+<header>
+  {{ template "header-name" }}
+</header>
 
-    <section>
-      <h4>Hey, I'm <mark>Sean</mark></h4>
+<main>
+  <section>
+    <h4>Hey, I'm <mark>Sean</mark></h4>
 
-      <h6><mark>Bleeding Edge</mark> Software Developer</h6>
-      <p>I have too much time to follow the hype and my stuff is always half-broken</p>
+    <h6><mark>Bleeding Edge</mark> Software Developer</h6>
+    <p>I have too much time to follow the hype and my stuff is always half-broken</p>
 
-      <h6>Cloud Native <mark>Gopher</mark></h6>
-      <p>Writes <strong>Go</strong>, runs <strong>Kubernetes</strong></p>
-    </section>
+    <h6>Cloud Native <mark>Gopher</mark></h6>
+    <p>Writes <strong>Go</strong>, runs <strong>Kubernetes</strong></p>
+  </section>
 
-    <section>
-      <h5>Where to <mark>Find</mark> Me</h5>
-      <ul>
-        <li><a href="mailto:sean@seankhliao.com">Email</a> — mail, for <em>me</em>?</li>
-        <li><a href="https://github.com/seankhliao">Github</a> — build first, regret later</li>
-        <li><a href="https://github.com/erred">Github Org</a> — where old code goes to die</li>
-      </ul>
-    </section>
+  <section>
+    <h5>Where to <mark>Find</mark> Me</h5>
+    <ul>
+      <li><a href="mailto:sean@seankhliao.com">Email</a> — mail, for <em>me</em>?</li>
+      <li><a href="https://github.com/seankhliao">Github</a> — build first, regret later</li>
+      <li><a href="https://github.com/erred">Github Org</a> — where old code goes to die</li>
+    </ul>
+  </section>
 
-    <section>
-      <h5>Get Into My <mark>Mind</mark></h5>
-      <ul>
-        <li><a href="/blog">blog</a> — home of random thoughts</li>
-        <li><a href="/readss">readss</a> — feed of things to read</li>
-        <li><a href="https://instagram.com/seankhliao">Instagram</a> — private, stream of consciousness</li>
-        <li><a href="https://open.spotify.com/user/spotify/playlist/37i9dQZF1EjwWZRNXDwjdE">Spotify 2018 Playlist</a> — getting sadder</li>
-        <li><a href="https://open.spotify.com/user/spotify/playlist/37i9dQZF1E9SEgcQFsXQMv">Spotify 2017 Playlist</a> — more pop?</li>
-        <li><a href="https://open.spotify.com/user/spotify/playlist/37i9dQZF1CyMhRDKkjuojM">Spotify 2016 Playlist</a> — pop?</li>
-      </ul>
-    </section>
+  <section>
+    <h5>Get Into My <mark>Mind</mark></h5>
+    <ul>
+      <li><a href="/blog">blog</a> — home of random thoughts</li>
+      <li><a href="/readss">readss</a> — feed of things to read</li>
+      <li><a href="https://instagram.com/seankhliao">Instagram</a> — private, stream of consciousness</li>
+      <li>
+        <a href="https://open.spotify.com/user/spotify/playlist/37i9dQZF1EjwWZRNXDwjdE">Spotify 2018 Playlist</a> —
+        getting sadder
+      </li>
+      <li>
+        <a href="https://open.spotify.com/user/spotify/playlist/37i9dQZF1E9SEgcQFsXQMv">Spotify 2017 Playlist</a> — more
+        pop?
+      </li>
+      <li>
+        <a href="https://open.spotify.com/user/spotify/playlist/37i9dQZF1CyMhRDKkjuojM">Spotify 2016 Playlist</a> — pop?
+      </li>
+    </ul>
+  </section>
 
-    <picture>
-      <source srcset="/map.webp" type="image/webp" />
-      <img src="/map.png" alt="map of countries I've visited" />
-    </picture>
+  <picture>
+    <source srcset="/map.webp" type="image/webp" />
+    <img src="/map.png" alt="map of countries I've visited" />
+  </picture>
 
-    <section>
-      <h5>Travel <mark>Log</mark></h5>
-      <ul>
-        <li>Canada — 2019-04</li>
-        <li>England — <mark>2009 - 2011</mark></li>
-        <li>Hong Kong — 2017-08</li>
-        <li>Indonesia — 2017-02, 2017-08, 2018-02, 2018-12</li>
-        <li>India — 2015-08</li>
-        <li>Japan — 2018-03</li>
-        <li>Philipines — 2017-08</li>
-        <li>Russia — <mark>2000 - 2005</mark></li>
-        <li>Sweden — 2018-01</li>
-        <li>Singapore — 2017-01</li>
-        <li>South Korea — 2018-06</li>
-        <li>Taiwan — <mark>1996 - 2000, 2005 - 2009, 2011 - 2019</mark></li>
-        <li>Timor-Leste — 2018-02</li>
-        <li>United States — 2019-04</li>
-      </ul>
-    </section>
-  </body>
+  <section>
+    <h5>Travel <mark>Log</mark></h5>
+    <ul>
+      <li>Canada — 2019-04</li>
+      <li>England — <mark>2009 - 2011</mark></li>
+      <li>Hong Kong — 2017-08</li>
+      <li>Indonesia — 2017-02, 2017-08, 2018-02, 2018-12</li>
+      <li>India — 2015-08</li>
+      <li>Japan — 2018-03</li>
+      <li>Philipines — 2017-08</li>
+      <li>Russia — <mark>2000 - 2005</mark></li>
+      <li>Sweden — 2018-01</li>
+      <li>Singapore — 2017-01</li>
+      <li>South Korea — 2018-06</li>
+      <li>Taiwan — <mark>1996 - 2000, 2005 - 2009, 2011 - 2019</mark></li>
+      <li>Timor-Leste — 2018-02</li>
+      <li>United States — 2019-04</li>
+    </ul>
+  </section>
+</main>
 {{ template "foot" }}

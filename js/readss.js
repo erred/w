@@ -26,7 +26,7 @@ ${res
 </ul>
 `;
 
-    document.querySelector("body").insertAdjacentHTML("beforeend", ul);
+    document.querySelector("main").insertAdjacentHTML("beforeend", ul);
     let l = document.querySelector(".loader");
     if (l) {
       l.remove();

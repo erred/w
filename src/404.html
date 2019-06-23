@@ -1,34 +1,15 @@
-{{ template "head"  . }}
+{{ template "head" . }}
 <title>404 | seankhliao</title>
-    <header>
-      <h1><a href="/" tabindex="-1">S</a></h1>
-      <h1><a href="/" tabindex="-1">E</a></h1>
-      <h1><a href="/" tabindex="-1">A</a></h1>
-      <h1><a href="/" tabindex="-1">N</a></h1>
-      <h2>
-        <a href="/" tabindex="-1"><mark>K</mark></a>
-      </h2>
-      <h2>
-        <a href="/" tabindex="-1"><mark>.</mark></a>
-      </h2>
-      <h2>
-        <a href="/" tabindex="-1"><mark>H</mark></a>
-      </h2>
-      <h2>
-        <a href="/" tabindex="-1"><mark>.</mark></a>
-      </h2>
-      <h2><a href="/" tabindex="-1">L</a></h2>
-      <h2><a href="/" tabindex="-1">I</a></h2>
-      <h2><a href="/" tabindex="-1">A</a></h2>
-      <h2><a href="/" tabindex="-1">O</a></h2>
-      <h3><mark>404</mark> Not Found</h3>
-      <p>
-        Where did you go?<br>
-        I should know<br>
-        but it's cold, and I don't wanna be lonely<br>
-        So show me <a href="/"><mark>the way home</mark></a><br>
-        I can't lose another life<br>
-        </p>
-    </header>
-  </body>
+<header>
+  {{ template "header-name" }}
+  <h3><mark>404</mark> Not Found</h3>
+  <p>
+    Where did you go?<br />
+    I should know<br />
+    but it's cold, and I don't wanna be lonely<br />
+    So show me <a href="/"><mark>the way home</mark></a
+    ><br />
+    I can't lose another life<br />
+  </p>
+</header>
 {{ template "foot" }}
