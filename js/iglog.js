@@ -100,22 +100,22 @@ function eventToHTML(e) {
   let type = "unknown";
   switch (e.getType()) {
     case EventType.FOLLOWERGAINED:
-      type = '<span color="#349264">+follower </span>';
+      type = '<span style="color:#349264">+follower </span>';
       break;
     case EventType.FOLLOWERLOST:
-      type = '<span color="#df3d3d">-follower </span>';
+      type = '<span style="color:#df3d3d">-follower </span>';
       break;
     case EventType.FOLLOWINGGAINED:
-      type = '<span color="#349264">+following</span>';
+      type = '<span style="color:#349264">+following</span>';
       break;
     case EventType.FOLLOWINGLOST:
-      type = '<span color="#df3d3d">-following</span>';
+      type = '<span style="color:#df3d3d">-following</span>';
       break;
   }
   return `
 ${userToHTML(e.getUser())}
 <br>
-<span>${type}</span> | <time datetime="${e.getTime()}">${e.getTime()}</time>`;
+${type} | <time datetime="${e.getTime()}">${e.getTime()}</time>`;
 }
 
 function showDefault() {
