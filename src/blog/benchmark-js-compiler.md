@@ -20,6 +20,12 @@ es6, firebase, recaptcha, grpc-web
 
 - fast
 
+# result
+
+js is still shit
+
+they say they build tools for noobs but why do they all still need sooo much _config_
+
 ## parcel
 
 58s
@@ -29,3 +35,5 @@ es6, firebase, recaptcha, grpc-web
 needs too much config
 
 ## rollup
+
+same
