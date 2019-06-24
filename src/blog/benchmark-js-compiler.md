@@ -26,4 +26,6 @@ es6, firebase, recaptcha, grpc-web
 
 ## webpack
 
+needs too much config
+
 ## rollup
