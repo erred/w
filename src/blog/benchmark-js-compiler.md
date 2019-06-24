@@ -22,6 +22,8 @@ es6, firebase, recaptcha, grpc-web
 
 ## parcel
 
+58s
+
 ## webpack
 
 ## rollup
