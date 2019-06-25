@@ -1,0 +1,25 @@
+{{ template "head" . }}
+<title>seankhbot | seankhliao</title>
+<style>
+  main {
+    grid-gap: 25vh 1em;
+  }
+</style>
+
+<header>
+  {{ template "header-name" }}
+</header>
+
+<main>
+  <section>
+    <h4>seankhbot</h4>
+    <p>a dumb bot</p>
+  </section>
+
+  <iframe
+    allow="microphone;"
+    src="https://console.dialogflow.com/api-client/demo/embedded/ae37d7b3-7ced-4a47-98cb-b90ef30e2dcc"
+  >
+  </iframe>
+</main>
+{{ template "foot" }}
