@@ -145,9 +145,11 @@ func (p *Processor) Process() {
 			u: NewURL(dir + "/index.html"),
 			M: make(map[string]interface{}),
 		}
+		p.sitemap = append(p.sitemap, idxpage.u.Canonical())
 		var posts []PL
 		for _, page := range pages {
 			// fmt.Printf("processing %v %v\n", page.u, page.M)
+			p.sitemap = append(p.sitemap, page.u.Canonical())
 			posts = append(posts, PL{page.M["date"].(string), page.M["title"].(string), page.u.Relative()})
 			f, err := newFile(page.u.Dst())
 			if err != nil {
