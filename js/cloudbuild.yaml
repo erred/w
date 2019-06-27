@@ -1,11 +1,11 @@
 steps:
   - name: gcr.io/cloud-builders/git:latest
     id: cleanup
-    entrypoint: sh
+    entrypoint: bash
     args:
       - -c
       - >-
-        set -eux;
+        set -euxo pipefail;
         rm src/{authed,iglog,readss}.*
   - name: gcr.io/$PROJECT_ID/parcel:latest
     id: build js
