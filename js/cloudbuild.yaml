@@ -11,6 +11,7 @@ steps:
     id: build js
     args:
       - build
+      - --experimental-scope-hoisting
       - -d
       - src
       - js/authed.html
