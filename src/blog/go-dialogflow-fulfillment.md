@@ -1,4 +1,4 @@
-title = Go DialogFlow Fulfillment
+title = Go DialogFlow fulfillment
 date = 2019-06-26
 desc = Writing DialogFlow fulfillment servers in Go
 
@@ -38,9 +38,9 @@ but the json we're getting is encoded with the json parameter in the protobuf ta
 package main
 
 import (
-	  "net/http"
+    "net/http"
 
-	  "github.com/golang/protobuf/jsonpb"
+    "github.com/golang/protobuf/jsonpb"
     pb "google.golang.org/genproto/googleapis/cloud/dialogflow/v2"
 )
 
