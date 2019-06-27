@@ -13,9 +13,9 @@ ul > li:before {
 </style>
 
 <header>
+    <h2><a href="/blog">b<em>log</em></a></h2>
+    <p>Artisanal, <em>hand-crafted</em> blog posts imbued with delayed <em>regrets</em></p>
     {{ template "header-name" }}
-    <h3><a href="/blog">b<mark>log</mark></a></h3>
-    <p>Artisanal, <mark>hand-crafted</mark> blog posts imbued with delayed <mark>regrets</mark></p>
 </header>
 
 <main>
@@ -39,7 +39,7 @@ ul > li:before {
 
 <main>
     <hgroup>
-      <h1><mark>{{ .title }}</mark></h1>
+      <h1><em>{{ .title }}</em></h1>
       <p><a href="/">seankhliao</a> / <a href="/blog">blog</a> / <time datetime="{{ .date }}">{{ .date }}</time></p>
     </hgroup>
 

@@ -5,16 +5,17 @@
   box-sizing: border-box;
 }
 :root {
+/*
   --black: #000000;
   --primary: #a06be0;
   --gray: #999;
   --white: #eceff1;
-  background: var(--black);
-  color: var(--white);
-
   --mono: "Inconsolata", monospace;
   --serif: "Lora", serif;
-  font: 18px var(--mono);
+*/
+  background: #000;
+  color: #eceff1;
+  font: 18px "Inconsolata", monospace;
 }
 
 /* ===== layout general ===== */
@@ -27,32 +28,42 @@ body {
 
 /* ===== layout header ===== */
 header {
-  display: grid;
-  grid: repeat(auto-fill, 10vmin) / repeat(auto-fill, 10vmin);
-  grid-column: 1 / span 3;
-  height: 80vh;
-  place-content: center center;
+    display: grid;
+    grid:
+        [r1-s] ". . . subhead subhead"      1fr [r1-e]
+        [r1-s] ". . . subtitle subtitle"    1fr [r2-e]
+        [r3-s] " . . . . ."                 1fr [r3-e]
+        [r4-s] "logo logo logo logo logo"   1fr [r4-e]
+        / 1fr 1fr 1fr 1fr 1fr;
+    height: 80vh;
+    padding: 2vmin;
 }
-h1 {
-  font: 700 5vmin var(--serif);
-  grid-row: -2 / span 1;
+header h1 {
+    font: 700 5vmin "Lora", serif;
+    grid-area: logo;
+    margin: 0;
+    place-self: stretch start;
 }
-h2 {
-  font: 700 5vmin var(--serif);
-  grid-row: -1 / span 1;
+header h1 a {
+    display: grid;
+    grid: repeat(2, 10vmin) / repeat(8, 10vmin);
+    place-content: center center;
 }
-h3 {
-  font: 4.5vmin var(--mono);
-  grid-area: 2 / 1 / 2 / -2;
-  margin: 0;
-  place-self: end end;
+header h1 *:nth-child(n+5) {
+    grid-row: 2 / span 1;
 }
-header > p {
-  color: var(--gray);
-  font: 3.5vmin var(--mono);
-  grid-area: 3 / -7 / 3 / span 5;
-  place-self: start end;
-  text-align: right;
+header h2 {
+    font: 4.5vmin "Inconsolata", monospace;
+    grid-area: subhead;
+    margin: 0;
+    place-self: end;
+}
+header p {
+    color: #999;
+    font: 3.5vmin "Inconsolata", monospace;
+    grid-area: subtitle;
+    place-self: start end;
+    text-align: right;
 }
 
 
@@ -74,16 +85,20 @@ picture img {
   width: 100%;
 }
 
+h3 {
+  font: 700 2.7em "Inconsolata", monospace;
+  margin: 1.5em 0 0.25em 0;
+}
 h4 {
-  font: 700 2em var(--mono);
+  font: 700 2em "Inconsolata", monospace;
   margin: 1.5em 0 0.25em 0;
 }
 h5 {
-  font: 700 1.5em var(--mono);
+  font: 700 1.5em "Inconsolata", monospace;
   margin: 1.5em 0 0.25em 0;
 }
 h6 {
-  font: 700 1.25em var(--mono);
+  font: 700 1.25em "Inconsolata", monospace;
   margin: 1.5em 0 0.25em 0;
 }
 p {
@@ -107,7 +122,7 @@ a:visited {
   text-decoration: underline;
 }
 a:hover {
-  color: var(--primary);
+  color: #a06be0;
   transition: color 0.16s;
 }
 
@@ -134,36 +149,33 @@ ul > li:before {
 blockquote {
   margin: 1em;
   padding: 0.25em 1em;
-  border-left: 1ch solid var(--gray);
+  border-left: 1ch solid #999;
 }
 
+code {
+  background: #404040;
+  font: 1em "Inconsolata", monospace;
+  padding: 0.25em 0.5em;
+}
 pre {
   background: #404040;
-  font: 1em var(--mono);
   overflow-x: scroll;
   padding: 1em;
 }
 pre::-webkit-scrollbar {
   display: none;
 }
-code {
-  background: #404040;
-  font: 1em var(--mono);
-  padding: 0.25em 0.5em;
-}
 pre code {
   padding: 0;
 }
 
-em,
-mark {
-  color: var(--primary);
+em {
+  color: #a06be0;
   background-color: unset;
   font-style: normal;
 }
-time,
-span {
-  color: var(--gray);
+time {
+  color: #999;
 }
 
 
