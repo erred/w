@@ -6,7 +6,7 @@ steps:
       - -c
       - >-
         set -euxo pipefail;
-        rm src/{authed,iglog,readss}.*
+        rm src/{authed,iglog,readss}.* || true;
   - name: gcr.io/$PROJECT_ID/parcel:latest
     id: build js
     args:
