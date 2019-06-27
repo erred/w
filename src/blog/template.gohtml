@@ -37,12 +37,13 @@ ul > li:before {
 {{ template "head" . }}
 <title>{{ .title }} | blog | seankhliao</title>
 
+<header>
+    <h2><a href="/blog">b<em>log</em></a></h2>
+    <p><time datetime="{{ .date }}">{{ .date }}</time><p>
+    {{ template "header-name" }}
+</header>
 <main>
-    <hgroup>
-      <h1><em>{{ .title }}</em></h1>
-      <p><a href="/">seankhliao</a> / <a href="/blog">blog</a> / <time datetime="{{ .date }}">{{ .date }}</time></p>
-    </hgroup>
-
+    <h3>{{ .title }}</h3>
     {{ .content }}
 </main>
 
