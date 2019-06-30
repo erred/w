@@ -17,7 +17,7 @@ ${res
     <li>
       <a href="${a.getUrl()}">${a.getTitle()}</a>
       <br>
-      <mark>${a.getSource()}</mark>
+      <em>${a.getSource()}</em>
       <time datetime="${a.getTime()}">${a.getTime()} ${a.getReltime()}</time>
     </li>
     `

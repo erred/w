@@ -106,7 +106,7 @@ function showContent(ul) {
 function userToHTML(u) {
   return `
 <a href="https://instagram.com/${u.getUsername()}">@${u.getUsername()}</a>
-<mark>${u.getDisplayname()}</mark>
+<em>${u.getDisplayname()}</em>
   `;
 }
 
