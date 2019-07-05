@@ -6,10 +6,10 @@
     >
     <style>
       .land {
-        fill: #cccccc;
+        fill: #999999;
         stroke: #eceff1;
         stroke-opacity: 1;
-        stroke-width: 0.5;
+        stroke-width: 0.3;
       }
 
       #CA,
