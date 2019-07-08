@@ -53,7 +53,7 @@ steps:
     args:
       - -c
       - >-
-        set -euxo pipefail;
+        set -euxo pipefail &&
         mkdir -p /root/.ssh &&
         printenv GH_KNOWN > /root/.ssh/known_hosts &&
         printenv GH_KEY > /root/.ssh/id_ed25519 && chmod 0600 /root/.ssh/id_ed25519 &&
