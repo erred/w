@@ -30,6 +30,8 @@ use by mounting the volume into other steps,
 5. encrypt ssh private key `gcloud kms encrypt --plaintext-file=ssh_keyfile --ciphertext-file=ssh_keyfile.kms --location=global --keyring=keyring_name --key=key_name`
 6. add cloudbuild step
 
+cloudbuild.yaml:
+
 ```
 secrets:
   - kmsKeyName: projects/project_id/locations/global/keyRings/keyring_name/cryptoKeys/key_name
@@ -41,7 +43,7 @@ steps:
     # this is Github's public key
     # get by running: ssh-keyscan -t rsa github.com
     env:
-      - GH_KNOWN=github.com ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==
+      - GH_KNOWN=github.com ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8V
     secretEnv:
       - GH_KEY
     entrypoint: bash
