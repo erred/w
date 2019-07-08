@@ -86,15 +86,16 @@ cloudbuild shallow clones the current commit to save time,
 it is also set as `master`
 
 ```
-- id: restore history
-  name: gcr.io/cloud-builders/git
-  entrypoint: bash
-  args:
-  - -c
-  - >-
-    set -euxo pipefail &&
-    git fetch --unshallow &&              # gets all history use --depth=n for more limited history
-    git branch -m $BRANCH_NAME &&         # rename current branch to its original name
-    git checkout -b master origin/master  # set master to upstream master
+steps:
+  - id: restore history
+    name: gcr.io/cloud-builders/git
+    entrypoint: bash
+    args:
+    - -c
+    - >-
+      set -euxo pipefail &&
+      git fetch --unshallow &&              # gets all history use --depth=n for more limited history
+      git branch -m $BRANCH_NAME &&         # rename current branch to its original name
+      git checkout -b master origin/master  # set master to upstream master
 
 ```
