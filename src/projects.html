@@ -1,0 +1,113 @@
+{{ template "head" . }}
+<title>projects | seankhliao</title>
+
+<style>
+  main {
+    grid-gap: 20vh 1em;
+  }
+</style>
+
+<header>
+  <h2>Project<em>s</em></h2>
+  {{ template "header-name" }}
+</header>
+
+<main>
+  <section>
+    <h3>Pro<em>jects</em></h3>
+    <p>I had time, so what did i do?</p>
+  </section>
+
+  <section>
+    <h3>com-<em>seankhliao</em></h3>
+    <p>
+      This is this site. Probably <em>version 6</em> since I started counting, because I want to try new stuff (AMP /
+      CSS frameworks / React / Polymer / PWAs / ... )<em>Handcrafted</em> html / css / js (yuck), source of my
+      <em>disdain</em> for frontend web stuff.
+    </p>
+    <ul>
+      <li>Github: <a href="https://github.com/seankhliao/com-seankhliao">seankhliao/com-seankhliao</a></li>
+      <li>Hosted: <a href="/">home</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h4><em>k</em>luster</h4>
+    <p>
+      My barebones GKE / <em>Kubernetes</em> cluster, where I cram most of my services and play with k8s. A major part
+      is not wasting too much money on it. Current config management is with <em>kustomize</em>
+    </p>
+    <ul>
+      <li>Github: <a href="https://github.com/seankhliao/kluster">seankhliao/kluster</a></li>
+      <li>Hosted: <a href="https://api.seankhliao.com">api server</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h4><em>rss</em>subs<em>bot</em></h4>
+    <p>
+      This is something that has gone through multiple <em>iterations</em>,
+      <a href="https://github.com/seankhliao/readss/tree/38cbd575d855a678340c9f9b142b066ee8499a14">first</a>
+      as a self contained web service rendering html on a timer,
+      <a href="https://github.com/seankhliao/readss">then</a>
+      as a <em>grpc-web</em> server with the frontend as part of my main site, briefly as an
+      <em>experimental</em> Dialogflow service, before reaching its <a href="https://t.me/rsssubsbot">current</a> form
+      as a Telegram bot
+    </p>
+    <ul>
+      <li>Github: <a href="https://github.com/seankhliao/rsssubsbot">seankhliao/rsssubsbot</a></li>
+      <li>Hosted: <a href="https://t.me/rsssubsbot">Telegram @rsssubsbot</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h4><em>Smaller</em> Stuff</h4>
+
+    <h5><em>conf</em>ig</h5>
+    <p>
+      <em>Dotfiles</em> / config files / whatever you call them. This is more like a dump of them rather than a well
+      managed solution. I guess there is some interesting stuff I learned <em>hidden</em> in here somewhere
+    </p>
+    <ul>
+      <li>Github: <a href="https://github.com/seankhliao/config">seankhliao/config</a></li>
+    </ul>
+
+    <h5><em>wg</em>go</h5>
+    <p>
+      Just a Dockerfile to wrap <em>wireguard-go</em> in a container, use case: run wireguard in an environment with no
+      permissions to load kernel modules, such as GKE nodes on <em>Container Optimized OS</em>
+    </p>
+    <ul>
+      <li>Github: <a href="https://github.com/seankhliao/wggo">seankhliao/wggo</a></li>
+    </ul>
+
+    <h5>ear<em>bug</em></h5>
+    <p>
+      Currently just logs my <em>Spotify</em> listening history into a storage bucket. One day I'll find something
+      interesting to do with it. One day....
+    </p>
+    <ul>
+      <li>Github: <a href="https://github.com/seankhliao/earbug">seankhliao/earbug</a></li>
+    </ul>
+
+    <h5><em>bad</em>ger</h5>
+    <p>
+      Badges for Google Cloud Build, runs on <em>App Engine</em>, externally depends on
+      <a href="https://shields.io">shields.io</a>
+    </p>
+    <ul>
+      <li>Github: <a href="https://github.com/seankhliao/badger">seankhliao/badger</a></li>
+    </ul>
+
+    <h5>ig<em>log</em></h5>
+    <p>
+      Using Instagrams <em>unofficial</em> api, track who followed / unfollowd me. UI is part of main site, optimized
+      for low volume, locked behind <em>Firebase Auth</em>.
+    </p>
+    <ul>
+      <li>Github: <a href="https://github.com/seankhliao/iglog">seankhliao/iglog</a></li>
+    </ul>
+  </section>
+</main>
+
+{{ template "foot" }}
