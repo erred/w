@@ -7,4 +7,4 @@ handcrafted personal static site
 
 ## About
 
-who am i?
+Who am i?
