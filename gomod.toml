@@ -1,31 +1,54 @@
 [[ github ]]
   mod = "authed"
   user = "erred"
+
 [[ github ]]
   mod = "badger"
+
+[[ github ]]
+  mod = "cloud-build-tools/cf-dns-update"
+
+[[ github ]]
+  mod = "cloud-build-tools/http-server"
+
+[[ github ]]
+  mod = "cloud-build-tools/site-builder"
+
+[[ github ]]
+  mod = "cloud-build-tools/verify-recaptcha"
+
 [[ github ]]
   mod = "earbug"
+
 [[ github ]]
   mod = "gash"
   user = "erred"
+
 [[ github ]]
   mod = "go-wg"
   user = "erred"
+
 [[ github ]]
   mod = "iglog"
+
 [[ github ]]
   mod = "notalog"
   user = "erred"
+
 [[ github ]]
   mod = "readss"
   user = "erred"
+
 [[ github ]]
   mod = "rsssubsbot"
+
 [[ github ]]
   mod = "seankhbot"
   user = "erred"
+
 [[ github ]]
   mod = "test-cloudbuild/v4"
+
 [[ github ]]
   mod = "test-grpcweb"
   user = "erred"
