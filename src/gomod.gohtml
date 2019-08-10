@@ -1,10 +1,20 @@
 {{ define "gomod" }}
 <!doctype html>
-<html>
+<html lang="en">
     <head>
         <meta name="go-import" content="{{ .GoImport }}">
         <meta name="go-source" content="{{ .GoSource }}">
-        <meta http-equiv="Refresh" content="0; url='{{ .GoDoc }}'">
+        <meta http-equiv="Refresh" content="5; url='{{ .GoDoc }}'">
+
+        <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+        <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-114337586-1"></script>
+<script>
+"use strict";
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag("js", new Date());
+gtag("config", "UA-114337586-1");
+</script>
     </head>
 </html>
 {{ end }}
