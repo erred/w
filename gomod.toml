@@ -1,9 +1,31 @@
 [[ github ]]
+  mod = "authed"
+  user = "erred"
+[[ github ]]
   mod = "badger"
 [[ github ]]
   mod = "earbug"
 [[ github ]]
+  mod = "gash"
+  user = "erred"
+[[ github ]]
+  mod = "go-wg"
+  user = "erred"
+[[ github ]]
+  mod = "iglog"
+[[ github ]]
+  mod = "notalog"
+  user = "erred"
+[[ github ]]
+  mod = "readss"
+  user = "erred"
+[[ github ]]
   mod = "rsssubsbot"
 [[ github ]]
+  mod = "seankhbot"
   user = "erred"
-  mod = "readss"
+[[ github ]]
+  mod = "test-cloudbuild/v4"
+[[ github ]]
+  mod = "test-grpcweb"
+  user = "erred"
