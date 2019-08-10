@@ -1,4 +1,4 @@
-module github.com/seankhliao/cloud-build-tools/site-builder
+module seankhliao.com/cloud-build-tools/site-builder
 
 go 1.12
 
