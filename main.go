@@ -12,6 +12,7 @@ import (
 	"strings"
 	"text/template"
 
+	"github.com/BurntSushi/toml"
 	"github.com/russross/blackfriday/v2"
 )
 
@@ -41,6 +42,7 @@ func main() {
 		log.Fatal("main walker:", err)
 	}
 	p.Process()
+	p.GoMod()
 }
 
 type Processor struct {
@@ -187,6 +189,32 @@ func (p *Processor) Process() {
 
 }
 
+func (p *Processor) GoMod() {
+	g := &Gomod{}
+	_, err := toml.DecodeFile("gomod.toml", g)
+	if err != nil {
+		log.Printf("GoMod decode: %v", err)
+	}
+	for i, m := range g.Github {
+		err := m.Parse()
+		if err != nil {
+			log.Printf("GoMod Parse %v %v: %v", i, m.Mod, err)
+			continue
+		}
+		fn := filepath.Join(Dst, m.Mod+".html")
+		f, err := newFile(fn)
+		if err != nil {
+			log.Printf("GoMod newFile %v: %v", fn, err)
+			continue
+		}
+		err = p.t.ExecuteTemplate(f, "gomod", m)
+		f.Close()
+		if err != nil {
+			log.Printf("GoMod execute %v: %v", fn, err)
+		}
+	}
+}
+
 type URL struct {
 	path    string
 	dstPath string
@@ -273,4 +301,43 @@ func newFile(fn string) (*os.File, error) {
 		return nil, fmt.Errorf("newFile create %v: %v", fn, err)
 	}
 	return f, nil
+}
+
+type Gomod struct {
+	Github []GithubModule
+}
+type GithubModule struct {
+	User string
+	Mod  string
+
+	// computed properties
+	// call Parse()
+	Module   string
+	Repo     string
+	GoImport string
+	GoSource string
+	GoDoc    string
+}
+
+func (m *GithubModule) Parse() error {
+	if m.User == "" {
+		m.User = "seankhliao"
+	} else {
+		m.User = strings.ToLower(m.User)
+	}
+
+	m.Mod = strings.ToLower(m.Mod)
+	ml := strings.Split(m.Mod, "/")
+	if len(ml) == 0 {
+		return fmt.Errorf("module name cannot be empty")
+	} else if ml[0] == "" {
+		return fmt.Errorf("module name should not start with /")
+	}
+
+	m.Module = filepath.Join("seankhliao.com", m.Mod)
+	m.Repo = "https://" + filepath.Join("github.com", m.User, ml[0])
+	m.GoImport = m.Module + " git " + m.Repo
+	m.GoSource = m.Module + "\n" + m.Repo + "\n" + m.Repo + "/tree/master{/dir}\n" + m.Repo + "/tree/master{/dir}/{file}#L{line}"
+	m.GoDoc = "https://godoc.org/" + m.Module
+	return nil
 }
