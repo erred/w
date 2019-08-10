@@ -25,7 +25,7 @@ var (
 	BaseURL   = "https://seankhliao.com"
 )
 
-func init() {
+func main() {
 	var ignoreExt string
 	flag.StringVar(&ignoreExt, "ignoreext", ".ico,.svg,.png,.jpg", "comma separated list of extensions to ignore")
 	// name templates:
@@ -35,9 +35,7 @@ func init() {
 	for _, e := range strings.Split(ignoreExt, ",") {
 		IgnoreExt[e] = struct{}{}
 	}
-}
 
-func main() {
 	p := NewProcessor()
 	if err := filepath.Walk(Src, p.walker); err != nil {
 		log.Fatal("main walker:", err)
