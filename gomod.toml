@@ -47,10 +47,10 @@
   user = "erred"
 
 [[ github ]]
-  mod = "test-cloudbuild/v5"
+  mod = "testrepo"
 
 [[ github ]]
-  mod = "test-cloudbuild/v5/sub"
+  mod = "testrepo/sub"
 
 [[ github ]]
   mod = "test-grpcweb"
