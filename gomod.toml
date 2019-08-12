@@ -47,7 +47,10 @@
   user = "erred"
 
 [[ github ]]
-  mod = "test-cloudbuild/v4"
+  mod = "test-cloudbuild/v5"
+
+[[ github ]]
+  mod = "test-cloudbuild/v5/sub"
 
 [[ github ]]
   mod = "test-grpcweb"
