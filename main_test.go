@@ -88,7 +88,7 @@ func TestParseGomod(t *testing.T) {
 		t.Errorf("Parse Gomod.toml %v", err)
 		return
 	}
-	if !reflect.DeepEqual(g, gm) {
+	if !reflect.DeepEqual(*g, gm) {
 		t.Errorf("Parse Gomod.toml not DeepEqual: expected \n%#v\n, got \n%#v\n", gm, g)
 	}
 }
