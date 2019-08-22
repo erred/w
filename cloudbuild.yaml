@@ -3,7 +3,8 @@ steps:
     id: "static site gen"
   - name: gcr.io/$PROJECT_ID/firebase:latest
     id: "deploy"
+    entrypoint: sh
     args:
-      - -P
-      - $PROJECT_ID
-      - deploy
+      - -c
+      - >-
+        [ $BRANCH_NAME = "master" ] && firebase -P $PROJECT_ID deploy
