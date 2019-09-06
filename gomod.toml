@@ -6,6 +6,9 @@
   mod = "badger"
 
 [[ github ]]
+  mod = "caldav"
+
+[[ github ]]
   mod = "calproxy"
 
 [[ github ]]
