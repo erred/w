@@ -6,6 +6,9 @@
   mod = "badger"
 
 [[ github ]]
+  mod = "calproxy"
+
+[[ github ]]
   mod = "cloud-build-tools/cf-dns-update"
 
 [[ github ]]
