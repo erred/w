@@ -39,7 +39,6 @@ network={
 wpa_supplicant config for accounts with UvA
 
 ```
-
 network={
     ssid="eduroam"
 
