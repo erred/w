@@ -8,3 +8,12 @@ handcrafted personal static site
 ## About
 
 Who am i?
+
+## TODO
+
+- [ ] improve gomod redirection generation
+- [ ] improve layout / static generation
+- [ ] github actions?
+- [ ] web packaging
+- [ ] amp
+- [ ] signed exchanges (blocked by cert requirements)
