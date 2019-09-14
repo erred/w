@@ -16,4 +16,5 @@ Who am i?
 - [ ] github actions?
 - [ ] web packaging
 - [ ] amp
+- [ ] rss
 - [ ] signed exchanges (blocked by cert requirements)
