@@ -34,5 +34,5 @@ the process of turning ideas into bits and bytes a computer can read
 - _👩‍🏫_ is:
   - 1 string **length 11**
   - 1 character
-  - 3 rune
+  - 3 runes
   - 11 bytes
