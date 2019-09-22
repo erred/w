@@ -6,7 +6,9 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"os"
 	"path/filepath"
+	"strings"
 	"sync"
 )
 
@@ -65,7 +67,8 @@ func (o *ModOptions) Exec(opt *Options) error {
 				log.Printf("ModOptions.Exec template for %q: %w", md, err)
 				return
 			}
-			dst := filepath.Join(o.Dst, md.New+".html")
+			dst := filepath.Join(o.Dst, strings.TrimPrefix(md.New, opt.host)+".html")
+			os.MkdirAll(filepath.Dir(dst), 0755)
 			err = ioutil.WriteFile(dst, b.Bytes(), 0644)
 			if err != nil {
 				log.Printf("ModOptions.Exec write %q: %w", dst, err)

@@ -80,7 +80,7 @@ func (o *Options) Exec() error {
 			if fi.IsDir() {
 				o.t = filepath.Join(o.t, "*.gohtml")
 			}
-			o.T, err = template.ParseFiles(o.t)
+			o.T, err = template.ParseGlob(o.t)
 			if err != nil {
 				return fmt.Errorf("Options.Exec parse file %q: %w", o.t, err)
 			}

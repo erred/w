@@ -14,6 +14,8 @@ import (
 
 type StaticData struct {
 	Path string
+	URL  string
+	Desc string
 }
 
 // StaticOptions holds config needed for parsing static html pages
@@ -58,7 +60,11 @@ func (o *StaticOptions) Exec(opt *Options) error {
 			return err
 		}
 
-		pages = append(pages, StaticData{subpath})
+		pages = append(pages, StaticData{
+			subpath,
+			filepath.Join(opt.host, canonicalURL(subpath)),
+			"",
+		})
 		return nil
 	})
 
@@ -76,6 +82,7 @@ func (o *StaticOptions) Exec(opt *Options) error {
 			}
 
 			dst := filepath.Join(o.Dst, strings.ReplaceAll(page.Path, ".gohtml", ".html"))
+			os.MkdirAll(filepath.Dir(dst), 0755)
 			err = ioutil.WriteFile(dst, b.Bytes(), 0644)
 			if err != nil {
 				log.Printf("StaticOptions.Exec write %q: %w", dst, err)
@@ -86,4 +93,14 @@ func (o *StaticOptions) Exec(opt *Options) error {
 
 	wg.Wait()
 	return nil
+}
+
+func canonicalURL(subpath string) string {
+	subpath = strings.TrimSuffix(subpath, ".html")
+	subpath = strings.TrimSuffix(subpath, "index")
+	subpath = strings.TrimSuffix(subpath, "/")
+	if subpath == "" {
+		subpath = "/"
+	}
+	return subpath
 }
