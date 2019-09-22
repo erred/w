@@ -20,9 +20,13 @@ func main() {
 	}
 }
 
+// Options contains global options
+// such as the template dir
+// and host
 type Options struct {
-	t      string
-	T      *template.Template
+	host   string             // hostname
+	t      string             // template file or dir (flat)
+	T      *template.Template // parsed templates
 	Blog   *BlogOptions
 	Mod    *ModOptions
 	Img    *ImgOptions
@@ -35,10 +39,13 @@ type Options struct {
 	// SigXchange *SigXchangeOptions
 }
 
+// NewOptions parses global options and decides on subcommand
+// remember to register here
 func NewOptions(args []string) (*Options, error) {
 	var o Options
 	var err error
 	f := flag.NewFlagSet("", flag.ExitOnError)
+	f.StringVar(&o.host, "host", "seankhliao.com", "hostname")
 	f.StringVar(&o.t, "t", "templates", "file or flat directory of templates.gohtml")
 	f.Parse(args)
 	switch f.Arg(1) {
@@ -55,6 +62,9 @@ func NewOptions(args []string) (*Options, error) {
 	}
 	return &o, err
 }
+
+// Exec parses global templates and executes a subcommand
+// remember to register here too
 func (o *Options) Exec() error {
 	if o.t != "" {
 		fi, err := os.Stat(o.t)

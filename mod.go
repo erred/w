@@ -10,21 +10,27 @@ import (
 	"sync"
 )
 
+// ModData holds old names (github user/repo)
+// and new module names
 type ModData struct {
 	Old string
 	New string
 }
 
+// ModOptions holds config needed to parse the gomod.txt file
+// where each line is "user/repo module(without hostname)"
+// and create the pages for redirects
+// external dependencies:
+//      template called "gomod"
+//
 type ModOptions struct {
-	Prefix string
-	Src    string
-	Dst    string
+	Src string
+	Dst string
 }
 
 func NewModOptions(args []string) *ModOptions {
 	var o ModOptions
 	f := flag.NewFlagSet("mod", flag.ExitOnError)
-	f.StringVar(&o.Prefix, "prefix", "seankhliao.com", "module name prefixes")
 	f.StringVar(&o.Src, "src", "gomod.txt", "source file")
 	f.StringVar(&o.Dst, "dst", "dst", "output directory")
 	f.Parse(args)
@@ -45,7 +51,7 @@ func (o *ModOptions) Exec(opt *Options) error {
 			log.Printf("parsing %q: line %d expected 2 fields, got %d\n", o.Src, i, len(fields))
 			continue
 		}
-		mds = append(mds, ModData{string(fields[0]), filepath.Join(o.Prefix, string(fields[1]))})
+		mds = append(mds, ModData{string(fields[0]), filepath.Join(opt.host, string(fields[1]))})
 	}
 
 	wg := &sync.WaitGroup{}

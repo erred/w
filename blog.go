@@ -5,6 +5,7 @@ import (
 	"fmt"
 )
 
+// BlogOptions holds config needed for parsing blog posts
 type BlogOptions struct {
 	Src string
 	Dst string

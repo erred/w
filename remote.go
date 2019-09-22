@@ -5,16 +5,15 @@ import (
 	"flag"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"os"
-	"path/filepath"
-	"sync"
-	"text/template"
 )
 
-
-
+// RemoteOptions holds config for fetching remote content
+// we want to include statically
+// such as Google Font's css file,
+// Creates:
+//      template named "fontcss"
 type RemoteOptions struct {
 	FontURL string
 	Dst     string

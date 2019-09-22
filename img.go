@@ -1,5 +1,12 @@
 package main
 
+import (
+	"flag"
+	"fmt"
+)
+
+// ImgOptions holds configs for resizing / transforming images
+// has external dependencies:
 type ImgOptions struct {
 	Src string
 	Dst string
@@ -16,4 +23,3 @@ func NewImgOptions(args []string) *ImgOptions {
 func (o *ImgOptions) Exec(opt *Options) error {
 	return fmt.Errorf("ErrNotImplemented")
 }
-
