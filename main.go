@@ -24,9 +24,11 @@ func main() {
 // such as the template dir
 // and host
 type Options struct {
-	host   string             // hostname
-	t      string             // template file or dir (flat)
-	T      *template.Template // parsed templates
+	host string             // hostname
+	t    string             // template file or dir (flat)
+	T    *template.Template // parsed templates
+
+	Static *StaticOptions
 	Blog   *BlogOptions
 	Mod    *ModOptions
 	Img    *ImgOptions
@@ -49,6 +51,8 @@ func NewOptions(args []string) (*Options, error) {
 	f.StringVar(&o.t, "t", "templates", "file or flat directory of templates.gohtml")
 	f.Parse(args)
 	switch f.Arg(1) {
+	case "static":
+		o.Static = NewStaticOptions(f.Args())
 	case "blog":
 		o.Blog = NewBlogOptions(f.Args())
 	case "mod":
@@ -84,6 +88,8 @@ func (o *Options) Exec() error {
 	}
 
 	switch {
+	case o.Static != nil:
+		return o.Static.Exec(o)
 	case o.Blog != nil:
 		return o.Blog.Exec(o)
 	case o.Mod != nil:
