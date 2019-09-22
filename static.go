@@ -83,7 +83,7 @@ func (o *StaticOptions) Exec(opt *Options) error {
 			}
 		}(page)
 	}
-	wg.Wait()
 
-	return fmt.Errorf("ErrNotImplemented")
+	wg.Wait()
+	return nil
 }
