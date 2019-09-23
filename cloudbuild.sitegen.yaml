@@ -15,9 +15,9 @@ steps:
     name: gcr.io/cloud-builders/docker:latest
     args:
       - login
-      - docker.pkg.github.com
       - -u=seankhliao
-      - -p=$$GH_PAT
+      - -p=$GH_PAT
+      - docker.pkg.github.com
     secretEnv:
       - GH_PAT
 
