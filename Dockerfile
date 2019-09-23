@@ -1,9 +1,10 @@
 FROM golang:alpine AS build
 
+ENV CGO_ENABLED=0 GOFLAGS=-mod=vendor
 WORKDIR /app
 RUN apk add --no-cache ca-certificates
 COPY . .
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -mod=vendor seankhliao.com/com-seankhliao/v7/sitegen -o app
+RUN go build -mod=vendor -o app seankhliao.com/com-seankhliao/v7/sitegen
 
 
 FROM alpine:latest
