@@ -1,0 +1,47 @@
+{{ define "head" }}
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+<link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://securetoken.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://api.seankhliao.com" crossorigin>
+<script defer src="https://www.googletagmanager.com/gtag/js?id=UA-114337586-1"></script>
+<script defer src="https://www.google.com/recaptcha/api.js?render=6LcYb6gUAAAAAAugirVvpmFxt8b-j3RfwcNDrchn"></script>
+
+<meta name="theme-color" content="#000000">
+<meta name="description" content="{{ .desc }}">
+
+<link rel="canonical" href="{{ .url }}">
+<link rel="manifest" href="/manifest.json" />
+
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+<link rel="apple-touch-icon" href="/icon-512.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+<script>
+"use strict";
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag("js", new Date());
+gtag("config", "UA-114337586-1");
+
+/* navigator.serviceWorker && window.addEventListener("load", () => {navigator.serviceWorker.register("./sw.js");}); */
+window.addEventListener('load', ()=>{
+    grecaptcha.ready(()=> {
+        grecaptcha.execute('6LcYb6gUAAAAAAugirVvpmFxt8b-j3RfwcNDrchn', {
+            action: 'pageview'
+        }).then(token=> {
+            fetch('https://api.seankhliao.com/recaptcha.v3', {
+                method: 'POST',
+                mode: 'cors',
+                body: token
+            }).then(res =>{console.log(res)});
+        });
+    });
+});
+</script>
+
+{{ template "basecss" }}
+{{ end }}
