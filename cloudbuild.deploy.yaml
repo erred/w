@@ -36,7 +36,7 @@ steps:
       - sitemap
 
   - id: view output
-    name: gcr.io/cloud-builder/docker:latest
+    name: gcr.io/cloud-builders/docker:latest
     entrypoint: sh
     args:
       - -c

@@ -1,0 +1,18 @@
+{{ define "blogpost" }}
+
+{{ template "head" . }}
+<title>{{ .title }} | blog | seankhliao</title>
+
+<header>
+    <h2><a href="/blog">b<em>log</em></a></h2>
+    <p><time datetime="{{ .date }}">{{ .date }}</time><p>
+    {{ template "header-name" }}
+</header>
+<main>
+    <h3>{{ .title }}</h3>
+    {{ .content }}
+</main>
+
+{{ template "foot" . }}
+
+{{ end }}
