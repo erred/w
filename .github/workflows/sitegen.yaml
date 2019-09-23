@@ -5,6 +5,7 @@ on:
       - v7
     paths:
       - ".github/workflows/sitegen.yaml"
+      - ".dockerignore"
       - "Dockerfile"
       - "go.mod"
       - "go.sum"
