@@ -2,9 +2,9 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <meta name="go-import" content="{{ .GoImport }}">
-        <meta name="go-source" content="{{ .GoSource }}">
-        <meta http-equiv="Refresh" content="5; url='{{ .GoDoc }}'">
+        <meta name="go-import" content="github.com/{{ .Old }} git {{ .New }}">
+        <meta name="go-source" content="{{ .New }} https://github.com/{{ .Old }} https://github.com/{{ .Old }}/tree/master{/dir} https://github.com/{{ .Old }}/tree/master{/dir}/{file}#L{line}">
+        <meta http-equiv="Refresh" content="5; url='godoc.org/{{ .New }}'">
 
         <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
         <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-114337586-1"></script>
