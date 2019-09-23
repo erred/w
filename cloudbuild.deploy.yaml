@@ -4,7 +4,8 @@ steps:
   - id: get remote
     waitFor: ["-"]
     name: gcr.io/$PROJECT_ID/$_IMG
-    args: remote
+    args:
+      - remote
 
   # - id: generate imgs
   #   waitFor: ["-"]
@@ -14,21 +15,25 @@ steps:
   - id: generate mod
     waitFor: ["-"]
     name: gcr.io/$PROJECT_ID/$_IMG
-    args: mod
+    args:
+      - mod
 
   - id: generate blog
     waitFor: ["get remote"]
     name: gcr.io/$PROJECT_ID/$_IMG
-    args: blog
+    args:
+      - blog
   - id: generate static
     waitFor: ["get remote"]
     name: gcr.io/$PROJECT_ID/$_IMG
-    args: static
+    args:
+      - static
 
   - id: generate sitemap
     waitFor: ["generate blog", "generate static", "generate mod"]
     name: gcr.io/$PROJECT_ID/$_IMG
-    args: sitemap
+    args:
+      - sitemap
 
   - id: view output
     name: gcr.io/cloud-builder/docker:latest
