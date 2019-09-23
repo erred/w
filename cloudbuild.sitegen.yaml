@@ -13,11 +13,12 @@ steps:
   - id: login github registry
     waitFor: ["-"]
     name: gcr.io/cloud-builders/docker:latest
+    entrypoint: sh
     args:
-      - login
-      - -u=seankhliao
-      - -p=$GH_PAT
-      - docker.pkg.github.com
+      - -c
+      - >-
+        printenv $$GH_PAT | docker login -u seankhliao --password-stdin
+        docker.pkg.github.com
     secretEnv:
       - GH_PAT
 
