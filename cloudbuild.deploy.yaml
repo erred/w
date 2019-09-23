@@ -1,0 +1,38 @@
+substitutions:
+  _IMG: com-seankhliao-sitegen:latest
+steps:
+  - id: get remote
+    waitFor: ["-"]
+    name: gcr.io/$PROJECT_ID/$_IMG
+    args: remote
+
+  # - id: generate imgs
+  #   waitFor: ["-"]
+  #   name: gcr.io/$PROJECT_ID/$_IMG
+  #   args: img
+
+  - id: generate mod
+    waitFor: ["-"]
+    name: gcr.io/$PROJECT_ID/$_IMG
+    args: mod
+
+  - id: generate blog
+    waitFor: ["get remote"]
+    name: gcr.io/$PROJECT_ID/$_IMG
+    args: blog
+  - id: generate static
+    waitFor: ["get remote"]
+    name: gcr.io/$PROJECT_ID/$_IMG
+    args: static
+
+  - id: generate sitemap
+    waitFor: ["generate blog", "generate static", "generate mod"]
+    name: gcr.io/$PROJECT_ID/$_IMG
+    args: sitemap
+
+  - id: view output
+    name: gcr.io/cloud-builder/docker:latest
+    entrypoint: sh
+    args:
+      - -c
+      - ls templates; ls dst
