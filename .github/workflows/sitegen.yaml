@@ -5,7 +5,11 @@ on:
       - v7
     paths:
       - ".github/workflows/sitegen.yaml"
+      - "Dockerfile"
+      - "go.mod"
+      - "go.sum"
       - "sitegen/*"
+      - "vendor/*"
   schedule:
     - cron: "* * */5 * *"
 jobs:
@@ -18,6 +22,5 @@ jobs:
         env:
           PAT: ${{ secrets.GH_PAT }}
       - run: docker build -t docker.pkg.github.com/seankhliao/com-seankhliao/sitegen:${GITHUB_SHA:0:7} -t docker.pkg.github.com/seankhliao/com-seankhliao/sitegen:latest .
-        working-directory: sitegen
       - run: docker push docker.pkg.github.com/seankhliao/com-seankhliao/sitegen:${GITHUB_SHA:0:7}
       - run: docker push docker.pkg.github.com/seankhliao/com-seankhliao/sitegen:latest
