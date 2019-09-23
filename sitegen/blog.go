@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"os"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -117,6 +118,7 @@ func (o *BlogOptions) Exec(opt *Options) error {
 	}
 
 	dfn := filepath.Join(o.Dst, o.Src, "index.html")
+	os.MkdirAll(filepath.Dir(dfn), 0755)
 	err = ioutil.WriteFile(dfn, buf.Bytes(), 0644)
 	if err != nil {
 		return fmt.Errorf("BlogOptions.Exec write index %q: %w", dfn, err)
