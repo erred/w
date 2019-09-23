@@ -34,10 +34,3 @@ steps:
     name: gcr.io/$PROJECT_ID/$_IMG
     args:
       - sitemap
-
-  - id: view output
-    name: gcr.io/cloud-builders/docker:latest
-    entrypoint: sh
-    args:
-      - -c
-      - ls templates; ls dst
