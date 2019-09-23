@@ -28,14 +28,19 @@ type Options struct {
 	t    string             // template file or dir (flat)
 	T    *template.Template // parsed templates
 
+	// creates template
+	Remote *RemoteOptions
+
+	// creates content
 	Static *StaticOptions
 	Blog   *BlogOptions
 	Mod    *ModOptions
 	Img    *ImgOptions
-	Remote *RemoteOptions
+
+	// creates metadata
+	Sitemap *SitemapOptions
 
 	// RSS *RSSOptions
-	// Map *MapOptions
 	// AMP *AMPOptions
 	// Webpkg *WebpkgOptions
 	// SigXchange *SigXchangeOptions
@@ -61,6 +66,8 @@ func NewOptions(args []string) (*Options, error) {
 		o.Img = NewImgOptions(f.Args())
 	case "remote":
 		o.Remote = NewRemoteOptions(f.Args())
+	case "sitemap":
+		o.Sitemap = NewSitemapOptions(f.Args())
 	default:
 		err = fmt.Errorf("NewOptions no known subcommand found: %q", f.Arg(0))
 	}
@@ -98,6 +105,8 @@ func (o *Options) Exec() error {
 		return o.Img.Exec(o)
 	case o.Remote != nil:
 		return o.Remote.Exec(o)
+	case o.Sitemap != nil:
+		return o.Sitemap.Exec(o)
 	}
 	return fmt.Errorf("Options.Exec no subcommand to exec")
 }
