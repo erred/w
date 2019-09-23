@@ -1,0 +1,22 @@
+name: sitegen
+on:
+  push:
+    brnaches:
+      - v7
+    paths:
+      - ".github/workflow/sitegen.yaml"
+      - "sitegen/*"
+  schedule:
+    - cron: "0 0 0 0 6"
+jobs:
+  docker:
+    name: build container
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - run: docker login registry -u seankhliao -p $GITHUB_TOKEN
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: docker build -t docker.pkg.github.com/seankhliao/com-seankhliao/sitegen:${GITHUB_SHA:0:7} -t docker.pkg.github.com/seankhliao/com-seankhliao/sitegen:latest sitegen
+      - run: docker push docker.pkg.github.com/seankhliao/com-seankhliao/sitegen:${GITHUB_SHA:0:7}
+      - run: docker push docker.pkg.github.com/seankhliao/com-seankhliao/sitegen:latest
