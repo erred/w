@@ -4,7 +4,7 @@ on:
     brnaches:
       - v7
     paths:
-      - ".github/workflow/sitegen.yaml"
+      - ".github/workflows/sitegen.yaml"
       - "sitegen/*"
   schedule:
     - cron: "* * */5 * *"
