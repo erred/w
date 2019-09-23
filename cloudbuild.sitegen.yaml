@@ -16,9 +16,7 @@ steps:
     entrypoint: sh
     args:
       - -c
-      - >-
-        printenv $$GH_PAT | docker login -u seankhliao --password-stdin
-        docker.pkg.github.com
+      - docker login -u seankhliao -p $$GH_PAT docker.pkg.github.com
     secretEnv:
       - GH_PAT
 
