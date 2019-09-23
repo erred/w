@@ -65,7 +65,7 @@ func (o *BlogOptions) Exec(opt *Options) error {
 		}
 		fn := base + ".html"
 
-		b, err := ioutil.ReadFile(fi.Name())
+		b, err := ioutil.ReadFile(filepath.Join(o.Src, fi.Name()))
 		if err != nil {
 			log.Printf("BlogOptions.Exec read file %q: %q\n", fi.Name(), err)
 			continue
