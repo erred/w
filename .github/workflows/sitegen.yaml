@@ -7,7 +7,7 @@ on:
       - ".github/workflow/sitegen.yaml"
       - "sitegen/*"
   schedule:
-    - cron: "0 0 0 0 6"
+    - cron: "* * */5 * *"
 jobs:
   docker:
     name: build container
