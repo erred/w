@@ -64,7 +64,7 @@ func (o *BlogOptions) Exec(opt *Options) error {
 			log.Printf("BlogOptions.Exec parse name %q, expected at least 4 parts, got %d\n", base, len(parts))
 			continue
 		}
-		fn := base + ".html"
+		fn := strings.TrimSuffix(base, ".md") + ".html"
 
 		b, err := ioutil.ReadFile(filepath.Join(o.Src, fi.Name()))
 		if err != nil {
@@ -95,6 +95,7 @@ func (o *BlogOptions) Exec(opt *Options) error {
 		}
 
 		dfn := filepath.Join(o.Dst, o.Src, fn)
+		os.MkdirAll(filepath.Dir(dfn), 0755)
 		err = ioutil.WriteFile(dfn, buf.Bytes(), 0644)
 		if err != nil {
 			log.Printf("BlogOptions.Exec write %q: %w\n", dfn, err)
