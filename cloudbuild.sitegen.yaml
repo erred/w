@@ -20,8 +20,14 @@ steps:
     secretEnv:
       - GH_PAT
 
-  - id: build sitegen
+  - id: warm cache
     waitFor: ["-"]
+    name: gcr.io/cloud-builders/docker:latest
+    args:
+      - pull
+      - gcr.io/$PROJECT_ID/$_IMG:latest
+  - id: build sitegen
+    waitFor: ["warm cache"]
     name: gcr.io/cloud-builders/docker:latest
     args:
       - build
