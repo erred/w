@@ -87,7 +87,7 @@ func (o *BlogOptions) Exec(opt *Options) error {
 		datas = append(datas, data)
 
 		var buf bytes.Buffer
-		err = opt.T.ExecuteTemplate(&buf, "blogpage", data)
+		err = opt.T.ExecuteTemplate(&buf, "blogpost", data)
 		if err != nil {
 			log.Printf("BlogOptions.Exec exec template %q: %w\n", fn, err)
 			continue
