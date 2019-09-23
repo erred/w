@@ -7,10 +7,7 @@ images:
 secrets:
   - kmsKeyName: projects/com-seankhliao/locations/global/keyRings/cloudbuilder/cryptoKeys/default
     secretEnv:
-      GH_PAT: |-
-        CiQA7y9Sxcj8JmCqadunwxtJpFpJm9Pt2e6uYfFOVJqPxQRuLkMSUgBb0+9rrxu+obka4mBRsVzQ
-        2PbY4Oiw9Zmp25R1qEJU1WAax99lZQA7GbLxUs2QZ8xA/TdIowy483FS4zozJfPbAg2eHRJxAWIA
-        qhZf4CZoJak=
+      GH_PAT: CiQA7y9Sxcj8JmCqadunwxtJpFpJm9Pt2e6uYfFOVJqPxQRuLkMSUgBb0+9rrxu+obka4mBRsVzQ2PbY4Oiw9Zmp25R1qEJU1WAax99lZQA7GbLxUs2QZ8xA/TdIowy483FS4zozJfPbAg2eHRJxAWIAqhZf4CZoJak=
 
 steps:
   - id: login github registry
