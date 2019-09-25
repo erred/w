@@ -148,7 +148,9 @@ func (o *BlogOptions) Exec(opt *Options) error {
 					Type: "text/html",
 				},
 			},
+			ID:        bp.URL,
 			Published: atom.TimeStr(bp.Date + "T00:00:00Z"),
+			Updated:   atom.TimeStr(bp.Date + "T00:00:00Z"),
 			Author:    me,
 			Summary: &atom.Text{
 				Type: "text",
