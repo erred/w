@@ -24,6 +24,13 @@
         "source": "/",
         "headers": [{ "key": "Link", "value": "</map.webp>; rel=preload; as=image" }]
       }
+    ],
+    "redirects": [
+      {
+        "source": "/{feed,feed.rss,atom,rss}",
+        "destination": "/feed.atom",
+        "type": 302
+      }
     ]
   }
 }
