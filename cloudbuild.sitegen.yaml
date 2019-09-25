@@ -3,22 +3,22 @@ substitutions:
 images:
   - gcr.io/$PROJECT_ID/$_IMG:$SHORT_SHA
   - gcr.io/$PROJECT_ID/$_IMG:latest
-  - docker.pkg.github.com/seankhliao/com-seankhliao/sitegen:latest
-secrets:
-  - kmsKeyName: projects/com-seankhliao/locations/global/keyRings/cloudbuilder/cryptoKeys/default
-    secretEnv:
-      GH_PAT: CiQA7y9Sxcj8JmCqadunwxtJpFpJm9Pt2e6uYfFOVJqPxQRuLkMSUgBb0+9rrxu+obka4mBRsVzQ2PbY4Oiw9Zmp25R1qEJU1WAax99lZQA7GbLxUs2QZ8xA/TdIowy483FS4zozJfPbAg2eHRJxAWIAqhZf4CZoJak=
+  # - docker.pkg.github.com/seankhliao/com-seankhliao/sitegen:latest
+# secrets:
+#   - kmsKeyName: projects/com-seankhliao/locations/global/keyRings/cloudbuilder/cryptoKeys/default
+#     secretEnv:
+#       GH_PAT: CiQA7y9Sxcj8JmCqadunwxtJpFpJm9Pt2e6uYfFOVJqPxQRuLkMSUgBb0+9rrxu+obka4mBRsVzQ2PbY4Oiw9Zmp25R1qEJU1WAax99lZQA7GbLxUs2QZ8xA/TdIowy483FS4zozJfPbAg2eHRJxAWIAqhZf4CZoJak=
 
 steps:
-  - id: login github registry
-    waitFor: ["-"]
-    name: gcr.io/cloud-builders/docker:latest
-    entrypoint: sh
-    args:
-      - -c
-      - docker login -u seankhliao -p $$GH_PAT docker.pkg.github.com
-    secretEnv:
-      - GH_PAT
+  # - id: login github registry
+  #   waitFor: ["-"]
+  #   name: gcr.io/cloud-builders/docker:latest
+  #   entrypoint: sh
+  #   args:
+  #     - -c
+  #     - docker login -u seankhliao -p $$GH_PAT docker.pkg.github.com
+  #   secretEnv:
+  #     - GH_PAT
 
   - id: warm cache
     waitFor: ["-"]
@@ -34,5 +34,5 @@ steps:
       - --cache-from=gcr.io/$PROJECT_ID/$_IMG:latest
       - -t=gcr.io/$PROJECT_ID/$_IMG:$SHORT_SHA
       - -t=gcr.io/$PROJECT_ID/$_IMG:latest
-      - -t=docker.pkg.github.com/seankhliao/com-seankhliao/sitegen:latest
+      # - -t=docker.pkg.github.com/seankhliao/com-seankhliao/sitegen:latest
       - .
