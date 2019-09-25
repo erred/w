@@ -94,13 +94,3 @@ func (o *StaticOptions) Exec(opt *Options) error {
 	wg.Wait()
 	return nil
 }
-
-func canonicalURL(subpath string) string {
-	subpath = strings.TrimSuffix(subpath, ".html")
-	subpath = strings.TrimSuffix(subpath, "index")
-	subpath = strings.TrimSuffix(subpath, "/")
-	if subpath == "" {
-		subpath = "/"
-	}
-	return subpath
-}

@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"strings"
 	"text/template"
 )
 
@@ -109,4 +110,14 @@ func (o *Options) Exec() error {
 		return o.Sitemap.Exec(o)
 	}
 	return fmt.Errorf("Options.Exec no subcommand to exec")
+}
+
+func canonicalURL(subpath string) string {
+	subpath = strings.TrimSuffix(subpath, ".html")
+	subpath = strings.TrimSuffix(subpath, "index")
+	subpath = strings.TrimSuffix(subpath, "/")
+	if subpath == "" {
+		subpath = "/"
+	}
+	return subpath
 }
