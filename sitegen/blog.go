@@ -21,7 +21,7 @@ type BlogData struct {
 	Desc    string
 	Content string
 
-	RelURL string // for blog index
+	AbsURL string // for blog index
 	// only for index page
 	Posts []BlogData
 }
@@ -81,7 +81,7 @@ func (o *BlogOptions) Exec(opt *Options) error {
 
 		data := BlogData{
 			URL:     filepath.Join(opt.host, o.Src, fn),
-			RelURL:  fn,
+			AbsURL:  filepath.Join("/", o.Src, fn),
 			Date:    strings.Join(parts[:3], "-"),
 			Title:   strings.Join(parts[3:], " "),
 			Desc:    string(desc),
