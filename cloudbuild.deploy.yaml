@@ -7,10 +7,10 @@ steps:
     args:
       - remote
 
-  # - id: generate imgs
-  #   waitFor: ["-"]
-  #   name: gcr.io/$PROJECT_ID/$_IMG
-  #   args: img
+  - id: generate imgs
+    waitFor: ["-"]
+    name: gcr.io/$PROJECT_ID/$_IMG
+    args: img
 
   - id: generate mod
     waitFor: ["-"]
@@ -34,3 +34,10 @@ steps:
     name: gcr.io/$PROJECT_ID/$_IMG
     args:
       - sitemap
+
+  - id: check output
+    name: gcr.io/cloud-builder/gcloud
+    entrypoint: sh
+    args:
+      - "-c"
+      - "cat dst/sitemap.txt; echo '============================'; ls dst"
