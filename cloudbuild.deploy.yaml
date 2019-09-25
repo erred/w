@@ -1,18 +1,22 @@
 substitutions:
   _IMG: com-seankhliao-sitegen:latest
 steps:
+  - id: warm firebase cache
+    waitFor: ["-"]
+    name: gcr.io/cloud-builders/docker:latest
+    args:
+      - pull
+      - gcr.io/$PROJECT_ID/firebase:latest
   - id: get remote
     waitFor: ["-"]
     name: gcr.io/$PROJECT_ID/$_IMG
     args:
       - remote
-
   - id: generate imgs
     waitFor: ["-"]
     name: gcr.io/$PROJECT_ID/$_IMG
-    args: 
+    args:
       - img
-
   - id: generate mod
     waitFor: ["-"]
     name: gcr.io/$PROJECT_ID/$_IMG
