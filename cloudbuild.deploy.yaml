@@ -36,9 +36,9 @@ steps:
     args:
       - sitemap
 
-  - id: check output
-    name: gcr.io/cloud-builders/gcloud
-    entrypoint: sh
-    args:
-      - "-c"
-      - "cat dst/sitemap.txt; echo '============================'; ls dst"
+  -id: deploy
+  name: gcr.io/$PROJECT_ID/firebase:latest
+  args:
+    - -P
+    - $PROJECT_ID
+    - deploy
