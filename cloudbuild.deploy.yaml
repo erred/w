@@ -37,7 +37,7 @@ steps:
       - sitemap
 
   - id: check output
-    name: gcr.io/cloud-builder/gcloud
+    name: gcr.io/cloud-builders/gcloud
     entrypoint: sh
     args:
       - "-c"
