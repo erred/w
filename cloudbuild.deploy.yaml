@@ -36,9 +36,9 @@ steps:
     args:
       - sitemap
 
-  -id: deploy
-  name: gcr.io/$PROJECT_ID/firebase:latest
-  args:
-    - -P
-    - $PROJECT_ID
-    - deploy
+  - id: deploy
+    name: gcr.io/$PROJECT_ID/firebase:latest
+    args:
+      - -P
+      - $PROJECT_ID
+      - deploy
