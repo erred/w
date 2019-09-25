@@ -10,10 +10,6 @@ Who am i?
 
 ## TODO
 
-- [ ] improve gomod redirection generation
-- [ ] improve layout / static generation
-- [ ] github actions?
 - [ ] web packaging
-- [ ] amp
-- [ ] rss
 - [ ] signed exchanges (blocked by cert requirements)
+- [ ] amp
