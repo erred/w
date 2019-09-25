@@ -157,7 +157,7 @@ func (o *BlogOptions) Exec(opt *Options) error {
 		})
 	}
 
-	f, err := os.Open(filepath.Join(o.Dst, "feed.atom"))
+	f, err := os.Create(filepath.Join(o.Dst, "feed.atom"))
 	if err != nil {
 		return fmt.Errorf("BlogOptions.Exec open feed.atom: %w", err)
 	}
