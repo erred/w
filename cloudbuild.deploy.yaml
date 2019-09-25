@@ -10,7 +10,8 @@ steps:
   - id: generate imgs
     waitFor: ["-"]
     name: gcr.io/$PROJECT_ID/$_IMG
-    args: img
+    args: 
+      - img
 
   - id: generate mod
     waitFor: ["-"]
