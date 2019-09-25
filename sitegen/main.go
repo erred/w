@@ -124,7 +124,7 @@ func canonicalURL(subpath string) string {
 
 func writeTemplate(t *template.Template, tname, fname string, data interface{}) error {
 	os.MkdirAll(filepath.Dir(fname), 0755)
-	f, err := os.Open(fname)
+	f, err := os.Create(fname)
 	if err != nil {
 		return fmt.Errorf("writeTemplate open %v: %w", fname, err)
 	}
