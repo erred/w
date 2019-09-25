@@ -21,6 +21,7 @@ type BlogData struct {
 	Desc    string
 	Content string
 
+	RelURL string // for blog index
 	// only for index page
 	Posts []BlogData
 }
@@ -64,7 +65,7 @@ func (o *BlogOptions) Exec(opt *Options) error {
 			log.Printf("BlogOptions.Exec parse name %q, expected at least 4 parts, got %d\n", base, len(parts))
 			continue
 		}
-		fn := strings.TrimSuffix(base, ".md") + ".html"
+		fn := strings.TrimSuffix(base, ".md")
 
 		b, err := ioutil.ReadFile(filepath.Join(o.Src, fi.Name()))
 		if err != nil {
@@ -80,6 +81,7 @@ func (o *BlogOptions) Exec(opt *Options) error {
 
 		data := BlogData{
 			URL:     filepath.Join(opt.host, o.Src, fn),
+			RelURL:  fn,
 			Date:    strings.Join(parts[:3], "-"),
 			Title:   strings.Join(parts[3:], " "),
 			Desc:    string(desc),
@@ -94,7 +96,7 @@ func (o *BlogOptions) Exec(opt *Options) error {
 			continue
 		}
 
-		dfn := filepath.Join(o.Dst, o.Src, fn)
+		dfn := filepath.Join(o.Dst, o.Src, fn+".html")
 		os.MkdirAll(filepath.Dir(dfn), 0755)
 		err = ioutil.WriteFile(dfn, buf.Bytes(), 0644)
 		if err != nil {
