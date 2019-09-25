@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"encoding/xml"
 	"flag"
 	"fmt"
 	"io/ioutil"
@@ -10,8 +11,10 @@ import (
 	"path/filepath"
 	"sort"
 	"strings"
+	"time"
 
 	"github.com/russross/blackfriday/v2"
+	"golang.org/x/tools/blog/atom"
 )
 
 type BlogData struct {
@@ -89,18 +92,10 @@ func (o *BlogOptions) Exec(opt *Options) error {
 		}
 		datas = append(datas, data)
 
-		var buf bytes.Buffer
-		err = opt.T.ExecuteTemplate(&buf, "blogpost", data)
-		if err != nil {
-			log.Printf("BlogOptions.Exec exec template %q: %w\n", fn, err)
-			continue
-		}
-
 		dfn := filepath.Join(o.Dst, o.Src, fn+".html")
-		os.MkdirAll(filepath.Dir(dfn), 0755)
-		err = ioutil.WriteFile(dfn, buf.Bytes(), 0644)
+		err = writeTemplate(opt.T, "blogpost", dfn, data)
 		if err != nil {
-			log.Printf("BlogOptions.Exec write %q: %w\n", dfn, err)
+			log.Printf("BlogOptions.Exec write blogpost %q: %w\n", dfn, err)
 		}
 	}
 
@@ -114,17 +109,64 @@ func (o *BlogOptions) Exec(opt *Options) error {
 		Posts: datas,
 	}
 
-	var buf bytes.Buffer
-	err = opt.T.ExecuteTemplate(&buf, "blogindex", data)
+	dfn := filepath.Join(o.Dst, o.Src, "index.html")
+	err = writeTemplate(opt.T, "blogindex", dfn, data)
 	if err != nil {
-		return fmt.Errorf("BlogOptions.Exec exec template blogindex: %w", err)
+		return fmt.Errorf("BlogOptions.Exec write blogindex: %w", err)
 	}
 
-	dfn := filepath.Join(o.Dst, o.Src, "index.html")
-	os.MkdirAll(filepath.Dir(dfn), 0755)
-	err = ioutil.WriteFile(dfn, buf.Bytes(), 0644)
+	me := &atom.Person{
+		Name:  "Sean Liao",
+		URI:   "https://seankhliao.com",
+		Email: "blog-atom@seankhliao.com",
+	}
+
+	fd := atom.Feed{
+		Title: "seankhliao's stream of consciousness",
+		ID:    "tag:seankhliao.com,2019:seankhliao.com",
+		Link: []atom.Link{
+			{
+				Rel:  "self",
+				Href: "https://seankhliao.com/feed.atom",
+				Type: "application/atom+xml",
+			}, {
+				Rel:  "alternate",
+				Href: "https://seankhliao.com/blog",
+				Type: "text/html",
+			},
+		},
+		Updated: atom.Time(time.Now()),
+		Author:  me,
+	}
+	for _, bp := range datas {
+		fd.Entry = append(fd.Entry, &atom.Entry{
+			Title: bp.Title,
+			Link: []atom.Link{
+				{
+					Rel:  "alternate",
+					Href: bp.URL,
+					Type: "text/html",
+				},
+			},
+			Published: atom.TimeStr(bp.Date + "T00:00:00Z"),
+			Author:    me,
+			Summary: &atom.Text{
+				Type: "text",
+				Body: bp.Desc,
+			},
+		})
+	}
+
+	f, err := os.Open(filepath.Join(o.Dst, "feed.atom"))
 	if err != nil {
-		return fmt.Errorf("BlogOptions.Exec write index %q: %w", dfn, err)
+		return fmt.Errorf("BlogOptions.Exec open feed.atom: %w", err)
+	}
+	defer f.Close()
+	e := xml.NewEncoder(f)
+	e.Indent("", "    ")
+	err = e.Encode(fd)
+	if err != nil {
+		return fmt.Errorf("BlogOptions.Exec marshal atom: %w", err)
 	}
 
 	return nil

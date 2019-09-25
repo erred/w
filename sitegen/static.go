@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bytes"
 	"flag"
 	"fmt"
 	"io/ioutil"
@@ -52,8 +51,7 @@ func (o *StaticOptions) Exec(opt *Options) error {
 			return err
 		}
 
-		t := opt.T.New(subpath)
-		_, err = t.Parse(string(b))
+		_, err = opt.T.New(subpath).Parse(string(b))
 		if err != nil {
 			err = fmt.Errorf("StaticOptions.Exec walk parse %q: %w", path, err)
 			log.Println(err)
@@ -74,18 +72,10 @@ func (o *StaticOptions) Exec(opt *Options) error {
 		go func(page StaticData) {
 			defer wg.Done()
 
-			var b bytes.Buffer
-			err := opt.T.ExecuteTemplate(&b, page.Path, page)
+			dfn := filepath.Join(o.Dst, strings.ReplaceAll(page.Path, ".gohtml", ".html"))
+			err := writeTemplate(opt.T, page.Path, dfn, page)
 			if err != nil {
-				log.Printf("StaticOptions.Exec exec template %q: %w", page.Path, err)
-				return
-			}
-
-			dst := filepath.Join(o.Dst, strings.ReplaceAll(page.Path, ".gohtml", ".html"))
-			os.MkdirAll(filepath.Dir(dst), 0755)
-			err = ioutil.WriteFile(dst, b.Bytes(), 0644)
-			if err != nil {
-				log.Printf("StaticOptions.Exec write %q: %w", dst, err)
+				log.Printf("StaticOptions.Exec write %q: %v", dfn, err)
 				return
 			}
 		}(page)

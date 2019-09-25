@@ -2,3 +2,5 @@
 github.com/russross/blackfriday/v2
 # github.com/shurcooL/sanitized_anchor_name v1.0.0
 github.com/shurcooL/sanitized_anchor_name
+# golang.org/x/tools v0.0.0-20190925211824-e4ea94538f5b
+golang.org/x/tools/blog/atom
