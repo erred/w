@@ -1,3 +1,5 @@
+tags:
+  - $COMMIT_SHA
 substitutions:
   _IMG: com-seankhliao-sitegen:latest
 steps:
