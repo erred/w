@@ -97,6 +97,8 @@ and *disable* enforcing ssh keys in `git/config`
 
 ## reinstalling more stuff
 
+or just use the `xps-system`, `gui-env`, `dev-tools` packages [here](https://github.com/seankhliao/pkgbuilds)
+
 ### visual environemnt
   - sway
   - xf86-video-intel
