@@ -127,12 +127,6 @@ or just use the `xps-system`, `gui-env`, `dev-tools` packages [here](https://git
 
 ## editing configs
 
-### `/etc/login.defs`
-maybe optional? check with pam.d/system-auth
-```
-FAIL_DELAY 0
-```
-
 ### `/etc/makepkg.conf`
 ```
 -march=native
