@@ -1,5 +1,7 @@
 tags:
   - $COMMIT_SHA
+  - $SHORT_SHA
+  - com-seankhliao-sitegen
 substitutions:
   _IMG: com-seankhliao-sitegen
 images:
