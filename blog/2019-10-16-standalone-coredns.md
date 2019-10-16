@@ -88,6 +88,8 @@ in for a world of pain
 - NSEC only, no NSEC3 (key types still valid)
 - signed on demand (zone transfer will not show a signed zone)
 
+Corefile:
+
 ```
 . {
   dnssec {
@@ -105,6 +107,8 @@ in for a world of pain
 - No KSK/ZSK split, must be a KSK key
 - NSEC only, no NSEC3 (key types still valid)
 - entire zone is presigned
+
+Corefile:
 
 ```
 . {
