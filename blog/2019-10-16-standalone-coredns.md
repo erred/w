@@ -80,7 +80,10 @@ in for a world of pain
 
 ## plugin/dnssec
 
-- supports RSA/ECDSA/ED25519 (probably, with patch) keys.
+- supports RSA/ECDSA/ED25519 (probably,
+  [issue #3379](https://github.com/coredns/coredns/issues/3379),
+  [pr #3380](https://github.com/coredns/coredns/pull/3380)
+  ) keys
 - supports KSK/ZSK split
 - NSEC only, no NSEC3 (key types still valid)
 - signed on demand (zone transfer will not show a signed zone)
@@ -95,7 +98,10 @@ in for a world of pain
 
 ## plugin/sign
 
-- supports RSA/ECDSA/ED25519 (probably, with patch) keys
+- supports RSA/ECDSA/ED25519 (probably,
+  [issue #3379](https://github.com/coredns/coredns/issues/3379),
+  [pr #3380](https://github.com/coredns/coredns/pull/3380)
+  ) keys
 - No KSK/ZSK split, must be a KSK key
 - NSEC only, no NSEC3 (key types still valid)
 - entire zone is presigned
