@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"sort"
 	"strings"
 )
 
@@ -23,6 +24,7 @@ func NewSitemapOptions(args []string) *SitemapOptions {
 	f.Parse(args)
 	return &o
 }
+
 func (o *SitemapOptions) Exec(opt *Options) error {
 	var files []string
 	filepath.Walk(o.Src, func(path string, fi os.FileInfo, err error) error {
@@ -33,9 +35,11 @@ func (o *SitemapOptions) Exec(opt *Options) error {
 			return nil
 		}
 		subpath, _ := filepath.Rel(o.Src, path)
-		files = append(files, filepath.Join(opt.host, canonicalURL(subpath)))
+		files = append(files, "https://"+filepath.Join(opt.host, canonicalURL(subpath)))
 		return nil
 	})
+
+	sort.Strings(files)
 	err := ioutil.WriteFile(o.Dst, []byte(strings.Join(files, "\n")), 0644)
 	if err != nil {
 		return fmt.Errorf("SitemapOptions.Exec write %q: %w", o.Dst, err)
