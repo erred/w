@@ -32,6 +32,20 @@ find script here: [arch-install](https://github.com/seankhliao/arch-install)
 
 # notes
 
+## 30-network.conf
+
+```
+[Match]
+Name=*
+
+[Network]
+DHCP=yes
+DNS=8.8.8.8
+DNS=8.8.4.4
+DNS=2001:4860:4860::8888
+DNS=2001:4860:4860::8844
+```
+
 ## loader/loader.conf
 
 ```
