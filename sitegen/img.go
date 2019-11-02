@@ -118,9 +118,9 @@ func (img ImgConvertIcon) Exec() error {
 	}
 
 	cmd := exec.Command("convert", args...)
-	_, err := cmd.CombinedOutput()
+	o, err := cmd.CombinedOutput()
 	if err != nil {
-		return fmt.Errorf("ImgConvertIcon.Exec: %w", err)
+		return fmt.Errorf("ImgConvertIcon.Exec: %w\n%s", err, o)
 	}
 	return nil
 }
