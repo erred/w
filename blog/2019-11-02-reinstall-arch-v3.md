@@ -44,6 +44,7 @@ DNS=8.8.8.8
 DNS=8.8.4.4
 DNS=2001:4860:4860::8888
 DNS=2001:4860:4860::8844
+IPForward=kernel
 ```
 
 ## loader/loader.conf
