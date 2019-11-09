@@ -23,7 +23,6 @@ steps:
       - gcr.io/$PROJECT_ID/firebase:latest
 
   - id: build sitegen
-    waitFor: ["-"]
     waitFor: ["warm sitegen cache"]
     name: gcr.io/cloud-builders/docker:latest
     args:
