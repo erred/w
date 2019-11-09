@@ -24,8 +24,8 @@ func main() {
 	remote.Add(1)
 	go NewRemoteOptions(nil).Exec(o, nil, &remote)
 
-	sitemap.Add(1)
-	go NewModOptions(nil).Exec(o, nil, &sitemap)
+	// sitemap.Add(1)
+	// go NewModOptions(nil).Exec(o, nil, &sitemap)
 
 	sitemap.Add(1)
 	go NewBlogOptions(nil).Exec(o, &remote, &sitemap)
