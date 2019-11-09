@@ -11,6 +11,7 @@ import (
 	"path/filepath"
 	"sort"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/russross/blackfriday/v2"
@@ -50,7 +51,13 @@ func NewBlogOptions(args []string) *BlogOptions {
 	return &o
 }
 
-func (o *BlogOptions) Exec(opt *Options) error {
+func (o *BlogOptions) Exec(opt *Options, pre, post *sync.WaitGroup) error {
+	if pre != nil {
+		pre.Wait()
+	}
+	if post != nil {
+		defer post.Done()
+	}
 	fis, err := ioutil.ReadDir(o.Src)
 	if err != nil {
 		return fmt.Errorf("BlogOptions.Exec read dir %q: %w", o.Src, err)

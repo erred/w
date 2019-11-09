@@ -37,7 +37,13 @@ func NewModOptions(args []string) *ModOptions {
 	f.Parse(args)
 	return &o
 }
-func (o *ModOptions) Exec(opt *Options) error {
+func (o *ModOptions) Exec(opt *Options, pre, post *sync.WaitGroup) error {
+	if pre != nil {
+		pre.Wait()
+	}
+	if post != nil {
+		defer post.Done()
+	}
 	b, err := ioutil.ReadFile(o.Src)
 	if err != nil {
 		return fmt.Errorf("ModOptions.Exec read file %q: %w", o.Src, err)

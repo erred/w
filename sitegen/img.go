@@ -28,7 +28,13 @@ func NewImgOptions(args []string) *ImgOptions {
 	f.Parse(args)
 	return &o
 }
-func (o *ImgOptions) Exec(opt *Options) error {
+func (o *ImgOptions) Exec(opt *Options, pre, post *sync.WaitGroup) error {
+	if pre != nil {
+		pre.Wait()
+	}
+	if post != nil {
+		defer post.Done()
+	}
 	fis, err := ioutil.ReadDir(o.Src)
 	if err != nil {
 		return fmt.Errorf("ImgOptions.Exec read dir %v: %w", o.Src, err)

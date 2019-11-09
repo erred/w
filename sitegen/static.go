@@ -32,7 +32,13 @@ func NewStaticOptions(args []string) *StaticOptions {
 	return &o
 }
 
-func (o *StaticOptions) Exec(opt *Options) error {
+func (o *StaticOptions) Exec(opt *Options, pre, post *sync.WaitGroup) error {
+	if pre != nil {
+		pre.Wait()
+	}
+	if post != nil {
+		defer post.Done()
+	}
 	var pages []StaticData
 	filepath.Walk(o.Src, func(path string, info os.FileInfo, err error) error {
 		if err != nil {

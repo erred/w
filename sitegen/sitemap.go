@@ -8,6 +8,7 @@ import (
 	"path/filepath"
 	"sort"
 	"strings"
+	"sync"
 )
 
 // SitemapOptions holds config for generating a txt sitemap
@@ -25,7 +26,13 @@ func NewSitemapOptions(args []string) *SitemapOptions {
 	return &o
 }
 
-func (o *SitemapOptions) Exec(opt *Options) error {
+func (o *SitemapOptions) Exec(opt *Options, pre, post *sync.WaitGroup) error {
+	if pre != nil {
+		pre.Wait()
+	}
+	if post != nil {
+		defer post.Done()
+	}
 	var files []string
 	filepath.Walk(o.Src, func(path string, fi os.FileInfo, err error) error {
 		if err != nil || fi.IsDir() {

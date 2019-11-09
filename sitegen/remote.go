@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
+	"sync"
 )
 
 // RemoteOptions holds config for fetching remote content
@@ -28,7 +29,13 @@ func NewRemoteOptions(args []string) *RemoteOptions {
 	f.Parse(args)
 	return &o
 }
-func (o *RemoteOptions) Exec(opt *Options) error {
+func (o *RemoteOptions) Exec(opt *Options, pre, post *sync.WaitGroup) error {
+	if pre != nil {
+		pre.Wait()
+	}
+	if post != nil {
+		defer post.Done()
+	}
 	r, err := http.Get(o.FontURL)
 	if err != nil {
 		return fmt.Errorf("RemoteOptions.Exec get %q: %w", o.FontURL, err)
