@@ -33,9 +33,10 @@ steps:
       - .
   - id: sitegen
     waitFor: ["build sitegen"]
-    name: $_IMG:latest
+    name: gcr.io/$PROJECT_ID/$_IMG:latest
 
   - id: deploy
+    name: gcr.io/$PROJECT_ID/firebase:latest
     args:
       - -P
       - $PROJECT_ID
