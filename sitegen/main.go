@@ -25,13 +25,13 @@ func main() {
 	go NewRemoteOptions(nil).Exec(o, nil, &remote)
 
 	sitemap.Add(1)
-	go NewSitemapOptions(nil).Exec(o, &remote, &sitemap)
+	go NewModOptions(nil).Exec(o, nil, &sitemap)
+
+	sitemap.Add(1)
+	go NewBlogOptions(nil).Exec(o, &remote, &sitemap)
 
 	sitemap.Add(1)
 	go NewStaticOptions(nil).Exec(o, &remote, &sitemap)
-
-	sitemap.Add(1)
-	go NewModOptions(nil).Exec(o, nil, &sitemap)
 
 	wg.Add(1)
 	go NewSitemapOptions(nil).Exec(o, &sitemap, &wg)
