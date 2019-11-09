@@ -9,21 +9,29 @@ images:
   - gcr.io/$PROJECT_ID/$_IMG:latest
 
 steps:
+  - id: warm sitegen cache
+    waitFor: ["-"]
+    name: gcr.io/cloud-builders/docker:latest
+    args:
+      - pull
+      - gcr.io/$PROJECT_ID/$_IMG:latest
   - id: warm firebase cache
     waitFor: ["-"]
     name: gcr.io/cloud-builders/docker:latest
     args:
       - pull
       - gcr.io/$PROJECT_ID/firebase:latest
+
   - id: build sitegen
     waitFor: ["-"]
+    waitFor: ["warm sitegen cache"]
     name: gcr.io/cloud-builders/docker:latest
     args:
       - build
+      - --cache-from=gcr.io/$PROJECT_ID/$_IMG:latest
       - -t=gcr.io/$PROJECT_ID/$_IMG:$SHORT_SHA
       - -t=gcr.io/$PROJECT_ID/$_IMG:latest
       - .
-
   - id: sitegen
     waitFor: ["build sitegen"]
     name: gcr.io/$PROJECT_ID/$_IMG:latest
