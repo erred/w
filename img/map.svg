@@ -12,6 +12,7 @@
         stroke-width: 0.3;
       }
 
+      #AT,
       #BE,
       #CA,
       #GB,
