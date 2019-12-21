@@ -1,12 +1,12 @@
--- title --
+--- title
 Terms of Service | seankhliao
 
--- style --
+--- style
 main {
 grid-gap: 25vh 1em;
 }
 
--- header --
+--- header
 
 <h2>Terms of <em>Service</em></h2>
 

@@ -1,16 +1,16 @@
--- title --
+--- title
 privacy | seankhliao
 
--- style --
+--- style
 main {
 grid-gap: 25vh 1em;
 }
 
--- header --
+--- header
 
 <h2>_Privacy_ Policy</h2>
 
--- main --
+--- main
 
 ## Scope
 
