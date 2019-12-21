@@ -1,15 +1,15 @@
--- title --
+--- title
 seankhliao
 
--- description --
+--- description
 i am sean
 
--- style --
+--- style
 main {
 grid-gap: 25vh 1em;
 }
 
--- main --
+--- main
 
 # Hey, I'm _Sean_
 

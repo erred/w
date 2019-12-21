@@ -1,13 +1,13 @@
--- title --
+--- title
 newtab | seankhliao
 
--- style --
+--- style
 main {
 grid-gap: 5vh 1em;
 margin: 0;
 }
 
--- main --
+--- main
 
 # _current_ focus
 
