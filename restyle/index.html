@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
+  <link rel="preconnect" href="https://www.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://securetoken.googleapis.com" crossorigin />
+  <link rel="preconnect" href="https://api.seankhliao.com" crossorigin />
+  <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-114337586-1"></script>
+  <script defer src="https://www.google.com/recaptcha/api.js?render=6LcYb6gUAAAAAAugirVvpmFxt8b-j3RfwcNDrchn"></script>
+  <link
+    rel="alternate"
+    type="application/atom+xml"
+    title="seankhliao.com - Atom Feed"
+    href="https://seankhliao.com/feed.atom"
+  />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="" />
+  <link rel="canonical" href="seankhliao.com" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+  <link rel="apple-touch-icon" href="/icon-512.png" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <script>
+    "use strict";
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "UA-114337586-1");
+
+    /* navigator.serviceWorker && window.addEventListener("load", () => {navigator.serviceWorker.register("./sw.js");}); */
+    window.addEventListener("load", () => {
+      grecaptcha.ready(() => {
+        grecaptcha
+          .execute("6LcYb6gUAAAAAAugirVvpmFxt8b-j3RfwcNDrchn", {
+            action: "pageview"
+          })
+          .then(token => {
+            fetch("https://api.seankhliao.com/recaptcha.v3", {
+              method: "POST",
+              mode: "cors",
+              body: token
+            }).then(res => {
+              console.log(res);
+            });
+          });
+      });
+    });
+  </script>
+  <style>
+    @font-face {
+      font-family: "Inconsolata";
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: local("Inconsolata Regular"), local("Inconsolata-Regular"),
+        url(https://fonts.gstatic.com/s/inconsolata/v18/QldKNThLqRwH-OJ1UHjlKGlZ5q0.ttf) format("truetype");
+    }
+    @font-face {
+      font-family: "Inconsolata";
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: local("Inconsolata Bold"), local("Inconsolata-Bold"),
+        url(https://fonts.gstatic.com/s/inconsolata/v18/QldXNThLqRwH-OJ1UHjlKGHiw71p5_k.ttf) format("truetype");
+    }
+    @font-face {
+      font-family: "Lora";
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: local("Lora Regular"), local("Lora-Regular"),
+        url(https://fonts.gstatic.com/s/lora/v14/0QIvMX1D_JOuMwr7Jg.ttf) format("truetype");
+    }
+    @font-face {
+      font-family: "Lora";
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: local("Lora Bold"), local("Lora-Bold"),
+        url(https://fonts.gstatic.com/s/lora/v14/0QIgMX1D_JOuO7HeNtxunw.ttf) format("truetype");
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+    :root {
+      /*
+  --black: #000000;
+  --primary: #a06be0;
+  --gray: #999;
+  --white: #eceff1;
+  --mono: "Inconsolata", monospace;
+  --serif: "Lora", serif;
+*/
+      background: #000;
+      color: #eceff1;
+      font: 18px "Inconsolata", monospace;
+    }
+
+    /* ===== layout general ===== */
+    body {
+      display: flex;
+      flex-flow: column nowrap;
+      margin: 0;
+    }
+
+    /* ===== layout header ===== */
+    header {
+      display: grid;
+      grid:
+        [r1-s] ".    .    .    title title" 1fr [r1-e]
+        [r1-s] ".    .    .    tag   tag" 1fr [r2-e]
+        [r3-s] ".    .    .    .     ." 1fr [r3-e]
+        [r4-s] "logo logo logo logo  logo" 1fr [r4-e]
+        / 1fr 1fr 1fr 1fr 1fr;
+      height: 80vh;
+      padding: 2vmin;
+    }
+    header h1 {
+      font: 700 5vmin "Lora", serif;
+      grid-area: logo;
+      margin: 0;
+      place-self: stretch start;
+    }
+    header h1 a {
+      display: grid;
+      grid: repeat(2, 10vmin) / repeat(8, 10vmin);
+      place-content: center center;
+    }
+    header h1 *:nth-child(n + 5) {
+      grid-row: 2 / span 1;
+    }
+    header h2 {
+      font-size: 4.5vmin;
+      grid-area: title;
+      margin: 0;
+      place-self: end;
+    }
+    header p {
+      color: #999;
+      font-size: 3.5vmin;
+      grid-area: tag;
+      place-self: start end;
+      text-align: right;
+    }
+
+    /* ===== layout main ===== */
+    main {
+      display: grid;
+      grid: auto-flow / 1fr minmax(280px, 840px) 1fr;
+      grid-gap: 0 1em;
+      margin: 20vh 0;
+    }
+    main > * {
+      grid-column: 2 / span 1;
+    }
+    main > picture,
+    main > pre {
+      grid-column: 1 / span 3;
+    }
+    picture img {
+      width: 100%;
+    }
+
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 1.5em 0 0.25em 0;
+    }
+    h3 {
+      font-size: 2.441em;
+    }
+    h4 {
+      font-size: 1.953em;
+    }
+    h5 {
+      font-size: 1.563em;
+    }
+    h6 {
+      font-size: 1.25em;
+    }
+    p {
+      line-height: 1.5;
+      margin: 0 0 0.5em 0;
+    }
+
+    /* ===== layout footer ===== */
+    footer {
+      margin: 10vh auto 3vh;
+    }
+
+    /* ===== style ===== */
+    a,
+    a:visited {
+      color: inherit;
+      font-weight: 700;
+      text-decoration: underline;
+    }
+    a:hover {
+      color: #a06be0;
+      transition: color 0.16s;
+    }
+
+    header a,
+    header a:hover,
+    header a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+    }
+    ul > * {
+      margin: 0.5em;
+    }
+    ul > li:before {
+      content: "»";
+      margin: 0 1ch 0 -3ch;
+      position: absolute;
+    }
+
+    ol > * {
+      line-height: 1.75em;
+    }
+
+    blockquote {
+      margin: 1em;
+      padding: 0.25em 1em;
+      border-left: 1ch solid #999;
+    }
+
+    code {
+      background: #404040;
+      font: 1em "Inconsolata", monospace;
+      padding: 0.25em 0.5em;
+    }
+    pre {
+      background: #404040;
+      overflow-x: scroll;
+      padding: 1em;
+    }
+    pre::-webkit-scrollbar {
+      display: none;
+    }
+    pre code {
+      padding: 0;
+    }
+
+    em {
+      color: #a06be0;
+      background-color: unset;
+      font-style: normal;
+      font-weight: 700;
+    }
+    time {
+      color: #999;
+    }
+
+    /* ===== hide recaptcha ===== */
+    .grecaptcha-badge {
+      visibility: hidden;
+    }
+  </style>
+  <title>seankhliao</title>
+  <style>
+    main {
+      grid-gap: 25vh 1em;
+    }
+  </style>
+  <header>
+    <h1>
+      <a href="/">
+        <span>S</span>
+        <span>E</span>
+        <span>A</span>
+        <span>N</span>
+        <em>K</em>
+        <em>.</em>
+        <em>H</em>
+        <em>.</em>
+        <span>L</span>
+        <span>I</span>
+        <span>A</span>
+        <span>O</span>
+      </a>
+    </h1>
+  </header>
+  <main>
+    <section>
+      <h3>Hey, I'm <em>Sean</em></h3>
+      <h5><em>Bleeding</em> Edge Cloud Native</h5>
+      <p>
+        I run with shiny new stuff that is always <em>half</em>-broken, so I know what actually works. Current
+        <em>preferred</em> tech stack:
+      </p>
+      <p>Go microservices — Docker containers — Kubernetes — Google Cloud Platform</p>
+      <h5>Software <em>Developer</em></h5>
+      <p>I'll do anything except touch <em>frontend</em></p>
+    </section>
+    <section>
+      <h4>What I've Been <em>Doing</em></h4>
+      <h5><em>MSc</em> Security and Network Engineering</h5>
+      <p><em>2019-2020</em> University of Amsterdam</p>
+      <h5><em>BBA</em> Information Management</h5>
+      <p><em>2014-2018</em> National Taiwan University</p>
+    </section>
+    <section>
+      <h4>My <em>Stuff</em></h4>
+      <ul>
+        <li><a href="/blog">Blog</a> — home of random thoughts</li>
+        <li><a href="/projects">Projects</a> — summary of interesting projects</li>
+      </ul>
+    </section>
+    <section>
+      <h4><em>Find</em> Me</h4>
+      <ul>
+        <li><a href="/cdn-cgi/l/email-protection#1d6e787c735d6e787c73767571747c72337e7270">Email</a> — for me?</li>
+        <li><a href="https://github.com/seankhliao">Github</a> — build first, regret later</li>
+        <li><a href="https://github.com/erred">Github Org</a> — where old code goes to die</li>
+      </ul>
+    </section>
+    <picture>
+      <source srcset="/map.webp" type="image/webp" />
+      <img src="/map.png" alt="map of countries I've visited" />
+    </picture>
+    <section>
+      <h4>Travel <em>Log</em></h4>
+      <ul>
+        <li>Belgium — 2019-10</li>
+        <li>Canada — 2019-04</li>
+
+        <li>England — <em>2009 - 2011</em>, 2019-10</li>
+
+        <li>Germany — 2019-12</li>
+        <li>Hong Kong — 2017-08</li>
+        <li>India — 2015-08</li>
+        <li>Indonesia — 2017-02, 2017-08, 2018-02, 2018-12</li>
+        <li>Japan — 2018-03</li>
+        <li>Luxembourg — 2019-10</li>
+        <li>Netherlands — <em>2019 - 2020</em></li>
+        <li>Philipines — 2017-08</li>
+        <li>Russia — <em>2000 - 2005</em></li>
+        <li>Singapore — 2017-01</li>
+        <li>South Korea — 2018-06</li>
+        <li>Sweden — 2018-01</li>
+        <li>Taiwan — <em>1996 - 2000, 2005 - 2009, 2011 - 2019</em></li>
+        <li>Timor-Leste — 2018-02</li>
+        <li>United States — 2019-04</li>
+      </ul>
+    </section>
+  </main>
+  <footer>
+    <a href="/">home</a>
+    |
+    <a href="/privacy">privacy</a>
+    |
+    <a href="/terms">terms</a>
+    |
+    <a href="https://github.com/seankhliao/com-seankhliao">github</a>
+  </footer>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+</html>
