@@ -8,7 +8,7 @@ grid-gap: 25vh 1em;
 
 --- header
 
-<h2>_Privacy_ Policy</h2>
+<h2><em>Privacy</em> Policy</h2>
 
 --- main
 
