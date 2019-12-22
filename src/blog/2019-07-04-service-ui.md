@@ -1,6 +1,9 @@
+--- title
+service ui.md
+--- description
 different ways to present a service
+--- main
 
----
 
 It's been 4 months
 and I've already refactored a service 4 times

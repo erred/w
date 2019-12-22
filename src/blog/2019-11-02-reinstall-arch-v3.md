@@ -1,6 +1,9 @@
+--- title
+reinstall arch v3.md
+--- description
 oops
+--- main
 
----
 
 just after I finished writing / testing my install script,
 I `rm -rf`'d my root directory

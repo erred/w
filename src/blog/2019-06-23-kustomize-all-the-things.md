@@ -1,6 +1,9 @@
+--- title
+kustomize all the things.md
+--- description
 managing k8s configs with kustomize
+--- main
 
----
 
 [kustomize](https://github.com/kubernetes-sigs/kustomize)
 is a cli built in (-ish) to `kubectl` that allows for more complicated workflows

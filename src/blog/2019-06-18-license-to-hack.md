@@ -1,6 +1,9 @@
+--- title
+license to hack.md
+--- description
 biased overview of open source licenses
+--- main
 
----
 
 # licenses
 

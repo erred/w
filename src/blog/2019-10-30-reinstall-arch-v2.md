@@ -1,6 +1,9 @@
+--- title
+reinstall arch v2.md
+--- description
 let's try again
+--- main
 
----
 
 what??
 it's only been 3 weeks

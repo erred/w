@@ -1,6 +1,9 @@
+--- title
+archlinux custom repo.md
+--- description
 custom self updating arch linux repo
+--- main
 
----
 
 # what is it?
 

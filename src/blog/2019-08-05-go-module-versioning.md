@@ -1,6 +1,9 @@
+--- title
+go module versioning.md
+--- description
 notes on go using go modules
+--- main
 
----
 
 package management in Go,
 seems like it's _finally_ comming together

@@ -1,6 +1,9 @@
+--- title
+github actions beta.md
+--- description
 first impressions on github actions beta
+--- main
 
----
 
 A full 10 months after clicking "Join Beta",
 I'm finally in.
