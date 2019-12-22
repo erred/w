@@ -1,6 +1,9 @@
+--- title
+standalone coredns.md
+--- description
 running coredns in standalone mode
+--- main
 
----
 
 so you need DNS...
 

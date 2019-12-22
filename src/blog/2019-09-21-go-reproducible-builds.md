@@ -1,6 +1,9 @@
+--- title
+go reproducible builds.md
+--- description
 reproducible builds in Go
+--- main
 
----
 
 1. use **Go1.13+**
 2. `CGO_ENABLED=0`: haven't had the time to figure out otherwise

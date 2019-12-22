@@ -1,6 +1,9 @@
+--- title
+blog sub home.md
+--- description
 moving blog home
+--- main
 
----
 
 # Subdomain to _Subdir_
 

@@ -1,6 +1,9 @@
+--- title
+custom email.md
+--- description
 setup email in 2019
+--- main
 
----
 
 Email is annoyingly hard,
 if you want it to be _reliable_

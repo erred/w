@@ -4,26 +4,30 @@ import (
 	"bytes"
 	"flag"
 	"fmt"
-	"github.com/russross/blackfriday/v2"
+	"io"
 	"io/ioutil"
 	"log"
 	"net/http"
+	"net/url"
 	"os"
 	"os/exec"
 	"path/filepath"
 	"sort"
+	"strings"
 	"sync"
 	"text/template"
+
+	"github.com/russross/blackfriday/v2"
 )
 
 var (
-	defaultSrc       = "src"
-	defaultDst       = "dst"
-	defaultTemplates = "templates/*"
-	defaultFonts     = "https://fonts.googleapis.com/css?family=Inconsolata:400,700|Lora:400,700&display=swap"
-	defaultAMPPrefux = "amp"
-	defaultBaseURL   = "https://seankhliao.com"
-	defaultGAID      = "UA-114337586-1"
+	defaultSrc = "src"
+	defaultDst = "dst"
+	// defaultFonts     = "https://fonts.googleapis.com/css?family=Inconsolata:400,700|Lora:400,700&display=swap"
+	// defaultAMPPrefux = "amp"
+	defaultBaseURL = "https://seankhliao.com"
+	defaultGAID    = "UA-114337586-1"
+	defaultProject = "com-seankhliao"
 
 	defaultImgArgs = [][]string{
 		[]string{
@@ -69,16 +73,23 @@ func main() {
 	// }
 
 	o.processPages()
+
+	// err = o.deploy()
+	// if err != nil {
+	//                log.Println(err)
+	//                os.Exit(1)
+	//        }
 }
 
 type options struct {
-	src          string
-	dst          string
-	templateGlob string
-	fontURL      string
-	ampPrefix    string
-	baseURL      string
-	gaID         string
+	src string
+	dst string
+	// templateGlob string
+	// fontURL      string
+	// ampPrefix    string
+	baseURL    string
+	gaID       string
+	gcpProject string
 
 	templates *template.Template
 }
@@ -87,11 +98,13 @@ func newOptions() *options {
 	o := &options{}
 	flag.StringVar(&o.src, "src", defaultSrc, "source directory")
 	flag.StringVar(&o.dst, "dst", defaultDst, "output directory")
-	flag.StringVar(&o.templateGlob, defaultTemplates, "templates", "template glob")
-	flag.StringVar(&o.fontURL, "fonts", defaultFonts, "fonts to retreive")
-	flag.StringVar(&o.ampPrefix, "amp", defaultAMPPrefux, "amp path prefix")
+	// flag.StringVar(&o.templateGlob, defaultTemplates, "templates", "template glob")
+	// flag.StringVar(&o.fontURL, "fonts", defaultFonts, "fonts to retreive")
+	// flag.StringVar(&o.ampPrefix, "amp", defaultAMPPrefux, "amp path prefix")
 	flag.StringVar(&o.baseURL, "host", defaultBaseURL, "url base")
 	flag.StringVar(&o.gaID, "ga", defaultGAID, "google analytics ID")
+	flag.StringVar(&o.gcpProject, "project", defaultProject, "GCP project (firebase)")
+
 	flag.Parse()
 	return o
 }
@@ -105,24 +118,24 @@ func (o *options) parseTemplates() error {
 	return nil
 }
 
-func (o *options) getFonts() error {
-	res, err := http.Get(o.fontURL)
-	if err != nil {
-		return fmt.Errorf("options.getFonts: %w", err)
-	} else if res.StatusCode < 200 || res.StatusCode > 299 {
-		return fmt.Errorf("options.getFonts: %d %s", res.StatusCode, res.Status)
-	}
-	defer res.Body.Close()
-	buf := bytes.NewBufferString(`{{ define "fontcss" }}`)
-	buf.ReadFrom(res.Body)
-	buf.WriteString(`{{ end }}`)
-
-	o.templates, err = o.templates.New("fontcss").Parse(buf.String())
-	if err != nil {
-		return fmt.Errorf("options.getFonts: %w", err)
-	}
-	return nil
-}
+// func (o *options) getFonts() error {
+// 	res, err := http.Get(o.fontURL)
+// 	if err != nil {
+// 		return fmt.Errorf("options.getFonts: %w", err)
+// 	} else if res.StatusCode < 200 || res.StatusCode > 299 {
+// 		return fmt.Errorf("options.getFonts: %d %s", res.StatusCode, res.Status)
+// 	}
+// 	defer res.Body.Close()
+// 	buf := bytes.NewBufferString(`{{ define "fontcss" }}`)
+// 	buf.ReadFrom(res.Body)
+// 	buf.WriteString(`{{ end }}`)
+//
+// 	o.templates, err = o.templates.New("fontcss").Parse(buf.String())
+// 	if err != nil {
+// 		return fmt.Errorf("options.getFonts: %w", err)
+// 	}
+// 	return nil
+// }
 
 func (o *options) convertImgs() error {
 	for i, imgArgs := range defaultImgArgs {
@@ -135,69 +148,78 @@ func (o *options) convertImgs() error {
 }
 
 func (o *options) processPages() error {
-	fis, err := ioutil.ReadDir(o.src)
+	ur, err := url.Parse(o.baseURL)
 	if err != nil {
 		return fmt.Errorf("options.parsePages: %w", err)
 	}
 
 	var wg sync.WaitGroup
-	collect := make(chan page)
-	for _, fi := range fis {
-		wg.Add(1)
-		if filepath.Ext(fi.Name()) == ".md" {
-			go func(fn string) {
-				defer wg.Done()
-				p, err := o.processPage(fn)
-				if err != nil {
-					log.Println("options.parsePages: ", err)
-				}
-				collect <- p
-			}(fi.Name())
+	collect := make(chan []string)
+	filepath.Walk(o.src, func(fp string, fi os.FileInfo, err error) error {
+		if fi.IsDir() {
+			return nil
+		} else if filepath.Ext(fp) == ".md" {
+			wg.Add(1)
+			go o.processPage(fp, collect, &wg)
 		} else {
-			// copy file
+			wg.Add(1)
+			go o.copyFile(fp, &wg)
 		}
-	}
+		return nil
+	})
 	go func() {
 		wg.Wait()
 		close(collect)
 	}()
 
-	var sitemapPages []page
-	var blogPages []page
-	for p := range collect {
-		sitemapPages = append(sitemapPages, p)
-		if p.File[0] == "blog" {
-			blogPages = append(blogPages, p)
+	var sitemapPages, blogPages []string
+	for u := range collect {
+		ur.Path = filepath.Join(u...)
+		sitemapPages = append(sitemapPages, ur.String())
+		if len(u) > 1 && u[0] == "blog" {
+			blogPages = append(blogPages, u[len(u)-1])
 		}
 	}
-	sort.Slice(sitemapPages, func(i, j int) bool { return sitemapPages[i].CanonicalURL < sitemapPages[j].CanonicalURL })
-	sort.Slice(blogPages, func(i, j int) bool { return blogPages[i].CanonicalURL < blogPages[j].CanonicalURL })
+	sort.Strings(sitemapPages)
+	sort.Strings(blogPages)
 
 	// generate sitemap, blog index, atom feed
 
+	ioutil.WriteFile(filepath.Join(o.dst, "sitemap.txt"), []byte(strings.Join(sitemapPages, "\n")), 0644)
 	return nil
 }
 
 type page struct {
-	File         []string
 	CanonicalURL string
+	AMPURL       string
 
 	Title       []byte
 	Description []byte
 	Style       []byte
 	Header      []byte
 	Main        string
+
+	Date string // blogpost
 }
 
 func (p page) String() string {
 	return fmt.Sprintf("===== page: %s\nTitle: %s\nDescription: %s\nStyle: %s\nHeader: %s\nMain: %s\n\n", p.CanonicalURL, p.Title, p.Description, p.Style, p.Header, p.Main)
 }
 
-func (o *options) processPage(fn string) (page, error) {
+// processPage takes a filepath.md (from current directory)
+// and creates the cprresponding filepath.html and amp/filepath.html
+// also sends the relative url path segments to collect
+func (o *options) processPage(fp string, collect chan []string, done *sync.WaitGroup) {
+	if done != nil {
+		defer done.Done()
+	}
+	fps := strings.Split(fp, "/")
 	var p page
-	b, err := ioutil.ReadFile(filepath.Join(o.src, fn))
+	b, err := ioutil.ReadFile(fp)
 	if err != nil {
-		return p, fmt.Errorf("options.processPage: %s %w", fn, err)
+		// return fmt.Errorf("options.processPage: %s %w", fn, err)
+		log.Printf("options.processPage: %s %v", fp, err)
+		return
 	}
 	bb := bytes.Split(b, []byte("---"))
 	for _, b := range bb {
@@ -215,32 +237,72 @@ func (o *options) processPage(fn string) (page, error) {
 		case "header":
 			p.Header = bytes.TrimSpace(b[i:])
 		case "main":
-
-			p.Main = string(blackfriday.Run(b[i:], blackfriday.WithRenderer(blackfriday.NewHTMLRenderer(blackfriday.HTMLRendererParameters{HeadingLevelOffset: 3, Flags: blackfriday.CommonHTMLFlags}))))
-			// p.Main = bytes.TrimSpace(b[i:])
+			p.Main = string(blackfriday.Run(b[i:], blackfriday.WithRenderer(blackfriday.NewHTMLRenderer(blackfriday.HTMLRendererParameters{HeadingLevelOffset: 2, Flags: blackfriday.CommonHTMLFlags}))))
 		default:
-			return p, fmt.Errorf("options.processPage: unknown section %s", bytes.TrimSpace(b[:i]))
+			log.Printf("options.processPage: unknown section %s", bytes.TrimSpace(b[:i]))
+			return
 		}
 	}
 
 	// TODO: write to files
-	// f, err := openWrite("htmlfile")
-	// if err != nil {
-	//         return p, fmt.Errorf("options.processPage: %w", err)
-	// }
-	// defer f.Close()
+	fps[0], fps[len(fps)-1] = "amp", strings.TrimSuffix(fps[len(fps)-1], ".md")+".html"
+	htmlpath := filepath.Join(fps[1:]...)
+	f, err := openWrite(filepath.Join(o.dst, htmlpath))
+	if err != nil {
+		log.Printf("options.processPage: %v", err)
+		return
+	}
+	defer f.Close()
+	f.WriteString(p.Main)
 	// o.templates.ExecuteTemplate(f, "htmlfile", p)
-	// f, err = openWrite("ampfile")
-	// if err != nil {
-	//         return p, fmt.Errorf("options.processPage: %w", err)
-	// }
-	// defer f.Close()
-	// o.templates.ExecuteTemplate(f, "ampfile", p)
+	collect <- fps[1:]
 
-	return p, nil
+	amppath := filepath.Join(fps...)
+	f, err = openWrite(filepath.Join(o.dst, amppath))
+	if err != nil {
+		log.Printf("options.processPage: %v", err)
+		return
+	}
+	defer f.Close()
+	f.WriteString(p.Main)
+	// o.templates.ExecuteTemplate(f, "ampfile", p)
+	collect <- fps
 }
 
 // func fileNames(fn, src, dst string) (dst, dstAMP, fullURL)
+
+func (o *options) deploy() error {
+	cmd := exec.Command("firebase", "-P", o.gcpProject, "deploy")
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	err := cmd.Run()
+	if err != nil {
+		return fmt.Errorf("options.deploy: %w", err)
+	}
+	return nil
+}
+
+func (o *options) copyFile(fp string, done *sync.WaitGroup) {
+	if done != nil {
+		defer done.Done()
+	}
+	fps := strings.Split(fp, "/")
+	f1, err := os.Open(fp)
+	if err != nil {
+		log.Println("options.parsePages: copy open f1", fp, err)
+		return
+	}
+	defer f1.Close()
+
+	fps[0] = o.dst
+	f2, err := openWrite(filepath.Join(fps...))
+	if err != nil {
+		log.Println("options.parsePages: copy open f2", filepath.Join(fps...), err)
+		return
+	}
+	defer f2.Close()
+	io.Copy(f2, f1)
+}
 
 func openWrite(fn string) (*os.File, error) {
 	err := os.MkdirAll(filepath.Dir(fn), 0755)

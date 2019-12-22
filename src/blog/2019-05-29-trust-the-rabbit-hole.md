@@ -1,6 +1,9 @@
+--- title
+trust the rabbit hole.md
+--- description
 where do you start trusting things
+--- main
 
----
 
 # How _(not)_ to trust everything
 

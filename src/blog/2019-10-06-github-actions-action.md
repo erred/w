@@ -1,6 +1,9 @@
+--- title
+github actions action.md
+--- description
 wrting actions for github actions
+--- main
 
----
 
 footguns,
 footguns everywhere

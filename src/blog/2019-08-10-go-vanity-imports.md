@@ -1,6 +1,9 @@
+--- title
+go vanity imports.md
+--- description
 vanity imports are vain
+--- main
 
----
 
 So how do you get `go get your.domain/package` to work?
 

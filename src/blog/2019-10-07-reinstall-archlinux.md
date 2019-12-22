@@ -1,6 +1,9 @@
+--- title
+reinstall archlinux.md
+--- description
 the long and arduous journey of reinstalling arch
+--- main
 
----
 
 *why?*
 you ask,

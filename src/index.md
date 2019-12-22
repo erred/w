@@ -45,10 +45,7 @@ _2014-2018_ National Taiwan University
 - [Github](https://github.com/seankhliao) — build first, regret later
 - [Github Org](https://github.com/erred) — where old code goes to die
 
-<picture>
-  <source srcset="/map.webp" type="image/webp" />
-  <img src="/map.png" alt="map of countries I've visited" />
-</picture>
+# ![map of countries I've visited](/map.webp)
 
 ## Travel _Log_
 

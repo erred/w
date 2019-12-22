@@ -1,6 +1,9 @@
+--- title
+go string rune byte.md
+--- description
 what's the difference anyways
+--- main
 
----
 
 how do you convert the idea of a **symbol**
 to something the computer can represent?

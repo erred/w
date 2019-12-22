@@ -1,6 +1,9 @@
+--- title
+micro boilerplate.md
+--- description
 leveraging the kubernetes environment
+--- main
 
----
 
 k8s is a platform,
 with _features_ that can be used to make things run more smoothly

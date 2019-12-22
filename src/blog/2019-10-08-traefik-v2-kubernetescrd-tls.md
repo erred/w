@@ -1,6 +1,9 @@
-tls certs with traefik v2 
+--- title
+traefik v2 kubernetescrd tls.md
+--- description
+tls certs with traefik v2
+--- main
 
----
 
 so, 
 because it wasn't entirely obvious to me,

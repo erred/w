@@ -1,6 +1,9 @@
+--- title
+minimalism.md
+--- description
 less is more is less
+--- main
 
----
 
 # mnmlsm
 

@@ -1,6 +1,9 @@
+--- title
+inbox zero.md
+--- description
 clearing the queue
+--- main
 
----
 
 # Inbox _Zero_
 

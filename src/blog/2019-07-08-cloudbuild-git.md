@@ -1,6 +1,9 @@
+--- title
+cloudbuild git.md
+--- description
 git stuff done on cloudbuild
+--- main
 
----
 
 [Google Cloud Build](https://cloud.google.com/cloud-build/),
 the minimalist CI system that is kinda close to
