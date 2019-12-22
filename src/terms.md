@@ -10,5 +10,5 @@ grid-gap: 25vh 1em;
 
 <h2>Terms of <em>Service</em></h2>
 
--- main
+--- main
 Be reasonable
