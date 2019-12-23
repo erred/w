@@ -18,6 +18,8 @@ import (
 func main() {
 	o := newOptions()
 
+	os.MkdirAll(o.dst, 0755)
+
 	err := o.parseTemplates()
 	if err != nil {
 		log.Println(err)
