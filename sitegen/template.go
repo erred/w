@@ -1,13 +1,32 @@
 package main
 
+import (
+	"fmt"
+	"text/template"
+)
+
+func (o *options) parseTemplates() error {
+	var err error
+	o.templates = template.New("")
+	for name, tmpl := range rawTemplates {
+		o.templates, err = o.templates.New(name).Parse(tmpl)
+		if err != nil {
+			return fmt.Errorf("options.parseTemplates: %w", err)
+		}
+	}
+	return nil
+}
+
 var (
 	rawTemplates = map[string]string{
-		"layout-main": `
+		"layout-main": ` {{ define "layout-main" }}
 <!doctype html>
+{{ if .AMP }}<html ⚡>{{ else }}<html lang="en">{{ end }}
 <head>
         {{ template "head" . }}
 </head>
 <body>
+        {{ template "body-amp" . }}
         <header>
                 {{ template "header-name" }}
                 {{ .Header }}
@@ -15,17 +34,20 @@ var (
         <main>
                 {{ .Main }}
         </main>
-        {{ template "footer" }}
+        {{ template "footer" . }}
 </body>
+</html>
+{{ end }}
 `,
 
-		"layout-blogpost": `
+		"layout-blogpost": `{{ define "layout-blogpost" }}
 <!doctype html>
-<html lang="en">
+{{ if .AMP }}<html ⚡>{{ else }}<html lang="en">{{ end }}
 <head>
         {{ template "head" . }}
 </head>
 <body>
+        {{ template "body-amp" . }}
         <header>
                 {{ template "header-name" }}
                 <h2><a href="/blog">b<em>log</em></a></h2>
@@ -35,17 +57,19 @@ var (
                 <h3>{{ .Title }}</h3>
                 {{ .Main }}
         </main>
-        {{ template "footer" }}
+        {{ template "footer" . }}
 </body>
 </html>
+{{ end }}
 `,
-		"layout-blogindex": `
+		"layout-blogindex": `{{ define "layout-blogindex" }}
 <!doctype html>
-<html lang="en">
+{{ if .AMP }}<html ⚡>{{ else }}<html lang="en">{{ end }}
 <head>
         {{ template "head" . }}
 </head>
 <body>
+        {{ template "body-amp" . }}
         <header>
                 {{ template "header-name" }}
                 <h2><a href="/blog">b<em>log</em></a></h2>
@@ -54,133 +78,98 @@ var (
         <main>
                 <ul>
                 {{ range .Posts }}
-                        <li><time datetime="{{ .Date }}">{{ .Date }}</time> | <a href="{{ .AbsURL }}">{{ .Title }}</a></li>
+                        <li><time datetime="{{ .Date }}">{{ .Date }}</time> | <a href="{{ .URL }}">{{ .Title }}</a></li>
                 {{ end }}
             </ul>
         </main>
-        {{ template "footer" }}
+        {{ template "footer" . }}
 </body>
 </html>
+{{ end }}
 `,
-		"layout-ampexample": `
-<!doctype html>
-<html ⚡>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
-
-    <title>$SOME_TITLE</title>
-
-    <link rel="canonical" href="$SOME_URL" />
-    <link
-      rel="alternate"
-      type="application/atom+xml"
-      title="seankhliao.com - Atom Feed"
-      href="https://seankhliao.com/feed.atom"
-    />
-
-    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
-    <link rel="apple-touch-icon" href="/icon-512.png" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-
-    <script async src="https://cdn.ampproject.org/v0.js"></script>
-    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
-
-    <!-- prettier-ignore -->
-    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style>
-    <!-- prettier-ignore -->
-    <noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
-  </head>
-  <body>
-    <amp-analytics type="gtag" data-credentials="include">
-      <script type="application/json">
-        {
-          "vars": {
-            "gtag_id": "UA-114337586-1",
-            "config": {
-              "UA-114337586-1": { "groups": "default" }
-            }
-          }
-        }
-      </script>
-    </amp-analytics>
-  </body>
-</html>
-        `,
-
-		"layout-gomod": `
-<!doctype html>
-<html lang="en">
-<head>
-        <meta name="go-import" content="github.com/{{ .Old }} git {{ .New }}">
-        <meta name="go-source" content="{{ .New }} https://github.com/{{ .Old }} https://github.com/{{ .Old }}/tree/master{/dir} https://github.com/{{ .Old }}/tree/master{/dir}/{file}#L{line}">
-        <meta http-equiv="Refresh" content="5; url='godoc.org/{{ .New }}'">
-
-        <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
-        <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-114337586-1"></script>
-        <script>
-"use strict";
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag("js", new Date());
-gtag("config", "UA-114337586-1");
-        </script>
-    </head>
-</html>
+		"body-amp": `{{ define "body-amp" }}
+{{ if .AMP }}
+<amp-analytics type="gtag" data-credentials="include">
+<script type="application/json">
+{
+  "vars": {
+    "gtag_id": "{{ .GAID }}",
+    "config": {
+      "{{ .GAID }}": { "groups": "default" }
+    }
+  }
+}
+</script>
+</amp-analytics>
+{{ end }}
+{{ end }}
 `,
 
-		"head": `
+		// <link rel="preconnect" href="https://securetoken.googleapis.com" crossorigin>
+		// <link rel="preconnect" href="https://api.seankhliao.com" crossorigin>
+		// <script defer src="https://www.google.com/recaptcha/api.js?render=6LcYb6gUAAAAAAugirVvpmFxt8b-j3RfwcNDrchn"></script>
+
+		// /* navigator.serviceWorker && window.addEventListener("load", () => {navigator.serviceWorker.register("./sw.js");}); */
+		// window.addEventListener('load', ()=>{
+		//     grecaptcha.ready(()=> {
+		//         grecaptcha.execute('6LcYb6gUAAAAAAugirVvpmFxt8b-j3RfwcNDrchn', {
+		//             action: 'pageview'
+		//         }).then(token=> {
+		//             fetch('https://api.seankhliao.com/recaptcha.v3', {
+		//                 method: 'POST',
+		//                 mode: 'cors',
+		//                 body: token
+		//             }).then(res =>{console.log(res)});
+		//         });
+		//     });
+		// });
+
+		"head": `{{ define "head" }}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 
-<link rel="preconnect" href="https://www.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://securetoken.googleapis.com" crossorigin>
-<link rel="preconnect" href="https://api.seankhliao.com" crossorigin>
-<script defer src="https://www.googletagmanager.com/gtag/js?id=UA-114337586-1"></script>
-<script defer src="https://www.google.com/recaptcha/api.js?render=6LcYb6gUAAAAAAugirVvpmFxt8b-j3RfwcNDrchn"></script>
+<title>{{ .Title }}</title>
 
+{{ if not .AMP }}
+<link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+<script defer src="https://www.googletagmanager.com/gtag/js?id=UA-114337586-1"></script>
+{{ end }}
+
+<link rel="canonical" href="{{ .URLCanonical }}" />
+<link rel="amphtml" ref="{{ .URLAMP }}" />
+<link rel="manifest" href="/manifest.json" />
 <link rel="alternate" type="application/atom+xml" title="seankhliao.com - Atom Feed" href="https://seankhliao.com/feed.atom" />
 
 <meta name="theme-color" content="#000000">
 <meta name="description" content="{{ .Description }}">
 
-<link rel="canonical" href="{{ .CanonicalURL }}">
-<link rel="manifest" href="/manifest.json" />
-
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
 <link rel="apple-touch-icon" href="/icon-512.png" />
 <link rel="shortcut icon" href="/favicon.ico" />
 
-<style>
+<style {{ if .AMP }}amp-custom{{ end }}>
 {{ template "css-fonts" }}
 {{ template "css" }}
 {{ .Style }}
 </style>
+{{ if .AMP }}
+<script async src="https://cdn.ampproject.org/v0.js"></script>
+<script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
 
+<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style>
+<noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+{{ else }}
 <script>
 "use strict";
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag("js", new Date());
-gtag("config", "UA-114337586-1");
-
-/* navigator.serviceWorker && window.addEventListener("load", () => {navigator.serviceWorker.register("./sw.js");}); */
-window.addEventListener('load', ()=>{
-    grecaptcha.ready(()=> {
-        grecaptcha.execute('6LcYb6gUAAAAAAugirVvpmFxt8b-j3RfwcNDrchn', {
-            action: 'pageview'
-        }).then(token=> {
-            fetch('https://api.seankhliao.com/recaptcha.v3', {
-                method: 'POST',
-                mode: 'cors',
-                body: token
-            }).then(res =>{console.log(res)});
-        });
-    });
-});
+gtag("config", "{{ .GAID }}");
 </script>
+{{ end }}
+{{ end }}
 `,
-		"header-name": `
+		"header-name": `{{ define "header-name" }}
 <h1>
     <a href="/amp">
         <span>S</span>
@@ -197,32 +186,22 @@ window.addEventListener('load', ()=>{
         <span>O</span>
     </a>
 </h1>
+{{ end }}
 `,
-		"footer": `
+		"footer": `{{ define "footer" }}
 <footer>
-    <a href="/">home</a>
+    <a href="{{ if .AMP }}/amp{{ end }}/">home</a>
     |
-    <a href="/privacy">privacy</a>
+    <a href="{{ if .AMP }}/amp{{ end }}/privacy">privacy</a>
     |
-    <a href="/terms">terms</a>
+    <a href="{{ if .AMP }}/amp{{ end }}/terms">terms</a>
     |
     <a href="https://github.com/seankhliao/com-seankhliao">github</a>
 </footer>
+{{ end }}
 `,
 
-		"footer-amp": `
-<footer>
-    <a href="/amp">home</a>
-    |
-    <a href="/amp/privacy">privacy</a>
-    |
-    <a href="/amp/terms">terms</a>
-    |
-    <a href="https://github.com/seankhliao/com-seankhliao">github</a>
-</footer>
-`,
-
-		"css": `
+		"css": `{{ define "css" }}
 * {
   box-sizing: border-box;
 }
@@ -406,8 +385,9 @@ time {
 .grecaptcha-badge {
   visibility: hidden;
 }
+{{ end }}
 `,
-		"css-fonts": `
+		"css-fonts": `{{ define "css-fonts" }}
 @font-face {
   font-family: 'Inconsolata';
   font-style: normal;
@@ -436,8 +416,9 @@ time {
   font-display: swap;
   src: local('Lora Bold'), local('Lora-Bold'), url(https://fonts.gstatic.com/s/lora/v14/0QIgMX1D_JOuO7HeNtxunw.ttf) format('truetype');
 }
+{{ end }}
 `,
-		"css-loader": `
+		"css-loader": `{{ define "css-loader" }}
 .loader {
         display: grid;
         grid-gap: 2px;
@@ -483,8 +464,9 @@ time {
                 transform: scale3D(0, 0, 1);
         }
 }
+{{ end }}
 `,
-		"loader": `
+		"loader": `{{ define "loader" }}
 <div class="loader">
   <div></div>
   <div></div>
@@ -496,6 +478,29 @@ time {
   <div></div>
   <div></div>
 </div>
+{{ end }}
+`,
+
+		"layout-gomod": `{{ define "layout-gomod" }}
+<!doctype html>
+<html lang="en">
+<head>
+        <meta name="go-import" content="github.com/{{ .Old }} git {{ .New }}">
+        <meta name="go-source" content="{{ .New }} https://github.com/{{ .Old }} https://github.com/{{ .Old }}/tree/master{/dir} https://github.com/{{ .Old }}/tree/master{/dir}/{file}#L{line}">
+        <meta http-equiv="Refresh" content="5; url='godoc.org/{{ .New }}'">
+
+        <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+        <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-114337586-1"></script>
+        <script>
+"use strict";
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag("js", new Date());
+gtag("config", "UA-114337586-1");
+        </script>
+    </head>
+</html>
+{{ end }}
 `,
 	}
 )
