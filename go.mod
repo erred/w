@@ -1,4 +1,4 @@
-module seankhliao.com/com-seankhliao/v9
+module seankhliao.com/v10
 
 go 1.13
 
