@@ -8,7 +8,7 @@ different ways to present a service
 It's been 4 months
 and I've already refactored a service 4 times
 
-# _server side_ templating
+### _server side_ templating
 
 pros:
 
@@ -21,7 +21,7 @@ cons:
 - tightly bound
 - write html and css
 
-# client side rendering _json api_
+### client side rendering _json api_
 
 pros:
 
@@ -35,7 +35,7 @@ cons:
 - consistency is hard
 - html, css, and javascript
 
-# client side rendering _grpc-web api_
+### client side rendering _grpc-web api_
 
 pros:
 
@@ -49,7 +49,7 @@ cons:
 - grpc-web is still weird wrt load balancing / routing / caching
 - html, css and moer javascript
 
-# chatbot _Dialogflow_
+### chatbot _Dialogflow_
 
 pros:
 
@@ -65,7 +65,7 @@ cons:
 - no push
 - ugly
 
-# chatbot _Telegram_
+### chatbot _Telegram_
 
 pros:
 

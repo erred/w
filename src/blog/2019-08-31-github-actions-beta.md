@@ -11,12 +11,12 @@ I'm finally in.
 Docs are scarce and already outdated,
 it's now _yaml_ instead of hcl.
 
-# links
+### links
 
 - `workflow.yaml` syntax: [docs](https://help.github.com/en/articles/workflow-syntax-for-github-actions)
 - `action.yml` syntax: [docs](https://help.github.com/en/articles/metadata-syntax-for-github-actions)
 
-# Build stuff
+### Build stuff
 
 Right now,
 I like docker containers,
@@ -37,7 +37,7 @@ jobs:
 
 ```
 
-# model
+### model
 
 you get a vm with a bunch of [outdated stuff installed](https://help.github.com/en/articles/software-in-virtual-environments-for-github-actions)
 
@@ -45,7 +45,7 @@ run commands with `jobs.jobid.steps[x].run:`
 
 run actions with `jobs.jobid.steps[x].uses:`
 
-## actions
+#### actions
 
 js or a container with extra metadata for input/output validation,
 refer to by:
@@ -54,7 +54,7 @@ refer to by:
 - . (current repo root) / path / to / action / dir
 - docker://some-image:tag
 
-# notes
+### notes
 
 secrets are filtered from log output,
 **yay**?

@@ -13,7 +13,7 @@ I decided to start using it one day after the v0.2.1 release,
 _bleeding edge_,
 yay no docs
 
-# magic and faerie dust
+### magic and faerie dust
 
 `kustomize` understands k8s config files,
 at least the non CRD kinds.
@@ -25,7 +25,7 @@ so it:
 - apply patches (native, json, and shortcuts)
 - output a keyname sorted canonical yaml (amazing for diffs)
 
-# dir layout
+### dir layout
 
 ```
 service-root
@@ -68,7 +68,7 @@ service-root
       └── resources.yaml
 ```
 
-# _good_ use cases
+### _good_ use cases
 
 dump upstream reference configs into the `base` dir,
 apply all customizations in overlays
@@ -76,7 +76,7 @@ apply all customizations in overlays
 Or just to splut out your config into easily manageable parts,
 a file for each bit you _care about_
 
-# _problems_
+### _problems_
 
 - figure out CRDs
 - make it more clear exactly how much is required to match for patching (all parents + metadata name?)

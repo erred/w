@@ -5,66 +5,66 @@ notes on social media
 --- main
 
 
-# social medias
+### social medias
 
-## facebook
+#### facebook
 
 does anyone really use it anymore
 
-## instagram
+#### instagram
 
 maybe everyone got older and now has less time to post weird stuff
 
-## snapchat
+#### snapchat
 
 i don't have friends
 
-## linkedin
+#### linkedin
 
 do i have to use this?
 
-## twitter
+#### twitter
 
 where the thought leaders live
 
-## reddit
+#### reddit
 
 everything old is new again, really
 
-# messaging
+### messaging
 
-## texting
+#### texting
 
 you spam?
 
-## email
+#### email
 
 very slow messaging system
 
-## facebook messenger
+#### facebook messenger
 
 fallback messaging service
 
-## instagram direct message
+#### instagram direct message
 
 creeping complexity
 
-## telegram
+#### telegram
 
 barely okay
 
-## signal
+#### signal
 
 i can't take anything that wants to use a phone number seriously
 
-## slack
+#### slack
 
 why is it so slowwwwww
 
-## matrix
+#### matrix
 
 found another bug
 
-## whatsapp / line / wechat
+#### whatsapp / line / wechat
 
 cancers the world doesn't need

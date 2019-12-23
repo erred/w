@@ -194,8 +194,7 @@ func (o options) parsePage(fp string) ([]string, Page, error) {
 				blackfriday.WithRenderer(
 					blackfriday.NewHTMLRenderer(
 						blackfriday.HTMLRendererParameters{
-							HeadingLevelOffset: 2,
-							Flags:              blackfriday.CommonHTMLFlags,
+							Flags: blackfriday.CommonHTMLFlags,
 						},
 					),
 				),

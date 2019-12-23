@@ -5,11 +5,11 @@ planning ahead
 --- main
 
 
-# roadmap
+### roadmap
 
 where to now?
 
-## technical skills
+#### technical skills
 
 - scale back time spent on front end
 - continue with k8s / docker
@@ -18,11 +18,11 @@ where to now?
 - reevaluate certs
 - get Masters
 
-## work
+#### work
 
 - look into skillset for SRE / DevOps
 - research job listings / requirements
 
-## interpersonal
+#### interpersonal
 
 - don't neglect friends

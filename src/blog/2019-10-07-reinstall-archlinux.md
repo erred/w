@@ -11,26 +11,26 @@ it has gotten cluttered and full of dubious configs,
 and arch released the new `base` metapackage today,
 so what better time for a fresh start
 
-# clean device
+### clean device
 
-## make backups
+#### make backups
 
   - and check them, i forgot, so i have none
   - the most painful bit is *losing ssh keys*
 
-## create install usbs
+#### create install usbs
 
   - check that they work properly
 
-## wipe device
+#### wipe device
 
   - now is the time to make changes to bios
 
-# install
+### install
 
 the wiki is the holy text you must read and understand
 
-## partitioning
+#### partitioning
 
 ```
 /dev/nvme0n1p1  2G        /efi  EFI system part
@@ -38,7 +38,7 @@ the wiki is the holy text you must read and understand
 /dev/nvme0n1p3  rest      /     arch
 ```
 
-## pacstrap
+#### pacstrap
 
 on bare metal dell xps 13 *9350* with intel *8265* wifi
 
@@ -46,7 +46,7 @@ on bare metal dell xps 13 *9350* with intel *8265* wifi
 pacstrap /mnt base linux linux-firmware intel-ucode wpa_supplicant git sudo neovim python-neovim
 ```
 
-## bootloader
+#### bootloader
 
 systemd-boot
 
@@ -57,17 +57,17 @@ systemd-boot
 5. add bind mount to `/etc/fstab`
 6. add entry to `/efi/loader/entries/`, paths will be like `/EFI/arch/vmlinuz-linux`
 
-# reboot
+### reboot
 
 pray you didn't forget anything important, 
 *like me*,
 or it's back to the install usb, mount and arch-chroot to fix stuff
 
-## user
+#### user
 
 `groupadd sudo`, `useradd -a -G user,video,input,sudo user`, `passwd user`, edit `/etc/sudoers`
 
-## networking
+#### networking
 
 1. `ip link set wlan0 up`
 2. `wpa_passphrase ssid passwd > /etc/wpa_supplicant/wpa_supplicant-wlan0.conf`
@@ -77,11 +77,11 @@ or it's back to the install usb, mount and arch-chroot to fix stuff
 6. edit `/etc/systemd/resolved.conf` for preferred dns
 7. `systemctl enable --now systemd-resolved` 
 
-## major changes
+#### major changes
 
 ~install `kmscon`~: doesn't play nice with sway
 
-## get *yay* back
+#### get *yay* back
 
 `git clone https://aur.archlinux.org/yay-bin.git` 
 and `cd yay-bin` 
@@ -89,20 +89,20 @@ then `makepkg -si`
 
 **note:** this probably requires the `base-devel` stuff
 
-# custom stuff
+### custom stuff
 
-## getting custom stuff back
+#### getting custom stuff back
 
 `git clone https://github.com/seankhliao/config .config`
 
 and then *disable* starting the wm in `zsh/zprofile` 
 and *disable* enforcing ssh keys in `git/config`
 
-## reinstalling more stuff
+#### reinstalling more stuff
 
 or just use the `xps-system`, `gui-env`, `dev-tools` packages [here](https://github.com/seankhliao/pkgbuilds)
 
-### visual environemnt
+##### visual environemnt
   - sway
   - xf86-video-intel
   - i3status
@@ -117,7 +117,7 @@ or just use the `xps-system`, `gui-env`, `dev-tools` packages [here](https://git
   - xorg-server-xwayland
   - wl-clipboard(-x11)
 
-### tools
+##### tools
   - reflector
   - exa
   - ripgrep
@@ -128,9 +128,9 @@ or just use the `xps-system`, `gui-env`, `dev-tools` packages [here](https://git
   - man-db, man-pages
   - openssh
 
-## editing configs
+#### editing configs
 
-### `/etc/makepkg.conf`
+##### `/etc/makepkg.conf`
 ```
 -march=native
 -mtune=native
@@ -140,9 +140,9 @@ PKGEXT='.pkg.tar'
 SRCEXT='.src.tar'
 ```
 
-### `/etc/pacman.conf`
+##### `/etc/pacman.conf`
 ```
-# Misc options
+### Misc options
 UseSyslog
 Color
 TotalDownload
@@ -150,30 +150,30 @@ CheckSpace
 VerbosePkgLists
 ```
 
-### `/etc/pam.d/system-auth`
+##### `/etc/pam.d/system-auth`
 ```
 auth      required  pam_unix.so     try_first_pass nullok nodelay
 ```
 
-### `/etc/systemd/logind.conf`
+##### `/etc/systemd/logind.conf`
 ```
 HoldoffTimeoutSec=10s
 ```
 
-### `/etc/systemd/system.conf`
+##### `/etc/systemd/system.conf`
 ```
 RebootWatchdogSec=10s
 ShutdownWatchdogSec=10s
 DefaultTimeoutStartSec=10s
 DefaultTimeoutStopSec=10s
 ```
-### `/etc/systemd/user.conf`
+##### `/etc/systemd/user.conf`
 ```
 DefaultTimeoutStartSec=10s
 DefaultTimeoutStopSec=10s
 ```
 
-## ssh keys
+#### ssh keys
 
 ```
 ssh-keygen -t ed25519

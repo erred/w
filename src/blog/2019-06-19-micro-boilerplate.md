@@ -8,7 +8,7 @@ leveraging the kubernetes environment
 k8s is a platform,
 with _features_ that can be used to make things run more smoothly
 
-# lifecycle signals
+### lifecycle signals
 
 `SIGINT` and `SIGKILL` are the 2 main ones to care about,
 pod termination:
@@ -36,7 +36,7 @@ func main() {
 }
 ```
 
-# healthcheck
+### healthcheck
 
 _liveness_: you can only die once **(unlike cats)**,
 pod is restarted if it fails `livenessProbe`
@@ -73,7 +73,7 @@ spec:
               periodSeconds: 3
 ```
 
-# logging
+### logging
 
 k8s reads structured logs,
 [fluentd](https://github.com/fluent/fluentd) is common
@@ -114,7 +114,7 @@ func main() {
 }
 ```
 
-# metrics
+### metrics
 
 metrics endpoint works with [prometheus](https://github.com/prometheus/prometheus)
 
@@ -131,7 +131,7 @@ func main() {
 }
 ```
 
-# tracing
+### tracing
 
 see [opentracing](https://opentracing.io/), also [jaeger](https://github.com/jaegertracing/jaeger)
 
@@ -139,6 +139,6 @@ basically `tracer := opentracing.Tracer`
 
 and `span := tracer.StartSpan()` and `span.Finish()`
 
-## additional
+#### additional
 
 [go-grpc-middleware](https://github.com/grpc-ecosystem/go-grpc-middleware)

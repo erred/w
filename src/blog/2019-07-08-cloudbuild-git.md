@@ -12,12 +12,12 @@ the minimalist CI system that is kinda close to
 Anyways,
 here's to working with git in the cloud build environment
 
-# Environment
+### Environment
 
 you are _root_,
 your repo is shallow cloned into `/workspace`
 
-## _Github_ Permissions
+#### _Github_ Permissions
 
 goals: make a mountable volume with github permissions
 
@@ -79,7 +79,7 @@ steps:
 
 ```
 
-## Getting More _History_
+#### Getting More _History_
 
 goals: restore history and branch names
 

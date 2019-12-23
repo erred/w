@@ -14,13 +14,13 @@ pam with u2f is finicky
 and there's a good chance you'll get locked out
 and just removing the line from `/etc/pam.d/system-auth` doesn't help
 
-# wiki
+### wiki
 
 follow the [Installation Guide](https://wiki.archlinux.org/index.php/Installation_guide)
 
-# changes
+### changes
 
-## partition / mounting
+#### partition / mounting
 
 ```
 mount /dev/nvme0n1p3 /mnt
@@ -32,7 +32,7 @@ mount --bind /mnt/efi/EFI/arch /mnt/boot
 1. edit `/etc/fsab` after generating to fix bind mount
 2. edit `/efi/loader/entries/arch.conf` to fix UUID
 
-## pacstrap
+#### pacstrap
 
 ```
 pacstrap /mnt base base-devel linux linux-firmware intel-ucode \
@@ -42,7 +42,7 @@ pacstrap /mnt base base-devel linux linux-firmware intel-ucode \
   brightnessctl alsa-utils kitty xorg-server-xwayland noto-fonts{,-emoji,-cjk} ttf-ibm-plex
 ```
 
-## user
+#### user
 ```
 groupadd -r sudo
 useradd -m -G vidoe,input,sudo,docker user
@@ -50,7 +50,7 @@ passwd user
 EDITOR=nvim visudo
 ```
 
-### as user
+##### as user
 ```
 git clone https://aur.archlinux.org/yay-bin.git
 cd yay-bin && makepkg -si
@@ -66,10 +66,10 @@ cd ~
 mkdir -p data/{down,xdg/{nvim/{backup,undo},zsh}}
 ```
 
-## system
+#### system
 after reboot
 ```
 systemctl enable --now wpa_supplicant@wlp58s0
 systemctl enable --now pcscd
-# edit /etc/resolv.conf
+### edit /etc/resolv.conf
 ```

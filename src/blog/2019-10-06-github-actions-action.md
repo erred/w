@@ -8,7 +8,7 @@ wrting actions for github actions
 footguns,
 footguns everywhere
 
-## workflows
+#### workflows
 
 they finally added a note saying
 that the default `GITHUB_TOKEN`
@@ -18,7 +18,7 @@ everything is an env,
 no nested declarations,
 copy and paste things everywhere
 
-## actions
+#### actions
 
 `action.yml` _MUST_ end in `.yml` and not `.yaml`,
 otherwise it won't be used.

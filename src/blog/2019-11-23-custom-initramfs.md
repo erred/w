@@ -5,13 +5,13 @@ debloat your initramfs?
 --- main
 
 
-# Notes
+### Notes
 
 [these notes](https://hootiegibbon.gitlab.io/blog/2018/10/02/CustomInitramfs.html)
 are good,
 read them
 
-## tldr
+#### tldr
 
 - boot with kernel option `break=postmount`
 - note modules: `lsmod | awk 'NF==3{print $1}{}'`
@@ -21,7 +21,7 @@ read them
   - `FILES` ignored
   - `HOOKS` only `base` is necessary
 
-## results
+#### results
 
 for my XPS 13
 

@@ -13,11 +13,11 @@ margin-top: 25vh;
 
 --- main
 
-## Scope
+#### Scope
 
 Anyone viewing my anything under my site [seankhliao.com](https://seankhliao.com)
 
-## _Data_ Collection
+#### _Data_ Collection
 
 Google Analytics, Google reCAPTCHA, Cloudflare Analytics collect anonymized data through the use of server logs and client side cookies
 
@@ -26,7 +26,7 @@ Google Analytics, Google reCAPTCHA, Cloudflare Analytics collect anonymized data
 - Device profile
 - and some more
 
-## Data _Use_
+#### Data _Use_
 
 (Aggregate) Tracking information grants me a better understanding od who visits my site, what brought them here,
 and what they are viewing. This data informs my decisions on the design and content of this site.
@@ -34,11 +34,11 @@ and what they are viewing. This data informs my decisions on the design and cont
 All activity is bound by the
 [Google Analytics Terms of Service](https://www.google.com/analytics/terms/)
 
-## Choices and _Actions_
+#### Choices and _Actions_
 
 You can turn off cookies in your browser
 
-## Additional _Info_
+#### Additional _Info_
 
 Third party privacy policies
 

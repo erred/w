@@ -7,7 +7,7 @@ running coredns in standalone mode
 
 so you need DNS...
 
-# _Corefile_
+### _Corefile_
 
 by default at `/etc/coredns/Corefile`
 
@@ -26,7 +26,7 @@ by default at `/etc/coredns/Corefile`
 }
 ```
 
-# configure from file
+### configure from file
 
 you have a zone
 (in that bind format)
@@ -41,7 +41,7 @@ sub   IN TXT  "hello world"
 
 your options are
 
-## plugin/auto
+#### plugin/auto
 
 discover zones from a directory and serve,
 
@@ -61,7 +61,7 @@ discover zones from a directory and serve,
 }
 ```
 
-## plugin/file
+#### plugin/file
 
 serve a single file,
 zone _must_ be in the server block or in the file plugin
@@ -77,11 +77,11 @@ example.com {
 }
 ```
 
-# DNSSEC
+### DNSSEC
 
 in for a world of pain
 
-## plugin/dnssec
+#### plugin/dnssec
 
 - supports RSA/ECDSA/ED25519 (probably,
   [issue #3379](https://github.com/coredns/coredns/issues/3379),
@@ -101,7 +101,7 @@ Corefile:
 }
 ```
 
-## plugin/sign
+#### plugin/sign
 
 - supports RSA/ECDSA/ED25519 (probably,
   [issue #3379](https://github.com/coredns/coredns/issues/3379),

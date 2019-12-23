@@ -5,7 +5,7 @@ where do you start trusting things
 --- main
 
 
-# How _(not)_ to trust everything
+### How _(not)_ to trust everything
 
 So you want a trusted compute platform?
 

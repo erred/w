@@ -8,11 +8,11 @@ Writing DialogFlow fulfillment servers in Go
 [DialogFlow](https://dialogflow.com/),
 unified backend chatbot interface powered by ai
 
-# Fulfillment
+### Fulfillment
 
 Calling your backend servers based on front chatbot input
 
-# Go
+### Go
 
 First thing you notice,
 there is only an SDK for client side Go,
@@ -22,7 +22,7 @@ and nothing for server side fulfillment.
 No worries,
 everything is standardized
 
-# Webhook Request Response
+### Webhook Request Response
 
 The godoc for the message types can be found [here](https://godoc.org/google.golang.org/genproto/googleapis/cloud/dialogflow/v2),
 
@@ -33,7 +33,7 @@ It includes json tags,
 but the json we're getting is encoded with the json parameter in the protobuf tag,
 [jsonpb](https://godoc.org/github.com/golang/protobuf/jsonpb) to the rescue
 
-# minimal code
+### minimal code
 
 ```go
 package main

@@ -8,7 +8,7 @@ what's the difference anyways
 how do you convert the idea of a **symbol**
 to something the computer can represent?
 
-## def
+#### def
 
 as humans see it
 
@@ -18,7 +18,7 @@ as humans see it
 - rune: valid sequence of 1+ bytes
 - byte: 8 bits
 
-### examples
+##### examples
 
 the process of turning ideas into bits and bytes a computer can read
 

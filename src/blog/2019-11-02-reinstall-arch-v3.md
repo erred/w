@@ -11,7 +11,7 @@ I `rm -rf`'d my root directory
 
 find script here: [arch-install](https://github.com/seankhliao/arch-install)
 
-# usage
+### usage
 
 1. setup network connectivity
 2. setup mount points
@@ -33,9 +33,9 @@ find script here: [arch-install](https://github.com/seankhliao/arch-install)
 10. setup ssh keys
     - `ssh-keygen -t ed25519`
 
-# notes
+### notes
 
-## 30-network.conf
+#### 30-network.conf
 
 ```
 [Match]
@@ -50,7 +50,7 @@ DNS=2001:4860:4860::8844
 IPForward=kernel
 ```
 
-## loader/loader.conf
+#### loader/loader.conf
 
 ```
 default arch
@@ -58,7 +58,7 @@ timeout 0
 console-mode max
 ```
 
-## loader/entries/arch.conf
+#### loader/entries/arch.conf
 
 ```
 title 	Arch Linux
@@ -68,7 +68,7 @@ initrd  /EFI/archlinux/initramfs-linux.img
 options root=UUID=...................... quiet rw
 ```
 
-## makepkg.conf
+#### makepkg.conf
 
 ```
 -march=native

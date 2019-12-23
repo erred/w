@@ -11,12 +11,12 @@ more or less worked.
 But some recent updates seem to have made everything unstable again.
 So why not try [iwd](https://wiki.archlinux.org/index.php/Iwd)
 
-## Correction 2019-09-16
+#### Correction 2019-09-16
 
 It doesn't work at another location
 back to `wpa_supplicant`
 
-## _UvA_ (University of Amsterdam)
+#### _UvA_ (University of Amsterdam)
 
 The only account I have access to right now,
 they supposedly use `TTLS` with `MSCHAPV2` for phase2,

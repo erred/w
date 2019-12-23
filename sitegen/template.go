@@ -276,7 +276,7 @@ main {
 main > * {
   grid-column: 2 / span 1;
 }
-main > img,
+main > h1,
 main > pre {
   grid-column: 1 / span 3;
 }

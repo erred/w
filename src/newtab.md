@@ -20,7 +20,7 @@ content: "";
 
 --- main
 
-# _current_ focus
+### _current_ focus
 
 _go:_
 [slack](https://app.slack.com/client/T029RQSE6/C029RQSEE)
@@ -31,7 +31,7 @@ _web:_
 [amphtml](https://amp.dev/documentation/guides-and-tutorials/learn/spec/amphtml/)
 [webpackage](https://github.com/WICG/webpackage)
 
-# _to_ read
+### _to_ read
 
 _blogs:_
 [Jaana](https://jbd.dev/)
@@ -51,7 +51,7 @@ _webshit:_
 _other:_
 [azeria](https://azeria-labs.com/)
 
-# Other _stuff_
+### Other _stuff_
 
 _{_
 [repo](https://repo.new)

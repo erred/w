@@ -5,13 +5,13 @@ travel or die
 --- main
 
 
-# Wanderlust
+### Wanderlust
 
 travel or die
 
 complacency breeds comtempt
 
-## But why?
+#### But why?
 
 maybe it's the way I grew up,
 moving around,
@@ -30,6 +30,6 @@ or just maybe,
 it's growing up not believing that _countries_ were rational,
 and thinking the entire world was your home
 
-## Where to
+#### Where to
 
 There's a [map](/) I want to fill

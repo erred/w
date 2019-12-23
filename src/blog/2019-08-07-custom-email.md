@@ -11,7 +11,7 @@ if you want it to be _reliable_
 I've setup mine to work with [Mailgun](https://www.mailgun.com/)
 and [Firebase](https://firebase.google.com/) (for transactional emails)
 
-# _Receiving_
+### _Receiving_
 
 This is easy
 
@@ -20,11 +20,11 @@ MX    seankhliao.com    mxa.mailgun.org
 MX    seankhliao.com    mxb.mailgun.org
 ```
 
-# Sending
+### Sending
 
 This is complicated to do safely and securely
 
-## SPF
+#### SPF
 
 _Sender Policy Framework_
 
@@ -34,7 +34,7 @@ Identifies which mail servers are allowed to send email from the domain
 TXT     seankhliao.com          v=spf1 include:_spf.firebasemail.com include:mailgun.org ~all
 ```
 
-## DKIM
+#### DKIM
 
 _Domain Keys Identied Mail_
 
@@ -48,7 +48,7 @@ CNAME   firebase2._domainkey    mail-seankhliao-com.dkim2._domainkey.firebasemai
 TXT     smtp._domainkey         v=DKIM1; k=rsa; p=...
 ```
 
-## DMARC
+#### DMARC
 
 _Domain-based Message Authentication, Reporting & Conformance_
 
