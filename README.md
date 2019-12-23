@@ -14,20 +14,7 @@ Who am i?
 
 - [ ] web packaging
 - [ ] signed exchanges (blocked by cert requirements)
-- [ ] amp
-
-## project layout
-
-```
-src/                # data files
-
-templates/          # html template files
-imgs/               # image files
-
-sitegen/            # site generator
-
-dst/                # output directory
-```
+- [ ] rss
 
 ## markdown
 

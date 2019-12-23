@@ -276,11 +276,11 @@ main {
 main > * {
   grid-column: 2 / span 1;
 }
-main > picture,
+main > img,
 main > pre {
   grid-column: 1 / span 3;
 }
-picture img {
+img {
   width: 100%;
 }
 

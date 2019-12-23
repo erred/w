@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"encoding/xml"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -10,8 +11,10 @@ import (
 	"path/filepath"
 	"sort"
 	"strings"
+	"time"
 
 	"github.com/russross/blackfriday/v2"
+	"golang.org/x/tools/blog/atom"
 )
 
 func main() {
@@ -105,7 +108,6 @@ func (o options) processPages() error {
 		return fmt.Errorf("options.processPages: %w", err)
 	}
 
-	sort.Strings(sitemapPages)
 	sort.Slice(blogPosts, func(i, j int) bool { return blogPosts[i].URL > blogPosts[j].URL })
 	blogindex.Posts = blogPosts
 
@@ -114,6 +116,14 @@ func (o options) processPages() error {
 	if err != nil {
 		return fmt.Errorf("options.processPages: %w", err)
 	}
+
+	u, err := o.atomFeed(blogPosts)
+	if err != nil {
+		return fmt.Errorf("options.processPages: %w", err)
+	}
+	sitemapPages = append(sitemapPages, u)
+
+	sort.Strings(sitemapPages)
 	err = ioutil.WriteFile(filepath.Join(o.dst, "sitemap.txt"), []byte(strings.Join(sitemapPages, "\n")), 0644)
 	if err != nil {
 		return fmt.Errorf("options.processPages: %w", err)
@@ -205,4 +215,73 @@ func (o options) parsePage(fp string) ([]string, Page, error) {
 		p.Date = fps[len(fps)-1][:10]
 	}
 	return fps, p, nil
+}
+
+func (o *options) atomFeed(bps []BlogPost) (string, error) {
+	me := &atom.Person{
+		Name:  "Sean Liao",
+		URI:   "https://seankhliao.com",
+		Email: "blog-atom@seankhliao.com",
+	}
+
+	fd := atom.Feed{
+		Title: "seankhliao's stream of consciousness",
+		ID:    "tag:seankhliao.com,2019:seankhliao.com",
+		Link: []atom.Link{
+			{
+				Rel:  "self",
+				Href: "https://seankhliao.com/feed.atom",
+				Type: "application/atom+xml",
+			}, {
+				Rel:  "alternate",
+				Href: "https://seankhliao.com/blog",
+				Type: "text/html",
+			},
+		},
+		Updated: atom.Time(time.Now()),
+		Author:  me,
+	}
+	u, _ := url.Parse(o.baseURL)
+	for _, bp := range bps {
+		u.Path = filepath.Join("blog", bp.URL)
+		htmlpath := normalizeURL(u.String())
+		u.Path = filepath.Join("amp", u.Path)
+		amppath := normalizeURL(u.String())
+		fd.Entry = append(fd.Entry, &atom.Entry{
+			Title: bp.Title,
+			Link: []atom.Link{
+				{
+					Rel:  "alternate",
+					Href: htmlpath,
+					Type: "text/html",
+				},
+				{
+					Rel:  "amphtml",
+					Href: amppath,
+					Type: "text/html",
+				},
+			},
+			ID:        htmlpath,
+			Published: atom.TimeStr(bp.Date + "T00:00:00Z"),
+			Updated:   atom.TimeStr(bp.Date + "T00:00:00Z"),
+			Author:    me,
+			Summary: &atom.Text{
+				Type: "text",
+				Body: bp.Title,
+			},
+		})
+	}
+	f, err := os.Create(filepath.Join(o.dst, "feed.atom"))
+	if err != nil {
+		return "", fmt.Errorf("options.atomFeed: %w", err)
+	}
+	defer f.Close()
+	e := xml.NewEncoder(f)
+	e.Indent("", "    ")
+	err = e.Encode(fd)
+	if err != nil {
+		return "", fmt.Errorf("options.atomFeed: %w", err)
+	}
+	u.Path = "feed.atom"
+	return u.String(), nil
 }
