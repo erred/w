@@ -20,7 +20,7 @@ var (
 			"img/map.svg",
 			"-write", "dst/map.png",
 			"-write", "dst/map.webp",
-			"-write", "dst/map.jpg",
+			"dst/map.jpg",
 		},
 		[]string{
 			"-flatten",
@@ -31,7 +31,7 @@ var (
 			"(", "+clone", "-resize", "48x48", "-quality", "60", "-write", "dst/icon-48.png", "+delete", ")",
 			"(", "+clone", "-resize", "32x32", "-quality", "60", "-write", "dst/icon-32.png", "+delete", ")",
 			"(", "+clone", "-resize", "16x16", "-quality", "60", "-write", "dst/icon-16.png", "+delete", ")",
-			"-resize", "32x32", "-write", "dst/favicon.ico",
+			"-resize", "32x32", "dst/favicon.ico",
 		},
 	}
 )
