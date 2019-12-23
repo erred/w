@@ -41,19 +41,25 @@ type amper interface {
 func (o *options) writeTemplate(fp, tmpl string, data interface{}) error {
 	f, err := openWrite(filepath.Join(o.dst, fp))
 	if err != nil {
-		return fmt.Errorf("options.writeTemplate: %v", err)
+		return fmt.Errorf("options.writeTemplate: %w", err)
 	}
 	defer f.Close()
-	o.templates.ExecuteTemplate(f, tmpl, data)
+	err = o.templates.ExecuteTemplate(f, tmpl, data)
+	if err != nil {
+		return fmt.Errorf("options.writeTemplate: %w", err)
+	}
 
 	if d, ok := data.(amper); ok {
 		d.setAMP()
 		f, err = openWrite(filepath.Join(o.dst, "amp", fp))
 		if err != nil {
-			return fmt.Errorf("options.writeTemplate: %v", err)
+			return fmt.Errorf("options.writeTemplate: %w", err)
 		}
 		defer f.Close()
-		o.templates.ExecuteTemplate(f, tmpl, data)
+		err = o.templates.ExecuteTemplate(f, tmpl, data)
+		if err != nil {
+			return fmt.Errorf("options.writeTemplate: %w", err)
+		}
 	}
 
 	return nil
@@ -66,7 +72,7 @@ func (o *options) copyFile(fp string, done *sync.WaitGroup) {
 	fps := strings.Split(fp, "/")
 	f1, err := os.Open(fp)
 	if err != nil {
-		log.Println("options.parsePages: copy open f1", fp, err)
+		log.Println("options.copyFile: copy open f1", fp, err)
 		return
 	}
 	defer f1.Close()
@@ -74,21 +80,24 @@ func (o *options) copyFile(fp string, done *sync.WaitGroup) {
 	fps[0] = o.dst
 	f2, err := openWrite(filepath.Join(fps...))
 	if err != nil {
-		log.Println("options.parsePages: copy open f2", filepath.Join(fps...), err)
+		log.Println("options.copyFile: copy open f2", filepath.Join(fps...), err)
 		return
 	}
 	defer f2.Close()
-	io.Copy(f2, f1)
+	_, err = io.Copy(f2, f1)
+	if err != nil {
+		log.Println("options.copyFile: ", err)
+	}
 }
 
 func openWrite(fn string) (*os.File, error) {
 	err := os.MkdirAll(filepath.Dir(fn), 0755)
 	if err != nil {
-		return nil, fmt.Errorf("write: %w", err)
+		return nil, fmt.Errorf("openWrite: %w", err)
 	}
 	f, err := os.Create(fn)
 	if err != nil {
-		return nil, fmt.Errorf("write: %w", err)
+		return nil, fmt.Errorf("openWrite: %w", err)
 	}
 	return f, nil
 }

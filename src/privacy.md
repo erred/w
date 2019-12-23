@@ -2,8 +2,9 @@
 privacy | seankhliao
 
 --- style
-main {
-grid-gap: 25vh 1em;
+h3,
+h4 {
+margin-top: 25vh;
 }
 
 --- header

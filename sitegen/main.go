@@ -10,7 +10,6 @@ import (
 	"path/filepath"
 	"sort"
 	"strings"
-	"sync"
 
 	"github.com/russross/blackfriday/v2"
 )
@@ -32,13 +31,16 @@ func main() {
 	// 	os.Exit(1)
 	// }
 	//
-	err = o.convertImgs()
+	// err = o.convertImgs()
+	// if err != nil {
+	// 	log.Println(err)
+	// 	os.Exit(1)
+	// }
+
+	err = o.processPages()
 	if err != nil {
 		log.Println(err)
-		os.Exit(1)
 	}
-
-	o.processPages()
 
 	err = o.deploy()
 	if err != nil {
@@ -76,51 +78,46 @@ type BlogPost struct {
 func (o options) processPages() error {
 	var blogindex Page
 	var sitemapPages []string
-	var wg sync.WaitGroup
+	var blogPosts []BlogPost
 
-	sitemap, blog := make(chan string), make(chan BlogPost)
-	filepath.Walk(o.src, func(fp string, fi os.FileInfo, err error) error {
+	err := filepath.Walk(o.src, func(fp string, fi os.FileInfo, err error) error {
 		if fi.IsDir() {
 			return nil
 		} else if filepath.Ext(fp) == ".md" {
-			if filepath.Base(fp) == "blog.md" {
+			if strings.HasSuffix(fp, "blog/index.md") {
 				_, blogindex, err = o.parsePage(fp)
 				return nil
 			}
-			wg.Add(1)
-			go o.processPage(fp, sitemap, blog, &wg)
+			urls, bp, err := o.processPage(fp)
+			if err != nil {
+				return fmt.Errorf("options.processPages: %w", err)
+			}
+			sitemapPages = append(sitemapPages, urls...)
+			if bp != nil {
+				blogPosts = append(blogPosts, *bp)
+			}
 		} else {
-			wg.Add(1)
-			go o.copyFile(fp, &wg)
+			o.copyFile(fp, nil)
 		}
 		return nil
 	})
-	done := make(chan struct{})
-	go func() {
-		wg.Wait()
-		close(sitemap)
-		close(blog)
-		done <- struct{}{}
-	}()
-
-loop:
-	for {
-		select {
-		case u := <-sitemap:
-			sitemapPages = append(sitemapPages, u)
-		case b := <-blog:
-			blogindex.Posts = append(blogindex.Posts, b)
-		case <-done:
-			break loop
-		}
+	if err != nil {
+		return fmt.Errorf("options.processPages: %w", err)
 	}
+
 	sort.Strings(sitemapPages)
-	sort.Slice(blogindex.Posts, func(i, j int) bool { return blogindex.Posts[i].URL > blogindex.Posts[j].URL })
+	sort.Slice(blogPosts, func(i, j int) bool { return blogPosts[i].URL > blogPosts[j].URL })
+	blogindex.Posts = blogPosts
 
 	// generate sitemap, blog index, atom feed
-	o.writeTemplate("/blog/index.html", "layout-blogindex", &blogindex)
-
-	ioutil.WriteFile(filepath.Join(o.dst, "sitemap.txt"), []byte(strings.Join(sitemapPages, "\n")), 0644)
+	err = o.writeTemplate("/blog/index.html", "layout-blogindex", &blogindex)
+	if err != nil {
+		return fmt.Errorf("options.processPages: %w", err)
+	}
+	err = ioutil.WriteFile(filepath.Join(o.dst, "sitemap.txt"), []byte(strings.Join(sitemapPages, "\n")), 0644)
+	if err != nil {
+		return fmt.Errorf("options.processPages: %w", err)
+	}
 
 	return nil
 }
@@ -128,31 +125,33 @@ loop:
 // processPage takes a filepath from current directory
 // and creates the cprresponding filepath.html and amp/filepath.html
 // also sends the relative url path segments to collect
-func (o options) processPage(fp string, sitemap chan string, blog chan BlogPost, done *sync.WaitGroup) {
-	if done != nil {
-		defer done.Done()
-	}
+func (o options) processPage(fp string) (urls []string, bp *BlogPost, err error) {
 	fps, p, err := o.parsePage(fp)
 	if err != nil {
-		log.Printf("options.processPage: %v", err)
-		return
+		return nil, nil, fmt.Errorf("options.processPage: %w", err)
 	}
 
-	fps[len(fps)-1] = strings.TrimSuffix(fps[len(fps)-1], ".md") + ".html"
-	htmlpath := filepath.Join(fps[1:]...)
-
+	htmlpath := filepath.Join(fps[1:]...) + ".html"
 	if fps[1] == "blog" {
-		o.writeTemplate(htmlpath, "layout-blogpost", &p)
-		blog <- BlogPost{
+		err = o.writeTemplate(htmlpath, "layout-blogpost", &p)
+		if err != nil {
+			return nil, nil, fmt.Errorf("options.processPage: %w", err)
+		}
+		if p.Title == "" {
+			fmt.Println(fp)
+		}
+		bp = &BlogPost{
 			Title: p.Title,
 			Date:  p.Date,
 			URL:   strings.TrimSuffix(fps[len(fps)-1], ".html"),
 		}
 	} else {
-		o.writeTemplate(htmlpath, "layout-main", &p)
+		err = o.writeTemplate(htmlpath, "layout-main", &p)
+		if err != nil {
+			return nil, nil, fmt.Errorf("options.processPage: %w", err)
+		}
 	}
-	sitemap <- p.URLCanonical
-	sitemap <- p.URLAMP
+	return []string{p.URLCanonical, p.URLAMP}, bp, nil
 }
 
 // parsePage takes a filepath from the current directory
@@ -163,7 +162,7 @@ func (o options) parsePage(fp string) ([]string, Page, error) {
 	if err != nil {
 		return nil, p, fmt.Errorf("parsePage: %s %v", fp, err)
 	}
-
+	fps[0], fps[len(fps)-1] = "amp", strings.TrimSuffix(fps[len(fps)-1], ".md")
 	u, _ := url.Parse(o.baseURL)
 	u.Path = filepath.Join(fps[1:]...)
 	p.URLCanonical = normalizeURL(u.String())
@@ -202,7 +201,7 @@ func (o options) parsePage(fp string) ([]string, Page, error) {
 		}
 	}
 
-	if fps[1] == "blog" {
+	if fps[1] == "blog" && fps[2] != "index" {
 		p.Date = fps[len(fps)-1][:10]
 	}
 	return fps, p, nil
