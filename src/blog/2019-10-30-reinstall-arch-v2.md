@@ -1,5 +1,5 @@
 --- title
-reinstall arch v2.md
+reinstall arch v2
 --- description
 let's try again
 --- main

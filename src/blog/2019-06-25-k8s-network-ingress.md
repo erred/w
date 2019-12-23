@@ -1,5 +1,5 @@
 --- title
-k8s network ingress.md
+k8s network ingress
 --- description
 reaching your cluster
 --- main

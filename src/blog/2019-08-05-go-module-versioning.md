@@ -1,5 +1,5 @@
 --- title
-go module versioning.md
+go module versioning
 --- description
 notes on go using go modules
 --- main

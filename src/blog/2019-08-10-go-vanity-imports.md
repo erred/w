@@ -1,5 +1,5 @@
 --- title
-go vanity imports.md
+go vanity imports
 --- description
 vanity imports are vain
 --- main

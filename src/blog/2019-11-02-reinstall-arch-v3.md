@@ -1,5 +1,5 @@
 --- title
-reinstall arch v3.md
+reinstall arch v3
 --- description
 oops
 --- main

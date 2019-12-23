@@ -1,5 +1,5 @@
 --- title
-traefik v2 on k8s.md
+traefik v2 on k8s
 --- description
 running traefik v2 on k8s
 --- main

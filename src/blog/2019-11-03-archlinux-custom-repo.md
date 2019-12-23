@@ -1,5 +1,5 @@
 --- title
-archlinux custom repo.md
+archlinux custom repo
 --- description
 custom self updating arch linux repo
 --- main

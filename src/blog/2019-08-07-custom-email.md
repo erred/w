@@ -1,5 +1,5 @@
 --- title
-custom email.md
+custom email
 --- description
 setup email in 2019
 --- main

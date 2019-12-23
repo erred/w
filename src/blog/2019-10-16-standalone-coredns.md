@@ -1,5 +1,5 @@
 --- title
-standalone coredns.md
+standalone coredns
 --- description
 running coredns in standalone mode
 --- main

@@ -1,5 +1,5 @@
 --- title
-social media messaging.md
+social media messaging
 --- description
 notes on social media
 --- main

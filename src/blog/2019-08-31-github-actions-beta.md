@@ -1,5 +1,5 @@
 --- title
-github actions beta.md
+github actions beta
 --- description
 first impressions on github actions beta
 --- main

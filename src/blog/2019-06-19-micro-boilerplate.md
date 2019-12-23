@@ -1,5 +1,5 @@
 --- title
-micro boilerplate.md
+micro boilerplate
 --- description
 leveraging the kubernetes environment
 --- main

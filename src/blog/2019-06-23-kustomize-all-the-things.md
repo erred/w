@@ -1,5 +1,5 @@
 --- title
-kustomize all the things.md
+kustomize all the things
 --- description
 managing k8s configs with kustomize
 --- main

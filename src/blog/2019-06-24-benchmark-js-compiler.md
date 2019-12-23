@@ -1,5 +1,5 @@
 --- title
-benchmark js compiler.md
+benchmark js compiler
 --- description
 js bundlers whatever
 --- main

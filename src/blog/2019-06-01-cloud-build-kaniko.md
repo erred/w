@@ -1,5 +1,5 @@
 --- title
-cloud build kaniko.md
+cloud build kaniko
 --- description
 using Kaniko Executor with Google Cloud Build
 --- main

@@ -1,5 +1,5 @@
 --- title
-eduroam iwd.md
+eduroam iwd
 --- description
 eduroam, iwd version
 --- main

@@ -1,5 +1,5 @@
 --- title
-blog sub home.md
+blog sub home
 --- description
 moving blog home
 --- main

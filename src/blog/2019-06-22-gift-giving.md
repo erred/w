@@ -1,5 +1,5 @@
 --- title
-gift giving.md
+gift giving
 --- description
 a social minefield
 --- main

@@ -1,5 +1,5 @@
 --- title
-cube uhhm nates.md
+cube uhhm nates
 --- description
 k8s concepts
 --- main

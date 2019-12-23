@@ -1,5 +1,5 @@
 --- title
-privacy policy.md
+privacy policy
 --- description
 but privacy
 --- main

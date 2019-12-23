@@ -1,5 +1,5 @@
 --- title
-go reproducible builds.md
+go reproducible builds
 --- description
 reproducible builds in Go
 --- main
