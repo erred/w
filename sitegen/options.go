@@ -14,10 +14,10 @@ var (
 
 	defaultImgArgs = [][]string{
 		[]string{
+			"img/map.svg",
 			"-background", "none",
 			"-density", "1200",
 			"-resize", "1920x1080",
-			"img/map.svg",
 			"-write", "dst/map.png",
 			"-write", "dst/map.webp",
 			"dst/map.jpg",
