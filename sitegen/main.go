@@ -27,22 +27,16 @@ func main() {
 		log.Println(err)
 		os.Exit(1)
 	}
-	//
-	// err = o.getFonts()
-	// if err != nil {
-	// 	log.Println(err)
-	// 	os.Exit(1)
-	// }
-	//
-	// err = o.convertImgs()
-	// if err != nil {
-	// 	log.Println(err)
-	// 	os.Exit(1)
-	// }
 
 	err = o.processPages()
 	if err != nil {
 		log.Println(err)
+	}
+
+	err = o.convertImgs()
+	if err != nil {
+		log.Println(err)
+		os.Exit(1)
 	}
 
 	err = o.deploy()
