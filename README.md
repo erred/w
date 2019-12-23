@@ -14,7 +14,7 @@ Who am i?
 
 - [ ] web packaging
 - [ ] signed exchanges (blocked by cert requirements)
-- [ ] rss
+- [ ] fix amp image
 
 ## markdown
 
