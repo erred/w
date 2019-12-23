@@ -18,7 +18,9 @@ var (
 			"-density", "1200",
 			"-resize", "1920x1080",
 			"img/map.svg",
-			"-write", "dst/map.png", "dst/map.webp", "dst/map.jpg",
+			"-write", "dst/map.png",
+			"-write", "dst/map.webp",
+			"-write", "dst/map.jpg",
 		},
 		[]string{
 			"-flatten",
