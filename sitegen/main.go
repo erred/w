@@ -85,6 +85,7 @@ func (o options) processPages() error {
 		} else if filepath.Ext(fp) == ".md" {
 			if filepath.Base(fp) == "blog.md" {
 				_, blogindex, err = o.parsePage(fp)
+				return nil
 			}
 			wg.Add(1)
 			go o.processPage(fp, sitemap, blog, &wg)
@@ -145,7 +146,7 @@ func (o options) processPage(fp string, sitemap chan string, blog chan BlogPost,
 		blog <- BlogPost{
 			Title: p.Title,
 			Date:  p.Date,
-			URL:   strings.Join(strings.Fields(p.Title), "-"),
+			URL:   strings.TrimSuffix(fps[len(fps)-1], ".html"),
 		}
 	} else {
 		o.writeTemplate(htmlpath, "layout-main", &p)

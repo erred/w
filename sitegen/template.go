@@ -78,7 +78,7 @@ var (
         <main>
                 <ul>
                 {{ range .Posts }}
-                        <li><time datetime="{{ .Date }}">{{ .Date }}</time> | <a href="{{ .URL }}">{{ .Title }}</a></li>
+                        <li><time datetime="{{ .Date }}">{{ .Date }}</time> | <a href="/{{ if .AMP }}amp/{{ end }}blog/{{ .URL }}">{{ .Title }}</a></li>
                 {{ end }}
             </ul>
         </main>
