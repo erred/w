@@ -1,5 +1,5 @@
 --- title
-custom initramfs.md
+custom initramfs
 --- description
 debloat your initramfs?
 --- main

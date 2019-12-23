@@ -1,5 +1,5 @@
 --- title
-license to hack.md
+license to hack
 --- description
 biased overview of open source licenses
 --- main

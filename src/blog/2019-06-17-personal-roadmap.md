@@ -1,5 +1,5 @@
 --- title
-personal roadmap.md
+personal roadmap
 --- description
 planning ahead
 --- main

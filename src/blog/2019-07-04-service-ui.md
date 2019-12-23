@@ -1,5 +1,5 @@
 --- title
-service ui.md
+service ui
 --- description
 different ways to present a service
 --- main

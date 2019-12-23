@@ -1,5 +1,5 @@
 --- title
-go dialogflow fulfillment.md
+go dialogflow fulfillment
 --- description
 Writing DialogFlow fulfillment servers in Go
 --- main

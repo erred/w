@@ -1,5 +1,5 @@
 --- title
-cloudbuild github app.md
+cloudbuild github app
 --- description
 there's a what now?
 --- main

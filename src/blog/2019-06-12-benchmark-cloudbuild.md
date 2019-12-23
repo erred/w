@@ -1,5 +1,5 @@
 --- title
-benchmark cloudbuild.md
+benchmark cloudbuild
 --- description
 benchmarking building containers in cloud build
 --- main

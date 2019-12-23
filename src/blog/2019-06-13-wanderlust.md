@@ -1,5 +1,5 @@
 --- title
-wanderlust.md
+wanderlust
 --- description
 travel or die
 --- main

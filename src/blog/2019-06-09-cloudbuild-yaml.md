@@ -1,5 +1,5 @@
 --- title
-cloudbuild yaml.md
+cloudbuild yaml
 --- description
 current preferred setup of Google Cloud Build
 --- main

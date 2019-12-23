@@ -1,5 +1,5 @@
 --- title
-cloudbuild arch pkgbuild.md
+cloudbuild arch pkgbuild
 --- description
 building arch PKGBUILDs in cloudbuild
 --- main

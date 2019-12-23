@@ -1,5 +1,5 @@
 --- title
-trust the rabbit hole.md
+trust the rabbit hole
 --- description
 where do you start trusting things
 --- main

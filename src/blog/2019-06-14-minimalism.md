@@ -1,5 +1,5 @@
 --- title
-minimalism.md
+minimalism
 --- description
 less is more is less
 --- main

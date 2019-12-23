@@ -1,5 +1,5 @@
 --- title
-github actions action.md
+github actions action
 --- description
 wrting actions for github actions
 --- main

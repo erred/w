@@ -1,5 +1,5 @@
 --- title
-cloudbuild git.md
+cloudbuild git
 --- description
 git stuff done on cloudbuild
 --- main

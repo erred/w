@@ -1,5 +1,5 @@
 --- title
-go string rune byte.md
+go string rune byte
 --- description
 what's the difference anyways
 --- main

@@ -1,5 +1,5 @@
 --- title
-inbox zero.md
+inbox zero
 --- description
 clearing the queue
 --- main

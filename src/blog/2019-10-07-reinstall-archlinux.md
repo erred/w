@@ -1,5 +1,5 @@
 --- title
-reinstall archlinux.md
+reinstall archlinux
 --- description
 the long and arduous journey of reinstalling arch
 --- main

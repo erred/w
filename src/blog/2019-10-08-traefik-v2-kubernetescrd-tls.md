@@ -1,5 +1,5 @@
 --- title
-traefik v2 kubernetescrd tls.md
+traefik v2 kubernetescrd tls
 --- description
 tls certs with traefik v2
 --- main
