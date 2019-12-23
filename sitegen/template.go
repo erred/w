@@ -136,8 +136,8 @@ var (
 {{ end }}
 
 <link rel="canonical" href="{{ .URLCanonical }}" />
-<link rel="amphtml" ref="{{ .URLAMP }}" />
-<link rel="manifest" href="/manifest.json" />
+<link rel="amphtml"   href="{{ .URLAMP }}" />
+<link rel="manifest"  href="/manifest.json" />
 <link rel="alternate" type="application/atom+xml" title="seankhliao.com - Atom Feed" href="https://seankhliao.com/feed.atom" />
 
 <meta name="theme-color" content="#000000">
