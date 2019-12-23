@@ -3,7 +3,7 @@ FROM golang:alpine AS build
 ENV CGO_ENABLED=0 GOFLAGS=-mod=vendor
 WORKDIR /app
 COPY . .
-RUN go build -o /bin/sitegen seankhliao.com/v10
+RUN go build -o /bin/sitegen seankhliao.com/v10/sitegen
 
 FROM node:alpine
 
