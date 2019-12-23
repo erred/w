@@ -23,6 +23,7 @@ var (
 			"dst/map.jpg",
 		},
 		[]string{
+			"img/icon.tif",
 			"-flatten",
 			"(", "+clone", "-resize", "512x512", "-quality", "60", "-write", "dst/icon-512.png", "+delete", ")",
 			"(", "+clone", "-resize", "192x192", "-quality", "60", "-write", "dst/icon-192.png", "+delete", ")",
