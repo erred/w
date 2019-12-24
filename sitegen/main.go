@@ -18,31 +18,29 @@ import (
 )
 
 func main() {
-	o := newOptions()
-
-	os.MkdirAll(o.dst, 0755)
-
-	err := o.parseTemplates()
+	o, err := newOptions()
 	if err != nil {
-		log.Println(err)
-		os.Exit(1)
+		log.Fatal(err)
 	}
 
 	err = o.processPages()
 	if err != nil {
-		log.Println(err)
+		log.Fatal(err)
 	}
 
 	err = o.convertImgs()
 	if err != nil {
-		log.Println(err)
-		os.Exit(1)
+		log.Fatal(err)
+	}
+
+	err = o.signExchanges()
+	if err != nil {
+		log.Fatal(err)
 	}
 
 	err = o.deploy()
 	if err != nil {
-		log.Println(err)
-		os.Exit(1)
+		log.Fatal(err)
 	}
 }
 
