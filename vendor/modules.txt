@@ -1,6 +1,17 @@
+# github.com/WICG/webpackage v0.0.0-20191220061944-fe146df97320
+github.com/WICG/webpackage/go/internal/signingalgorithm
+github.com/WICG/webpackage/go/signedexchange
+github.com/WICG/webpackage/go/signedexchange/cbor
+github.com/WICG/webpackage/go/signedexchange/certurl
+github.com/WICG/webpackage/go/signedexchange/internal/bigendian
+github.com/WICG/webpackage/go/signedexchange/mice
+github.com/WICG/webpackage/go/signedexchange/structuredheader
+github.com/WICG/webpackage/go/signedexchange/version
 # github.com/russross/blackfriday/v2 v2.0.1
 github.com/russross/blackfriday/v2
 # github.com/shurcooL/sanitized_anchor_name v1.0.0
 github.com/shurcooL/sanitized_anchor_name
-# golang.org/x/tools v0.0.0-20191108193012-7d206e10da11
+# golang.org/x/crypto v0.0.0-20191219195013-becbf705a915
+golang.org/x/crypto/ocsp
+# golang.org/x/tools v0.0.0-20191224055732-dd894d0a8a40
 golang.org/x/tools/blog/atom

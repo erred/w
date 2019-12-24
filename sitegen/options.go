@@ -2,6 +2,8 @@ package main
 
 import (
 	"flag"
+	"fmt"
+	"os"
 	"text/template"
 )
 
@@ -44,10 +46,17 @@ type options struct {
 	gaID       string
 	gcpProject string
 
+	// SXG
+	SXG         bool
+	certURL     string
+	validityURL string
+	certPath    string
+	privPath    string
+
 	templates *template.Template
 }
 
-func newOptions() *options {
+func newOptions() (*options, error) {
 	o := &options{}
 	flag.StringVar(&o.src, "src", defaultSrc, "source directory")
 	flag.StringVar(&o.dst, "dst", defaultDst, "output directory")
@@ -55,6 +64,23 @@ func newOptions() *options {
 	flag.StringVar(&o.gaID, "ga", defaultGAID, "google analytics ID")
 	flag.StringVar(&o.gcpProject, "project", defaultProject, "GCP project (firebase)")
 
+	flag.BoolVar(&o.SXG, "sxg", false, "enable HTTP SXG")
+	flag.StringVar(&o.certURL, "certURL", defaultBaseURL+"/cert.cbor", "url to find the SXG signing certificate (CBOR)")
+	flag.StringVar(&o.certPath, "certPath", "sxg.pem", "path to find the SXG signing certificate (CBOR)")
+	flag.StringVar(&o.validityURL, "validityURL", defaultBaseURL+"/resource.validity.msg", "TODO: find out what this is")
+	flag.StringVar(&o.privPath, "privPath", "sxg.key", "path to dind the SXG signing key")
+
 	flag.Parse()
-	return o
+
+	o.templates = template.New("")
+	for name, tmpl := range rawTemplates {
+		o.templates = template.Must(o.templates.New(name).Parse(tmpl))
+	}
+
+	err := os.MkdirAll(o.dst, 0755)
+	if err != nil {
+		return nil, fmt.Errorf("newOptions: create dst dir %s: %w", o.dst, err)
+	}
+
+	return o, nil
 }

@@ -1,22 +1,5 @@
 package main
 
-import (
-	"fmt"
-	"text/template"
-)
-
-func (o *options) parseTemplates() error {
-	var err error
-	o.templates = template.New("")
-	for name, tmpl := range rawTemplates {
-		o.templates, err = o.templates.New(name).Parse(tmpl)
-		if err != nil {
-			return fmt.Errorf("options.parseTemplates: %w", err)
-		}
-	}
-	return nil
-}
-
 var (
 	rawTemplates = map[string]string{
 		"layout-main": ` {{ define "layout-main" }}
