@@ -37,7 +37,7 @@ func (o *options) signExchanges() error {
 		return fmt.Errorf("options.signExchanges: %w", err)
 	}
 	err = filepath.Walk(o.dst, func(fp string, fi os.FileInfo, err error) error {
-		if fi.IsDir() {
+		if fi.IsDir() || filepath.Ext(fp) == ".sxg" {
 			return nil
 		}
 		uri, resHeader, err := signGetURICT(o.baseURL, fp, o.dst)
@@ -131,6 +131,12 @@ func signGetURICT(baseURL, fp, dst string) (string, http.Header, error) {
 		ct = "application/json"
 	case ".cbor":
 		ct = "application/cert-chain+cbor"
+	case ".ico":
+		ct = "image/x-icon"
+	case ".atom":
+		ct = "application/rss+xml"
+	case ".txt":
+		ct = "text/plain"
 	default:
 		return "", nil, fmt.Errorf("options.signExchanges: unknown content type for %s", fp)
 

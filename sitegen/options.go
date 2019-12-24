@@ -66,9 +66,9 @@ func newOptions() (*options, error) {
 
 	flag.BoolVar(&o.SXG, "sxg", false, "enable HTTP SXG")
 	flag.StringVar(&o.certURL, "certURL", defaultBaseURL+"/cert.cbor", "url to find the SXG signing certificate (CBOR)")
-	flag.StringVar(&o.certPath, "certPath", "/var/secrets/cbor.pem", "path to find the SXG signing certificate (CBOR)")
+	flag.StringVar(&o.certPath, "certPath", "sxg.pem", "path to find the SXG signing certificate (CBOR)")
 	flag.StringVar(&o.validityURL, "validityURL", defaultBaseURL+"/resource.validity.msg", "TODO: find out what this is")
-	flag.StringVar(&o.privPath, "privPath", "/var/secrets/cbor.key", "path to dind the SXG signing key")
+	flag.StringVar(&o.privPath, "privPath", "sxg.key", "path to dind the SXG signing key")
 
 	flag.Parse()
 
