@@ -276,11 +276,12 @@ main {
 main > * {
   grid-column: 2 / span 1;
 }
-main > h1,
+main > picture,
+main > amp-img,
 main > pre {
   grid-column: 1 / span 3;
 }
-img {
+picture img {
   width: 100%;
 }
 

@@ -7,6 +7,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"sync"
 )
@@ -39,6 +40,14 @@ type amper interface {
 // writeTemplate takes a target path (without dst) and executes the named template
 // twice (once for normal, once for amp)
 func (o *options) writeTemplate(fp, tmpl string, data interface{}) error {
+	var html, amp string
+	// img hack
+	if d, ok := data.(*Page); fp == "index.html" && ok {
+		html, amp = imgHack(d.Main)
+		d.Main = html
+		data = d
+	}
+
 	f, err := openWrite(filepath.Join(o.dst, fp))
 	if err != nil {
 		return fmt.Errorf("options.writeTemplate: %w", err)
@@ -51,6 +60,12 @@ func (o *options) writeTemplate(fp, tmpl string, data interface{}) error {
 
 	if d, ok := data.(amper); ok {
 		d.setAMP()
+		// img hack
+		if d, ok := data.(*Page); fp == "index.html" && ok {
+			d.Main = amp
+			data = d
+		}
+
 		f, err = openWrite(filepath.Join(o.dst, "amp", fp))
 		if err != nil {
 			return fmt.Errorf("options.writeTemplate: %w", err)
@@ -124,3 +139,18 @@ func normalizeURL(u string) string {
 // 	}
 // 	return nil
 // }
+
+func imgHack(s string) (html, amp string) {
+	r := regexp.MustCompile(`<h1><img src="(.*?).webp" alt="(.*?)" /></h1>`)
+	html = r.ReplaceAllString(s, `
+<picture>
+        <source type="image/webp" srcset="$1.webp">
+        <source type="image/jpeg" srcset="$1.jpg">
+        <img src="$1.png" alt="$2">
+</picture>
+`)
+	amp = r.ReplaceAllString(s, `
+<amp-img src="$1.webp" alt="$2" width="1.78" height="1" layout="responsive"></amp-img>
+`)
+	return html, amp
+}

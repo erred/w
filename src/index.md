@@ -5,7 +5,8 @@ seankhliao
 i am sean
 
 --- style
-main h1,
+main picture,
+main amp-img,
 main h3,
 main h4 {
 margin-top: 25vh;
