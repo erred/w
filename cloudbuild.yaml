@@ -17,3 +17,5 @@ steps:
       - --key=default
   - id: sitegen
     name: gcr.io/$PROJECT_ID/$_IMG:latest
+    args:
+      - -sxg
