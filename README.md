@@ -10,11 +10,16 @@ handcrafted personal static site
 
 Who am i?
 
+### features:
+
+- output RSS
+- output HTML
+- output AMP
+- output SXG
+
 ## TODO
 
 - [ ] web packaging
-- [ ] signed exchanges (blocked by cert requirements)
-- [ ] fix amp image
 
 ## markdown
 

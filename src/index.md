@@ -40,7 +40,7 @@ _2014-2018_ National Taiwan University
 
 #### My _Stuff_
 
-- [Blog](/blog) — home of random thoughts
+- [Blog](./blog) — home of random thoughts
 
 #### _Find_ Me
 
