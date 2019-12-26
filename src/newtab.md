@@ -27,10 +27,6 @@ _go:_
 [issues](https://github.com/golang/go/issues)
 [go-nuts](https://groups.google.com/forum/#!forum/golang-nuts)
 
-_web:_
-[amphtml](https://amp.dev/documentation/guides-and-tutorials/learn/spec/amphtml/)
-[webpackage](https://github.com/WICG/webpackage)
-
 ### _to_ read
 
 _blogs:_
@@ -51,7 +47,7 @@ _webshit:_
 _other:_
 [azeria](https://azeria-labs.com/)
 
-### Other _stuff_
+### _other_ stuff
 
 _{_
 [repo](https://repo.new)
