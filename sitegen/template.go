@@ -33,7 +33,7 @@ var (
         {{ template "body-amp" . }}
         <header>
                 {{ template "header-name" . }}
-                <h2><a href="/blog">b<em>log</em></a></h2>
+                <h2><a href="{{ if .AMP }}/amp{{ end }}/blog/">b<em>log</em></a></h2>
                 <p><time datetime="{{ .Date }}">{{ .Date }}</time><p>
         </header>
         <main>
@@ -55,13 +55,13 @@ var (
         {{ template "body-amp" . }}
         <header>
                 {{ template "header-name" . }}
-                <h2><a href="/blog">b<em>log</em></a></h2>
+                <h2><a href="{{ if .AMP }}/amp{{ end }}/blog/">b<em>log</em></a></h2>
                 <p>Artisanal, <em>hand-crafted</em> blog posts imbued with delayed <em>regrets</em></p>
         </header>
         <main>
                 <ul>
                 {{ range .Posts }}
-                        <li><time datetime="{{ .Date }}">{{ .Date }}</time> | <a href="/{{ if $.AMP }}amp/{{ end }}blog/{{ .URL }}">{{ .Title }}</a></li>
+                        <li><time datetime="{{ .Date }}">{{ .Date }}</time> | <a href="{{ if $.AMP }}/amp/{{ end }}/blog/{{ .URL }}/">{{ .Title }}</a></li>
                 {{ end }}
                 </ul>
         </main>
@@ -118,8 +118,8 @@ var (
 <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-114337586-1"></script>
 {{ end }}
 
-<link rel="canonical" href="{{ .URLCanonical }}" />
-<link rel="amphtml"   href="{{ .URLAMP }}" />
+<link rel="canonical" href="{{ .URLCanonical }}/" />
+<link rel="amphtml"   href="{{ .URLAMP }}/" />
 <link rel="manifest"  href="/manifest.json" />
 <link rel="alternate" type="application/atom+xml" title="seankhliao.com - Atom Feed" href="https://seankhliao.com/feed.atom" />
 
@@ -154,7 +154,7 @@ gtag("config", "{{ .GAID }}");
 `,
 		"header-name": `{{ define "header-name" }}
 <h1>
-    <a href="/{{ if .AMP }}amp/{{ end }}">
+    <a href="{{ if .AMP }}/amp{{ end }}/">
         <span>S</span>
         <span>E</span>
         <span>A</span>
@@ -175,9 +175,9 @@ gtag("config", "{{ .GAID }}");
 <footer>
     <a href="{{ if .AMP }}/amp{{ end }}/">home</a>
     |
-    <a href="{{ if .AMP }}/amp{{ end }}/privacy">privacy</a>
+    <a href="{{ if .AMP }}/amp{{ end }}/privacy/">privacy</a>
     |
-    <a href="{{ if .AMP }}/amp{{ end }}/terms">terms</a>
+    <a href="{{ if .AMP }}/amp{{ end }}/terms/">terms</a>
     |
     <a href="https://github.com/seankhliao/com-seankhliao">github</a>
 </footer>
