@@ -11,7 +11,7 @@ var (
 <body>
         {{ template "body-amp" . }}
         <header>
-                {{ template "header-name" }}
+                {{ template "header-name" . }}
                 {{ .Header }}
         </header>
         <main>
@@ -32,7 +32,7 @@ var (
 <body>
         {{ template "body-amp" . }}
         <header>
-                {{ template "header-name" }}
+                {{ template "header-name" . }}
                 <h2><a href="/blog">b<em>log</em></a></h2>
                 <p><time datetime="{{ .Date }}">{{ .Date }}</time><p>
         </header>
@@ -54,7 +54,7 @@ var (
 <body>
         {{ template "body-amp" . }}
         <header>
-                {{ template "header-name" }}
+                {{ template "header-name" . }}
                 <h2><a href="/blog">b<em>log</em></a></h2>
                 <p>Artisanal, <em>hand-crafted</em> blog posts imbued with delayed <em>regrets</em></p>
         </header>
@@ -154,7 +154,7 @@ gtag("config", "{{ .GAID }}");
 `,
 		"header-name": `{{ define "header-name" }}
 <h1>
-    <a href="/amp">
+    <a href="/{{ if .AMP }}amp/{{ end }}">
         <span>S</span>
         <span>E</span>
         <span>A</span>
