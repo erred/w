@@ -54,19 +54,19 @@ _2014-2018_ National Taiwan University
 
 - Belgium — 2019-10
 - Canada — 2019-04
-- England — _2009 - 2011_, 2019-10
+- England — _2009-2011_, 2019-10
 - Germany — 2019-12
 - Hong Kong — 2017-08
 - India — 2015-08
 - Indonesia — 2017-02, 2017-08, 2018-02, 2018-12
 - Japan — 2018-03
 - Luxembourg — 2019-10
-- Netherlands — _2019 - 2020_
+- Netherlands — _2019-2020_
 - Philipines — 2017-08
-- Russia — _2000 - 2005_
+- Russia — _2000-2005_
 - Singapore — 2017-01
 - South Korea — 2018-06
 - Sweden — 2018-01
-- Taiwan — _1996 - 2000, 2005 - 2009, 2011 - 2019_
+- Taiwan — _1996-2000, 2005-2009, 2011-2019_
 - Timor-Leste — 2018-02
 - United States — 2019-04
