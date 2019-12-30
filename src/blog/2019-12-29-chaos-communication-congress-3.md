@@ -16,6 +16,8 @@ I'm fine
 
 Dancing: I can really only do a bad imitation of it
 
+5am? yeah sure.
+
 #### Talks
 
 good ones i _highlighted_
@@ -62,7 +64,9 @@ black box proprietary things have lots of bugs.
 
 ##### Hacking (with) a TPM
 
-TODO: watch talk
+_I have ideas_
+so TPM is usable, __mostly__, probably.
+I need to implement this
 
 ##### Linux on Open Source Hardware with Open Source chip design
 
