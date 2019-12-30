@@ -34,6 +34,12 @@ Stll don't know why it _didn't_ work when I tried crafting it myself
  }
 ```
 
+#### Life
+
+lost my coat **:cry:**
+at least the walk between Congress-tram-hostel isn't that far.
+_Spoiler_: got it back day 3 through Lost+Found, &lt;3
+
 #### Talks
 
 things i heard,
