@@ -6,7 +6,10 @@ Maybe I'll know what to expect
 
 #### Life
 
-talk with Filippo _@FiloSottile_
+skip a few talks to listen to Filippo _@FiloSottile_
+on [age](https://github.com/FiloSottile/age)
+and Go.
+Security things start to make more sense
 
 #### Talks
 
