@@ -13,6 +13,8 @@ Security things start to make more sense
 
 #### Talks
 
+good ones i _highlighted_
+
 ##### How to Design Highly Reliable Digital Electronics
 
 _Bzzz_
@@ -21,7 +23,7 @@ who would've thought.
 solutions: do it in parallel and vote.
 Maybe some architectural changes but meh.
 
-##### TamaGo - bare metal Go framework for ARM SoCs
+##### _TamaGo - bare metal Go framework for ARM SoCs_
 
 _Hmmm_
 Go protects you from the ravages of stupid OS decisions
@@ -54,7 +56,7 @@ _Okayyy_
 Man doesn't trust modern tech (and other people).
 Man limits himself to recreating 1980s tech.
 
-##### ZombieLoad Attack
+##### _ZombieLoad Attack_
 
 _Woooh_
 like the plundervolt one,

@@ -18,6 +18,8 @@ Dancing: I can really only do a bad imitation of it
 
 #### Talks
 
+good ones i _highlighted_
+
 ##### A systematic evaluation of OpenBSD's mitigations
 
 _Uhhhh_
@@ -33,7 +35,7 @@ Building old style quantum register isn't too hard.
 Building more than register: too be seen.
 At least it's entertaining
 
-##### Wifibroadcast
+##### _Wifibroadcast_
 
 _Interesting_
 If you have these specific hardware,

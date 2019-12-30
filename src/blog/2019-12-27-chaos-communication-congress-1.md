@@ -45,6 +45,8 @@ _Spoiler_: got it back day 3 through Lost+Found, &lt;3
 things i heard,
 may or ay not remember actually hearing it
 
+good ones i _highlighted_
+
 ##### Open Source is Insufficient to Solve Trust Problems in Hardware
 
 _Like duh_
@@ -61,7 +63,7 @@ We get more apps,
 they're not obviously better,
 refer to [xkcd 927 Standards](https://xkcd.com/927/), [xkcd 1810 Chat Systems](https://xkcd.com/1810/)
 
-##### phyphox: Using smartphone sensors for physics experiments
+##### _phyphox: Using smartphone sensors for physics experiments_
 
 _Oooh_
 Admittedly didn't expect too much out of this one,
@@ -75,7 +77,7 @@ _Urgh..._
 yeah, broken in all the expected places.
 At least they followed through on testing in all 22 apps.
 
-##### Plundervolt: Flipping Bits from Software without Rowhammer
+##### _Plundervolt: Flipping Bits from Software without Rowhammer_
 
 _Yo-ho-ho_
 Who doesn't like pirates?
@@ -103,7 +105,7 @@ but you can only see that something is there,
 not what.
 Back to stats and AI to guess what you wrote.
 
-##### SELECT code_execution FROM \* USING SQLite;
+##### _SELECT code_execution FROM \* USING SQLite;_
 
 _Wow_
 seriously impressive thought process.
