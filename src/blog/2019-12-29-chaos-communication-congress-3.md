@@ -4,7 +4,7 @@ Chaos Communication Congress Day 3
 3 is the magic number, or is it?
 --- main
 
-### Day 3
+### Day _3_
 
 #### Life
 
