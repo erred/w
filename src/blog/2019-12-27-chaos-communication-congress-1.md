@@ -105,7 +105,7 @@ but you can only see that something is there,
 not what.
 Back to stats and AI to guess what you wrote.
 
-##### _SELECT code_execution FROM \* USING SQLite;_
+##### _SELECT code\_execution FROM \* USING SQLite;_
 
 _Wow_
 seriously impressive thought process.

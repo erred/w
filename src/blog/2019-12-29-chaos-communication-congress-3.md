@@ -62,7 +62,7 @@ who would've thought
 _Yep_
 black box proprietary things have lots of bugs.
 
-##### Hacking (with) a TPM
+##### _Hacking (with) a TPM_
 
 _I have ideas_
 so TPM is usable, __mostly__, probably.
