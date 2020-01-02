@@ -1,12 +1,13 @@
 --- title
 Chaos Communication Congress Day 1
 --- description
-First!!!1!!l!!
+36c3 First!!!1!!l!!
 --- main
 
 ### Day _1_
 
-Like a deer blinded by headlights I was.
+Like a deer blinded by headlights I was,
+more precisely, all the glowing neon light at 36c3 / CCC.
 
 Anyways, setup phone wifi with dedicated app,
 laptop with wpa_supplicant settings,

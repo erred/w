@@ -1,12 +1,12 @@
 --- title
 Chaos Communication Congress Day 0
 --- description
-day nil
+36c3 day nil
 --- main
 
-### _Chaos_ Communication Congress
+### 36th _Chaos_ Communication Congress
 
-Apparently an annual meetup of the weird and wonderful.
+36c3 (CCC) is apparently an annual meetup of the weird and wonderful.
 
 Lots of _hackers_,
 in the broadest definitions of the word.

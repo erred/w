@@ -1,12 +1,15 @@
 --- title
 Chaos Communication Congress Day 3
 --- description
-3 is the magic number, or is it?
+36c3: 3 is the magic number, or is it?
 --- main
 
 ### Day _3_
 
-#### Life
+Who wouldn't want to pull an _18-hour_ day at 36c3?
+With all the excitement, you don't want to miss out.
+
+#### Life at CCC
 
 skipped a few talks for dinner,
 still don't know if it was a good idea

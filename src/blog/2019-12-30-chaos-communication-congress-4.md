@@ -1,12 +1,12 @@
 --- title
 Chaos Communication Congress Day 4
 --- description
-day 4
+36c3 day 4
 --- main
 
 ### Day _4_
 
-last day
+last day at 36c3 / CCC,
 people are tired,
 things are starting to get cleaned up
 Nothing interesting.
