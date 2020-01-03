@@ -1,6 +1,6 @@
 --- title
 go module stats
--- description
+--- description
 stats from scraping proxy.golang.org
 --- main
 
