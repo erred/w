@@ -27,25 +27,36 @@ _go:_
 [issues](https://github.com/golang/go/issues)
 [go-nuts](https://groups.google.com/forum/#!forum/golang-nuts)
 
+_uva-sne:_
+[github](https://github.com/seankhliao/uva-sne)
+[uva-rp1](https://github.com/seankhliao/uva-rp1)
+
+_dash:_
+[gcp](https://console.cloud.google.com)
+[build](https://console.cloud.google.com/cloud-build)
+[cloudflare](https://dash.cloudflare.com)
+[analytics](https://analytics.google.com)
+[search](https://search.google.com/search-console)
+
 ### _to_ read
 
 _blogs:_
-[Jaana](https://jbd.dev/)
-[Jess](https://jess.dev/)
-[Monica](https://meowni.ca/)
+[Jaana](https://jbd.dev)
+[Jess](https://jess.dev)
+[Monica](https://meowni.ca)
 
 _comics:_
-[xkcd](https://xkcd.com/)
-[smbc](https://www.smbc-comics.com/)
+[xkcd](https://xkcd.com)
+[smbc](https://www.smbc-comics.com)
 [faasandfurious](https://faasandfurious.com)
-[thefarside](https://www.thefarside.com/)
+[thefarside](https://www.thefarside.com)
 
 _webshit:_
-[twitter](https://twitter.com/home)
-[hn summary ](http://n-gate.com/)
+[twitter](https://twitter.com)
+[hn summary ](http://n-gate.com)
 
 _other:_
-[azeria](https://azeria-labs.com/)
+[azeria](https://azeria-labs.com)
 
 ### _other_ stuff
 
@@ -58,6 +69,8 @@ _{_
 [keep](https://keep.new)
 _}.new_
 
-_uva-sne:_
-[github](https://github.com/seankhliao/uva-sne)
-[uva-rp1](https://github.com/seankhliao/uva-rp1)
+_chat:_
+[fb](https://messenger.com)
+[telegram](https://web.telegram.org)
+[whatsapp](https://web.whatsapp.com)
+[sms](https://messages.google.com)
