@@ -61,11 +61,10 @@ _comics:_
 [xkcd](https://xkcd.com)
 [smbc](https://www.smbc-comics.com)
 [faasandfurious](https://faasandfurious.com)
-[thefarside](https://www.thefarside.com)
 
 _webshit:_
 [twitter](https://twitter.com)
-[hn summary ](http://n-gate.com)
+[hn summary](http://n-gate.com)
 
 _other:_
 [azeria](https://azeria-labs.com)
