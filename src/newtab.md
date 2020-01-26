@@ -59,8 +59,10 @@ _blogs:_
 
 _comics:_
 [xkcd](https://xkcd.com)
+[ava](https://avasdemon.com)
 [smbc](https://www.smbc-comics.com)
-[faasandfurious](https://faasandfurious.com)
+[existential](https://existentialcomics.com)
+[faas](https://faasandfurious.com)
 
 _webshit:_
 [twitter](https://twitter.com)
