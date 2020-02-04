@@ -56,27 +56,23 @@ _blogs:_
 [Jaana](https://jbd.dev)
 [Jess](https://jess.dev)
 [Monica](https://meowni.ca)
+[azeria](https://azeria-labs.com)
 
 _comics:_
 [xkcd](https://xkcd.com)
-[ava](https://avasdemon.com)
 [smbc](https://www.smbc-comics.com)
-[existential](https://existentialcomics.com)
-[god](https://www.webtoons.com/en/comedy/adventures-of-god/list?title_no=853)
 [faas](https://faasandfurious.com)
+[ava](https://avasdemon.com/chapters.php)
+[god](https://www.webtoons.com/en/comedy/adventures-of-god/list?title_no=853)
 
 <!--
+[existential](https://existentialcomics.com)
 [clinic](https://www.webtoons.com/en/challenge/clinic-of-horrors/list?title_no=274661)
-[shapeshift](https://www.webtoons.com/en/challenge/shape-shifter/list?title_no=274640
 [meme](https://www.webtoons.com/en/challenge/meme-girls/list?title_no=304446)
 [ie](https://www.webtoons.com/en/challenge/internet-explorer/list?title_no=219164)
-[dino](https://www.webtoons.com/en/challenge/tears-of-thunder/list?title_no=178675)
 [letsplay](https://www.webtoons.com/en/romance/letsplay/list?title_no=1218)
 -->
 
 _webshit:_
 [twitter](https://twitter.com)
-[hn summary](http://n-gate.com)
-
-_other:_
-[azeria](https://azeria-labs.com)
+[n-gate](http://n-gate.com)
