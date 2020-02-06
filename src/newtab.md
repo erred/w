@@ -42,6 +42,9 @@ _chat:_
 _uva-sne:_
 [github](https://github.com/seankhliao/uva-sne)
 [uva-rp1](https://github.com/seankhliao/uva-rp1)
+[ccf](https://www.os3.nl/2019-2020/courses/ccf/start)
+[an](https://www.os3.nl/2019-2020/courses/an/coursematerial)
+[an-canv](https://canvas.uva.nl/courses/16278/modules)
 
 _dash:_
 [gcp](https://console.cloud.google.com)
