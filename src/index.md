@@ -55,7 +55,7 @@ _2014-2018_ National Taiwan University
 - Belgium — 2019-10
 - Canada — 2019-04
 - Czechia — 2019-12
-- England — _2009-2011_, 2019-10
+- England — _2009-2011_, 2019-10, 2020-02
 - Germany — 2019-12
 - Hong Kong — 2017-08
 - India — 2015-08
