@@ -63,7 +63,6 @@ _blogs:_
 _comics:_
 [xkcd](https://xkcd.com)
 [smbc](https://www.smbc-comics.com)
-[faas](https://faasandfurious.com)
 [god](https://www.webtoons.com/en/comedy/adventures-of-god/list?title_no=853)
 [ava](https://avasdemon.com/chapters.php)
 
