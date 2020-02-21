@@ -20,16 +20,5 @@ steps:
       - -t=gcr.io/$PROJECT_ID/$_IMG:$TAG_NAME
       - -t=gcr.io/$PROJECT_ID/$_IMG:latest
       - .
-  - name: gcr.io/cloud-builders/gcloud
-    args:
-      - kms
-      - decrypt
-      - --ciphertext-file=sxg.key.enc
-      - --plaintext-file=sxg.key
-      - --location=global
-      - --keyring=cloudbuilder
-      - --key=default
   - id: sitegen
     name: gcr.io/$PROJECT_ID/$_IMG:latest
-    args:
-      - -sxg

@@ -33,10 +33,10 @@ func main() {
 		log.Fatal(err)
 	}
 
-	err = o.signExchanges()
-	if err != nil {
-		log.Fatal(err)
-	}
+	// err = o.signExchanges()
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
 
 	err = o.deploy()
 	if err != nil {
