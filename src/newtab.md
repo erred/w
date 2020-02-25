@@ -64,9 +64,9 @@ _comics:_
 [xkcd](https://xkcd.com)
 [smbc](https://www.smbc-comics.com)
 [god](https://www.webtoons.com/en/comedy/adventures-of-god/list?title_no=853)
-[ava](https://avasdemon.com/chapters.php)
 
 <!--
+[ava](https://avasdemon.com/chapters.php)
 [clinic](https://www.webtoons.com/en/challenge/clinic-of-horrors/list?title_no=274661)
 [meme](https://www.webtoons.com/en/challenge/meme-girls/list?title_no=304446)
 [ie](https://www.webtoons.com/en/challenge/internet-explorer/list?title_no=219164)
