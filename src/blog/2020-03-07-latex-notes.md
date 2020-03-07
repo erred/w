@@ -4,7 +4,7 @@ latex notes
 who forced us to use this thing
 --- main
 
-# latex
+### latex
 
 oneliner (`$!` == last arg of last command):
 
@@ -12,7 +12,7 @@ oneliner (`$!` == last arg of last command):
 (export f=main && pdflatex $f && bibtex $f  && pdflatex $f  && pdflatex $f)>/dev/null
 ```
 
-## text
+#### text
 
 ```latex
 \textbf{bold text}
@@ -30,7 +30,7 @@ oneliner (`$!` == last arg of last command):
 \ref{some:labelname}
 ```
 
-### list
+#### list
 
 ```latex
 \begin{itemize}
@@ -44,7 +44,7 @@ oneliner (`$!` == last arg of last command):
 \end{enumerate}
 ```
 
-## placement
+#### placement
 
 - h: here
 - t: top
@@ -52,7 +52,7 @@ oneliner (`$!` == last arg of last command):
 - !: force
 - H: exactly here
 
-### images
+##### images
 
 ```latex
 \usepackage{graphicx}
@@ -66,7 +66,7 @@ oneliner (`$!` == last arg of last command):
 \end{figure}
 ```
 
-### table
+##### table
 
 after _tabular_:
 
@@ -91,7 +91,7 @@ between lines:
 \end{center}
 ```
 
-### code
+##### code
 
 ```latex
 \usepackage{listings}
@@ -125,7 +125,7 @@ code
 \end{lstlisting}
 ```
 
-## multifile
+#### multifile
 
 ```latex
 \usepackage{import}
@@ -134,9 +134,9 @@ code
 \import{tasks/}{task-4.tex}
 ```
 
-## bibliography
+#### bibliography
 
-### tex
+##### tex
 
 ```latex
 \usepackage[style=ieeetr]{biblatex}
@@ -148,7 +148,7 @@ code
 \printbibliography
 ```
 
-### bib
+##### bib
 
 reference: [bibliography management](https://en.wikibooks.org/wiki/LaTeX/Bibliography_Management)
 
