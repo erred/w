@@ -1,10 +1,7 @@
---- title
-trust the rabbit hole
---- description
-where do you start trusting things
---- main
-
-
+---
+description: where do you start trusting things
+title: trust the rabbit hole
+---
 ### How _(not)_ to trust everything
 
 So you want a trusted compute platform?

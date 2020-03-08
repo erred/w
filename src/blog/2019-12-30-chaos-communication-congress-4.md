@@ -1,9 +1,7 @@
---- title
-Chaos Communication Congress Day 4
---- description
-36c3 day 4
---- main
-
+---
+description: 36c3 day 4
+title: Chaos Communication Congress Day 4
+---
 ### Day _4_
 
 last day at 36c3 / CCC,

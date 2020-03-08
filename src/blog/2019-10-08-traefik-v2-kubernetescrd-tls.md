@@ -1,10 +1,7 @@
---- title
-traefik v2 kubernetescrd tls
---- description
-tls certs with traefik v2
---- main
-
-
+---
+description: tls certs with traefik v2
+title: traefik v2 kubernetescrd tls
+---
 so, 
 because it wasn't entirely obvious to me,
 tls certs are managed by *certResolvers*,

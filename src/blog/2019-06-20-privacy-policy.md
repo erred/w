@@ -1,10 +1,7 @@
---- title
-privacy policy
---- description
-but privacy
---- main
-
-
+---
+description: but privacy
+title: privacy policy
+---
 _privacy_ screams the world
 
 _but you don't have any_

@@ -1,10 +1,7 @@
---- title
-go vanity imports
---- description
-vanity imports are vain
---- main
-
-
+---
+description: vanity imports are vain
+title: go vanity imports
+---
 So how do you get `go get your.domain/package` to work?
 
 ### _go get_

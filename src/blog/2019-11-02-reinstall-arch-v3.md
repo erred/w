@@ -1,10 +1,7 @@
---- title
-reinstall arch v3
---- description
-oops
---- main
-
-
+---
+description: oops
+title: reinstall arch v3
+---
 just after I finished writing / testing my install script,
 I `rm -rf`'d my root directory
 (`--no-preserve-root` can't help when root is not at root)

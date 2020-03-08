@@ -1,10 +1,7 @@
---- title
-go string rune byte
---- description
-what's the difference anyways
---- main
-
-
+---
+description: what's the difference anyways
+title: go string rune byte
+---
 how do you convert the idea of a **symbol**
 to something the computer can represent?
 

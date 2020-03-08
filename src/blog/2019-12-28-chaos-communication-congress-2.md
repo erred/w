@@ -1,9 +1,7 @@
---- title
-Chaos Communication Congress Day 2
---- description
-Maybe I'll know what to expect at 36c3 now
---- main
-
+---
+description: Maybe I'll know what to expect at 36c3 now
+title: Chaos Communication Congress Day 2
+---
 ### Day _2_
 
 Now with a day of experience,

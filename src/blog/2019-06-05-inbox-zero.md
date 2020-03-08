@@ -1,10 +1,7 @@
---- title
-inbox zero
---- description
-clearing the queue
---- main
-
-
+---
+description: clearing the queue
+title: inbox zero
+---
 ### Inbox _Zero_
 
 Treat your inbox as your things to do _now_

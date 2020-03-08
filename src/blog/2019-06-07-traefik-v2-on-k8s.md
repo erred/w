@@ -1,10 +1,7 @@
---- title
-traefik v2 on k8s
---- description
-running traefik v2 on k8s
---- main
-
-
+---
+description: running traefik v2 on k8s
+title: traefik v2 on k8s
+---
 ### v2 alpha
 
 [traefik](https://docs.traefik.io/v2.0/) is in its v2 alpha,

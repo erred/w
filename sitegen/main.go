@@ -15,6 +15,7 @@ import (
 
 	"github.com/russross/blackfriday/v2"
 	"golang.org/x/tools/blog/atom"
+	"sigs.k8s.io/yaml"
 )
 
 func main() {
@@ -71,11 +72,12 @@ type BlogPost struct {
 }
 
 func (o options) processPages() error {
+	var err error
 	var blogindex Page
 	var sitemapPages []string
 	var blogPosts []BlogPost
 
-	err := filepath.Walk(o.src, func(fp string, fi os.FileInfo, err error) error {
+	err = filepath.Walk(o.src, func(fp string, fi os.FileInfo, ierr error) error {
 		if fi.IsDir() {
 			return nil
 		} else if filepath.Ext(fp) == ".md" {
@@ -160,10 +162,6 @@ func (o options) processPage(fp string) (urls []string, bp *BlogPost, err error)
 // and returns a the path segments and a processed page
 func (o options) parsePage(fp string) ([]string, Page, error) {
 	fps, p := strings.Split(fp, "/"), Page{GAID: o.gaID}
-	b, err := ioutil.ReadFile(fp)
-	if err != nil {
-		return nil, p, fmt.Errorf("parsePage: %s %v", fp, err)
-	}
 	fps[0], fps[len(fps)-1] = "amp", strings.TrimSuffix(fps[len(fps)-1], ".md")
 	u, _ := url.Parse(o.baseURL)
 	u.Path = filepath.Join(fps[1:]...)
@@ -171,37 +169,29 @@ func (o options) parsePage(fp string) ([]string, Page, error) {
 	u.Path = filepath.Join(fps...)
 	p.URLAMP = normalizeURL(u.String())
 
-	bb := bytes.Split(b, []byte("---"))
-	for _, b := range bb {
-		if len(b) == 0 {
-			continue
+	b, err := ioutil.ReadFile(fp)
+	if err != nil {
+		return nil, p, fmt.Errorf("parsePage: %s %v", fp, err)
+	}
+	if bytes.HasPrefix(b, []byte(`---`)) {
+		parts := bytes.SplitN(b, []byte(`---`), 3)
+		err := yaml.Unmarshal(parts[1], &p)
+		if err != nil {
+			return nil, p, fmt.Errorf("parsePage: front matter %v", err)
 		}
-		i := bytes.Index(b, []byte("\n"))
-		switch string(bytes.TrimSpace(b[:i])) {
-		case "title":
-			p.Title = string(bytes.TrimSpace(b[i:]))
-		case "description":
-			p.Description = string(bytes.TrimSpace(b[i:]))
-		case "style":
-			p.Style = string(bytes.TrimSpace(b[i:]))
-		case "header":
-			p.Header = string(bytes.TrimSpace(b[i:]))
-		case "main":
-			p.Main = string(blackfriday.Run(
-				b[i:],
-				blackfriday.WithRenderer(
-					blackfriday.NewHTMLRenderer(
-						blackfriday.HTMLRendererParameters{
-							Flags: blackfriday.CommonHTMLFlags,
-						},
-					),
-				),
-			))
-		default:
-			return nil, p, fmt.Errorf("parsePage: unknown section %s", bytes.TrimSpace(b[:i]))
-		}
+		b = parts[2]
 	}
 
+	p.Main = string(blackfriday.Run(
+		b,
+		blackfriday.WithRenderer(
+			blackfriday.NewHTMLRenderer(
+				blackfriday.HTMLRendererParameters{
+					Flags: blackfriday.CommonHTMLFlags,
+				},
+			),
+		),
+	))
 	if fps[1] == "blog" && fps[2] != "index" {
 		p.Date = fps[len(fps)-1][:10]
 	}

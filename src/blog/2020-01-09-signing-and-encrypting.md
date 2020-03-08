@@ -1,9 +1,7 @@
---- title
-signing and encrypting
---- description
-modern signing and encrypting
---- main
-
+---
+description: modern signing and encrypting
+title: signing and encrypting
+---
 ### What
 
 _kill_ gpg

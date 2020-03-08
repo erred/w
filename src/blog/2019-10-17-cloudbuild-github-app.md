@@ -1,10 +1,7 @@
---- title
-cloudbuild github app
---- description
-there's a what now?
---- main
-
-
+---
+description: there's a what now?
+title: cloudbuild github app
+---
 [Google Cloud Build](https://cloud.google.com/cloud-build/)
 recently got a new
 [Github App](https://github.com/marketplace/google-cloud-build)

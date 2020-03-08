@@ -1,10 +1,7 @@
---- title
-cloudbuild git
---- description
-git stuff done on cloudbuild
---- main
-
-
+---
+description: git stuff done on cloudbuild
+title: cloudbuild git
+---
 [Google Cloud Build](https://cloud.google.com/cloud-build/),
 the minimalist CI system that is kinda close to
 [Knative Build](https://knative.dev/docs/build/)

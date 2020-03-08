@@ -1,10 +1,7 @@
---- title
-service ui
---- description
-different ways to present a service
---- main
-
-
+---
+description: different ways to present a service
+title: service ui
+---
 It's been 4 months
 and I've already refactored a service 4 times
 

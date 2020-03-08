@@ -1,10 +1,7 @@
---- title
-github actions beta
---- description
-first impressions on github actions beta
---- main
-
-
+---
+description: first impressions on github actions beta
+title: github actions beta
+---
 A full 10 months after clicking "Join Beta",
 I'm finally in.
 

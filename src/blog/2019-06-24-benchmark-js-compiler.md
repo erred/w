@@ -1,10 +1,7 @@
---- title
-benchmark js compiler
---- description
-js bundlers whatever
---- main
-
-
+---
+description: js bundlers whatever
+title: benchmark js compiler
+---
 ahh,
 the _dumpster fire_ that is javascript,
 still need it to get shit to run on the web,

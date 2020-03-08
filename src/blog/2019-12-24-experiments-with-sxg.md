@@ -1,9 +1,7 @@
---- title
-experiments with SXG
---- description
-experimenting with HTTP Signed Exchanges
---- main
-
+---
+description: experimenting with HTTP Signed Exchanges
+title: experiments with SXG
+---
 ### _HTTP_ Signed Exchanges
 
 SXG signs an individual request/response pair

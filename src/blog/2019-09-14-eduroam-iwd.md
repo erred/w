@@ -1,10 +1,7 @@
---- title
-eduroam iwd
---- description
-eduroam, iwd version
---- main
-
-
+---
+description: eduroam, iwd version
+title: eduroam iwd
+---
 My [previous attempts](/eduroam)
 to get eduroam wifi with [wpa_supplicant](https://wiki.archlinux.org/index.php/WPA_supplicant)
 more or less worked.

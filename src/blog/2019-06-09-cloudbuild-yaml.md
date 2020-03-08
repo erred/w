@@ -1,10 +1,7 @@
---- title
-cloudbuild yaml
---- description
-current preferred setup of Google Cloud Build
---- main
-
-
+---
+description: current preferred setup of Google Cloud Build
+title: cloudbuild yaml
+---
 ### Google Cloud Build
 
 my current use of `cloudbuild.yaml`

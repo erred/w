@@ -1,10 +1,7 @@
---- title
-cloud build kaniko
---- description
-using Kaniko Executor with Google Cloud Build
---- main
-
-
+---
+description: using Kaniko Executor with Google Cloud Build
+title: cloud build kaniko
+---
 ### kani-what?
 
 Maybe for some reason you don't like using `docker build`,

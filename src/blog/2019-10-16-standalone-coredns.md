@@ -1,10 +1,7 @@
---- title
-standalone coredns
---- description
-running coredns in standalone mode
---- main
-
-
+---
+description: running coredns in standalone mode
+title: standalone coredns
+---
 so you need DNS...
 
 ### _Corefile_

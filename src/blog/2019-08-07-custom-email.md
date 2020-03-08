@@ -1,10 +1,7 @@
---- title
-custom email
---- description
-setup email in 2019
---- main
-
-
+---
+description: setup email in 2019
+title: custom email
+---
 Email is annoyingly hard,
 if you want it to be _reliable_
 

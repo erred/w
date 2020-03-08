@@ -1,10 +1,7 @@
---- title
-cube uhhm nates
---- description
-k8s concepts
---- main
-
-
+---
+description: k8s concepts
+title: cube uhhm nates
+---
 ### kubternetes
 
 the thing that eats up all your computers

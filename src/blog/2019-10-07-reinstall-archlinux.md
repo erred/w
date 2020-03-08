@@ -1,10 +1,7 @@
---- title
-reinstall archlinux
---- description
-the long and arduous journey of reinstalling arch
---- main
-
-
+---
+description: the long and arduous journey of reinstalling arch
+title: reinstall archlinux
+---
 *why?*
 you ask,
 it has gotten cluttered and full of dubious configs,

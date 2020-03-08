@@ -1,25 +1,22 @@
---- title
-newtab | seankhliao
-
---- style
-header {
-display: none;
-}
-main {
-margin-top: 0;
-}
-h3 {
-margin-top: 5vh;
-}
-ul > li {
-display: inline;
-}
-ul > li:before {
-content: "";
-}
-
---- main
-
+---
+style: |-
+  header {
+  display: none;
+  }
+  main {
+  margin-top: 0;
+  }
+  h3 {
+  margin-top: 5vh;
+  }
+  ul > li {
+  display: inline;
+  }
+  ul > li:before {
+  content: "";
+  }
+title: newtab | seankhliao
+---
 ### _current_ focus
 
 _{_

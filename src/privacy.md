@@ -1,18 +1,12 @@
---- title
-privacy | seankhliao
-
---- style
-h3,
-h4 {
-margin-top: 25vh;
-}
-
---- header
-
-<h2><em>Privacy</em> Policy</h2>
-
---- main
-
+---
+header: <h2><em>Privacy</em> Policy</h2>
+style: |-
+  h3,
+  h4 {
+  margin-top: 25vh;
+  }
+title: privacy | seankhliao
+---
 #### Scope
 
 Anyone viewing my anything under my site [seankhliao.com](https://seankhliao.com)

@@ -1,10 +1,7 @@
---- title
-github actions action
---- description
-wrting actions for github actions
---- main
-
-
+---
+description: wrting actions for github actions
+title: github actions action
+---
 footguns,
 footguns everywhere
 

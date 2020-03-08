@@ -1,10 +1,7 @@
---- title
-go reproducible builds
---- description
-reproducible builds in Go
---- main
-
-
+---
+description: reproducible builds in Go
+title: go reproducible builds
+---
 1. use **Go1.13+**
 2. `CGO_ENABLED=0`: haven't had the time to figure out otherwise
 3. `go mod vendor`

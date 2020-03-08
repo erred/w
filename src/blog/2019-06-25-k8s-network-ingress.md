@@ -1,10 +1,7 @@
---- title
-k8s network ingress
---- description
-reaching your cluster
---- main
-
-
+---
+description: reaching your cluster
+title: k8s network ingress
+---
 so you have a kubernetes cluster and now you want to reach it from the outside,
 you have several options
 

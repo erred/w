@@ -1,10 +1,7 @@
---- title
-reinstall arch v2
---- description
-let's try again
---- main
-
-
+---
+description: let's try again
+title: reinstall arch v2
+---
 what??
 it's only been 3 weeks
 and it broke

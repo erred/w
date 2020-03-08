@@ -1,9 +1,7 @@
---- title
-go module stats
---- description
-stats from scraping proxy.golang.org
---- main
-
+---
+description: stats from scraping proxy.golang.org
+title: go module stats
+---
 ### _stats_ on go modules
 
 by default, go now uses a [proxy](https://proxy.golang.org)

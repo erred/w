@@ -1,10 +1,7 @@
---- title
-wanderlust
---- description
-travel or die
---- main
-
-
+---
+description: travel or die
+title: wanderlust
+---
 ### Wanderlust
 
 travel or die

@@ -1,9 +1,7 @@
---- title
-Chaos Communication Congress Day 3
---- description
-36c3: 3 is the magic number, or is it?
---- main
-
+---
+description: '36c3: 3 is the magic number, or is it?'
+title: Chaos Communication Congress Day 3
+---
 ### Day _3_
 
 Who wouldn't want to pull an _18-hour_ day at 36c3?

@@ -1,10 +1,7 @@
---- title
-go dialogflow fulfillment
---- description
-Writing DialogFlow fulfillment servers in Go
---- main
-
-
+---
+description: Writing DialogFlow fulfillment servers in Go
+title: go dialogflow fulfillment
+---
 [DialogFlow](https://dialogflow.com/),
 unified backend chatbot interface powered by ai
 

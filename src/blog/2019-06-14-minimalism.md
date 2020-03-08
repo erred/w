@@ -1,10 +1,7 @@
---- title
-minimalism
---- description
-less is more is less
---- main
-
-
+---
+description: less is more is less
+title: minimalism
+---
 ### mnmlsm
 
 The art of living with _less_

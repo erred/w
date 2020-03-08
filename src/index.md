@@ -1,19 +1,14 @@
---- title
-seankhliao
-
---- description
-i am sean
-
---- style
-main picture,
-main amp-img,
-main h3,
-main h4 {
-margin-top: 25vh;
-}
-
---- main
-
+---
+description: i am sean
+style: |-
+  main picture,
+  main amp-img,
+  main h3,
+  main h4 {
+  margin-top: 25vh;
+  }
+title: seankhliao
+---
 ### Hey, I'm _Sean_
 
 ##### _Bleeding_ Edge Cloud Native

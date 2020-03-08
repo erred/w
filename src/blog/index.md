@@ -1,5 +1,4 @@
---- title
-blog | seankhliao
-
---- description
-list of things i wrote
+---
+description: list of things i wrote
+title: blog | seankhliao
+---

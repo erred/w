@@ -1,10 +1,7 @@
---- title
-archlinux custom repo
---- description
-custom self updating arch linux repo
---- main
-
-
+---
+description: custom self updating arch linux repo
+title: archlinux custom repo
+---
 ### what is it?
 
 ugly hack to prebuild [AUR](https://aur.archlinux.org/)

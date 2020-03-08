@@ -1,10 +1,7 @@
---- title
-license to hack
---- description
-biased overview of open source licenses
---- main
-
-
+---
+description: biased overview of open source licenses
+title: license to hack
+---
 ### licenses
 
 open source licenses,

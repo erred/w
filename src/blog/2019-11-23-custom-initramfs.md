@@ -1,10 +1,7 @@
---- title
-custom initramfs
---- description
-debloat your initramfs?
---- main
-
-
+---
+description: debloat your initramfs?
+title: custom initramfs
+---
 ### Notes
 
 [these notes](https://hootiegibbon.gitlab.io/blog/2018/10/02/CustomInitramfs.html)

@@ -1,10 +1,7 @@
---- title
-social media messaging
---- description
-notes on social media
---- main
-
-
+---
+description: notes on social media
+title: social media messaging
+---
 ### social medias
 
 #### facebook

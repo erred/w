@@ -1,10 +1,7 @@
---- title
-blog sub home
---- description
-moving blog home
---- main
-
-
+---
+description: moving blog home
+title: blog sub home
+---
 ### Subdomain to _Subdir_
 
 Sure a subdomain is pretty,

@@ -1,10 +1,7 @@
---- title
-cloudbuild arch pkgbuild
---- description
-building arch PKGBUILDs in cloudbuild
---- main
-
-
+---
+description: building arch PKGBUILDs in cloudbuild
+title: cloudbuild arch pkgbuild
+---
 ### What?
 
 I wanted a private private arch repository

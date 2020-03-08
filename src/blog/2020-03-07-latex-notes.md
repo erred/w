@@ -1,9 +1,7 @@
---- title
-latex notes
---- description
-who forced us to use this thing
---- main
-
+---
+description: who forced us to use this thing
+title: latex notes
+---
 ### latex
 
 oneliner (`$!` == last arg of last command):
