@@ -17,6 +17,7 @@ style: |-
   }
 title: newtab | seankhliao
 ---
+
 ### _current_ focus
 
 _{_
@@ -34,7 +35,7 @@ _chat:_
 [telegram](https://web.telegram.org)
 [whatsapp](https://web.whatsapp.com)
 [sms](https://messages.google.com)
-[os3](https://chat.os3.nl)
+[os3](https://chat.students.os3.nl)
 
 _uva-sne:_
 [github](https://github.com/seankhliao/uva-sne)
@@ -63,11 +64,9 @@ _comics:_
 [god](https://www.webtoons.com/en/comedy/adventures-of-god/list?title_no=853)
 
 <!--
-[ava](https://avasdemon.com/chapters.php)
 [clinic](https://www.webtoons.com/en/challenge/clinic-of-horrors/list?title_no=274661)
 [meme](https://www.webtoons.com/en/challenge/meme-girls/list?title_no=304446)
 [ie](https://www.webtoons.com/en/challenge/internet-explorer/list?title_no=219164)
-[letsplay](https://www.webtoons.com/en/romance/letsplay/list?title_no=1218)
 -->
 
 _webshit:_
