@@ -9,9 +9,10 @@ style: |-
   }
 title: seankhliao
 ---
+
 ### Hey, I'm _Sean_
 
-##### _Bleeding_ Edge Cloud Native
+#### _Bleeding_ Edge Cloud Native
 
 I run with shiny new stuff that is always _half_-broken,
 so I know what actually works.
@@ -33,17 +34,14 @@ _2019-2020_ University of Amsterdam
 
 _2014-2018_ National Taiwan University
 
-#### My _Stuff_
-
-- [Blog](./blog) — home of random thoughts
-
 #### _Find_ Me
 
+- [Blog](./blog) — home of random thoughts
 - [Email](mailto:sean@seankhliao.com) — for me?
 - [Github](https://github.com/seankhliao) — build first, regret later
 - [Github Org](https://github.com/erred) — where old code goes to die
 
-# ![map of countries I've visited](/map.webp)
+#### ![map of countries I've visited](/map.webp)
 
 #### Travel _Log_
 

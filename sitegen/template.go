@@ -341,7 +341,7 @@ blockquote {
 code {
   background: #404040;
   font: 1em "Inconsolata", monospace;
-  padding: 0.25em 0.5em;
+  padding: 0.1em;
 }
 pre {
   background: #404040;

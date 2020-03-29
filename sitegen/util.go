@@ -141,7 +141,7 @@ func normalizeURL(u string) string {
 // }
 
 func imgHack(s string) (html, amp string) {
-	r := regexp.MustCompile(`<h1><img src="(.*?).webp" alt="(.*?)" /></h1>`)
+	r := regexp.MustCompile(`<h4><img src="(.*?).webp" alt="(.*?)" /></h4>`)
 	html = r.ReplaceAllString(s, `
 <picture>
         <source type="image/webp" srcset="$1.webp">
