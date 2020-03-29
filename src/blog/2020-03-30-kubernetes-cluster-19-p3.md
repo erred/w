@@ -185,3 +185,4 @@ tracing_jaeger_agent_endpoint: jaeger-agent.monitor.svc.cluster.local:6831
 [loki]: https://github.com/grafana/loki/tree/master/docs
 [promtail]: https://github.com/grafana/loki/blob/master/docs/clients/promtail/configuration.md
 [prometheus]: https://prometheus.io/
+[kluster]: https://github.com/seankhliao/kluster/tree/v0.19.1

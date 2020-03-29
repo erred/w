@@ -96,6 +96,6 @@ spec:
 [helm]: https://helm.sh/
 [kustomize]: https://github.com/kubernetes-sigs/kustomize
 [certm]: https://github.com/jetstack/cert-manager
-[kluster]: https://github.com/seankhliao/kluster/tree/v0.19.0
+[kluster]: https://github.com/seankhliao/kluster/tree/v0.19.1
 [gke]: https://cloud.google.com/kubernetes-engine
 [e2]: https://cloud.google.com/blog/products/compute/google-compute-engine-gets-new-e2-vm-machine-types
