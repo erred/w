@@ -39,9 +39,7 @@ _chat:_
 
 _uva-sne:_
 [github](https://github.com/seankhliao/uva-sne)
-[ccf](https://www.os3.nl/2019-2020/courses/ccf/start)
-[an](https://www.os3.nl/2019-2020/courses/an/coursematerial)
-[an-canv](https://canvas.uva.nl/courses/16278/modules)
+[ot](https://www.os3.nl/2019-2020/courses/ot/start)
 
 _dash:_
 [gcp](https://console.cloud.google.com)
@@ -49,6 +47,12 @@ _dash:_
 [cloudflare](https://dash.cloudflare.com)
 [analytics](https://analytics.google.com)
 [search](https://search.google.com/search-console)
+
+_api:_
+[grafana](https://grafana.api.seankhliao.com/)
+[traefik](https://traefik.api.seankhliao.com/)
+[jaeger](https://jaeger.api.seankhliao.com/)
+[tekton](https://tekton.api.seankhliao.com/)
 
 ### _to_ read
 
