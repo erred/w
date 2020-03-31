@@ -30,15 +30,22 @@ _{_
 _}.new_
 
 _chat:_
-[gophers](https://app.slack.com/client/T029RQSE6/C029RQSEE)
 [fb](https://messenger.com)
 [telegram](https://web.telegram.org)
 [whatsapp](https://web.whatsapp.com)
 [sms](https://messages.google.com)
-[os3](https://chat.students.os3.nl)
 
-_uva-sne:_
+_slack:_
+[gophers](https://app.slack.com/client/T029RQSE6/C029RQSEE)
+[k8s](https://app.slack.com/client/T09NY5SBT/C9T0QMNG4)
+[hangops](https://app.slack.com/client/T047L58T5/C0C8VHELQ)
+[grafana](https://app.slack.com/client/T05675Y01/C05675Y4F)
+[pomerium](https://app.slack.com/client/TK6BPU3V2/CK6SVMPU0)
+
+_sne:_
 [github](https://github.com/seankhliao/uva-sne)
+[chat](https://chat.students.os3.nl)
+[bbb5](https://bbb5.os3.nl)
 [ot](https://www.os3.nl/2019-2020/courses/ot/start)
 
 _dash:_
@@ -50,7 +57,6 @@ _dash:_
 
 _api:_
 [grafana](https://grafana.api.seankhliao.com/)
-[traefik](https://traefik.api.seankhliao.com/)
 [jaeger](https://jaeger.api.seankhliao.com/)
 [tekton](https://tekton.api.seankhliao.com/)
 
