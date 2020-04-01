@@ -28,6 +28,9 @@ These are seperate applications that run to collect metrics/traces.
 Usually the things with name recognition,
 ex [prometheus][prom] for metrics and [jaeger][jaeger] for tracing
 
+_TODO_: look at [opentelemetry collector][otc] for collecting all metrics / traces
+and reexport them to collectors
+
 ##### sdk/client libraries
 
 these run as part of application code and generate/expose metrics/traces.
@@ -258,6 +261,7 @@ func ExampleOpenTelemetry() {
 }
 ```
 
+[otc]: https://opentelemetry.io/docs/collector/about/
 [otgo]: https://github.com/opentracing/opentracing-go
 [otelgo]: https://github.com/open-telemetry/opentelemetry-go
 [ocgo]: https://github.com/census-instrumentation/opencensus-go
