@@ -257,6 +257,8 @@ func ExampleOpenTelemetry() {
 
                 http.DefaultClient.Do(req)
         })
+
+        http.ListenAndServe(":8080", handler)
 }
 ```
 
