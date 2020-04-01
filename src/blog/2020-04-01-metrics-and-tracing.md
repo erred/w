@@ -205,8 +205,7 @@ func ExampleOpenCensus() {
 
 using [go.opentelemetry.io/otel][otelgo]
 
-Okayish but api feels unstable and overly complex.
-Also doesn't support jaeger native trace propagation(?)
+Okayish but api feels unstable.
 
 ```go
 package main
