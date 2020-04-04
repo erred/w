@@ -43,10 +43,14 @@ _slack:_
 [pomerium](https://app.slack.com/client/TK6BPU3V2/CK6SVMPU0)
 
 _sne:_
-[github](https://github.com/seankhliao/uva-sne)
+[gh](https://github.com/seankhliao/uva-sne)
+[gh-as](https://github.com/seankhliao/uva-as)
+[gh-ot](https://github.com/seankhliao/uva-ot)
 [chat](https://chat.students.os3.nl)
 [bbb5](https://bbb5.os3.nl)
+[as](https://www.os3.nl/2019-2020/courses/as/start)
 [ot](https://www.os3.nl/2019-2020/courses/ot/start)
+[ot-davide](https://www.os3.nl/2019-2020/students/davide_pucci/ot/lab1)
 
 _dash:_
 [gcp](https://console.cloud.google.com)
@@ -56,9 +60,9 @@ _dash:_
 [search](https://search.google.com/search-console)
 
 _api:_
-[grafana](https://grafana.api.seankhliao.com/)
-[jaeger](https://jaeger.api.seankhliao.com/)
-[tekton](https://tekton.api.seankhliao.com/)
+[grafana](https://grafana.seankhliao.com/)
+[jaeger](https://jaeger.seankhliao.com/)
+[tekton](https://tekton.seankhliao.com/)
 
 ### _to_ read
 
