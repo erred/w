@@ -50,7 +50,7 @@ _sne:_
 [bbb5](https://bbb5.os3.nl)
 [as](https://www.os3.nl/2019-2020/courses/as/start)
 [ot](https://www.os3.nl/2019-2020/courses/ot/start)
-[ot-davide](https://www.os3.nl/2019-2020/students/davide_pucci/ot/lab1)
+[ot-davide](https://www.os3.nl/2019-2020/students/davide_pucci/ot)
 
 _dash:_
 [gcp](https://console.cloud.google.com)
