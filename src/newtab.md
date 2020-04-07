@@ -68,6 +68,7 @@ _api:_
 
 _blogs:_
 [Jaana](https://jbd.dev)
+[Janna 2](https://rakyll.org)
 [Jess](https://jess.dev)
 [Monica](https://meowni.ca)
 [azeria](https://azeria-labs.com)
