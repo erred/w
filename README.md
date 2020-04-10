@@ -15,20 +15,18 @@ Who am i?
 - output RSS
 - output HTML
 - output AMP
-- output SXG
 
 ## TODO
 
 - [ ] web packaging
 
-## markdown
-
-sections:
+## style
 
 ```
--- title --
--- description --
--- style --
--- header --
--- main --
+--black: #000000;
+--primary: #a06be0;
+--gray: #999;
+--white: #eceff1;
+--mono: "Inconsolata", monospace;
+--serif: "Lora", serif;
 ```

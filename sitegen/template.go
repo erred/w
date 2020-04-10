@@ -189,14 +189,6 @@ gtag("config", "{{ .GAID }}");
   box-sizing: border-box;
 }
 :root {
-  /*
-  --black: #000000;
-  --primary: #a06be0;
-  --gray: #999;
-  --white: #eceff1;
-  --mono: "Inconsolata", monospace;
-  --serif: "Lora", serif;
-*/
   background: #000;
   color: #eceff1;
   font: 18px "Inconsolata", monospace;
