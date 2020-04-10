@@ -34,23 +34,17 @@ _chat:_
 [telegram](https://web.telegram.org)
 [whatsapp](https://web.whatsapp.com)
 [sms](https://messages.google.com)
-
-_slack:_
 [gophers](https://app.slack.com/client/T029RQSE6/C029RQSEE)
-[k8s](https://app.slack.com/client/T09NY5SBT/C9T0QMNG4)
-[hangops](https://app.slack.com/client/T047L58T5/C0C8VHELQ)
-[grafana](https://app.slack.com/client/T05675Y01/C05675Y4F)
-[pomerium](https://app.slack.com/client/TK6BPU3V2/CK6SVMPU0)
 
 _sne:_
 [gh](https://github.com/seankhliao/uva-sne)
-[gh-as](https://github.com/seankhliao/uva-as)
-[gh-ot](https://github.com/seankhliao/uva-ot)
 [chat](https://chat.students.os3.nl)
-[bbb5](https://bbb5.os3.nl)
 [as](https://www.os3.nl/2019-2020/courses/as/start)
+[as-gh](https://github.com/seankhliao/uva-as)
 [ot](https://www.os3.nl/2019-2020/courses/ot/start)
-[ot-davide](https://www.os3.nl/2019-2020/students/davide_pucci/ot)
+[ot-gh](https://github.com/seankhliao/uva-ot)
+[ot-bbb](https://bbb5.os3.nl/gl/jer-y7t-mec)
+[ot-lab](https://www.os3.nl/2019-2020/students/davide_pucci/ot)
 
 _dash:_
 [gcp](https://console.cloud.google.com)
@@ -59,18 +53,16 @@ _dash:_
 [analytics](https://analytics.google.com)
 [search](https://search.google.com/search-console)
 
-_api:_
-[grafana](https://grafana.seankhliao.com/)
-[jaeger](https://jaeger.seankhliao.com/)
+_site:_
 [tekton](https://tekton.seankhliao.com/)
 
 ### _to_ read
 
 _blogs:_
-[Jaana](https://jbd.dev)
-[Janna 2](https://rakyll.org)
-[Jess](https://jess.dev)
-[Monica](https://meowni.ca)
+[jaana](https://jbd.dev)
+[rakyll](https://rakyll.org)
+[jess](https://jess.dev)
+[monica](https://meowni.ca)
 [azeria](https://azeria-labs.com)
 
 _comics:_
