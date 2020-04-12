@@ -20,7 +20,7 @@ title: opinionated go | seankhliao
 
 ### _Opinionated_ Go Libraries
 
-[awesome-go](https://github.com/avelino/awesome-go) is awesome but too much
+[awesome-go](https://github.com/avelino/awesome-go) is awesome, but too much
 
 _encoding:_
 [yaml](https://github.com/kubernetes-sigs/yaml)
@@ -39,7 +39,7 @@ _terminal:_
 [uitable](http://github.com/gosuri/uitable)
 [uiprogress](https://github.com/gosuri/uiprogress)
 
-#### Todo
+#### _To_ do
 
 - [auth](https://github.com/avelino/awesome-go#authentication-and-oauth)
 - [cli](https://github.com/avelino/awesome-go#standard-cli)
