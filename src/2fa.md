@@ -1,6 +1,9 @@
 ---
 description: accounts with 2fa that actually work
 style: |-
+  main > table {
+    grid-column: 1 / span 3;
+  }
   table {
     border-collapse: collapse;
     border-style: hidden;
