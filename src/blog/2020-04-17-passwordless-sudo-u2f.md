@@ -18,6 +18,8 @@ pacman -S pam-u2f
 
 replace `~/.config` with `$XDG_CONFIG_HOME`
 
+origin and id is set to enforce a stable name
+
 ```sh
 # first key
 pamu2fcfd -i pam://hostname -o pam://hostname > ~/.config/Yubico/u2f_keys
@@ -36,8 +38,9 @@ username:xxxxxx..key1..xxxxxx:xxxxxx..key2..xxxxxx
 /etc/pam.d/sudo
 
 - authfile: set alternative location for config file
+- cue: prompt to touch device (so you don't wonder why it's stuck doing nothing)
 
 ```txt
-auth    sufficient    pam_u2f.so origin=pam://hostname appid=pam://hostname
+auth    sufficient    pam_u2f.so cue origin=pam://hostname appid=pam://hostname
 ...
 ```
