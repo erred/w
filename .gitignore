@@ -3,6 +3,8 @@
 .firebaserc
 .prettierignore
 
-dst/
-
-sxg.key
+public/*
+!public/*.ico
+!public/*.jpg
+!public/*.png
+!public/*.webp
