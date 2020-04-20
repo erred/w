@@ -2,6 +2,7 @@
 description: who forced us to use this thing
 title: latex notes
 ---
+
 ### latex
 
 oneliner (`$!` == last arg of last command):
@@ -137,7 +138,7 @@ code
 ##### tex
 
 ```latex
-\usepackage[style=ieeetr]{biblatex}
+\usepackage{biblatex}
 \addbibresource{references.bib}
 
 \cite{somereference}
@@ -183,3 +184,4 @@ reference: [bibliography management](https://en.wikibooks.org/wiki/LaTeX/Bibliog
   year    = {2020},
 }
 ```
+
