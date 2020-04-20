@@ -29,7 +29,7 @@ steps:
       - -out=dst
   - id: images
     name: seankhliao/ci-imagemagick:latest
-    entrypoint: bash
+    entrypoint: sh
     args:
       - -c
       - |-
