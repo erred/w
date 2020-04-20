@@ -9,5 +9,6 @@ steps:
   - id: upload
     name: seankhliao/ci-firebase
     args:
-      - -P=com-seankhliao
+      - -P
+      - com-seankhliao
       - deploy
