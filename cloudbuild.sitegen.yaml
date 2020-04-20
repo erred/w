@@ -57,5 +57,5 @@ steps:
     name: seankhliao/ci-firebase
     args:
       - -P
-      - com-seankhiao
+      - com-seankhliao
       - deploy
