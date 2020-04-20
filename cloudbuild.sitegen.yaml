@@ -4,7 +4,7 @@ tags:
   - com-seankhliao
   - com-seankhliao-sitegen
 steps:
- - id: generate
+  - id: generate
     name: seankhliao/webstyle:latest
     args:
       - -in=src
