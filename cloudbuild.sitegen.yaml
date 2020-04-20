@@ -3,12 +3,12 @@ tags:
   - $SHORT_SHA
   - com-seankhliao
   - com-seankhliao-sitegen
-substitutions:
-  _IMG: com-seankhliao-sitegen
-images:
-  - gcr.io/$PROJECT_ID/$_IMG:$SHORT_SHA
-  - gcr.io/$PROJECT_ID/$_IMG:$TAG_NAME
-  - gcr.io/$PROJECT_ID/$_IMG:latest
+# substitutions:
+#   _IMG: com-seankhliao-sitegen
+# images:
+#   - gcr.io/$PROJECT_ID/$_IMG:$SHORT_SHA
+#   - gcr.io/$PROJECT_ID/$_IMG:$TAG_NAME
+#   - gcr.io/$PROJECT_ID/$_IMG:latest
 
 steps:
   # - id: build sitegen
