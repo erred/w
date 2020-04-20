@@ -42,7 +42,7 @@ steps:
           "-write" "dst/map.webp" \
           "dst/map.jpg"
 
-        convert
+        convert \
           "img/icon.tif" \
           "-flatten" \
           "(" "+clone" "-resize" "512x512" "-quality" "60" "-write" "dst/icon-512.png" "+delete" ")" \
