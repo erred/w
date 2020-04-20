@@ -5,6 +5,15 @@
     "trailingSlash": true,
     "headers": [
       {
+        "source": "*",
+        "headers": [
+          {
+            "key": "Conetent-Security-Policy",
+            "value": "default-src 'self'; style-src 'unsafe-inline'; script-src-elem  'unsafe-inline' https://www.google-analytics.com; font-src 'self' https://fonts.gstatic.com; connect-src https://*.seankhliao.com https://www.google-analytics.com; img-src *; report-uri https://statslogger.seankhliao.com/json"
+          }
+        ]
+      },
+      {
         "source": "/icon-*.png",
         "headers": [{ "key": "Cache-Control", "value": "max-age=2592000" }]
       },
