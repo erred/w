@@ -6,12 +6,8 @@ tags:
 steps:
   - id: generate
     name: seankhliao/webstyle:latest
-    args:
-      - -in=src
-      - -out=dst
   - id: upload
     name: seankhliao/ci-firebase
     args:
-      - -P
-      - com-seankhliao
+      - -P=com-seankhliao
       - deploy
