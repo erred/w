@@ -2,7 +2,3 @@
 .firebase/
 .firebaserc
 .prettierignore
-
-dst/
-
-sxg.key
