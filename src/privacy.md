@@ -7,6 +7,7 @@ style: |-
   }
 title: privacy | seankhliao
 ---
+
 #### Scope
 
 Anyone viewing my anything under my site [seankhliao.com](https://seankhliao.com)
@@ -44,3 +45,4 @@ Third party terms of service
 - [Cloudflare](https://www.cloudflare.com/website-terms/) terms of service
 - [Google](https://policies.google.com/terms?hl=en) terms of service
 - [Google Analytics](https://www.google.com/analytics/terms/us.html) terms of service
+

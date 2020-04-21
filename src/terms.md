@@ -1,5 +1,5 @@
 ---
-header: <h2>Terms of <em>Service</em></h2>
+header: <h2><em>Terms</em> of Service</h2>
 style: |-
   h3,
   h4 {
@@ -7,4 +7,5 @@ style: |-
   }
 title: Terms of Service | seankhliao
 ---
+
 Be reasonable

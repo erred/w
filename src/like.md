@@ -1,5 +1,6 @@
 ---
 description: things i like
+header: <h2><em>Things</em> I Like</h2> <p>lists and tables</p>
 style: |-
   main picture,
   main amp-img,
@@ -15,10 +16,6 @@ style: |-
   }
 title: like
 ---
-
-### Things I _Like_
-
-Just a _list_
 
 #### _Go_ Modules
 
@@ -47,6 +44,36 @@ _terminal:_
 - [tui](https://github.com/avelino/awesome-go#advanced-console-uis)
 - [uuid](https://github.com/avelino/awesome-go#uuid)
 -->
+
+#### _2 Factor Auth_
+
+Ideal: username + password + Security key.
+
+TOTP and SMS can be phished/intercepted.
+Enabling all the options makes it as strong as the weakest link
+
+| Service       | SMS | TOTP | Key | Backup Code |
+| ------------- | --- | ---- | --- | ----------- |
+| Adobe         | opt | yes  | no  | yes         |
+| Amazon        | req | yes  | no  | no          |
+| Booking       | yes | no   | no  | no          |
+| _Cloudflare_  | no  | opt  | yes | yes         |
+| Docker        | no  | yes  | no  | yes         |
+| _Dropbox_     | opt | req  | yes | yes         |
+| _Facebook_    | opt | req  | yes | yes         |
+| _GitHub_      | no  | req  | yes | yes         |
+| _Google norm_ | opt | opt  | yes | yes         |
+| _Google adv_  | no  | no   | yes | no          |
+| Instagram     | opt | yes  | no  | yes         |
+| Keybase       | no  | no   | no  | yes         |
+| LinkedIn      | opt | yes  | no  | yes         |
+| Mastadon      | no  | yes  | no  | yes         |
+| Microsoft     | opt | yes  | no  | yes         |
+| _Namecheap_   | opt | opt  | yes | yes         |
+| Paypal        | req | yes  | no  | no          |
+| Slack         | no  | yes  | no  | yes         |
+| Twitch        | no  | yes  | no  | yes         |
+| Twitter       | no  | req  | 1   | yes         |
 
 #### _Music_
 

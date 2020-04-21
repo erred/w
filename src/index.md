@@ -14,17 +14,19 @@ title: seankhliao
 
 #### _Bleeding_ Edge Cloud Native
 
-I run with shiny new stuff that is always _half_-broken,
-so I know what actually works.
-Current _preferred_ tech stack:
+I run with shiny new stuff that is always _half-broken_,
+so I know what works and what is just a waste of time.
+Current preferred _tech stack_:
 
-Go microservices — Docker containers — Kubernetes — Google Cloud Platform
+Go — containers — Kubernetes
 
-##### Software _Developer_
+##### _Software_ Developer
 
 I'll do anything except touch _frontend_
 
-#### What I've Been _Doing_
+_No promises_ I'm actually good at anything
+
+#### _What_ I've Been Doing
 
 ##### _MSc_ Security and Network Engineering
 
@@ -44,7 +46,7 @@ _2014-2018_ National Taiwan University
 
 #### ![map of countries I've visited](/map.webp)
 
-#### Travel _Log_
+#### _Travel_ Log
 
 - Belgium — 2019-10
 - Canada — 2019-04
