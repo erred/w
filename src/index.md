@@ -36,7 +36,8 @@ _2014-2018_ National Taiwan University
 
 #### _Find_ Me
 
-- [Blog](./blog) — home of random thoughts
+- [Like](/like) — list of things i like
+- [Blog](/blog) — home of random thoughts
 - [Email](mailto:sean@seankhliao.com) — for me?
 - [Github](https://github.com/seankhliao) — build first, regret later
 - [Github Org](https://github.com/erred) — where old code goes to die
