@@ -75,6 +75,14 @@ with a special `XferCommand`.
 
 reimplement reflector in go because NIH
 
+#### _k8s:_ Kubernetes
+
+###### _k8s:_
+
+wireguard tunnel for cross cluster connectivity
+
+daemonsets and ip rules
+
 ### _Ops_ time and patience needed
 
 Running things other people have written.
