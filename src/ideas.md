@@ -28,6 +28,8 @@ retrieve the latest version of thrid party X
 from a variety of sources (github, arch, other).
 update / tag repo and push for ci
 
+partially done for `ci-*` projects on github (with actions)
+
 #### _go:_ go core things
 
 ###### _go:_ module proxy over IPFS
