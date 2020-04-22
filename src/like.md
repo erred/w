@@ -30,15 +30,6 @@ _terminal:_
 [uitable](https://pkg.go.dev/github.com/gosuri/uitable)
 [uiprogress](https://pkg.go.dev/github.com/gosuri/uiprogress)
 
-<!--
-- [auth](https://github.com/avelino/awesome-go#authentication-and-oauth)
-- [cli](https://github.com/avelino/awesome-go#standard-cli)
-- [config](https://github.com/avelino/awesome-go#configuration)
-- [data](https://github.com/avelino/awesome-go#database)
-- [tui](https://github.com/avelino/awesome-go#advanced-console-uis)
-- [uuid](https://github.com/avelino/awesome-go#uuid)
--->
-
 #### _2 Factor Auth_
 
 Ideal: username + password + Security key.
@@ -66,6 +57,7 @@ Enabling all the options makes it as strong as the weakest link
 | _Namecheap_   | opt | opt  | yes | yes         |
 | Paypal        | req | yes  | no  | no          |
 | Slack         | no  | yes  | no  | yes         |
+| _ssh_         | no  | opt  | yes | no          |
 | Twitch        | no  | yes  | no  | yes         |
 | Twitter       | no  | req  | 1   | yes         |
 

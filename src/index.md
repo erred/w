@@ -2,7 +2,6 @@
 description: i am sean
 style: |-
   main picture,
-  main amp-img,
   main h3,
   main h4 {
   margin-top: 25vh;
