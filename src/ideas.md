@@ -2,14 +2,13 @@
 description: backlog of ideas
 header: <h2><em>ideas</em> backlog</h2> <p>append only list</p>
 style: |-
-  main h3,
-  main h4 {
-  margin-top: 20vh;
+  main h3 {
+  margin-top: 25vh;
   }
 title: ideas
 ---
 
-### _Dev_ Ops
+### _Dev_ implementation required
 
 #### _ci:_ tekton webhook interceptor
 
@@ -59,7 +58,7 @@ with a special `XferCommand`.
 
 reimplement reflector in go because NIH
 
-### Dev _Ops_
+### _Ops_ time and patience needed
 
 #### _ci:_ build on push
 
@@ -81,7 +80,7 @@ as title
 
 add full disk encryption to XPS
 
-### _Write_
+### _Write_ wordsmithing wanted
 
 #### _like:_ more go modules
 
