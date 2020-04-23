@@ -106,6 +106,12 @@ run a private container registry in CI cluster as a cache for kaniko
 
 as title
 
+###### _cicd:_ git server
+
+run private git server
+
+gerrit? gitea ? gitlab? plain git?
+
 #### _archlinux:_ Arch Linux on my laptop
 
 ###### _archlinux:_ full disk encryption
