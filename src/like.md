@@ -13,6 +13,10 @@ title: like
 
 #### _Go_ Modules
 
+_config:_
+[envconfig](https://github.com/kelseyhightower/envconfig)
+[pflag](https://github.com/spf13/pflag)
+
 _encoding:_
 [yaml](https://pkg.go.dev/sigs.k8s.io/yaml)
 [gopacket](https://pkg.go.dev/github.com/google/gopacket)
@@ -27,6 +31,7 @@ _protocols:_
 [dns](https://pkg.go.dev/github.com/miekg/dns)
 
 _terminal:_
+[isatty](https://github.com/mattn/go-isatty)
 [uitable](https://pkg.go.dev/github.com/gosuri/uitable)
 [uiprogress](https://pkg.go.dev/github.com/gosuri/uiprogress)
 

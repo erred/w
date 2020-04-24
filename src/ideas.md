@@ -120,17 +120,6 @@ add full disk encryption to XPS
 
 ### _Write_ wordsmithing wanted
 
-#### _like:_ the [list](/like/) of things i like
-
-###### _like:_ go modules
-
-- [auth](https://github.com/avelino/awesome-go#authentication-and-oauth)
-- [cli](https://github.com/avelino/awesome-go#standard-cli)
-- [config](https://github.com/avelino/awesome-go#configuration)
-- [data](https://github.com/avelino/awesome-go#database)
-- [tui](https://github.com/avelino/awesome-go#advanced-console-uis)
-- [uuid](https://github.com/avelino/awesome-go#uuid)
-
 #### _blog:_ the notes in my we[b log](/blog/)
 
 ###### _blog:_ tekton pipelines
