@@ -15,119 +15,85 @@ title: ideas
 Ideas that need code to be written,
 may or may not see the light of day
 
-#### _cicd:_ Continuos Integration Pipeline
+##### _cicd:_ Continuos Integration Pipeline
 
-###### _cicd:_ tekton webhook interceptor
+- **tekton webhook interceptor:**
+  cel is nice but a bit too limiting,
+  implement custom interceptor with plugin style
+- **get latest version:**
+  retrieve the latest version of thrid party X
+  from a variety of sources (github, arch, other).
+  update / tag repo and push for ci.
+  partially done for `ci-*` projects on github (with actions)
 
-cel is nice but a bit too limiting,
-implement custom interceptor with plugin style
+##### _go:_ go core things
 
-###### _cicd:_ get latest version
+- **module proxy over IPFS:**
+  modify `go` command to retrieve modules over IPFS
+  maybe works well with IPFS deduplication?
 
-retrieve the latest version of thrid party X
-from a variety of sources (github, arch, other).
-update / tag repo and push for ci
+##### _web:_ webdev things
 
-partially done for `ci-*` projects on github (with actions)
+- **webauthn:**
+  try it
 
-#### _go:_ go core things
+##### _site:_ this website
 
-###### _go:_ module proxy over IPFS
+- **serve over AMP:**
+  this site doesn't need fancy things,
+  generate and serve over AMP with subdomain & use with cloudflare
+- **serve with WebPackaging / SXG:**
+  serve signed / shareable bundle for site / page,
+  needs proper SXG cert: expensive
+- **serve over IPFS:**
+  use DNSLink and serve this site over IPFS
+- **serve over Tor alt-svc:**
+  apparently it's not difficult?
 
-modify `go` command to retrieve modules over IPFS
-maybe works well with IPFS deduplication?
+##### _archlinux:_ Arch Linux Infra
 
-#### _web:_ webdev things
+- **mirror/repo over IPFS:**
+  Arch should be flexible enough to handle getting packages over ipfs
+  with a special `XferCommand`.
+- **reflector:**
+  reimplement reflector in go because NIH
 
-###### _web:_ webauthn
+##### _k8s:_ Kubernetes
 
-try it
-
-#### _site:_ this website
-
-###### _site:_ serve over AMP
-
-this site doesn't need fancy things,
-generate and serve over AMP with subdomain & use with cloudflare
-
-###### _site:_ serve with WebPackaging / SXG
-
-serve signed / shareable bundle for site / page
-
-- needs proper SXG cert: expensive
-
-###### _site:_ serve over IPFS
-
-use DNSLink and serve this site over IPFS
-
-###### _site:_ serve over Tor alt-svc
-
-apparently it's not difficult?
-
-#### _archlinux:_ Arch Linux Infra
-
-###### _archlinux:_ mirror/repo over IPFS
-
-Arch should be flexible enough to handle getting packages over ipfs
-with a special `XferCommand`.
-
-###### _archlinux:_ reflector
-
-reimplement reflector in go because NIH
-
-#### _k8s:_ Kubernetes
-
-###### _k8s:_
-
-wireguard tunnel for cross cluster connectivity
-
-daemonsets and ip rules
+- **cross cluster tunnel:**
+  wireguard tunnel for cross cluster connectivity,
+  with daemonsets and ip rules
 
 ### _Ops_ time and patience needed
 
 Running things other people have written.
 Usually just need to learn the model / write config files.
 
-#### _cicd:_ Continuos Integration pipeline
+##### _cicd:_ Continuos Integration pipeline
 
-###### _cicd:_ build on push
+- **build on push:**
+  remove limitation on tagged commits
+- **module proxy for go:**
+  run a private module proxy in CI cluster as a local cache
+- **container registry:**
+  run a private container registry in CI cluster as a cache for kaniko
+- **deployment for k8s services:**
+  as title
+- **git server:**
+  run private git server:
+  gerrit? gitea ? gitlab? plain git?
 
-remove limitation on tagged commits
+##### _archlinux:_ Arch Linux on my laptop
 
-###### _cicd:_ module proxy for go
-
-run a private module proxy in CI cluster as a local cache
-
-###### _cicd:_ container registry
-
-run a private container registry in CI cluster as a cache for kaniko
-
-###### _cicd:_ deployment for k8s services
-
-as title
-
-###### _cicd:_ git server
-
-run private git server
-
-gerrit? gitea ? gitlab? plain git?
-
-#### _archlinux:_ Arch Linux on my laptop
-
-###### _archlinux:_ full disk encryption
-
-add full disk encryption to XPS
+- **full disk encryption:**
+  add full disk encryption to XPS
 
 ### _Write_ wordsmithing wanted
 
-#### _blog:_ the notes in my we[b log](/blog/)
+##### _blog:_ the notes in my we[b log](/blog/)
 
-###### _blog:_ tekton pipelines
-
-write experience report
-
-###### _blog:_ SNE courses review / learned
-
-experiences / things learned
-
-was it worth it?
+- **tekton pipelines:**
+  write experience report
+- **SNE courses review / learned:**
+  experiences / things learned,
+  was it worth it?

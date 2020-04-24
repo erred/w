@@ -35,7 +35,7 @@ _terminal:_
 [uitable](https://pkg.go.dev/github.com/gosuri/uitable)
 [uiprogress](https://pkg.go.dev/github.com/gosuri/uiprogress)
 
-#### _2 Factor Auth_
+#### _2 Factor_ Auth
 
 Ideal: username + password + Security key.
 
