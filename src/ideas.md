@@ -63,6 +63,17 @@ may or may not see the light of day
 - **cross cluster tunnel:**
   wireguard tunnel for cross cluster connectivity,
   with daemonsets and ip rules
+- **terminate tls at pods:**
+  l4 ingress and terminate at pods instead,
+  requires a better ca setup for internal services,
+  or split horizon dns
+- **module proxy for go:**
+  run [goproxy](https://github.com/goproxy/goproxy) in CI cluster as a local cache
+- **container registry:**
+  run [harbor](https://github.com/goharbor/harbor) in CI cluster as a cache for kaniko
+- **git server:**
+  run private git server:
+  gerrit? gitea ? plain git?
 
 ### _Ops_ time and patience needed
 
@@ -73,15 +84,8 @@ Usually just need to learn the model / write config files.
 
 - **build on push:**
   remove limitation on tagged commits
-- **module proxy for go:**
-  run a private module proxy in CI cluster as a local cache
-- **container registry:**
-  run a private container registry in CI cluster as a cache for kaniko
 - **deployment for k8s services:**
   as title
-- **git server:**
-  run private git server:
-  gerrit? gitea ? gitlab? plain git?
 
 ##### _archlinux:_ Arch Linux on my laptop
 
