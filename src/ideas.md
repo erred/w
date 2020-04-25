@@ -21,8 +21,12 @@ may or may not see the light of day
   cel is nice but a bit too limiting,
   implement custom interceptor with plugin style
 
-##### _go:_ go core things
+##### _go:_ gopher things
 
+- **http middleware handlesr:**
+  find a nice list of things,
+  ex, add headers, add compression,
+  add security(csp, cors)...
 - **module proxy over IPFS:**
   modify `go` command to retrieve modules over IPFS
   maybe works well with IPFS deduplication?
