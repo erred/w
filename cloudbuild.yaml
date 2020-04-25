@@ -1,0 +1,13 @@
+tags:
+  - $TAG_NAME
+  - $SHORT_SHA
+  - $COMMIT_SHA
+steps:
+  - id: render
+    name: seankhliao/webstyle
+  - id: upload
+    image: seankhliao/ci-firebase
+    args:
+      - --project=$PROJECT_ID
+      - deploy
+      - --only=hosting
