@@ -6,7 +6,7 @@ steps:
   - id: render
     name: seankhliao/webstyle
   - id: upload
-    image: seankhliao/ci-firebase
+    name: seankhliao/ci-firebase
     args:
       - --project=$PROJECT_ID
       - deploy
