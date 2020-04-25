@@ -20,11 +20,6 @@ may or may not see the light of day
 - **tekton webhook interceptor:**
   cel is nice but a bit too limiting,
   implement custom interceptor with plugin style
-- **get latest version:**
-  retrieve the latest version of thrid party X
-  from a variety of sources (github, arch, other).
-  update / tag repo and push for ci.
-  partially done for `ci-*` projects on github (with actions)
 
 ##### _go:_ go core things
 
@@ -72,8 +67,9 @@ may or may not see the light of day
 - **container registry:**
   run [harbor](https://github.com/goharbor/harbor) in CI cluster as a cache for kaniko
 - **git server:**
-  run private git server:
-  gerrit? gitea ? plain git?
+  run [gerrit](https://www.gerritcodereview.com/) as private git server
+- **code search:**
+  run [sourcegraph](https://github.com/sourcegraph/sourcegraph) on private git server
 
 ### _Ops_ time and patience needed
 
