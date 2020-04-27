@@ -15,18 +15,14 @@ title: ideas
 Ideas that need code to be written,
 may or may not see the light of day
 
-##### _cicd:_ Continuos Integration Pipeline
-
-- **tekton webhook interceptor:**
-  cel is nice but a bit too limiting,
-  implement custom interceptor with plugin style
-
 ##### _go:_ gopher things
 
-- **http middleware handlesr:**
+- **http middleware handlers:**
   find a nice list of things,
   ex, add headers, add compression,
   add security(csp, cors)...
+  <!-- https://schepp.github.io/HTTP-headers/#/ -->
+  <!-- https://securityheaders.com/ -->
 - **module proxy over IPFS:**
   modify `go` command to retrieve modules over IPFS
   maybe works well with IPFS deduplication?
@@ -57,6 +53,21 @@ may or may not see the light of day
 - **reflector:**
   reimplement reflector in go because NIH
 
+### _Ops_ time and patience needed
+
+Running things other people have written.
+Usually just need to learn the model / write config files.
+
+##### _cicd:_ Continuos Integration pipeline
+
+- **build on push/pull request:**
+  remove limitation on tagged commits
+
+##### _archlinux:_ Arch Linux on my laptop
+
+- **full disk encryption:**
+  add full disk encryption to XPS
+
 ##### _k8s:_ Kubernetes
 
 - **cross cluster tunnel:**
@@ -74,23 +85,6 @@ may or may not see the light of day
   run [gerrit](https://www.gerritcodereview.com/) as private git server
 - **code search:**
   run [sourcegraph](https://github.com/sourcegraph/sourcegraph) on private git server
-
-### _Ops_ time and patience needed
-
-Running things other people have written.
-Usually just need to learn the model / write config files.
-
-##### _cicd:_ Continuos Integration pipeline
-
-- **build on push:**
-  remove limitation on tagged commits
-- **deployment for k8s services:**
-  as title
-
-##### _archlinux:_ Arch Linux on my laptop
-
-- **full disk encryption:**
-  add full disk encryption to XPS
 
 ### _Write_ wordsmithing wanted
 
