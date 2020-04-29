@@ -90,8 +90,6 @@ Usually just need to learn the model / write config files.
 
 ##### _blog:_ the notes in my we[b log](/blog/)
 
-- **tekton pipelines:**
-  write experience report
 - **SNE courses review / learned:**
   experiences / things learned,
   was it worth it?
