@@ -21,7 +21,8 @@ Unfortunately, the
 only looks back at history, not forward into modernity
 and doesn't support such newfangled security mechanisms.
 
-_Solution?_ temporarily degrade your security, TLS 1.0 should work
+_Solution?_ temporarily degrade your security, TLS 1.2 should work
+**as of 2020-04-30**
 while you make the wayback machine archive your site
 
 #### _Submitting_ pages
