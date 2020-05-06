@@ -27,11 +27,6 @@ may or may not see the light of day
   modify `go` command to retrieve modules over IPFS
   maybe works well with IPFS deduplication?
 
-##### _web:_ webdev things
-
-- **webauthn:**
-  try it
-
 ##### _site:_ this website
 
 - **serve over AMP:**
@@ -50,8 +45,6 @@ may or may not see the light of day
 - **mirror/repo over IPFS:**
   Arch should be flexible enough to handle getting packages over ipfs
   with a special `XferCommand`.
-- **reflector:**
-  reimplement reflector in go because NIH
 
 ### _Ops_ time and patience needed
 
