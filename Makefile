@@ -8,7 +8,8 @@ clean:
 	rm -rf ${OUT}
 
 build:
-	@docker run --rm -it -v $$(pwd):/workspace -w /workspace seankhliao/webstyle
+	webrender
+	# @docker run --rm -it -v $$(pwd):/workspace -w /workspace seankhliao/webstyle
 
 img: img-icon img-map
 
