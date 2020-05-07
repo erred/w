@@ -57,6 +57,36 @@
         "source": "/{feed,feed.rss,atom,rss}",
         "destination": "/feed.atom",
         "type": 302
+      },
+      {
+        "source": "/l/fb/",
+        "destination": "/?utm_source=facebook&utm_medium=profile&utm_campaign=profile",
+        "type": 302
+      },
+      {
+        "source": "/l/gh/",
+        "destination": "/?utm_source=github&utm_medium=profile&utm_campaign=profile",
+        "type": 302
+      },
+      {
+        "source": "/l/ig/",
+        "destination": "/?utm_source=instagram&utm_medium=profile&utm_campaign=profile",
+        "type": 302
+      },
+      {
+        "source": "/l/tw/",
+        "destination": "/?utm_source=twitter&utm_medium=profile&utm_campaign=profile",
+        "type": 302
+      },
+      {
+        "source": "/l/li/",
+        "destination": "/?utm_source=linkedin&utm_medium=profile&utm_campaign=profile",
+        "type": 302
+      },
+      {
+        "source": "/l/li/about/",
+        "destination": "/?utm_source=linkedin&utm_medium=profile&utm_campaign=about",
+        "type": 302
       }
     ]
   }
