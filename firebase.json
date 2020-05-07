@@ -69,8 +69,8 @@
         "type": 302
       },
       {
-        "source": "/l/gh/cs/",
-        "destination": "/?utm_source=github&utm_medium=repo&utm_campaign=com-seankhliao",
+        "source": "/l/gh/:repo/",
+        "destination": "/?utm_source=github&utm_medium=repo&utm_campaign=:repo",
         "type": 302
       },
       {
@@ -81,6 +81,11 @@
       {
         "source": "/l/tw/",
         "destination": "/?utm_source=twitter&utm_medium=profile&utm_campaign=profile",
+        "type": 302
+      },
+      {
+        "source": "/l/tw/:tweet/",
+        "destination": "/?utm_source=twitter&utm_medium=tweet&utm_campaign=:tweet",
         "type": 302
       },
       {
