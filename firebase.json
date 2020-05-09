@@ -21,7 +21,7 @@
           },
           {
             "key": "Feature-Policy",
-            "value": "accelerometer 'none'; ambient-light-sensor 'none'; autoplay 'none'; battery 'none'; camera 'none'; display-capture 'none'; document-domain 'none'; encrypted-media 'none'; execution-while-not-rendered 'none'; execution-while-out-of-viewport 'none'; fullscreen 'none'; geolocation 'none'; gyroscope 'none'; legacy-image-formats 'none'; magnetometer 'none'; microphone 'none'; midi 'none'; navigation-override 'none'; payment 'none'; picture-in-picture 'none'; publickey-credentials-get 'none'; sync-xhr 'none'; usb 'none'; wake-lock 'none'; xr-spatial-tracking 'none'"
+            "value": "accelerometer 'none'; ambient-light-sensor 'none'; autoplay 'none'; battery 'none'; camera 'none'; display-capture 'none'; document-domain 'none'; encrypted-media 'none'; execution-while-not-rendered 'none'; execution-while-out-of-viewport 'none'; fullscreen 'none'; geolocation 'none'; gyroscope 'none'; legacy-image-formats 'none'; magnetometer 'none'; microphone 'none'; midi 'none'; navigation-override 'none'; payment 'none'; picture-in-picture 'none'; sync-xhr 'none'; usb 'none'; wake-lock 'none'; xr-spatial-tracking 'none'"
           }
         ]
       },
@@ -49,42 +49,37 @@
         "type": 302
       },
       {
-        "source": "/l/fb/",
+        "source": "/f",
         "destination": "/?utm_source=facebook&utm_medium=profile&utm_campaign=profile",
         "type": 302
       },
       {
-        "source": "/l/gh/",
+        "source": "/g",
         "destination": "/?utm_source=github&utm_medium=profile&utm_campaign=profile",
         "type": 302
       },
       {
-        "source": "/l/gh/:repo/",
-        "destination": "/?utm_source=github&utm_medium=repo&utm_campaign=:repo",
+        "source": "/g0",
+        "destination": "/?utm_source=github&utm_medium=repo&utm_campaign=com-seankhliao",
         "type": 302
       },
       {
-        "source": "/l/ig/",
+        "source": "/i",
         "destination": "/?utm_source=instagram&utm_medium=profile&utm_campaign=profile",
         "type": 302
       },
       {
-        "source": "/l/tw/",
+        "source": "/t",
         "destination": "/?utm_source=twitter&utm_medium=profile&utm_campaign=profile",
         "type": 302
       },
       {
-        "source": "/l/tw/:tweet/",
-        "destination": "/?utm_source=twitter&utm_medium=tweet&utm_campaign=:tweet",
-        "type": 302
-      },
-      {
-        "source": "/l/li/",
+        "source": "/l",
         "destination": "/?utm_source=linkedin&utm_medium=profile&utm_campaign=profile",
         "type": 302
       },
       {
-        "source": "/l/li/about/",
+        "source": "/l0",
         "destination": "/?utm_source=linkedin&utm_medium=profile&utm_campaign=about",
         "type": 302
       }
