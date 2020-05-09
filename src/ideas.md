@@ -21,8 +21,6 @@ may or may not see the light of day
   find a nice list of things,
   ex, add headers, add compression,
   add security(csp, cors)...
-  <!-- https://schepp.github.io/HTTP-headers/#/ -->
-  <!-- https://securityheaders.com/ -->
 - **module proxy over IPFS:**
   modify `go` command to retrieve modules over IPFS
   maybe works well with IPFS deduplication?

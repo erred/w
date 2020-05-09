@@ -8,8 +8,20 @@
         "source": "*",
         "headers": [
           {
+            "key": "Strict-Transport-Security",
+            "value": "max-age=63072000; preload"
+          },
+          {
+            "key": "Referrer-Policy",
+            "value": "strict-origin-when-cross-origin"
+          },
+          {
             "key": "Content-Security-Policy",
             "value": "default-src 'self'; style-src 'unsafe-inline'; script-src-elem  'unsafe-inline' https://www.google-analytics.com; font-src 'self' https://fonts.gstatic.com; connect-src https://*.seankhliao.com https://www.google-analytics.com; img-src *; report-uri https://statslogger.seankhliao.com/json"
+          },
+          {
+            "key": "Feature-Policy",
+            "value": "accelerometer 'none'; ambient-light-sensor 'none'; autoplay 'none'; battery 'none'; camera 'none'; display-capture 'none'; document-domain 'none'; encrypted-media 'none'; execution-while-not-rendered 'none'; execution-while-out-of-viewport 'none'; fullscreen 'none'; geolocation 'none'; gyroscope 'none'; legacy-image-formats 'none'; magnetometer 'none'; microphone 'none'; midi 'none'; navigation-override 'none'; payment 'none'; picture-in-picture 'none'; publickey-credentials-get 'none'; sync-xhr 'none'; usb 'none'; wake-lock 'none'; xr-spatial-tracking 'none'"
           }
         ]
       },
@@ -18,29 +30,7 @@
         "headers": [{ "key": "Cache-Control", "value": "max-age=2592000" }]
       },
       {
-        "source": "**/cert.cbor",
-        "headers": [
-          {
-            "key": "Content-Type",
-            "value": "application/cert-chain+cbor"
-          }
-        ]
-      },
-      {
-        "source": "**/*.sxg",
-        "headers": [
-          {
-            "key": "Content-Type",
-            "value": "application/signed-exchange;v=b3"
-          },
-          {
-            "key": "X-Content-Type-Options",
-            "value": "nosniff"
-          }
-        ]
-      },
-      {
-        "source": "/(blog|newtab)/?",
+        "source": "/blog/",
         "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
       },
       {
