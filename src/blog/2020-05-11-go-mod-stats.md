@@ -142,3 +142,13 @@ ever wondered which operator was the most popular?
 how many different identifiers do you need? a-z 26?
 
 <iframe width="612.1293800539083" height="378.5" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSKIZYBdvEdDVWnHnrksmrT99ag-MoTFRg6LpddYWqRlHlYsiF9It8Pq-upL-iyrs1MygyIqFx3DRvY/pubchart?oid=712316250&amp;format=interactive"></iframe>
+
+##### identifier popularity
+
+err??????
+
+i have some doubts about this since who uses `TRUE`, `FALSE`,`iNdEx`, `dAtA`, `autorest`
+
+is this maybe skewed by vendor?
+
+<iframe width="1416.5" height="585.8708333333333" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ3N930myCq-siqXgeuXqJ7QLur2m-vxe5j47o5qkRc3CEebUdpMRXM1_oLfaSfDxVquNfjnXadbZCm/pubchart?oid=1026649070&amp;format=interactive"></iframe>
