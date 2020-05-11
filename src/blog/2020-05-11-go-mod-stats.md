@@ -116,7 +116,7 @@ the _exclude_ directive feels excluded
 
 <iframe width="605.6603773584906" height="374.5" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSKIZYBdvEdDVWnHnrksmrT99ag-MoTFRg6LpddYWqRlHlYsiF9It8Pq-upL-iyrs1MygyIqFx3DRvY/pubchart?oid=854001003&amp;format=interactive"></iframe>
 
-##### _code scan_
+#### _code scan_
 
 Since `go.mod` doesn't include all imports
 and I neglected to record the imports per package / file
