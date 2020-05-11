@@ -149,6 +149,6 @@ err??????
 
 i have some doubts about this since who uses `TRUE`, `FALSE`,`iNdEx`, `dAtA`, `autorest`
 
-is this maybe skewed by vendor?
+ans: `iNdEx` and `dAtA` are from generated code, specifically from [github.com/gogo/protobuf](https://pkg.go.dev/github.com/gogo/protobuf@v1.3.1/plugin/unmarshal?tab=doc)
 
 <iframe width="1413" height="585.5" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSKIZYBdvEdDVWnHnrksmrT99ag-MoTFRg6LpddYWqRlHlYsiF9It8Pq-upL-iyrs1MygyIqFx3DRvY/pubchart?oid=403214845&amp;format=interactive"></iframe>
