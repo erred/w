@@ -64,7 +64,7 @@ Enabling all the options makes it as strong as the weakest link
 | Slack         | no  | yes  | no  | yes         |               |
 | _ssh_         | no  | opt  | yes | no          |               |
 | Transferwise  | opt | no   | no  | no          | mobile app    |
-| Twitch        | no  | yes  | no  | yes         |               |
+| Twitch        | yes | no   | no  | yes         | authy         |
 | Twitter       | no  | req  | 1   | yes         |               |
 
 #### _Music_
