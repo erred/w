@@ -17,7 +17,7 @@
           },
           {
             "key": "Content-Security-Policy",
-            "value": "default-src 'self'; style-src 'unsafe-inline'; style-src: https://tagmanager.google.com https://fonts.googleapis.com; script-src-elem  'unsafe-inline' https://www.google-analytics.com https://ssl.google-analytics.com https://www.googletagmanager.com https://tagmanager.google.com; font-src 'self' https://fonts.gstatic.com; connect-src https://*.seankhliao.com https://www.google-analytics.com; img-src *; report-uri https://statslogger.seankhliao.com/json"
+            "value": "default-src 'self'; style-src 'unsafe-inline'; style-src: https://tagmanager.google.com https://fonts.googleapis.com; script-src  'unsafe-inline' https://www.google-analytics.com https://ssl.google-analytics.com https://www.googletagmanager.com https://tagmanager.google.com; font-src 'self' https://fonts.gstatic.com; connect-src https://*.seankhliao.com https://www.google-analytics.com; img-src *; report-uri https://statslogger.seankhliao.com/json"
           },
           {
             "key": "Feature-Policy",
