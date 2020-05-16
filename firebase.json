@@ -27,10 +27,6 @@
           {
             "key": "Feature-Policy",
             "value": "accelerometer 'none'; ambient-light-sensor 'none'; autoplay 'none'; battery 'none'; camera 'none'; display-capture 'none'; document-domain 'none'; encrypted-media 'none'; execution-while-not-rendered 'none'; execution-while-out-of-viewport 'none'; fullscreen 'none'; geolocation 'none'; gyroscope 'none'; legacy-image-formats 'none'; magnetometer 'none'; microphone 'none'; midi 'none'; navigation-override 'none'; payment 'none'; picture-in-picture 'none'; sync-xhr 'none'; usb 'none'; wake-lock 'none'; xr-spatial-tracking 'none'"
-          },
-          {
-            "key": "Link",
-            "value": "<https://static.seankhliao.com/base.css>; rel=preload; as=style; crossorigin, <https://static.seankhliao.com/web-vitals-module-v0.2.2.js>; rel=preload; crpssorigin; as=script, <https://www.google-analytics.com>; rel=preconnect, <https://www.googletagmanager.com>; rel=preconnect"
           }
         ]
       },
@@ -51,7 +47,7 @@
         "headers": [
           {
             "key": "Link",
-            "value": "</map.webp>; rel=preload; as=image, <https://static.seankhliao.com/base.css>; rel=preload; as=style; crossorigin, <https://static.seankhliao.com/web-vitals-module-v0.2.2.js>; rel=preload; crpssorigin; as=script, <https://www.google-analytics.com>; rel=preconnect, <https://www.googletagmanager.com>; rel=preconnect"
+            "value": "</map.webp>; rel=preload; as=image"
           }
         ]
       }
