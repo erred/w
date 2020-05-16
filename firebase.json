@@ -30,7 +30,7 @@
           },
           {
             "key": "Link",
-            "value": "<https://static.seankhliao.com/base.css>; rel=preload; as=style, <https://www.google-analytics.com>; rel=preconnect, <https://www.googletagmanager.com>; rel=preconnect"
+            "value": "<https://static.seankhliao.com/base.css>; rel=preload; as=style; crossorigin, <https://static.seankhliao.com/web-vitals-module-v0.2.2.js>; rel=preload; crpssorigin; as=script, <https://www.google-analytics.com>; rel=preconnect, <https://www.googletagmanager.com>; rel=preconnect"
           }
         ]
       },

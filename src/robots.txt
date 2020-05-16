@@ -1,2 +1,5 @@
+# Allow all
 User-agent: *
 Allow: /
+
+Sitemap: /sitemap.txt
