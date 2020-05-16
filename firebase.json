@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "com-seankhliao",
     "public": "public/",
     "cleanUrls": true,
     "trailingSlash": true,
@@ -16,8 +17,12 @@
             "value": "strict-origin-when-cross-origin"
           },
           {
+            "key": "Report-To",
+            "value": "{\"group\": \"csp-endpoint\", \"max_age\": 10886400, \"endpoints\": [{\"url\":\"https://statslogger.seankhliao.com/json\"}]}"
+          },
+          {
             "key": "Content-Security-Policy",
-            "value": "default-src 'self'; style-src 'unsafe-inline' https://tagmanager.google.com https://fonts.googleapis.com; script-src-elem  'unsafe-inline' https://www.google-analytics.com https://ssl.google-analytics.com https://www.googletagmanager.com https://tagmanager.google.com; font-src 'self' https://fonts.gstatic.com; connect-src https://*.seankhliao.com https://www.google-analytics.com; img-src * data:; report-uri https://statslogger.seankhliao.com/json"
+            "value": "default-src 'self';upgrade-insecure-requests;connect-src https://statslogger.seankhliao.com https://www.google-analytics.com;font-src https://static.seankhliao.com;img-src *;object-src 'none';script-src-elem 'nonce-deadbeef2' 'nonce-deadbeef3'  https://www.google-analytics.com https://ssl.google-analytics.com https://www.googletagmanager.com;sandbox allow-scripts;style-src-elem 'nonce-deadbeef1' https://static.seankhliao.com;report-to: csp-endpoint;report-uri https://statslogger.seankhliao.com/json"
           },
           {
             "key": "Feature-Policy",
