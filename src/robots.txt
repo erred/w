@@ -1,5 +1,5 @@
-# Allow all
-User-agent: *
-Allow: /
+# allow all
+user-agent: *
+allow: /
 
-Sitemap: /sitemap.txt
+sitemap: https://seankhliao.com/sitemap.txt
