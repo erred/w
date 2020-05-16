@@ -1,5 +1,1 @@
-# allow all
-user-agent: *
-allow: /
-
 sitemap: https://seankhliao.com/sitemap.txt
