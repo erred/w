@@ -37,7 +37,7 @@ _terminal:_
 
 #### _2 Factor_ Auth
 
-Ideal: username + password + Security key.
+Ideal: username + password + security key.
 
 TOTP and SMS can be phished/intercepted.
 Enabling all the options makes it as strong as the weakest link

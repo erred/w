@@ -42,7 +42,6 @@ _2014-2018_ National Taiwan University
 #### _Find_ Me
 
 - [Like](/like/) — list of things i like
-- [Ideas](/ideas/) — append only backlog
 - [Blog](/blog/) — home of random thoughts
 - [Email](mailto:sean@seankhliao.com) — for me?
 - [Github](https://github.com/seankhliao) — build first, regret later

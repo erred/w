@@ -1,14 +1,7 @@
 ---
-description: backlog of ideas
-header: <h2><em>ideas</em> backlog</h2> <p>append only list</p>
-style: |-
-  main h3 {
-  margin-top: 25vh;
-  }
-title: ideas
+description: ideas that i will probably never get round to implementing
+title: permanently backlogged ideas
 ---
-
-<!-- markdownlint-disable MD001 -->
 
 ### _Dev_ implementation required
 
@@ -52,7 +45,8 @@ Usually just need to learn the model / write config files.
 ##### _cicd:_ Continuos Integration pipeline
 
 - **build on push/pull request:**
-  remove limitation on tagged commits
+  remove limitation on tagged commits,
+  lint, test, ???
 
 ##### _archlinux:_ Arch Linux on my laptop
 
@@ -76,11 +70,3 @@ Usually just need to learn the model / write config files.
   run [gerrit](https://www.gerritcodereview.com/) as private git server
 - **code search:**
   run [sourcegraph](https://github.com/sourcegraph/sourcegraph) on private git server
-
-### _Write_ wordsmithing wanted
-
-##### _blog:_ the notes in my we[b log](/blog/)
-
-- **SNE courses review / learned:**
-  experiences / things learned,
-  was it worth it?
