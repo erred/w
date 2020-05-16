@@ -8,37 +8,37 @@
   "theme_color": "#000",
   "icons": [
     {
-      "src": "/icon-512.png",
+      "src": "https://static.seankhliao.com/icon-512.png",
       "type": "image/png",
       "sizes": "512x512"
     },
     {
-      "src": "/icon-192.png",
+      "src": "https://static.seankhliao.com/icon-192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/icon-128.png",
+      "src": "https://static.seankhliao.com/icon-128.png",
       "type": "image/png",
       "sizes": "128x128"
     },
     {
-      "src": "/icon-64.png",
+      "src": "https://static.seankhliao.com/icon-64.png",
       "type": "image/png",
       "sizes": "64x64"
     },
     {
-      "src": "/icon-48.png",
+      "src": "https://static.seankhliao.com/icon-48.png",
       "type": "image/png",
       "sizes": "48x48"
     },
     {
-      "src": "/icon-32.png",
+      "src": "https://static.seankhliao.com/icon-32.png",
       "type": "image/png",
       "sizes": "32x32"
     },
     {
-      "src": "/icon-16.png",
+      "src": "https://static.seankhliao.com/icon-16.png",
       "type": "image/png",
       "sizes": "16x16"
     }
