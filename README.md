@@ -34,7 +34,7 @@ connect-src https://statslogger.seankhliao.com https://www.google-analytics.com;
 font-src https://static.seankhliao.com;
 img-src *;
 object-src 'none';
-script-src-elem 'nonce-deadbeef2' 'nonce-deadbeef3'  https://www.google-analytics.com https://ssl.google-analytics.com https://www.googletagmanager.com;
+script-src-elem 'nonce-deadbeef2' 'nonce-deadbeef3' 'nonce-deadbeef4' https://static.seankhliao.com https://www.google-analytics.com https://ssl.google-analytics.com https://www.googletagmanager.com;
 sandbox allow-scripts;
 style-src-elem 'nonce-deadbeef1' https://static.seankhliao.com;
 report-to: csp-endpoint;
