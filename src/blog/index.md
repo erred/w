@@ -8,3 +8,6 @@ style: |-
   }
 title: blog | seankhliao
 ---
+
+web log of things that never made sense,
+maybe someone will find this useful
