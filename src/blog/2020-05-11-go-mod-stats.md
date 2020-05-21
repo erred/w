@@ -51,6 +51,12 @@ What kind of parsing errors are there?
 - mismatch major versions
 - git merge conflict (`>>>>>>`, `======`, `<<<<<<`)
 
+#### _time_
+
+When do people pull in new code through the proxy?
+
+<iframe width="1413" height="607.2279596039629" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSKIZYBdvEdDVWnHnrksmrT99ag-MoTFRg6LpddYWqRlHlYsiF9It8Pq-upL-iyrs1MygyIqFx3DRvY/pubchart?oid=286553534&amp;format=interactive"></iframe>
+
 #### _hosting_
 
 ##### domains
