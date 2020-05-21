@@ -11,29 +11,19 @@ style: |-
 title: like
 ---
 
-#### _Go_ Modules
+#### _blogs_
 
-_config:_
-[envconfig](https://github.com/kelseyhightower/envconfig)
-[pflag](https://github.com/spf13/pflag)
-
-_encoding:_
-[yaml](https://pkg.go.dev/sigs.k8s.io/yaml)
-[gopacket](https://pkg.go.dev/github.com/google/gopacket)
-
-_observability:_
-[zerolog](https://pkg.go.dev/github.com/rs/zerolog)
-[jaeger](https://pkg.go.dev/github.com/uber/jaeger-client-go)
-[prometheus](https://pkg.go.dev/github.com/prometheus/client_golang/prometheus)
-[opentelemetry](https://pkg.go.dev/go.opentelemetry.io/otel)
-
-_protocols:_
-[dns](https://pkg.go.dev/github.com/miekg/dns)
-
-_terminal:_
-[isatty](https://github.com/mattn/go-isatty)
-[uitable](https://pkg.go.dev/github.com/gosuri/uitable)
-[uiprogress](https://pkg.go.dev/github.com/gosuri/uiprogress)
+- jaana [jbd](https://jbd.dev) [rakyll](https://rakyll.org) [@rakyll](https://medium.com/@rakyll)
+- [jessfraz](https://jess.dev)
+- [monica](https://meowni.ca)
+- [brendangregg](http://www.brendangregg.com/blog/)
+- [sivoahava](https://www.simoahava.com/)
+- [danluu](http://danluu.com/)
+- [brendangregg](http://www.brendangregg.com/blog/)
+- [evanjones](https://www.evanjones.ca/chronological.html)
+- [acolyer](https://blog.acolyer.org/)
+- [jxnblk](https://jxnblk.com/blog)
+- [deterministic](https://deterministic.space/)
 
 #### _2 Factor_ Auth
 
@@ -55,7 +45,6 @@ Enabling all the options makes it as strong as the weakest link
 | _Google norm_ | opt | opt  | yes | yes         | mobile device |
 | _Google adv_  | no  | no   | yes | no          |               |
 | Instagram     | opt | yes  | no  | yes         |               |
-| Keybase       | no  | no   | no  | yes         | other devices |
 | LinkedIn      | opt | yes  | no  | yes         |               |
 | Mastadon      | no  | yes  | no  | yes         |               |
 | Microsoft     | opt | yes  | no  | yes         | mobile app    |
@@ -80,11 +69,3 @@ _A Lot:_
 [bülow](https://www.youtube.com/channel/UC-hp6SaSjmy2_30BxNNQ4gQ)
 [Au/Ra](https://www.youtube.com/user/JamieLouStenzel)
 [Ava Max](https://www.youtube.com/channel/UCOwgc8DswjoBMuuUU2ScPvQ)
-[Dua Lipa](https://www.youtube.com/user/DuaLipa1)
-[Echosmith](https://www.youtube.com/user/RSGBANDTV)
-
-_Some:_
-[Lorde](https://www.youtube.com/user/LordeMusic)
-[Phantogram](https://www.youtube.com/user/PhantogramMusic)
-[Bea Miller](https://www.youtube.com/user/beabuzz1727)
-[AViVA](https://www.youtube.com/channel/UCQElSu32ovAEvbhyo2o_8aQ)
