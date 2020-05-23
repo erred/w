@@ -1,11 +1,5 @@
 ---
 description: i am sean
-style: |-
-  main picture,
-  main h3,
-  main h4 {
-  margin-top: 25vh;
-  }
 title: seankhliao
 ---
 

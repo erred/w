@@ -1,13 +1,6 @@
 ---
 description: things i like
 header: <h2><em>Things</em> I Like</h2> <p>lists and tables</p>
-style: |-
-  main picture,
-  main table,
-  main h3,
-  main h4 {
-  margin-top: 25vh;
-  }
 title: like
 ---
 
