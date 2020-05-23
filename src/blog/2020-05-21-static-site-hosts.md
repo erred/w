@@ -14,19 +14,20 @@ What are your choices?
 
 The first 6 are all acceptable choices.
 
-All can be paired with ex cloudflare for custom domain + https (CDN-client)
+All can be paired with ex cloudflare for ipv6 + custom domain + https (CDN-client)
 
-| platform      | upload          | https         | custom domain | header | free limits                  | pricing / month                 |
-| ------------- | --------------- | ------------- | ------------- | ------ | ---------------------------- | ------------------------------- |
-| vercel        | js cli, gh app  | yes           | yes           | yes    | unlimited                    | opt. \$20: more builds          |
-| netlify       | js cli          | yes           | yes           | yes    | unlimited store, 100GB net   | \$0.20/GB net                   |
-| firebase      | js cli          | yes           | yes           | yes    | 1GB store, 10GB net          | \$0.25/GB store, \$0.15/GB net  |
-| surge.sh      | js cli          | yes           | yes           | paid   | unlimited?                   | opt. \$30                       |
-| github        | git push        | yes           | yes           | no     | unlimited?                   | opt. github pro                 |
-| gitlab        | git push        | yes           | yes           | no     | unlimited?                   | opt. gitlab                     |
-| gcs           | gcloud cli, web | load balancer | yes           | no     | 5GB store, 1GB net NA-others | \$0.026/GB store, \$0.12/GB net |
-| s3            | aws cli, web    | cloudfront    | yes           | no     | none                         | \$0.023/GB store, \$0.09/GB net |
-| neocities.org | ruby cli, web   | paid          | paid          | no     | 1GB store, 200GB net         | opt. \$5: 50GB store, 3TB net   |
+<!-- prettier-ignore -->
+| platform      | upload          | https         | custom domain | header | free limits                  | pricing / month               |
+| ------------- | --------------- | ------------- | ------------- | ------ | ---------------------------- | ----------------------------- |
+| _vercel_      | js cli, gh app  | yes           | yes           | yes    | unlimited                    | opt. $20: more builds         |
+| _netlify_     | js cli          | yes           | yes           | yes    | unlimited store, 100GB net   | $0.20/GB net                  |
+| _firebase_    | js cli          | yes           | yes           | yes    | 1GB store, 10GB net          | $0.25/GB store, $0.15/GB net  |
+| surge.sh      | js cli          | yes           | yes           | paid   | unlimited?                   | opt. $30                      |
+| _github_      | git push        | yes           | yes           | no     | unlimited?                   | opt. github pro               |
+| gitlab        | git push        | yes           | yes           | no     | unlimited?                   | opt. gitlab                   |
+| gcs           | gcloud cli, web | load balancer | yes           | no     | 5GB store, 1GB net NA-others | $0.026/GB store, $0.12/GB net |
+| s3            | aws cli, web    | cloudfront    | yes           | no     | none                         | $0.023/GB store, $0.09/GB net |
+| neocities.org | ruby cli, web   | paid          | paid          | no     | 1GB store, 200GB net         | opt. $5: 50GB store, 3TB net  |
 
 ##### _notes_
 
