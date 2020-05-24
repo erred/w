@@ -12,18 +12,13 @@ title: databases
 
 [jepsen.io](http://jepsen.io/analyses) analyses arre imformative
 
-- [2020-06-03 | db document](../2020-06-03-db-document/)
-- [2020-06-04 | db wide](../2020-06-04-db-wide/)
-- [2020-06-05 | db timeseries](../2020-06-05-db-timeseries/)
-- [2020-06-06 | db message queue](../2020-06-06-db-message-queue/)
-
 #### _basics_
 
 common-ish databases you might think about using
 
 slight focus on distributed databases
 
-##### _isolation_ and consistency
+#### _isolation_ and consistency
 
 Read [isolation](http://dbmsmusings.blogspot.com/2019/05/introduction-to-transaction-isolation.html)
 and [consistency](http://dbmsmusings.blogspot.com/2019/07/overview-of-consistency-levels-in.html),
@@ -41,7 +36,7 @@ add external consistency and stric serializable above serializable in isolation
 - **read committed**: view things after they have committed,
 - **read uncommitted**: view as things change, even if they will get rolled back
 
-##### _CAP_
+#### _CAP_
 
 Choose 2, only google can have _CA_
 
@@ -49,9 +44,11 @@ Choose 2, only google can have _CA_
 - Availability
 - Partitions
 
-#### _relational_ databases
+### _relational_
 
-##### _embedded_ relational
+The standard database.
+
+#### _embedded_ relational
 
 not much choice here
 
@@ -61,12 +58,12 @@ not much choice here
 
 [sqlite]: https://sqlite.org/src/doc/trunk/README.md
 
-notes:
+##### _notes_
 
 - Sqlite needs WAL (write ahead log) for snapshot
 - Sqlite has no isolation in a single connection
 
-##### _single_ node relational
+#### _single_ node relational
 
 postgres is usually recommended
 
@@ -78,12 +75,12 @@ postgres is usually recommended
 [mariadb]: https://github.com/MariaDB/server
 [postgres]: https://github.com/postgres/postgres
 
-notes:
+##### _notes_
 
 - PostgreSQL License is similar to MIT / BSD
 - some of the multi node ones below can be run in single node mode too
 
-##### _multi_ node relational
+#### _multi_ node relational
 
 | database                   | Language | SQL syntax | Operation modes | CAP  | Isolation (default - max) | Consensus | License                 |
 | -------------------------- | -------- | ---------- | --------------- | ---- | ------------------------- | --------- | ----------------------- |
@@ -103,7 +100,7 @@ notes:
 [vitess]: https://github.com/vitessio/vitess
 [yugabyte]: https://github.com/yugabyte/yugabyte-db
 
-notes:
+##### _notes_
 
 - CockroachDB and yugabyte db both claim to be modelled after spanner
 - CockroachDB Business Source License converts to Apache 2.0 3 years after release
@@ -117,11 +114,11 @@ notes:
 - YugaByte cluster = multi node auto sharded
 - YugaByte is serializable in YSQL (sql), snapshot in YCQL (nosql)
 
-#### _key_ value
+### _key_ value
 
-stores a blob of unindexed data
+Stores a blob of unindexed data.
 
-##### _embedded_ key value
+#### _embedded_ key value
 
 | database               | Language | Isolation (default - max) | License                 |
 | ---------------------- | -------- | ------------------------- | ----------------------- |
@@ -139,13 +136,13 @@ stores a blob of unindexed data
 [lmdb]: https://github.com/LMDB/lmdb
 [rocksdb]: https://github.com/facebook/rocksdb
 
-notes:
+##### _notes_
 
 - LevelDB isolation is probably serializable since only a single writer is allowed
 - LMDB OpenLDAP Public License is similar to MIT / BSD
 - RocksDB actually allows concurrent
 
-##### _single_ node key value
+#### _single_ node key value
 
 | database       | Language | Isolation (default - max) | License |
 | -------------- | -------- | ------------------------- | ------- |
@@ -153,14 +150,14 @@ notes:
 
 [redis]: https://github.com/antirez/redis
 
-notes:
+##### _notes_
 
 - Redis is primarily an in memory cache, durability is not guaranteed
 - Redis core is BSD 3, redis modules are Redis Source Available License
 - Redis technically has cluster / replication but it's async (useful for sometimes stale caching)
 - Redis isolation is probably serializable
 
-##### _multi_ node key value
+#### _multi_ node key value
 
 | database                     | Language | Operation modes | CAP | Isolation (default - max)                      | Consensus | License    |
 | ---------------------------- | -------- | --------------- | --- | ---------------------------------------------- | --------- | ---------- |
@@ -174,14 +171,15 @@ notes:
 [foundationdb]: https://github.com/apple/foundationdb
 [zookeeper]: https://github.com/apache/zookeeper
 
-notes:
+##### _notes_
 
 - Consul external consistency requires extra roundtrips
 - etcd external consistency requires extra roundtrips
 
-#### _document_
+### _document_
 
-stores structured data (can be indexed)
+Stores structured data (can be indexed).
+Can be used like a key-value store.
 
 | database                 | Language        | Operation modes | CAP | Isolation (default - max)       | Consensus | License    |
 | ------------------------ | --------------- | --------------- | --- | ------------------------------- | --------- | ---------- |
@@ -201,7 +199,7 @@ stores structured data (can be indexed)
 [mongodb]: https://github.com/mongodb/mongo
 [rethinkdb]: https://github.com/rethinkdb/rethinkdb
 
-notes:
+##### _notes_
 
 - ArangoDB is multimodal but nobody recommends the other modes
 - CouchDB is eventually consistent
@@ -209,6 +207,9 @@ notes:
 - RethinkDB is probably serializable
 
 #### _wide_ column
+
+Stores column data contiguously (as opposed to row data contiguously).
+Primary usecase is analytics.
 
 | database               | Language | Operation modes | CAP | Isolation (default - max) | Consensus | License    |
 | ---------------------- | -------- | --------------- | --- | ------------------------- | --------- | ---------- |
@@ -220,7 +221,7 @@ notes:
 [cassandra]: https://github.com/apache/cassandra
 [hbase]: https://github.com/apache/hbase
 
-notes:
+##### _notes_
 
 - BigTable is single node
 - Google internally has Percolator with snapshot isolation built on BigTable
@@ -230,6 +231,8 @@ notes:
 
 #### _graph_
 
+Stores nodes and edges, super specialized.
+
 | database           | Language | Operation modes | CAP | Isolation (default - max) | Consensus | License    |
 | ------------------ | -------- | --------------- | --- | ------------------------- | --------- | ---------- |
 | _[Dgraph][dgraph]_ | Go       | cluster         | CP  | snapshot                  | Raft      | Apache 2.0 |
@@ -238,11 +241,13 @@ notes:
 [dgraph]: https://github.com/dgraph-io/dgraph
 [neo4j]: https://github.com/neo4j/neo4j
 
-notes:
+##### _notes_
 
 - Neo4j cluster also has primary-read only
 
 #### _time_ series
+
+Write once, append only style. No transactions, no isolation concerns.
 
 | database                   | Language | Operation modes | CAP | Consensus | License    |
 | -------------------------- | -------- | --------------- | --- | --------- | ---------- |
@@ -256,7 +261,7 @@ notes:
 [opentsdb]: https://github.com/OpenTSDB/opentsdb
 [timescaledb]: https://github.com/timescale/timescaledb
 
-notes:
+##### _notes_
 
 - Druid is a column database but doesn't support writes
 - Graphite has a TSDB but cannot be operated independently, also not clustered
