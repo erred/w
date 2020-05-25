@@ -8,7 +8,8 @@ title: databases
 > People keep asking me career advice, here is one:
 >
 > Make state someone else's problem.
-> &mdash Jaana Dogan (@rakyll) [2020-05-19](https://twitter.com/rakyll/status/1262599727394074626)
+>
+> — _Jaana Dogan_ (@rakyll) [2020-05-19](https://twitter.com/rakyll/status/1262599727394074626)
 
 [jepsen.io](http://jepsen.io/analyses) analyses arre imformative
 
