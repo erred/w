@@ -39,7 +39,7 @@ Push data into a queue, push (or pull) data out to clients.
 [rabbitmq]: https://github.com/rabbitmq/rabbitmq-server
 [rocketmq]: https://github.com/apache/rocketmq
 
-notes:
+##### _notes_
 
 - ActiveMQ optimizes for ???
 - Kafka optimizes for throughput (streaming)
