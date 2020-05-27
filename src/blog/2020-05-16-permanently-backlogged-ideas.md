@@ -42,7 +42,7 @@ may or may not see the light of day
 Running things other people have written.
 Usually just need to learn the model / write config files.
 
-##### _cicd:_ Continuos Integration pipeline
+##### _cicd:_ Continuous Integration pipeline
 
 - **build on push/pull request:**
   remove limitation on tagged commits,
