@@ -58,7 +58,6 @@ _(Almost) Everything:_
 [Billie Eilish](https://www.youtube.com/channel/UCiGm_E4ZwYSHV3bcW1pnSeQ)
 
 _A Lot:_
+[Alexandra Ilieva](https://www.youtube.com/channel/UCWMzQclmvnyZK-jXMuFjdmQ)
 [XYLØ](https://www.youtube.com/channel/UCjGluI_WgtTXBTQDDtNcCVw)
 [bülow](https://www.youtube.com/channel/UC-hp6SaSjmy2_30BxNNQ4gQ)
-[Au/Ra](https://www.youtube.com/user/JamieLouStenzel)
-[Ava Max](https://www.youtube.com/channel/UCOwgc8DswjoBMuuUU2ScPvQ)
