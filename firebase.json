@@ -46,7 +46,7 @@
         ]
       },
       {
-        "source": "**/*.@(eot|otf|ttf|ttc|woff|woff2|css)",
+        "source": "**/*.@(eot|otf|ttf|ttc|woff|woff2)",
         "headers": [
           { "key": "Access-Control-Allow-Origin", "value": "*" },
           { "key": "Access-Control-Allow-Methods", "value": "OPTIONS, GET" },
@@ -55,16 +55,13 @@
         ]
       },
       {
-        "source": "**/*.@(js|png|webp|json)",
+        "source": "**/*.@(css|png|webp|json)",
         "headers": [
           { "key": "Access-Control-Allow-Origin", "value": "*" },
           { "key": "Access-Control-Allow-Methods", "value": "OPTIONS, GET" },
-          { "key": "Access-Control-Max-Age", "value": "2592000" }
+          { "key": "Access-Control-Max-Age", "value": "2592000" },
+          { "key": "Cache-Control", "value": "max-age=2592000" }
         ]
-      },
-      {
-        "source": "/icon-*.png",
-        "headers": [{ "key": "Cache-Control", "value": "max-age=2592000" }]
       }
     ],
     "redirects": [
