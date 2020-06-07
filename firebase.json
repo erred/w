@@ -46,7 +46,7 @@
         ]
       },
       {
-        "source": "**/*.@(eot|otf|ttf|ttc|woff|woff2|font.css)",
+        "source": "**/*.@(eot|otf|ttf|ttc|woff|woff2|css)",
         "headers": [
           { "key": "Access-Control-Allow-Origin", "value": "*" },
           { "key": "Access-Control-Allow-Methods", "value": "OPTIONS, GET" },
