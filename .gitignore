@@ -2,9 +2,3 @@
 .firebase/
 .firebaserc
 .prettierignore
-
-public/*
-!public/*.ico
-!public/*.jpg
-!public/*.png
-!public/*.webp
