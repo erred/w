@@ -13,8 +13,8 @@
   font-weight: 400;
   font-display: swap;
   src: local("Inconsolata"), local("Inconsolata-Regular"),
-    url(https://static.seankhliao.com/inconsolata-var.woff2) format("woff2-variations"),
-    url(https://static.seankhliao.com/inconsolata-400.woff2) format("woff2");
+    url(https://seankhliao.com/inconsolata-var.woff2) format("woff2-variations"),
+    url(https://seankhliao.com/inconsolata-400.woff2) format("woff2");
 }
 @font-face {
   font-family: "Inconsolata";
@@ -22,8 +22,8 @@
   font-weight: 700;
   font-display: swap;
   src: local("Inconsolata Bold"), local("Inconsolata-Bold"),
-    url(https://static.seankhliao.com/inconsolata-var.woff2) format("woff2-variations"),
-    url(https://static.seankhliao.com/inconsolata-700.woff2) format("woff2");
+    url(https://seankhliao.com/inconsolata-var.woff2) format("woff2-variations"),
+    url(https://seankhliao.com/inconsolata-700.woff2) format("woff2");
 }
 @font-face {
   font-family: "Lora";
@@ -31,8 +31,8 @@
   font-weight: 400;
   font-display: swap;
   src: local("Lora"), local("Lora-Regular"),
-    url(https://static.seankhliao.com/lora-var.woff2) format("woff2-variations"),
-    url(https://static.seankhliao.com/lora-400.woff2) format("woff2");
+    url(https://seankhliao.com/lora-var.woff2) format("woff2-variations"),
+    url(https://seankhliao.com/lora-400.woff2) format("woff2");
 }
 @font-face {
   font-family: "Lora";
@@ -40,8 +40,8 @@
   font-weight: 700;
   font-display: swap;
   src: local("Lora Bold"), local("Lora-Bold"),
-    url(https://static.seankhliao.com/lora-var.woff2) format("woff2-variations"),
-    url(https://static.seankhliao.com/lora-700.woff2) format("woff2");
+    url(https://seankhliao.com/lora-var.woff2) format("woff2-variations"),
+    url(https://seankhliao.com/lora-700.woff2) format("woff2");
 }
 
 /* ===== layout general ===== */

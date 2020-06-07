@@ -20,7 +20,7 @@
           },
           {
             "key": "Feature-Policy",
-            "value": "accelerometer 'none'; ambient-light-sensor 'none'; autoplay 'none'; battery 'none'; camera 'none'; display-capture 'none'; document-domain 'none'; encrypted-media 'none'; execution-while-not-rendered 'none'; execution-while-out-of-viewport 'none'; fullscreen 'none'; geolocation 'none'; gyroscope 'none'; legacy-image-formats 'none'; magnetometer 'none'; microphone 'none'; midi 'none'; navigation-override 'none'; payment 'none'; picture-in-picture 'none'; sync-xhr 'none'; usb 'none'; wake-lock 'none'; xr-spatial-tracking 'none'"
+            "value": "accelerometer 'none'; autoplay 'none'; camera 'none'; document-domain 'none'; encrypted-media 'none'; fullscreen 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; midi 'none'; payment 'none'; picture-in-picture 'none'; sync-xhr 'none'; usb 'none'; xr-spatial-tracking 'none'"
           }
         ]
       },
@@ -52,6 +52,14 @@
           { "key": "Access-Control-Allow-Methods", "value": "OPTIONS, GET" },
           { "key": "Access-Control-Max-Age", "value": "2592000" },
           { "key": "Cache-Control", "value": "max-age=2592000" }
+        ]
+      },
+      {
+        "source": "**/*.@(js|png|webp)",
+        "headers": [
+          { "key": "Access-Control-Allow-Origin", "value": "*" },
+          { "key": "Access-Control-Allow-Methods", "value": "OPTIONS, GET" },
+          { "key": "Access-Control-Max-Age", "value": "2592000" }
         ]
       },
       {
