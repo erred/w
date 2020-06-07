@@ -55,7 +55,7 @@
         ]
       },
       {
-        "source": "**/*.@(js|png|webp)",
+        "source": "**/*.@(js|png|webp|json)",
         "headers": [
           { "key": "Access-Control-Allow-Origin", "value": "*" },
           { "key": "Access-Control-Allow-Methods", "value": "OPTIONS, GET" },
