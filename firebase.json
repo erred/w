@@ -77,11 +77,16 @@
       },
       {
         "source": "/g",
+        "destination": "/?utm_source=google&utm_medium=profile&utm_campaign=profile",
+        "type": 302
+      },
+      {
+        "source": "/gh",
         "destination": "/?utm_source=github&utm_medium=profile&utm_campaign=profile",
         "type": 302
       },
       {
-        "source": "/g0",
+        "source": "/gh0",
         "destination": "/?utm_source=github&utm_medium=repo&utm_campaign=com-seankhliao",
         "type": 302
       },
