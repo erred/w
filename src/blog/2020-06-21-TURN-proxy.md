@@ -59,7 +59,7 @@ Client                 TURN Relay            Peer
   |                         |                  |
 ```
 
-#### _Proxy_ forwarding
+#### _Forwarding_
 
 exposing a SOCKS5 interface
 
@@ -96,7 +96,7 @@ Client                Proxy             TURN Relay          Peer
   |                     |                    |               |
 ```
 
-#### reverse shell
+#### _Reverse_
 
 Proxy Reverse - Relay can also use TCP/TLS
 

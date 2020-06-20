@@ -1,6 +1,6 @@
 ---
 description: bluetooth headsets and linux don't like each other
-title: bluetooh headset
+title: bluetooth headset
 ---
 
 ### _bluetooth_ headset
