@@ -13,10 +13,6 @@ title: like
 - [sivoahava](https://www.simoahava.com/)
 - [danluu](http://danluu.com/)
 - [brendangregg](http://www.brendangregg.com/blog/)
-- [evanjones](https://www.evanjones.ca/chronological.html)
-- [acolyer](https://blog.acolyer.org/)
-- [jxnblk](https://jxnblk.com/blog)
-- [deterministic](https://deterministic.space/)
 
 #### _2 Factor_ Auth
 
@@ -50,8 +46,6 @@ Enabling all the options makes it as strong as the weakest link
 | Twitter       | no  | req  | 1   | yes         |               |
 
 #### _Music_
-
-Strong preference for female vocals
 
 _(Almost) Everything:_
 [Against the Current](https://www.youtube.com/user/againstthecurrentNY)
