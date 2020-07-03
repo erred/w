@@ -12,7 +12,7 @@ Who am i?
 
 ## style
 
-```
+```txt
 --black: #000000;
 --primary: #a06be0;
 --gray: #999;
@@ -23,11 +23,11 @@ Who am i?
 
 ## csp
 
-```
+```txt
 Report-To: {"group": "csp-endpoint", "max_age": 10886400, "endpoints": [{"url":"https://statslogger.seankhliao.com/json"}]}
 ```
 
-```
+```txt
 default-src 'self';
 upgrade-insecure-requests;
 connect-src https://statslogger.seankhliao.com https://www.google-analytics.com;
@@ -45,14 +45,14 @@ report-uri https://statslogger.seankhliao.com/json";
 
 #### gtm csp
 
-```
+```txt
 script-src: 'unsafe-inline' https://www.googletagmanager.com
 img-src: www.googletagmanager.com
 ```
 
 #### ga csp
 
-```
+```txt
 script-src: https://www.google-analytics.com https://ssl.google-analytics.com
 img-src: https://www.google-analytics.com
 connect-src: https://www.google-analytics.com
@@ -60,7 +60,7 @@ connect-src: https://www.google-analytics.com
 
 #### gtm preview csp
 
-```
+```txt
 script-src: https://tagmanager.google.com
 style-src: https://tagmanager.google.com https://fonts.googleapis.com
 img-src: https://ssl.gstatic.com https://www.gstatic.com
