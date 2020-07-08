@@ -66,6 +66,11 @@
     ],
     "redirects": [
       {
+        "source": "/c0",
+        "destination": "/blog/?utm_source=cv&utm_medium=link&utm_campaign=projects",
+        "type": 302
+      },
+      {
         "source": "/{feed,feed.rss,atom,rss}",
         "destination": "/feed.atom",
         "type": 302
