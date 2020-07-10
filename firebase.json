@@ -101,6 +101,11 @@
         "type": 302
       },
       {
+        "source": "/gh2",
+        "destination": "/?utm_source=github&utm_medium=profile&utm_campaign=page",
+        "type": 302
+      },
+      {
         "source": "/i",
         "destination": "/?utm_source=instagram&utm_medium=profile&utm_campaign=profile",
         "type": 302
