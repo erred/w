@@ -52,4 +52,5 @@
   - apache
   - traefik
   - envoy
+  - metallb
 - https://www.programmableweb.com/apis/directory
