@@ -9,7 +9,7 @@ sometimes you just want to log in, hit a dashboard and see wtf your server is do
 
 #### _options_
 
-tldr: ytop or bashtop for all in one, htop for process tree
+_tldr_: ytop or bashtop for all in one, htop for process tree
 
 - [atop][atop]
   - \+ cpu, memory, io, network, process, disk
