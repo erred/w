@@ -1,0 +1,82 @@
+Ideas
+
+- rsync directories
+- email forged time
+- google domains
+- interview bingo / sankey
+- fashion
+- diff tools
+  - ydiff
+  - cdiff
+  - colordiff
+  - icdiff
+  - diff-so-fancy
+  - vimdiff
+  - diff a b | colordiff | diff-highlight | less -R
+  - wdiff
+  - ccdiff
+  - dwdiff
+  - cwdiff
+- Dashboards
+  - htop
+  - glances
+  - iotop
+  - iftop
+  - wtf
+  - gtop
+  - ytop
+  - atop
+  - bmon
+  - bashtop
+  - bottom
+  - gotop
+  - vtop
+  - zenith
+- Login servers
+  - pomerium
+  - loginsrv
+  - IdentityServer4
+  - ory.sh
+  - keycloak
+  - openiddict
+  - auth0
+- Repro
+  - with docker
+- New services
+  - weechat
+  - git server
+  - database
+  - etcd
+  - bittorrent tracker
+  - irc gateways
+- security
+  - gvisor
+  - firecracker
+- data viz
+  - irc stats / user relation
+- contained desktop
+  - flatpack
+  - snap
+  - appimage
+  - docker
+  - nixos containers?
+- embeddable languages
+  - lua
+  - cel https://github.com/google/cel-go
+  - starlark https://github.com/google/starlark-go
+  - tengo https://github.com/d5/tengo
+- vm creation
+  - cloud-init
+  - packer
+- secret store
+  - vault
+  - confidant https://lyft.github.io/confidant/
+  - cerberus https://engineering.nike.com/cerberus
+  - bank vault https://banzaicloud.com/products/bank-vaults/
+- proxies
+  - haproxy
+  - nginx
+  - apache
+  - traefik
+  - envoy
+- https://www.programmableweb.com/apis/directory

@@ -16,7 +16,7 @@ title: like
 
 #### _2 Factor_ Auth
 
-Ideal: username + password + security key.
+Ideal: username + password + security key + backup code.
 
 TOTP and SMS can be phished/intercepted.
 Enabling all the options makes it as strong as the weakest link
@@ -25,7 +25,7 @@ Enabling all the options makes it as strong as the weakest link
 | ------------- | --- | ---- | --- | ----------- | ------------- |
 | Adobe         | opt | yes  | no  | yes         |               |
 | Amazon        | req | yes  | no  | no          |               |
-| Booking       | yes | no   | no  | no          |               |
+| Booking.com   | yes | no   | no  | no          |               |
 | _Cloudflare_  | no  | opt  | yes | yes         |               |
 | Docker        | no  | yes  | no  | yes         |               |
 | _Dropbox_     | opt | req  | yes | yes         |               |
