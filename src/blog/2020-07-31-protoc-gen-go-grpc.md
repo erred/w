@@ -1,3 +1,8 @@
+---
+description: notes on generating grpc code for go
+title: protoc-gen-go-grpc
+---
+
 ### _grpc_ for go
 
 - install `protoc`, usually from package manager
@@ -34,7 +39,7 @@ protoc \
   --go_opt=paths=source_relative \      # place go files next to proto defs
   --go-grpc_out=... \                   # go-grpc output directory
   --go-grpc_opt=paths=source_relative \ # place go-grpc files next to proto defs
-  *.proto                               # surce proto files
+  *.proto                               # source proto files
 ```
 
 #### _linting_
