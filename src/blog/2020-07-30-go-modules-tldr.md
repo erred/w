@@ -1,6 +1,6 @@
 ---
 description: practical go modules
-title: go modules
+title: go modules tldr
 ---
 
 ### _go modules_
@@ -77,7 +77,7 @@ This offers faster querying and download speeds.
 
 - Don't
 - modules have no parent-child / hierarchical relationships
-- just don't. seriously. don't.
+- just don't.
 
 #### _go.mod_
 

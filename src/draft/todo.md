@@ -5,6 +5,7 @@
 - google domains
 - interview bingo / sankey
 - fashion
+- systemd lockdown
 - Login servers
   - pomerium
   - loginsrv
