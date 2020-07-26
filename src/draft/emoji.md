@@ -1,0 +1,32 @@
+---
+description: modern hieroglyphs
+title: emojis
+---
+
+I remember sometime in highschool
+a chat I had with a friend over some messaging app
+(Facebook Messenger?).
+This was before emoji or stickers were widespread.
+
+Our conversation took the form:
+
+> actual message \*emotion/tone/action\*
+
+We mused how much clearer it made the conversation,
+but the extra effort required meant that it didn't last long
+
+Now that (smartphone) keyboards have emojis that are easily accessible,
+it is slightly easier to do the same,
+maybe even fast if you have a small set that you often use,
+otherwise you're still stuck with typing out a search term.
+
+This brings along another problem:
+how do you read emojis?
+They all have canonical names in unicode,
+but can you really guess right all the time?
+Even those that have been coopted for a different meaning?
+With different emoji fonts between devices?
+What about the concepts that do not have a specific emoji?
+
+I think emoji are the modern hieroglyphs,
+arcane, hard to write characters that only few will truly understand.

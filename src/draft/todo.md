@@ -1,6 +1,7 @@
-Ideas
+### Ideas
 
-- rsync directories
+- simd
+- ssh certs
 - email forged time
 - google domains
 - interview bingo / sankey
