@@ -53,16 +53,19 @@ The standard database.
 
 not much choice here
 
-| database           | Language | SQL syntax | Isolation (default - max) | License       |
-| ------------------ | -------- | ---------- | ------------------------- | ------------- |
-| _[SQLite][sqlite]_ | C        | sqlite     | snapshot                  | Public Domain |
+| database                       | Language | SQL syntax | Isolation (default - max) | License       |
+| ------------------------------ | -------- | ---------- | ------------------------- | ------------- |
+| [SQLite][sqlite]               | C        | sqlite     | snapshot                  | Public Domain |
+| [modernc.org/sqlite][sqlitego] | Go       | sqlite     | snapshot                  | BSD 3         |
 
 [sqlite]: https://sqlite.org/src/doc/trunk/README.md
+[sqlitego]: https://gitlab.com/cznic/sqlite/
 
 ##### _notes_
 
 - Sqlite needs WAL (write ahead log) for snapshot
 - Sqlite has no isolation in a single connection
+- modernc.org/sqlite is a translation of C to Go
 
 #### _single_ node relational
 
@@ -121,8 +124,6 @@ Stores a blob of unindexed data.
 
 #### _embedded_ key value
 
-not really sure what isolation means in an embedded context?
-
 | database               | Language | Isolation (default - max) | License                 |
 | ---------------------- | -------- | ------------------------- | ----------------------- |
 | [badger][badger]       | Go       | snapshot                  | Apache 2.0              |
@@ -131,7 +132,7 @@ not really sure what isolation means in an embedded context?
 | [goleveldb][goleveldb] | Go       | serializable              | BSD 2                   |
 | [LMDB][lmdb]           | C        | serializable              | OpenLDAP Public License |
 | [RocksDB][rocksdb]     | C++      | read committed - snapshot | GPLv2                   |
-| [pebble][pebble]       | Go       | ?                         | BSD 3                   |
+| _[pebble][pebble]_     | Go       | snapshot                  | BSD 3                   |
 
 [badger]: https://github.com/dgraph-io/badger
 [bbolt]: https://github.com/etcd-io/bbolt
@@ -143,9 +144,13 @@ not really sure what isolation means in an embedded context?
 
 ##### _notes_
 
+- badger does not resolve conflicts, user retries
+- bbolt is single process
 - LevelDB isolation is probably serializable since only a single writer is allowed
+- goleveldb appears incomplete
 - LMDB OpenLDAP Public License is similar to MIT / BSD
-- RocksDB actually allows concurrent
+- RocksDB actually allows concurrent processes
+- pebble allows multi process
 
 #### _single_ node key value
 
