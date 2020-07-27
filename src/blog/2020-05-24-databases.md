@@ -121,6 +121,8 @@ Stores a blob of unindexed data.
 
 #### _embedded_ key value
 
+not really sure what isolation means in an embedded context?
+
 | database               | Language | Isolation (default - max) | License                 |
 | ---------------------- | -------- | ------------------------- | ----------------------- |
 | [badger][badger]       | Go       | snapshot                  | Apache 2.0              |
@@ -129,6 +131,7 @@ Stores a blob of unindexed data.
 | [goleveldb][goleveldb] | Go       | serializable              | BSD 2                   |
 | [LMDB][lmdb]           | C        | serializable              | OpenLDAP Public License |
 | [RocksDB][rocksdb]     | C++      | read committed - snapshot | GPLv2                   |
+| [pebble][pebble]       | Go       | ?                         | BSD 3                   |
 
 [badger]: https://github.com/dgraph-io/badger
 [bbolt]: https://github.com/etcd-io/bbolt
@@ -136,6 +139,7 @@ Stores a blob of unindexed data.
 [leveldb]: https://github.com/google/leveldb
 [lmdb]: https://github.com/LMDB/lmdb
 [rocksdb]: https://github.com/facebook/rocksdb
+[pebble]: https://github.com/cockroachdb/pebble
 
 ##### _notes_
 
