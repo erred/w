@@ -97,7 +97,6 @@ func ExamplePrometheusJaeger() {
                 Name: "myapp_processed_ops_total",
                 Help: "The total number of processed events",
         })
-        prometheus.MustRegister(counter0)
 
         // trace: jaeger exporter
         // or FromEnv()
