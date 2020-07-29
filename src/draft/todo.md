@@ -1,10 +1,10 @@
 ### Ideas
 
+- rant frontend
 - simd
 - ssh certs
 - google domains
 - interview bingo / sankey
-- fashion
 - systemd lockdown
 - Login servers
   - pomerium
@@ -55,3 +55,5 @@
   - envoy
   - metallb
 - https://www.programmableweb.com/apis/directory
+- https://www.schemastore.org/json/
+- https://apis.guru/openapi-directory/

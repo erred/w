@@ -18,7 +18,7 @@ I graduated, probably, and I need a job.
   without the need for any specific work visa
 - 0 work experience, yeah, I spent my time travelling
   and toying with open source, not doing internships, oops
-- dull CV, whatdoyouexpect
+- dull CV, _whatdoyouexpect_
 
 #### _applications_
 
