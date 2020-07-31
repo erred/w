@@ -14,7 +14,7 @@ you have options:
 | ------------------ | -------- | ---------------------------- | --- | --- | ------------ | ------------ | ---- |
 | _[Envoy][envoy]_   | C++      | yaml / xDS dynamic           | yes | yes | front / back | front / back | yes  |
 | [HAProxy][haproxy] | C        | custom text / custom dynamic | yes | no  | front / back | planned?     | yes  |
-| [Nginx][nginx]     | C        | custom text                  | yes | yes | front        | front        | yes  |
+| [Nginx][nginx]     | C        | custom text                  | yes | yes | front        | front        | yes? |
 | [Traefik][traefik] | Go       | yaml / toml / multi dynamic  | yes | yes | front / back | planned?     | yes  |
 
 #### _Notes_

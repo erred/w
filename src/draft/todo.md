@@ -1,5 +1,7 @@
 ### Ideas
 
+- go tools
+- syntax highlight english
 - skincare / haircare
 - simd
 - ssh certs
@@ -54,6 +56,15 @@
   - ansible
   - chef
   - InSpec
+- standards bodies
+  - ietf
+    - network protocols
+  - whatwg
+    - web standards
+  - ca/b forum
+    - web certificates
+  - oci
+    - ?
 - https://www.programmableweb.com/apis/directory
 - https://www.schemastore.org/json/
 - https://apis.guru/openapi-directory/
