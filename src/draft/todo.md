@@ -1,6 +1,6 @@
 ### Ideas
 
-- rant frontend
+- skincare / haircare
 - simd
 - ssh certs
 - google domains
@@ -47,13 +47,14 @@
   - confidant https://lyft.github.io/confidant/
   - cerberus https://engineering.nike.com/cerberus
   - bank vault https://banzaicloud.com/products/bank-vaults/
-- proxies
-  - haproxy
-  - nginx
-  - apache
-  - traefik
-  - envoy
-  - metallb
+- iac
+  - terraform
+  - puppet
+  - salt
+  - ansible
+  - chef
+  - InSpec
 - https://www.programmableweb.com/apis/directory
 - https://www.schemastore.org/json/
 - https://apis.guru/openapi-directory/
+- https://techbeacon.com/enterprise-it/monitoring-demystified-guide-logging-tracing-metrics
