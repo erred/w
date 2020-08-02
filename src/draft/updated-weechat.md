@@ -14,13 +14,24 @@ uses ecdsa key,
 ed25519 certs are apparently a bit too exotic
 
 ```sh
-openssl req -x509 -nodes -days 7300 -newkey ec:<(openssl ecparam -name prime256v1) -keyout relay.pem -out relay.pem -subj "/O=weechat/CN=localhost" -addext "subjectAltName=DNS:localhost,IP:0.0.0.0"
+openssl req -x509 -nodes -days 7300 \
+  -subj "/O=weechat/CN=localhost" \
+  -addext "subjectAltName=DNS:localhost,IP:0.0.0.0" \
+  -newkey ec:<(openssl ecparam -name prime256v1) \
+  -keyout relay.pem -out relay.pem
+
+# ed25519?
+openssl req -x509 -nodes -days 7300 \
+  -key <(openssl genpkey -algorithm ED25519) \
+  -subj "/O=weechat/CN=localhost" \
+  -addext "subjectAltName=DNS:localhost,IP:0.0.0.0" \
+  -keyout relay.pem -out relay.pem
 ```
 
 obtain fingerprint with
 
 ```sh
-openssl x509 -in relay.pem -noout -fingerprint -sha256 | tr -d ':' | sed 's/.*=\(.*\)/\1/'
+openssl x509 -in relay.pem -outform der | sha256sum -b | cut -d ' ' -f1
 ```
 
 add systemd user service (from archwiki)
@@ -125,6 +136,25 @@ freenode.sasl_username = "seankhliao"
 freenode.sasl_password = "${sec.data.freenode_pass}"
 freenode.autoconnect = on
 freenode.autojoin = "..."
+```
+
+###### CertFP
+
+login and identify with client certs
+
+generate cert as above with name `freenode.pem`, add
+
+```txt
+/set irc.server.freenode.ssl_cert %h/ssl/freenode.pem
+/set irc.server.freenode.sasl_mechanism external
+```
+
+check and associate current cert with identity,
+future logins won't require password
+
+```txt
+/whois YourOwnNick
+/msg NickServ CERT ADD
 ```
 
 ##### logger
