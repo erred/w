@@ -23,6 +23,11 @@ _todo_: look into cert revokation,
 docs say it should be possible but the `-z` function doesn't seem to do anything?
 or you always need the cert to revoke?
 
+_other_:
+[netflis/bless](https://github.com/Netflix/bless)
+and [certonid](https://github.com/certonid/certonid)
+are lambda based servers to host the CA component
+
 #### _SSHFP_
 
 SSH FingerPrint uses DNSSEC enabled DNS as a secure vector to determine trust.

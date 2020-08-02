@@ -1,11 +1,18 @@
-### Ideas
+# Ideas
 
 - go tools
 - syntax highlight english
-- simd
+  - https://nlp.stanford.edu/software/tagger.shtml
+  - https://www.nltk.org/book/ch05.html
+  - https://github.com/winkjs/wink-pos-tagger
+  - https://ai.googleblog.com/2016/05/announcing-syntaxnet-worlds-most.html
+  - https://ai.googleblog.com/2017/03/an-upgrade-to-syntaxnet-new-models-and.html
+  - https://github.com/soutsios/pos-tagger-bert
+  - https://www.aclweb.org/anthology/D19-1374.pdf
+  - https://github.com/google/meta_tagger
+- simd go
 - google domains
 - interview bingo / sankey
-- systemd lockdown
 - Login servers
   - pomerium
   - loginsrv
@@ -34,11 +41,6 @@
   - appimage
   - docker
   - nixos containers?
-- embeddable languages
-  - lua
-  - cel https://github.com/google/cel-go
-  - starlark https://github.com/google/starlark-go
-  - tengo https://github.com/d5/tengo
 - vm creation
   - cloud-init
   - packer
@@ -54,15 +56,6 @@
   - ansible
   - chef
   - InSpec
-- standards bodies
-  - ietf
-    - network protocols
-  - whatwg
-    - web standards
-  - ca/b forum
-    - web certificates
-  - oci
-    - ?
 - https://www.programmableweb.com/apis/directory
 - https://www.schemastore.org/json/
 - https://apis.guru/openapi-directory/
