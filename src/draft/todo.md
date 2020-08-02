@@ -2,9 +2,7 @@
 
 - go tools
 - syntax highlight english
-- skincare / haircare
 - simd
-- ssh certs
 - google domains
 - interview bingo / sankey
 - systemd lockdown
