@@ -19,6 +19,10 @@ so what can you do about this?
 - [sshfp](#SSHFP)
 - [certs](#certificates)
 
+_todo_: look into cert revokation,
+docs say it should be possible but the `-z` function doesn't seem to do anything?
+or you always need the cert to revoke?
+
 #### _SSHFP_
 
 SSH FingerPrint uses DNSSEC enabled DNS as a secure vector to determine trust.
@@ -132,8 +136,6 @@ trust the certificate authority in `known_hosts`:
 
 revoke an entire CA by changing `@cert-authority` to `@revoke`
 
-not sure if possible to revoke single hosts
-
 ##### _client_ certificates
 
 Clients present certificates, server trusts CA
@@ -196,5 +198,3 @@ and trust it in `sshd_config` with `TrustedUserCAKeys /etc/ssh/client-ca.pub`
 ###### _revoking_ client certs
 
 remove entire CA from `TrustedUserCAKeys`
-
-not sure if possible to revoke single clients
