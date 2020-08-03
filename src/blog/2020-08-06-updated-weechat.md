@@ -166,7 +166,7 @@ future logins won't require password
 /msg NickServ CERT ADD
 ```
 
-##### logger
+##### _logger_
 
 don't log join/leave, and dim log line
 
@@ -177,7 +177,7 @@ don't log join/leave, and dim log line
 /set logger.level.irc 2
 ```
 
-##### scripts
+##### _scripts_
 
 colorize_nicks
 
@@ -186,7 +186,7 @@ colorize_nicks
 /set colorize_nicks.look.colorize_input on
 ```
 
-##### relay
+##### _relay_
 
 open up a protected relay
 
@@ -203,7 +203,7 @@ unlimited backlog
 /set relay.irc.backlog_max_number 0
 ```
 
-##### secure
+##### _secure_
 
 store data "securely",
 decrypt automatically with passphrase in a file
@@ -215,7 +215,7 @@ decrypt automatically with passphrase in a file
 /secure set freenode_pass yyyyyy
 ```
 
-##### weechat
+##### _weechat_
 
 disable the giant logo
 

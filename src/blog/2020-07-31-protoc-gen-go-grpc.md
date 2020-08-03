@@ -52,4 +52,4 @@ protoc --lint_out=sort_imports:. *.proto
 
 #### _validate_
 
-- see [protoc-gen-validate][https://github.com/envoyproxy/protoc-gen-validate]
+- see [protoc-gen-validate](https://github.com/envoyproxy/protoc-gen-validate)
