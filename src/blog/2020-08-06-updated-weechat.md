@@ -184,6 +184,7 @@ colorize_nicks
 ```txt
 /script install colorize_nicks.py
 /set colorize_nicks.look.colorize_input on
+/set colorize_nicks.look.min_nick_length 3
 ```
 
 ##### _relay_
@@ -220,11 +221,12 @@ decrypt automatically with passphrase in a file
 stylized messages
 
 ```txt
-/trigger add url_color modifier weechat_print "${tg_tags} !~ irc_quit" ";[a-z]+://\S+;${color:32}${re:0}${color:reset};"
-/trigger add nick_color_action modifier weechat_print "${tg_tags} =~ ,irc_action, && ${tg_tags} !~ ,self_msg," "/.*/${info:nick_color,${tg_tag_nick}}${tg_prefix_nocolor}\t${tg_message}"
-/trigger add irc_join modifier "2000|weechat_print" "${tg_tags} =~ ,irc_join," "/.*[^(]\((.*)\).*/${color:237}${tg_tag_nick} with host ${re:1} joined ${channel}/tg_message_nocolor /.*/${tg_prefix}\t${tg_message_nocolor}"
-/trigger add irc_nick modifier "2000|weechat_print" "${tg_tags} =~ ,irc_nick," "/.*irc_nick1_([^,]*),irc_nick2_([^,]*).*/${re:1} is now ${re:2}/tg_tags /.*/${tg_prefix}\t${tg_tags}"
-/trigger add irc_quit modifier "2000|weechat_print" "${tg_tags} =~ ,irc_quit," "/.*[^(]\((.*)\).*\ (\(.*\))/${color:237}${tg_tag_nick} with host ${re:1} quit ${channel} with message ${re:2}/tg_message_nocolor /.*/${tg_prefix}\t${tg_message_nocolor}"
+/trigger del beep
+/trigger addreplace irc_join modifier "2000|weechat_print" "${tg_tags} =~ ,irc_join," "/.*[^(]\((.*)\).*/${color:237}${tg_tag_nick}@${re:1}/tg_message_nocolor /.*/${tg_prefix}\t${tg_message_nocolor}"
+/trigger addreplace irc_nick modifier "2000|weechat_print" "${tg_tags} =~ ,irc_nick," "/.*irc_nick1_([^,]*),irc_nick2_([^,]*).*/${re:1} -> ${re:2}/tg_tags /.*/${tg_prefix}\t${tg_tags}"
+/trigger addreplace irc_quit modifier "2000|weechat_print" "${tg_tags} =~ ,irc_quit," "/.*[^(]\((.*)\).*\ (\(.*\))/${color:237}${tg_tag_nick}@${re:1}: ${re:2}/tg_message_nocolor /.*/${tg_prefix}\t${tg_message_nocolor}"
+/trigger addreplace nick_color_action modifier weechat_print "${tg_tags} =~ ,irc_action, && ${tg_tags} !~ ,self_msg," "/.*/${info:nick_color,${tg_tag_nick}}${tg_prefix_nocolor}\t${tg_message}"
+/trigger addreplace url_color modifier weechat_print "${tg_tags} !~ irc_quit" ";[a-z]+://\S+;${color:32}${re:0}${color:reset};"
 ```
 
 ##### _weechat_
