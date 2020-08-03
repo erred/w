@@ -17,7 +17,7 @@ Go — containers — Kubernetes
 
 ###### _Software_ Developer
 
-I'll do anything except touch _frontend_
+<!-- I'll do anything except touch _frontend_ -->
 
 _No promises_ I'm actually good at anything
 
