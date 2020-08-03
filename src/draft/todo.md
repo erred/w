@@ -1,5 +1,6 @@
 # Ideas
 
+- grade radar
 - go tools
 - syntax highlight english
   - https://nlp.stanford.edu/software/tagger.shtml
@@ -12,7 +13,7 @@
   - https://github.com/google/meta_tagger
 - simd go
 - google domains
-- interview bingo / sankey
+- interview bingo / sankey / response times
 - Login servers
   - pomerium
   - loginsrv
@@ -56,6 +57,10 @@
   - ansible
   - chef
   - InSpec
+- network protocols
+  - stream / packet
+  - multiplex
+  - reliable
 - https://www.programmableweb.com/apis/directory
 - https://www.schemastore.org/json/
 - https://apis.guru/openapi-directory/

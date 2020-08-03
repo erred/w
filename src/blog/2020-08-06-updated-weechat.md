@@ -215,6 +215,18 @@ decrypt automatically with passphrase in a file
 /secure set freenode_pass yyyyyy
 ```
 
+##### _trigger_
+
+stylized messages
+
+```txt
+/trigger add url_color modifier weechat_print "${tg_tags} !~ irc_quit" ";[a-z]+://\S+;${color:32}${re:0}${color:reset};"
+/trigger add nick_color_action modifier weechat_print "${tg_tags} =~ ,irc_action, && ${tg_tags} !~ ,self_msg," "/.*/${info:nick_color,${tg_tag_nick}}${tg_prefix_nocolor}\t${tg_message}"
+/trigger add irc_join modifier "2000|weechat_print" "${tg_tags} =~ ,irc_join," "/.*[^(]\((.*)\).*/${color:237}${tg_tag_nick} with host ${re:1} joined ${channel}/tg_message_nocolor /.*/${tg_prefix}\t${tg_message_nocolor}"
+/trigger add irc_nick modifier "2000|weechat_print" "${tg_tags} =~ ,irc_nick," "/.*irc_nick1_([^,]*),irc_nick2_([^,]*).*/${re:1} is now ${re:2}/tg_tags /.*/${tg_prefix}\t${tg_tags}"
+/trigger add irc_quit modifier "2000|weechat_print" "${tg_tags} =~ ,irc_quit," "/.*[^(]\((.*)\).*\ (\(.*\))/${color:237}${tg_tag_nick} with host ${re:1} quit ${channel} with message ${re:2}/tg_message_nocolor /.*/${tg_prefix}\t${tg_message_nocolor}"
+```
+
 ##### _weechat_
 
 disable the giant logo
