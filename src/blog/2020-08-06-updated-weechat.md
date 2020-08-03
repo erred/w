@@ -247,7 +247,6 @@ change icons
 /set weechat.look.prefix_network ~
 /set weechat.look.prefix_quit <<
 /set weechat.look.read_marker_string *
-/set weechat.look.read_marker_always_show on
 ```
 
 colors:
