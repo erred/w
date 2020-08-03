@@ -1,28 +1,31 @@
+---
+description: updated weechat configs
+title: updated weechat
+---
+
 ### _weechat_ config updates
 
 use it more, config it more
 
-#### bouncer mode
+#### _bouncer_ mode
 
 configure at least the important parts:
-server autojoin, secured data, relay
+server login/autojoin, secured data, relay
 
 generate a self signed ssh certificate,
 adjust `DNS:...,IP:...` as appropriate
 
-uses ecdsa key,
-ed25519 certs are apparently a bit too exotic
-
 ```sh
 openssl req -x509 -nodes -days 7300 \
-  -newkey ec:<(openssl ecparam -name prime256v1) \
+  -key <(openssl genpkey -algorithm ED25519 | tee relay.pem) \
   -subj "/O=weechat/CN=localhost" \
   -addext "subjectAltName=DNS:localhost,IP:0.0.0.0" \
   -keyout relay.pem -out relay.pem
 
-# ed25519?
+# or as 2 separate calls if you have weird issues
+openssl genpkey -algorithm ED25519 -out relay.pem
 openssl req -x509 -nodes -days 7300 \
-  -key <(openssl genpkey -algorithm ED25519) \
+  -key relay.pem \
   -subj "/O=weechat/CN=localhost" \
   -addext "subjectAltName=DNS:localhost,IP:0.0.0.0" \
   -keyout relay.pem -out relay.pem
@@ -60,20 +63,20 @@ sudo loginctl enable-linger $USER
 sudo reboot
 ```
 
-#### weechat configs
+#### weechat _configs_
 
 in alphabetical order,
 but secured data should probably be set first
 
-##### buflist
+##### _buflist_
 
 hide all the merged server buffer
 
 ```txt
-/set buflist.look.display_conditions "${buffer.hidden}==0 && ${merged}==0 || ${name}==weechat"
+/set buflist.look.display_conditions ${buffer.hidden}==0 && ${merged}==0 || ${name}==weechat
 ```
 
-##### irc
+##### _irc_
 
 stop jumping buffer
 
@@ -104,41 +107,46 @@ disable ctcp
 default messages
 
 ```txt
-/set irc.server_default.msg_part "going... going... gone!"
-/set irc.server_default.msg_quit "it can't be DNS?! it's always DNS!!!"
+/set irc.server_default.msg_part going... going... gone!
+/set irc.server_default.msg_quit it can't be DNS?! it's always DNS!!!
 /set irc.server_default.nicks ""
 /set irc.server_default.username ""
 ```
 
-default username
-
-```txt
-/set irc.server_default.username seankhliao
-```
-
-server for bouncer
+###### _bouncer_ server
 
 ```txt
 /server add bouncer 192.168.100.1/7992
 /set irc.server.bouncer.ssl on
-/set irc.server.bouncer.ssl_fingerprint = "6064898BD86791CF681593BD41B86541F2EFE6B34708D95C1ED7412794626528"
-/set irc.server.bouncer.password = "freenode:${sec.data.relay_pass}"
+/set irc.server.bouncer.ssl_fingerprint 33300c58504afc85a43ab49acea568d37780b214b078f8917eb9033a762b8e26
 /set irc.server.bouncer.autoconnect on
+/set irc.server.bouncer.username seankhliao
+/set irc.server.bouncer.nicks seankhliao,arccy
+/set irc.server.bouncer.password freenode:${sec.data.relay_pass}
 ```
 
-server for freenode
+###### _freenode_ server
 
 ```txt
-freenode.addresses = "chat.freenode.net/6697"
-freenode.ssl = on
-freenode.sasl_mechanism = plain
-freenode.sasl_username = "seankhliao"
-freenode.sasl_password = "${sec.data.freenode_pass}"
-freenode.autoconnect = on
-freenode.autojoin = "..."
+/server add freenode chat.freenode.net/6697
+/set irc.server.freenode.ssl on
+/set irc.server.freenode.autoconnect on
+/set irc.server.freenode.autojoin #archlinux,#archlinux-offtopic,#archlinux-reproducible,#go-nuts
+/set irc.server.freenode.username seankhliao
+/set irc.server.freenode.nicks seankhliao,arccy
 ```
 
-###### CertFP
+###### _SASL_ with password
+
+login and identify with password
+
+```txt
+/set irc.server.freenode.sasl_mechanism plain
+/set irc.server.freenode.sasl_username seankhliao
+/set irc.server.freenode.sasl_password ${sec.data.freenode_pass}
+```
+
+###### _SASL_ with CertFP
 
 login and identify with client certs
 
@@ -153,7 +161,8 @@ check and associate current cert with identity,
 future logins won't require password
 
 ```txt
-/whois YourOwnNick
+/msg NickServ identify PASSWORD
+/whois seankhliao
 /msg NickServ CERT ADD
 ```
 
@@ -173,7 +182,7 @@ don't log join/leave, and dim log line
 colorize_nicks
 
 ```txt
-/script install colorize_nicks
+/script install colorize_nicks.py
 /set colorize_nicks.look.colorize_input on
 ```
 
@@ -219,13 +228,13 @@ more compact time,
 change icons
 
 ```txt
-/set weechat.look.buffer_time_format  "${color:253}%H${color:245}%M"
-/set weechat.look.prefix_action "*"
-/set weechat.look.prefix_error "!!"
-/set weechat.look.prefix_join ">>"
-/set weechat.look.prefix_network "~"
-/set weechat.look.prefix_quit "<<"
-/set weechat.look.read_marker_string "*"
+/set weechat.look.buffer_time_format  ${color:253}%H${color:245}%M
+/set weechat.look.prefix_action *
+/set weechat.look.prefix_error !!
+/set weechat.look.prefix_join >>
+/set weechat.look.prefix_network ~
+/set weechat.look.prefix_quit <<
+/set weechat.look.read_marker_string *
 /set weechat.look.read_marker_always_show on
 ```
 
@@ -234,18 +243,18 @@ _purple_ (5) is me,
 more colors for everyone else
 
 ```txt
-/set weechat.color.chat_delimiters = darkgray
-/set weechat.color.chat_highlight = 5
-/set weechat.color.chat_highlight_bg = 0
-/set weechat.color.chat_nick_colors = "1,2,3,4,6,7,9,10,11,12,13,14,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,69,70,182,183,184,224,225,226,227"
-/set weechat.color.chat_nick_self = 5
-/set weechat.color.chat_prefix_suffix = gray
+/set weechat.color.chat_delimiters darkgray
+/set weechat.color.chat_highlight 5
+/set weechat.color.chat_highlight_bg 0
+/set weechat.color.chat_nick_colors 1,2,3,4,6,7,9,10,11,12,13,14,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,69,70,182,183,184,224,225,226,227
+/set weechat.color.chat_nick_self 5
+/set weechat.color.chat_prefix_suffix gray
 ```
 
 disable unused plugins
 
 ```txt
-/set weechat.plugin.autoload = "*,!fifo,!guile,!javascript,!lua,!perl,!php,!ruby,!tcl,!spell,!xfer"
+/set weechat.plugin.autoload *,!fifo,!guile,!javascript,!lua,!perl,!php,!ruby,!tcl,!spell,!xfer
 ```
 
 move buffers to top,
@@ -254,27 +263,25 @@ abbreviated statusline,
 no titlebar
 
 ```txt
-/set weechat.bar.buflist.position = top
-/set weechat.bar.nicklist.hidden = on
-/set weechat.bar.status.color_bg = 0
-/set weechat.bar.status.items = "+buffer_name+(buffer_modes)+{buffer_nicklist_count}+buffer_zoom+buffer_filter,scroll,[lag],[hotlist],completion"
-/set weechat.bar.title.hidden = on
+/set weechat.bar.buflist.position top
+/set weechat.bar.nicklist.hidden on
+/set weechat.bar.status.color_bg 0
+/set weechat.bar.status.items +buffer_name+(buffer_modes)+{buffer_nicklist_count}+buffer_zoom+buffer_filter,scroll,[lag],[hotlist],completion
+/set weechat.bar.title.hidden on
 ```
 
 filter out join/leaves, except for recent partiticants,
-equivalent to
-`/filter add irc_smart * irc_smart_filter *`
 
 ```txt
-/set irc.filter.irc_smart on
+/set irc.look.smart_filter on
 /filter add irc_smart * irc_smart_filter *
 ```
 
 navigate with ctrl+arrows
 
 ```txt
-/set weechat.key.meta2-1;5A = "/window page_up"
-/set weechat.key.meta2-1;5B = "/window page_down"
-/set weechat.key.meta2-1;5C = "/buffer +1"
-/set weechat.key.meta2-1;5D = "/buffer -1"
+/key bind meta2-1;5A /window page_up
+/key bind meta2-1;5B /window page_down
+/key bind meta2-1;5C /buffer +1
+/key bind meta2-1;5D /buffer -1
 ```
