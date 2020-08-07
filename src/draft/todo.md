@@ -1,5 +1,6 @@
 # Ideas
 
+- uni courses
 - grade radar
 - go tools
 - syntax highlight english

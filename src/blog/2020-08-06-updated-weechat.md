@@ -225,8 +225,17 @@ stylized messages
 /trigger addreplace irc_join modifier "2000|weechat_print" "${tg_tags} =~ ,irc_join," "/.*[^(]\((.*)\).*/${color:237}${tg_tag_nick}@${re:1}/tg_message_nocolor /.*/${tg_prefix}\t${tg_message_nocolor}"
 /trigger addreplace irc_nick modifier "2000|weechat_print" "${tg_tags} =~ ,irc_nick," "/.*irc_nick1_([^,]*),irc_nick2_([^,]*).*/${re:1} -> ${re:2}/tg_tags /.*/${tg_prefix}\t${tg_tags}"
 /trigger addreplace irc_quit modifier "2000|weechat_print" "${tg_tags} =~ ,irc_quit," "/.*[^(]\((.*)\).*\ (\(.*\))/${color:237}${tg_tag_nick}@${re:1}: ${re:2}/tg_message_nocolor /.*/${tg_prefix}\t${tg_message_nocolor}"
+/trigger addreplace irc_part modifier "2000|weechat_print" "${tg_tags} =~ ,irc_part," "/.*[^(]\((.*)\).*\ (.*)/${color:237}${tg_tag_nick}@${re:1}: ${re:2}/tg_message_nocolor /.*/${tg_prefix}\t${tg_message_nocolor}"
 /trigger addreplace nick_color_action modifier weechat_print "${tg_tags} =~ ,irc_action, && ${tg_tags} !~ ,self_msg," "/.*/${info:nick_color,${tg_tag_nick}}${tg_prefix_nocolor}\t${tg_message}"
 /trigger addreplace url_color modifier weechat_print "${tg_tags} !~ irc_quit" ";[a-z]+://\S+;${color:32}${re:0}${color:reset};"
+```
+
+from [weechat wiki](https://github.com/weechat/weechat/wiki/Triggers),
+dim user
+
+```txt
+/alias add dim trigger addreplace dim_$server_$1 modifier weechat_print "${tg_tag_nick} == $1 && \${server} == $server" "/(.*)/${color:darkgray}${tg_prefix_nocolor}\t${color:darkgray}${tg_message_nocolor}/"; print \---\t$1 is now dimmed on $server
+/alias add undim trigger del dim_$server_$1; print \---\t$1 is no longer dimmed
 ```
 
 ##### _weechat_
