@@ -1,8 +1,8 @@
 # Ideas
 
-- uni courses
 - grade radar
-- go tools
+- google domains
+- interview bingo / sankey / response times
 - syntax highlight english
   - https://nlp.stanford.edu/software/tagger.shtml
   - https://www.nltk.org/book/ch05.html
@@ -12,9 +12,6 @@
   - https://github.com/soutsios/pos-tagger-bert
   - https://www.aclweb.org/anthology/D19-1374.pdf
   - https://github.com/google/meta_tagger
-- simd go
-- google domains
-- interview bingo / sankey / response times
 - Login servers
   - pomerium
   - loginsrv
@@ -23,8 +20,6 @@
   - keycloak
   - openiddict
   - auth0
-- Repro
-  - with docker
 - New services
   - weechat
   - git server
@@ -32,17 +27,18 @@
   - etcd
   - bittorrent tracker
   - irc gateways
-- security
+    - rss
+    - slack
+    - telegram
+    - whatsapp
+  - repro
+    - with docker
+- container security
   - gvisor
   - firecracker
 - data viz
   - irc stats / user relation
-- contained desktop
-  - flatpack
-  - snap
-  - appimage
-  - docker
-  - nixos containers?
+  - time relation
 - vm creation
   - cloud-init
   - packer
@@ -58,10 +54,6 @@
   - ansible
   - chef
   - InSpec
-- network protocols
-  - stream / packet
-  - multiplex
-  - reliable
 - https://www.programmableweb.com/apis/directory
 - https://www.schemastore.org/json/
 - https://apis.guru/openapi-directory/
