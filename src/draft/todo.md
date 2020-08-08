@@ -1,5 +1,7 @@
 # Ideas
 
+- travel, borders
+- personal timeline
 - grade radar
 - google domains
 - interview bingo / sankey / response times

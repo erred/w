@@ -9,6 +9,11 @@ use it more, config it more
 
 #### _bouncer_ mode
 
+_note_: the following uses ed25519 certs,
+it works between weechat on archlinux (with GnuTLS),
+but not between weechat on archlinux and android.
+Use other certs (ex: ECDSA) if mobile apps are required.
+
 configure at least the important parts:
 server login/autojoin, secured data, relay
 
