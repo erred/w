@@ -1,6 +1,8 @@
 # Ideas
 
+- bazel
 - travel, borders
+  - world, population, books
 - personal timeline
 - grade radar
 - google domains
