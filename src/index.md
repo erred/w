@@ -5,9 +5,7 @@ title: seankhliao
 
 ### _Hey_, I'm Sean
 
-<!-- markdownlint-disable MD001 -->
-
-##### _Bleeding_ Edge Cloud Native
+#### _Bleeding_ Edge Cloud Native
 
 I run with shiny new stuff that is always _half-broken_,
 so I know what works and what is just a waste of time.
@@ -15,13 +13,7 @@ Current preferred _tech stack_:
 
 Go — containers — Kubernetes
 
-###### _Software_ Developer
-
-<!-- I'll do anything except touch _frontend_ -->
-
 _No promises_ I'm actually good at anything
-
-<!-- markdownlint-enable MD001 -->
 
 #### _What_ I've Been Doing
 
