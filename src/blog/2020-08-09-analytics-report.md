@@ -14,11 +14,7 @@ Connect Google Search Console to Google Analytics for ???.
 Connect both to Google Data Studio to create custom reports,
 and despair that the charts put legends in the most inconvenient of places.
 
-#### _Example_
-
-So what do I have to show for it?
-
-![merged analytics](/merged-analytics.png)
+#### ![merged analytics](/merged-analytics.png)
 
 #### _Todo_
 
