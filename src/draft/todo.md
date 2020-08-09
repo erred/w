@@ -3,10 +3,8 @@
 - bazel
 - travel, borders
   - world, population, books
-- personal timeline
 - grade radar
 - google domains
-- interview bingo / sankey / response times
 - syntax highlight english
   - https://nlp.stanford.edu/software/tagger.shtml
   - https://www.nltk.org/book/ch05.html
@@ -58,6 +56,22 @@
   - ansible
   - chef
   - InSpec
+- message queue
+  - in
+    - logs
+    - analytics
+    - github
+    - ci
+    - mail
+    - news, blogs, rss
+    - csp
+    - cert transparency
+    - dmarc
+  - out
+    - irc
+    - messenger apps
+    - email
+    - web
 - https://www.programmableweb.com/apis/directory
 - https://www.schemastore.org/json/
 - https://apis.guru/openapi-directory/

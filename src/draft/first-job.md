@@ -3,6 +3,8 @@ description: finding my first proper job
 title: first job
 ---
 
+- interview bingo / sankey / response times
+
 ### _first_ job
 
 I graduated, probably, and I need a job.
