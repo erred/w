@@ -1,5 +1,7 @@
 # Ideas
 
+- contact info
+  - pub keys?
 - bazel
 - travel, borders
   - world, population, books

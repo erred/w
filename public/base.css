@@ -30,8 +30,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local("Lora"), local("Lora-Regular"),
-    url(https://seankhliao.com/lora-var.woff2) format("woff2-variations"),
+  src: local("Lora"), local("Lora-Regular"), url(https://seankhliao.com/lora-var.woff2) format("woff2-variations"),
     url(https://seankhliao.com/lora-400.woff2) format("woff2");
 }
 @font-face {
@@ -39,8 +38,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: local("Lora Bold"), local("Lora-Bold"),
-    url(https://seankhliao.com/lora-var.woff2) format("woff2-variations"),
+  src: local("Lora Bold"), local("Lora-Bold"), url(https://seankhliao.com/lora-var.woff2) format("woff2-variations"),
     url(https://seankhliao.com/lora-700.woff2) format("woff2");
 }
 
@@ -112,11 +110,13 @@ main > table {
   grid-column: 1 / span 3;
 }
 main > picture {
+  display: grid;
   margin-top: 25vh;
 }
 p img,
 picture img {
   width: 100%;
+  margin: auto;
 }
 
 h3,
