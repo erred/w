@@ -1,11 +1,11 @@
 # Ideas
 
+- ko
 - contact info
   - pub keys?
 - bazel
 - travel, borders
   - world, population, books
-- grade radar
 - google domains
 - syntax highlight english
   - https://nlp.stanford.edu/software/tagger.shtml
