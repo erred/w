@@ -20,7 +20,7 @@ Tools end users use to run containers
 scheduling/running containers across multiples nodes (machines).
 
 Supports different runtimes
-declared in [`RuntimeClass`][runtimeclass] in `node.k8s.io/v1beta1`.
+declared in [RuntimeClass][runtimeclass] in `node.k8s.io/v1beta1`.
 Runtimes can be selected through `runtimeClassName` in a PodSpec.
 
 The interface for pluggable runtimes to support is
@@ -56,7 +56,7 @@ Not sure of any practical difference between the 2 main implementations.
 ###### _containerd_
 
 Broken out of docker,
-[`containerd`][containerd] is the high level daemon
+[containerd][containerd] is the high level daemon
 responsible for the container lifecycle.
 
 CNCF Graduated, supports low level OCI runtimes
@@ -65,14 +65,14 @@ through a [shim][containerd-shim]
 ###### _CRI-O_
 
 Developed by RedHat,
-[`cri-o`][cri-o] / `crio` is a lightweight alternative
+[cri-o][cri-o] / `crio` is a lightweight alternative
 to running containers.
 
 CNCF Incubating, supports OCI runtimes.
 
 ###### _other_ runtimes
 
-[docker][docker] through [`dockershim`][dockershim],
+[docker][docker] through [dockershim][dockershim],
 adds extra layer between k8s and containerd,
 doesn't allow for different runtime classes.
 Likely to be deprecated in future?
@@ -97,19 +97,6 @@ for low level container runtimes.
 Use as a standalone low level runtime as [runsc][runsc]
 or with containerd [containerd-shim-runsc-v1][containerd-runsc]
 
-###### _Kata_ Containers
-
-Lightweight VMs?
-
-Use as a standalone low level runtime as `kata-runtime`
-or with containerd [io.containerd.kata.v2][kata-containerd]
-
-###### _Nabla_ Containers
-
-Not sure what it does to be "more isolated".
-
-Use as a standalone low level runtime as [runnc][runnc].
-
 ###### _firecracker_
 
 MicroVM by Amazon in Rust.
@@ -117,12 +104,20 @@ MicroVM by Amazon in Rust.
 Use with Kata [kata-fc][katafc]
 or with containerd [firecracker-containderd][firecracker-containderd].
 
+###### _Kata_ Containers
+
+Lightweight VMs?
+
+Use as a standalone low level runtime as `kata-runtime`
+or with containerd [io.containerd.kata.v2][kata-containerd]
+
 ###### _others_
 
 - [bwrap-oci][bwrap] (unmaintained)
 - [clearcontainers][clear] (deprecated in favour of kata containers)
 - [crio-lxc][criolxc] wrapper for CRI-O to control LXC
 - [crun][crun] written in C
+- [nabla-containers][nabla] ""more isolated"??, use as [runnc][runnc]
 - [Railcar][railcar] (deprecated)
 - [rkt][rkt] (deprecated)
 - runlxc currently proprietary runtime by Alibaba
