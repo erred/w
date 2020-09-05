@@ -33,9 +33,6 @@
     - whatsapp
   - repro
     - with docker
-- container security
-  - gvisor
-  - firecracker
 - data viz
   - irc stats / user relation
   - time relation
