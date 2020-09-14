@@ -1,72 +1,53 @@
 # Ideas
 
 - ko
-- contact info
-  - pub keys?
 - bazel
 - travel, borders
   - world, population, books
 - google domains
-- syntax highlight english
-  - https://nlp.stanford.edu/software/tagger.shtml
-  - https://www.nltk.org/book/ch05.html
-  - https://github.com/winkjs/wink-pos-tagger
-  - https://ai.googleblog.com/2016/05/announcing-syntaxnet-worlds-most.html
-  - https://ai.googleblog.com/2017/03/an-upgrade-to-syntaxnet-new-models-and.html
-  - https://github.com/soutsios/pos-tagger-bert
-  - https://www.aclweb.org/anthology/D19-1374.pdf
-  - https://github.com/google/meta_tagger
+- terraform
+  - gcp
 - Login servers
   - pomerium
   - loginsrv
   - ory.sh
-- New services
-  - weechat
-  - git server
-  - database
-  - etcd
-  - bittorrent tracker
-  - irc gateways
-    - rss
-    - slack
-    - telegram
-    - whatsapp
-  - repro
-    - with docker
 - data viz
   - irc stats / user relation
   - time relation
 - vm creation
   - cloud-init
   - packer
-- secret store
+- New services
+  - git server
+  - etcd
+  - cockroach
+  - bittorrent tracker
+  - paste
   - vault
-  - confidant https://lyft.github.io/confidant/
-  - cerberus https://engineering.nike.com/cerberus
-  - bank vault https://banzaicloud.com/products/bank-vaults/
-- iac
-  - terraform
-  - puppet
-  - salt
-  - ansible
-  - chef
-  - InSpec
-- message queue
-  - in
-    - logs
-    - analytics
-    - github
-    - ci
-    - mail
-    - news, blogs, rss
-    - csp
-    - cert transparency
-    - dmarc
-  - out
-    - irc
-    - messenger apps
-    - email
-    - web
+  - irc gateways
+    - bouncer
+    - rss
+    - slack
+    - telegram
+    - whatsapp
+  - repro
+    - with docker
+  - message queue
+    - in
+      - logs
+      - analytics
+      - github
+      - ci
+      - mail
+      - news, blogs, rss
+      - csp
+      - cert transparency
+      - dmarc
+    - out
+      - irc
+      - messenger apps
+      - email
+      - web
 - https://www.programmableweb.com/apis/directory
 - https://www.schemastore.org/json/
 - https://apis.guru/openapi-directory/
