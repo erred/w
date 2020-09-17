@@ -14,3 +14,10 @@ steps:
       - -d=$_REG/$PROJECT_ID/$_IMG:$SHORT_SHA
       - --reproducible
       - --single-snapshot
+  - id: deploy
+    name: gcr.io/cloud-builders/kubectl:latest
+    args:
+      - set
+      - image
+      - deployment/$_IMG
+      - $_IMG=$_REG/$PROJECT_ID/$_IMG:$SHORT_SHA
