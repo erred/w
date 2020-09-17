@@ -22,6 +22,5 @@ steps:
       - deployment/$_IMG
       - $_IMG=$_REG/$PROJECT_ID/$_IMG:$SHORT_SHA
     env:
-      - CLOUDSDK_COMPUTE_REGION=us-central1
       - CLOUDSDK_COMPUTE_ZONE=us-central1-c
       - CLOUDSDK_CONTAINER_CLUSTER=cluster23
