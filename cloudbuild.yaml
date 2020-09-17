@@ -1,3 +1,6 @@
+substitutions:
+  _IMG: com-seankhliao
+  _REG: us.gcr.io
 tags:
   - $SHORT_SHA
   - $COMMIT_SHA
