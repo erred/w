@@ -1,13 +1,13 @@
 tags:
-  - $TAG_NAME
   - $SHORT_SHA
   - $COMMIT_SHA
 steps:
-  - id: render
-    name: seankhliao/webstyle
-  - id: upload
-    name: seankhliao/ci-firebase
+  - id: build-push
+    name: gcr.io/kaniko-project/executor:latest
     args:
-      - --project=$PROJECT_ID
-      - deploy
-      - --only=hosting
+      - -c=.
+      - -f=Dockerfile
+      - -d=$_REG/$PROJECT_ID/$_IMG:latest
+      - -d=$_REG/$PROJECT_ID/$_IMG:$SHORT_SHA
+      - --reproducible
+      - --single-snapshot
