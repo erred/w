@@ -1,36 +1,20 @@
 # Ideas
 
-- k8s
-  - resource limits
-  - limitrange
-  - securitycontext
-  - podsecuritypolicy
-  - networkpolicy
-  - poddisruptionbudget
 - ko
 - bazel
-- travel, borders
-  - world, population, books
+- travel, borders, world, population, books
 - google domains
-- data viz
-  - irc stats / user relation
-  - time relation
 - vm creation
   - cloud-init
   - packer
 - New services
+  - matrix/element
   - git server
   - etcd
   - cockroach
   - bittorrent tracker
   - paste
   - vault
-  - irc gateways
-    - bouncer
-    - rss
-    - slack
-    - telegram
-    - whatsapp
   - repro
     - with docker
   - message queue
