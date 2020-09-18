@@ -1,16 +1,17 @@
 # Ideas
 
+- k8s
+  - resource limits
+  - limitrange
+  - securitycontext
+  - podsecuritypolicy
+  - networkpolicy
+  - poddisruptionbudget
 - ko
 - bazel
 - travel, borders
   - world, population, books
 - google domains
-- terraform
-  - gcp
-- Login servers
-  - pomerium
-  - loginsrv
-  - ory.sh
 - data viz
   - irc stats / user relation
   - time relation
