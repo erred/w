@@ -1,6 +1,5 @@
 # Ideas
 
-- ko
 - bazel
 - travel, borders, world, population, books
 - google domains
