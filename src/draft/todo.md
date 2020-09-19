@@ -8,7 +8,8 @@
   - cloud-init
   - packer
 - New services
-  - matrix/element
+  - iglog service
+  - spotify tracker
   - git server
   - etcd
   - cockroach
