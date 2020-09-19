@@ -7,14 +7,14 @@
   - cloud-init
   - packer
 - New services
+  - grafana dashboard
+  - persistent logging
   - iglog service
   - spotify tracker
-  - git server
+  - sk search
+  - alertmanager
   - etcd
   - cockroach
-  - bittorrent tracker
-  - paste
-  - vault
   - repro
     - with docker
   - message queue
