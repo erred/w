@@ -1,0 +1,10 @@
+.dockerignore
+.git/
+.github/
+.gitignore
+
+cloudbuild.yaml
+Dockerfile
+LICENSE
+Makefile
+README.md
