@@ -9,7 +9,6 @@
 - New services
   - grafana dashboard
   - otel otlp collector
-  - persistent logging
   - iglog service
   - spotify tracker
   - sk search
