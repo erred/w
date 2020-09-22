@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package stream;
+
+option go_package = "go.seankhliao.com/stream";
+
+service Stream {
+  // example: http-server vanity statslogger ghdefaults
+  rpc LogHTTP(HTTPRequest) returns (Result);
+
+  // example: vanity
+  rpc LogBeacon(BeaconRequest) returns(Result);
+  rpc LogCSP(CSPRequest) returns (Result);
+
+  // exmaple: ghdefaults
+  rpc LogRepo(RepoRequest) returns(Result);
+}
+
+message BeaconRequest {
+  int64 duration_ms = 1;
+  string src_page = 2;
+  string dst_page = 3;
+  string remote = 4;
+  string user_agent = 5;
+  string referrer = 6;
+}
+message CSPRequest {
+  string timestamp = 1;
+  string remote = 2;
+  string user_agent = 3;
+  string referrer = 4;
+  string enforce = 5;
+  string blocked_uri = 6;
+  string source_file = 7;
+  string document_uri = 8;
+  string violated_directive = 9;
+  string effective_directive = 10;
+  int64 line_number = 11;
+  int64 status_code = 12;
+}
+message HTTPRequest {
+  string timestamp = 1;
+  string method = 2;
+  string domain = 3;
+  string path = 4;
+  string remote = 5;
+  string user_agent = 6;
+  string referrer = 7;
+}
+message RepoRequest {
+  string timestamp = 1;
+  string owner = 2;
+  string repo = 3;
+}
+
+
+message Result {}

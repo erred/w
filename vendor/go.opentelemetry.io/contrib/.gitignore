@@ -1,0 +1,14 @@
+.DS_Store
+Thumbs.db
+
+.tools/
+.idea/
+.vscode/
+*.iml
+*.so
+coverage.*
+
+exporters/metric/cortex/example/example
+instrumentation/github.com/gocql/gocql/example/example
+instrumentation/google.golang.org/grpc/example/server/server
+instrumentation/google.golang.org/grpc/example/client/client
