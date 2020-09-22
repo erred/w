@@ -1,0 +1,32 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  labels:
+    app.kubernetes.io/name: com-seankhliao
+  name: com-seankhliao
+spec:
+  entryPoints:
+    - https
+  routes:
+    - kind: Rule
+      match: Host(`seankhliao.com`)
+      services:
+        - kind: Service
+          name: com-seankhliao
+          port: 443
+  tls: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/name: com-seankhliao
+  name: com-seankhliao
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: com-seankhliao
+  ports:
+    - port: 443
+      targetPort: 8080

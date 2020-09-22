@@ -16,11 +16,12 @@ steps:
       - --single-snapshot
   - id: deploy
     name: gcr.io/cloud-builders/kubectl:latest
+    entrypoint: /bin/sh
     args:
-      - set
-      - image
-      - deployment/$_IMG
-      - $_IMG=$_REG/$PROJECT_ID/$_IMG:$SHORT_SHA
+      - -c
+      - |
+        sed -i 's/# newTag: IMAGE_TAG/newTag: $SHORT_SHA/' k8s/kustomization.yaml && \
+        kubectl apply -k k8s
     env:
       - CLOUDSDK_COMPUTE_ZONE=us-central1-c
       - CLOUDSDK_CONTAINER_CLUSTER=cluster23

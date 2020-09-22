@@ -1,9 +1,19 @@
-FROM us.gcr.io/com-seankhliao/webstyle:latest AS builder
+FROM golang:alpine AS build
+
+WORKDIR /workspace
+COPY go.mod .
+COPY go.sum .
+COPY cmd cmd
+RUN ls
+RUN CGO_ENABLED=0 go build -trimpath -ldflags='-s -w' -o /bin/http-server ./cmd/http-server
+
+FROM us.gcr.io/com-seankhliao/webstyle:latest AS render
 
 WORKDIR /workspace
 COPY . .
 RUN ["/bin/webrender"]
 
-FROM us.gcr.io/com-seankhliao/http-server:latest
-COPY --from=builder /workspace/public /var/public
+FROM scratch
+COPY --from=build /bin/http-server /bin/http-server
+COPY --from=render /workspace/public /var/public
 ENTRYPOINT ["/bin/http-server", "-dir=/var/public"]

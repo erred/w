@@ -3,18 +3,21 @@
 - bazel
 - travel, borders, world, population, books
 - google domains
+- git encrypted files age
 - vm creation
   - cloud-init
   - packer
 - New services
+  - refactor stream to use exteranl db
+  - refactor http-server into com-seankhliao
+  - write iglog service
+  - write spotify tracker
   - grafana dashboard
-  - otel otlp collector
-  - iglog service
-  - spotify tracker
-  - sk search
   - alertmanager
-  - etcd
+  - istio
   - cockroach
+  - etcd
+  - nats
   - repro
     - with docker
   - message queue
@@ -28,6 +31,7 @@
       - csp
       - cert transparency
       - dmarc
+      - music release
     - out
       - irc
       - messenger apps

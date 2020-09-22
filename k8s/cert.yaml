@@ -1,0 +1,18 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  labels:
+    app.kubernetes.io/name: com-seankhliao
+  name: com-seankhliao
+spec:
+  secretName: com-seankhliao-cert
+  duration: 87600h # 10 years
+  renewBefore: 360h
+  dnsNames:
+    - "com-seankhliao"
+    - "com-seankhliao.default"
+    - "com-seankhliao.default.svc"
+    - "com-seankhliao.default.svc.cluster.local"
+  issuerRef:
+    name: internal-ca
+    kind: ClusterIssuer
