@@ -21,6 +21,8 @@ before pods are ready, pods need to see each other before they are ready.
 
 #### _etcd_
 
+People on the internet only talk about running etcd outside the cluster for k8s...
+
 Notes: data dir should be changed,
 Assumes a CA is available and called _internal-ca_.
 
