@@ -7,6 +7,10 @@
 - vm creation
   - cloud-init
   - packer
+- kind
+  - istio
+  - cockroach
+  - etcd
 - New services
   - refactor stream to use exteranl db
   - refactor http-server into com-seankhliao
@@ -14,9 +18,6 @@
   - write spotify tracker
   - grafana dashboard
   - alertmanager
-  - istio
-  - cockroach
-  - etcd
   - nats
   - repro
     - with docker
