@@ -192,6 +192,12 @@ colorize_nicks
 /set colorize_nicks.look.min_nick_length 3
 ```
 
+notify
+
+```txt
+/script install notify.py
+```
+
 ##### _relay_
 
 open up a protected relay

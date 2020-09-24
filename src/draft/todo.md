@@ -4,7 +4,6 @@
 - travel, borders, world, population, books
 - bazel
 - google domains
-- git encrypted files age
 - vm creation
   - cloud-init
   - packer
@@ -22,7 +21,6 @@
       - dmarc
       - music release
     - out
-      - irc
       - messenger apps
       - email
       - web
