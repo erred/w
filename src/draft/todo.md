@@ -1,27 +1,15 @@
 # Ideas
 
-- bazel
+- https://techbeacon.com/enterprise-it/monitoring-demystified-guide-logging-tracing-metrics
 - travel, borders, world, population, books
+- bazel
 - google domains
 - git encrypted files age
 - vm creation
   - cloud-init
   - packer
 - kind
-  - istio
-  - cockroach
-  - etcd
-- New services
-  - refactor stream to use exteranl db
-  - refactor http-server into com-seankhliao
-  - write iglog service
-  - write spotify tracker
-  - grafana dashboard
-  - alertmanager
   - nats
-  - repro
-    - with docker
-  - message queue
     - in
       - logs
       - analytics
@@ -38,7 +26,25 @@
       - messenger apps
       - email
       - web
-- https://www.programmableweb.com/apis/directory
-- https://www.schemastore.org/json/
-- https://apis.guru/openapi-directory/
-- https://techbeacon.com/enterprise-it/monitoring-demystified-guide-logging-tracing-metrics
+- New services
+  - istio
+  - refactor stream to use external db
+  - write iglog service
+  - write spotify tracker
+  - grafana dashboard
+  - alertmanager
+  - repro
+    - with docker
+- secure boot
+  - https://keylime.dev/
+  - https://safeboot.dev/
+  - https://media.defense.gov/2020/Sep/15/2002497594/-1/-1/0/CTR-UEFI-SECURE-BOOT-CUSTOMIZATION-20200915.PDF/CTR-UEFI-SECURE-BOOT-CUSTOMIZATION-20200915.PDF
+  -
+  - https://mjg59.dreamwidth.org/35742.html
+  -
+  - https://github.com/google/go-tpm-tools
+  - https://github.com/google/go-attestation
+- openapi
+  - https://www.programmableweb.com/apis/directory
+  - https://www.schemastore.org/json/
+  - https://apis.guru/openapi-directory/
