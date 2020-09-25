@@ -45,27 +45,28 @@ type Components struct {
 
 func NewComponents(name, logLevel, logFormat, caCrt, saverURL string) (*Components, error) {
 	c := &Components{}
+	// Note: always return c, the so we have a logger
 
 	c.logger(logLevel, logFormat)
 
 	err := c.client(caCrt)
 	if err != nil {
-		return nil, fmt.Errorf("setup client crt: %w", err)
+		return c, fmt.Errorf("setup client crt: %w", err)
 	}
 
 	err = c.tracer(name)
 	if err != nil {
-		return nil, fmt.Errorf("install tracer: %w", err)
+		return c, fmt.Errorf("install tracer: %w", err)
 	}
 
 	err = c.metric(name)
 	if err != nil {
-		return nil, fmt.Errorf("install metric: %w", err)
+		return c, fmt.Errorf("install metric: %w", err)
 	}
 
 	err = c.saver(saverURL)
 	if err != nil {
-		return nil, fmt.Errorf("initialize saver: %w", err)
+		return c, fmt.Errorf("initialize saver: %w", err)
 	}
 
 	return c, nil
@@ -126,12 +127,14 @@ func (c *Components) metric(name string) error {
 }
 
 func (c *Components) saver(saverURL string) error {
-	var err error
-	c.saverConn, err = grpc.Dial(saverURL, c.GRPCDialOptions...)
-	if err != nil {
-		return fmt.Errorf("saver dial %s: %w", saverURL, err)
+	if saverURL != "" && len(c.GRPCDialOptions) > 0 {
+		var err error
+		c.saverConn, err = grpc.Dial(saverURL, c.GRPCDialOptions...)
+		if err != nil {
+			return fmt.Errorf("saver dial %s: %w", saverURL, err)
+		}
+		c.saverClient = saver.NewSaverClient(c.saverConn)
 	}
-	c.saverClient = saver.NewSaverClient(c.saverConn)
 	return nil
 }
 

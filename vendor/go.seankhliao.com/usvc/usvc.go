@@ -158,8 +158,7 @@ func startServers(ctx context.Context, msrv, hsrv *http.Server, gsrv *grpc.Serve
 	}()
 	if grpcsvc {
 		go func() {
-			var err error
-			lis, err := net.Listen("tcp", "")
+			lis, err := net.Listen("tcp", hsrv.Addr)
 			if err != nil {
 				cancel()
 				errc <- err

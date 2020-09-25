@@ -93,7 +93,7 @@ go.seankhliao.com/apis/saver/v1
 # go.seankhliao.com/stream v0.1.0
 ## explicit
 go.seankhliao.com/stream
-# go.seankhliao.com/usvc v0.7.3
+# go.seankhliao.com/usvc v0.7.7
 ## explicit
 go.seankhliao.com/usvc
 # golang.org/x/net v0.0.0-20200707034311-ab3426394381
