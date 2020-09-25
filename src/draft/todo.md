@@ -7,23 +7,8 @@
 - vm creation
   - cloud-init
   - packer
-- kind
-  - nats
-    - in
-      - logs
-      - analytics
-      - github
-      - ci
-      - mail
-      - news, blogs, rss
-      - csp
-      - cert transparency
-      - dmarc
-      - music release
-    - out
-      - messenger apps
-      - email
-      - web
+- streaming
+  - nats + liftbridge?
 - New services
   - istio
   - refactor stream to use external db

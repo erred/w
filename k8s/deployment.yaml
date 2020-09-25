@@ -33,6 +33,8 @@ spec:
           args:
             - -tls.crt=/var/secret/tls/tls.crt
             - -tls.key=/var/secret/tls/tls.key
+            - -ca.crt=/var/secrey/tls/ca.crt
+            - -saver=saver.default.svc.cluster.local:443
           ports:
             - name: https
               containerPort: 8080

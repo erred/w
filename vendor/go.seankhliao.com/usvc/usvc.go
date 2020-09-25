@@ -40,12 +40,14 @@ func Run(ctx context.Context, name string, server Service, grpcsvc bool) {
 	serviceAddr := fs.String("addr", ":8080", "service address")
 	tlsCert := fs.String("tls.crt", "", "tls cert file")
 	tlsKey := fs.String("tls.key", "", "tls key file")
+	caCrt := fs.String("ca.crt", "", "ca crt for client connections")
 	logLevel := fs.String("log.lvl", "trace", "log level: trace, debug, info, error")
 	logFormat := fs.String("log.fmt", "json", "log format: logfmt, json")
+	saverURL := fs.String("saver", "", "host:port for go.seankhliao.com/saver")
 	server.Flag(fs)
 	fs.Parse(os.Args[1:])
 
-	c, err := NewComponents(name, *logLevel, *logFormat)
+	c, err := NewComponents(name, *logLevel, *logFormat, *caCrt, *saverURL)
 	if err != nil {
 		c.Log.Error().Err(err).Msg("setup components")
 		return
