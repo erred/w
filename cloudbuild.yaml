@@ -21,7 +21,7 @@ steps:
       - -c
       - |
         set -ex; \
-        sed -i 's/# newTag: IMAGE_TAG/newTag: $SHORT_SHA/' k8s/kustomization.yaml && \
+        sed -i 's/# newTag: IMAGE_TAG/newTag: "$SHORT_SHA"/' k8s/kustomization.yaml && \
         /builder/kubectl.bash apply -k k8s
     env:
       - CLOUDSDK_COMPUTE_ZONE=us-central1-c

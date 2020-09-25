@@ -33,7 +33,7 @@ spec:
           args:
             - -tls.crt=/var/secret/tls/tls.crt
             - -tls.key=/var/secret/tls/tls.key
-            - -ca.crt=/var/secrey/tls/ca.crt
+            - -ca.crt=/var/secret/tls/ca.crt
             - -saver=saver.default.svc.cluster.local:443
           ports:
             - name: https
