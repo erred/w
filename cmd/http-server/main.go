@@ -3,20 +3,16 @@ package main
 import (
 	"context"
 	"flag"
-	"fmt"
 	"io/ioutil"
 	"net/http"
 	"os"
 	"path"
 	"strings"
-	"time"
 
 	"github.com/rs/zerolog"
 	"go.opentelemetry.io/otel/api/global"
 	"go.opentelemetry.io/otel/api/metric"
-	"go.seankhliao.com/stream"
 	"go.seankhliao.com/usvc"
-	"google.golang.org/grpc"
 )
 
 const (
@@ -30,11 +26,8 @@ func main() {
 }
 
 type Server struct {
-	dir        string
-	notfound   http.Handler
-	streamAddr string
-	client     stream.StreamClient
-	cc         *grpc.ClientConn
+	dir      string
+	notfound http.Handler
 
 	page metric.Int64Counter
 
@@ -43,7 +36,6 @@ type Server struct {
 
 func (s *Server) Flag(fs *flag.FlagSet) {
 	fs.StringVar(&s.dir, "dir", "public", "directory to serve")
-	fs.StringVar(&s.streamAddr, "addr.stream", "stream:80", "url to connect to stream")
 }
 
 func (s *Server) Register(c *usvc.Components) error {
@@ -60,27 +52,14 @@ func (s *Server) Register(c *usvc.Components) error {
 	})
 
 	c.HTTP.Handle("/", s)
-
-	var err error
-	s.cc, err = grpc.Dial(s.streamAddr, grpc.WithInsecure())
-	if err != nil {
-		return fmt.Errorf("connect to stream: %w", err)
-	}
-	s.client = stream.NewStreamClient(s.cc)
 	return nil
 }
 
 func (s *Server) Shutdown(ctx context.Context) error {
-	return s.cc.Close()
+	return nil
 }
 
 func (s Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	ctx := r.Context()
-	remote := r.Header.Get("x-forwarded-for")
-	if remote == "" {
-		remote = r.RemoteAddr
-	}
-
 	u, f := r.URL.Path, ""
 	switch {
 	case strings.HasSuffix(u, "/") && exists(path.Join(s.dir, u[:len(u)-1]+".html")):
@@ -108,19 +87,4 @@ func (s Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 
 	http.ServeFile(w, r, f)
-
-	httpRequest := &stream.HTTPRequest{
-		Timestamp: time.Now().Format(time.RFC3339),
-		Method:    r.Method,
-		Domain:    r.Host,
-		Path:      r.URL.Path,
-		Remote:    remote,
-		UserAgent: r.UserAgent(),
-		Referrer:  r.Referer(),
-	}
-
-	_, err := s.client.LogHTTP(ctx, httpRequest)
-	if err != nil {
-		s.log.Error().Err(err).Msg("write to stream")
-	}
 }
