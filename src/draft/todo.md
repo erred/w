@@ -11,8 +11,6 @@
   - nats + liftbridge?
 - New services
   - istio
-  - refactor stream to use external db
-  - write iglog service
   - write spotify tracker
   - grafana dashboard
   - alertmanager
