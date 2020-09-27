@@ -35,6 +35,9 @@ spec:
               containerPort: 8080
             - name: metric
               containerPort: 8000
+          env:
+            - name: JAEGER_SERVICE_NAME
+              value: com-seankhliao
           livenessProbe:
             httpGet:
               path: /liveness
