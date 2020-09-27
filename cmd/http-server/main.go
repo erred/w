@@ -43,7 +43,7 @@ func (s *Server) Setup(ctx context.Context, u *usvc.USVC) error {
 	s.log = u.Logger
 	s.tracer = global.Tracer(name)
 	s.page = promauto.NewCounterVec(prometheus.CounterOpts{
-		Name: "com-seankhliao_page_requests",
+		Name: "seankhliao_com_page_requests",
 	}, []string{"page"})
 
 	notfound, _ := ioutil.ReadFile(path.Join(s.dir, "404.html"))
