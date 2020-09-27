@@ -37,7 +37,7 @@ spec:
               containerPort: 8000
           livenessProbe:
             httpGet:
-              path: /liveliness
+              path: /liveness
               port: 8000
           readinessProbe:
             httpGet:
