@@ -15,7 +15,6 @@ spec:
           name: com-seankhliao
           port: 443
   tls: {}
-
 ---
 apiVersion: v1
 kind: Service
