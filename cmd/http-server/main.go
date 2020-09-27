@@ -57,7 +57,7 @@ func (s *Server) Setup(ctx context.Context, u *usvc.USVC) error {
 }
 
 func (s Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.tracer.Start(ctx, "handle-request")
+	_, span := s.tracer.Start(r.Context(), "handle-request")
 	defer span.End()
 
 	u, f := r.URL.Path, ""
