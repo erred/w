@@ -4,6 +4,8 @@
 - travel, borders, world, population, books
 - bazel
 - google domains
+- speed up ci
+- otel collector / jaeger
 - vm creation
   - cloud-init
   - packer
