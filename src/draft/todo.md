@@ -9,13 +9,12 @@
   - packer
 - streaming
   - nats + liftbridge?
+- repro
+  - with docker
 - New services
   - istio
   - write spotify tracker
-  - grafana dashboard
   - alertmanager
-  - repro
-    - with docker
 - secure boot
   - https://keylime.dev/
   - https://safeboot.dev/
