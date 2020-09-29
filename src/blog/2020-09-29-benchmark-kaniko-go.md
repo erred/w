@@ -33,9 +33,17 @@ but at the cost of bloating up the source code repo with checked in deps.
 | multi   | go.mod/sum + go mod vendor   | 140s     | build fail | 130s       | 123s                   | _5.06MB_ |
 | _multi_ | _vendored_                   | _111s_   | _96s_      | _85s_      | _94s_                  | _5.06MB_ |
 
+build fails were kaniko complaing about unlinkat / device busy,
+did not appear to be transient failures.
+
+```txt
+error building image: error building stage: failed to execute command: extracting fs from image: removing whiteout .wh.workspace: unlinkat //workspace: device or resource busy
+```
+
 #### _setup_
 
-CI: Google Cloud Build
+Repo: GitHub
+CI: Google Cloud Build, triggered by app
 
 #### _Dockerfile_
 
