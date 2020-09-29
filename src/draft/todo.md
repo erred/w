@@ -4,7 +4,8 @@
 - travel, borders, world, population, books
 - google domains
 - speed up ci
-- neovim yaml completion
+- operator, crd
+- bash/zsh completion
 - repro
   - with docker
 - bazel
