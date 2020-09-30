@@ -3,9 +3,14 @@
 - https://techbeacon.com/enterprise-it/monitoring-demystified-guide-logging-tracing-metrics
 - travel, borders, world, population, books
 - google domains
-- speed up ci
 - operator, crd
 - bash/zsh completion
+- ipfs
+- nix
+- go stdlib iterators
+- man pages
+- go fix
+- go list usage / venn diagram
 - repro
   - with docker
 - bazel
