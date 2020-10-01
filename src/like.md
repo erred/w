@@ -52,7 +52,6 @@ _(Almost) Everything:_
 [Billie Eilish](https://www.youtube.com/channel/UCiGm_E4ZwYSHV3bcW1pnSeQ)
 
 _A Lot:_
-[Clean Bandit](https://www.youtube.com/channel/UCvhQPdeTHzIRneScV8MIocg)
 [Blackbriar](https://www.youtube.com/channel/UCjR-qXRBNkysQ0Threo1Bfg)
 [Alexandra Ilieva](https://www.youtube.com/channel/UCWMzQclmvnyZK-jXMuFjdmQ)
 [XYLØ](https://www.youtube.com/channel/UCjGluI_WgtTXBTQDDtNcCVw)

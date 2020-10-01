@@ -7,8 +7,6 @@
 - bash/zsh completion
 - ipfs
 - nix
-- go stdlib iterators
-- man pages
 - go fix
 - go list usage / venn diagram
 - repro

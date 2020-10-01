@@ -11,11 +11,15 @@ I run with shiny new stuff that is always _half-broken_,
 so I know what works and what is just a waste of time.
 Current preferred _tech stack_:
 
-Go — containers — Kubernetes
+Go — Kubernetes
 
 _No promises_ I'm actually good at anything
 
 #### _What_ I've Been Doing
+
+##### _Junior_ Site Reliability Engineer
+
+_2020_ De Bijenkorf
 
 ##### _MSc_ Security and Network Engineering
 
