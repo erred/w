@@ -49,6 +49,6 @@ _all_ changed meaning between 1.15 and 1.16
 
 ![1.16 go list all](https://raw.githubusercontent.com/erred/go-list-ex/main/all.svg)
 
-##### go1.15 or earlier
+###### go1.15 or earlier
 
 ![1.15 go list all](https://raw.githubusercontent.com/erred/go-list-ex/main/all115.svg)
