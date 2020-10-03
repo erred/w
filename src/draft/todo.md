@@ -6,7 +6,6 @@
 - portable confs
 - ipfs
 - nix
-- go fix
 - go list usage / venn diagram
 - repro
   - with docker
