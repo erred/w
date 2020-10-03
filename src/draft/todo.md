@@ -1,9 +1,11 @@
 # Ideas
 
+- https://sandrokeil.github.io/yubikey-full-disk-encryption-secure-boot-uefi/guides/arch-linux/
 - https://techbeacon.com/enterprise-it/monitoring-demystified-guide-logging-tracing-metrics
 - travel, borders, world, population, books
 - google domains
 - operator, crd
+- portable confs
 - bash/zsh completion
 - ipfs
 - nix
