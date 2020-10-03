@@ -6,7 +6,6 @@
 - google domains
 - operator, crd
 - portable confs
-- bash/zsh completion
 - ipfs
 - nix
 - go fix
