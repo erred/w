@@ -6,7 +6,7 @@ COPY go.sum .
 COPY cmd cmd
 RUN CGO_ENABLED=0 go build -trimpath -ldflags='-s -w' -o /bin/http-server ./cmd/http-server
 
-FROM us.gcr.io/com-seankhliao/webstyle:latest AS render
+FROM reg.seankhliao.com/webstyle:latest AS render
 
 WORKDIR /workspace
 COPY public public
