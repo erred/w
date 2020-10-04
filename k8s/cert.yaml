@@ -10,9 +10,7 @@ spec:
   renewBefore: 360h
   dnsNames:
     - "com-seankhliao"
-    - "com-seankhliao.default"
-    - "com-seankhliao.default.svc"
-    - "com-seankhliao.default.svc.cluster.local"
+    - "com-seankhliao.apps.svc.cluster.local"
   issuerRef:
     name: internal-ca
     kind: ClusterIssuer

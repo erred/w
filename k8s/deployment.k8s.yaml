@@ -27,6 +27,8 @@ spec:
         runAsNonRoot: true
         runAsUser: 65534
       terminationGracePeriodSeconds: 10
+      imagePullSecrets:
+        - name: regcred
       containers:
         - name: com-seankhliao
           image: us.gcr.io/com-seankhliao/com-seankhliao:latest
@@ -35,9 +37,9 @@ spec:
               containerPort: 8080
             - name: metric
               containerPort: 8000
-          env:
-            - name: JAEGER_SERVICE_NAME
-              value: com-seankhliao
+          # env:
+          #   - name: JAEGER_SERVICE_NAME
+          #     value: com-seankhliao
           livenessProbe:
             httpGet:
               path: /liveness
@@ -52,4 +54,4 @@ spec:
       volumes:
         - name: certs
           secret:
-            secretName: vanity-cert
+            secretName: com-seankhliao-cert
