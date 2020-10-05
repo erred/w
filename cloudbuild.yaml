@@ -7,8 +7,19 @@ tags:
   - $COMMIT_SHA
 
 steps:
+  - id: test
+    name: golang:alpine
+    entrypoint: go
+    args:
+      - test
+      - ./...
+    env:
+      - CGO_ENABLED=0
+
   - id: login
-    name: gcr.io/cloud-builders/kubectl:latest
+    waitFor:
+      - "-"
+    name: gcr.io/cloud-builders/gcloud:latest
     entrypoint: bash
     args:
       - -c
@@ -23,14 +34,24 @@ steps:
           --secret=cluster-kubectl-creds \
           --format='get(payload.data)' \
           | tr '_-' '/+' \
-          | base64 -d > /kube/config
+          | base64 -d > /kube/config \
+        && \
+        gcloud secrets versions access latest \
+          --secret=github-personal-repo-token \
+          --format='get(payload.data)' \
+          | tr '_-' '/+' \
+          | base64 -d > /github/token
     volumes:
       - name: registry-creds
         path: /kaniko/.docker
       - name: cluster-creds
         path: /kube
+      - name: github-creds
+        path: /github
 
   - id: build-push
+    waitFor:
+      - "login"
     name: gcr.io/kaniko-project/executor:latest
     args:
       - -c=.
@@ -39,6 +60,8 @@ steps:
       - -d=$_REG/$_IMG:$SHORT_SHA
       - --reproducible
       - --single-snapshot
+      - --cache=true
+      - --use-new-run
     volumes:
       - name: registry-creds
         path: /kaniko/.docker
@@ -50,10 +73,34 @@ steps:
       - -c
       - |
         set -ex; \
-        sed -i 's/# newTag: IMAGE_TAG/newTag: "$SHORT_SHA"/' k8s/kustomization.yaml && \
-        kubectl.1.18 apply -k k8s
+        cd k8s && \
+        sed -i 's/# newTag: IMAGE_TAG/newTag: "$SHORT_SHA"/' kustomization.yaml && \
+        kubectl.1.18 kustomize | tee /deployed/$_IMG.yaml | kubectl.1.18 apply -f -
     env:
       - KUBECONFIG=/kube/config
     volumes:
       - name: cluster-creds
         path: /kube
+      - name: deployed
+        path: /deployed
+
+  - id: save-deployment
+    name: gcr.io/cloud-builders/gcloud:latest
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        set -ex; \
+        export GITHUB_TOKEN=$$(cat /github/token)
+        git clone https://x-access-token:$$GITHUB_TOKEN@github.com/seankhliao/kluster && \
+        cd kluster/apps && \
+        cp /deployed/$_IMG.yaml . && \
+        git add $_IMG.yaml && \
+        git config user.email $(gcloud auth list --filter=status:ACTIVE --format='value(account)') && \
+        git commit -m "update $_IMG deployment to $SHORT_SHA" && \
+        git push
+    volumes:
+      - name: github-creds
+        path: /github
+      - name: deployed
+        path: /deployed
