@@ -1,25 +1,25 @@
 # Ideas
 
+- portable confs
+
+- operator, crd
+
+- repro + container
+
+- ipfs + go modules proxy
+- write spotify tracker
+- cilium
+- istio
+- alertmanager
+- otel collector / jaeger
+
+- bazel
+- nix
+
+- vm creation / cloud-init / packer
+
 - travel, borders, world, population, books
 - google domains
-- operator, crd
-- portable confs
-- ipfs
-- nix
-- repro
-  - with docker
-- bazel
-- new services
-  - istio
-  - write spotify tracker
-  - alertmanager
-- vm creation
-  - cloud-init
-  - packer
-- streaming
-  - nats + liftbridge?
-- blocked
-  - otel collector / jaeger
 
 ## links
 
