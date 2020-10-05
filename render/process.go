@@ -10,6 +10,8 @@ import (
 	"sort"
 	"strings"
 	"text/template"
+
+	"go.seankhliao.com/com-seankhliao/v12/render/style"
 )
 
 type Options struct {
@@ -134,7 +136,7 @@ func processOutput(o Options, pages []*Page) error {
 			_, err = f.Write(p.data)
 		} else {
 			if o.EmbedStyle {
-				p.Style = webstyle.StyleGohtml + "\n" + p.Style
+				p.Style = style.StyleGohtml + "\n" + p.Style
 			}
 
 			err = o.Template.ExecuteTemplate(f, "LayoutGohtml", p)
