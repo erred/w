@@ -95,7 +95,7 @@ steps:
         git clone https://x-access-token:$$GITHUB_TOKEN@github.com/seankhliao/kluster && \
         cd kluster/apps && \
         cp /deployed/$_IMG.yaml $_IMG.k8s.yaml && \
-        git add $_IMG.yaml && \
+        git add $_IMG.k8s.yaml && \
         git config user.email $(gcloud auth list --filter=status:ACTIVE --format='value(account)') && \
         git commit -m "update $_IMG deployment to $SHORT_SHA" && \
         git push
