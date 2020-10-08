@@ -7,7 +7,6 @@
 - repro + container
 
 - envoy reverse proxy
-- ipfs + go modules proxy
 - write spotify tracker
 - cilium
 - istio
