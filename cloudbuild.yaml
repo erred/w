@@ -50,6 +50,8 @@ steps:
   #       path: /github
 
   - id: build-push
+    waitFor:
+      - "-"
     name: gcr.io/kaniko-project/executor:latest
     args:
       - -c=.
@@ -65,7 +67,7 @@ steps:
     #   - name: registry-creds
     #     path: /kaniko/.docker
   - id: deploy
-    name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    name: gcr.io/cloud-builders/gcloud:latest
     entrypoint: gcloud
     args:
       - run

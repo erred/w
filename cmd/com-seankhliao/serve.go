@@ -63,6 +63,7 @@ func serve(svc Service) int {
 	errc := make(chan error)
 	go func() {
 		defer cancel()
+		klog.InfoS("starting server", "addr", c.Server.Addr)
 		err := c.Server.ListenAndServe()
 		switch {
 		case errors.Is(err, http.ErrServerClosed):
