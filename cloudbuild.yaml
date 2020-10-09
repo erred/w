@@ -71,7 +71,7 @@ steps:
       - run
       - deploy
       - web
-      - --image=$_REG/$_IMGE
+      - --image=$_REG/$_IMG:$SHORT_SHA
       - --region=us-central1
       - --platform=managed
   # - id: deploy
