@@ -60,10 +60,20 @@ steps:
       - --single-snapshot
       - --cache=true
       - --use-new-run
+
     # volumes:
     #   - name: registry-creds
     #     path: /kaniko/.docker
-
+  - id: deploy
+    name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: gcloud
+    args:
+      - run
+      - deploy
+      - web
+      - --image=$_REG/$_IMGE
+      - --region=us-central1
+      - --platform=managed
   # - id: deploy
   #   name: gcr.io/cloud-builders/kubectl:latest
   #   entrypoint: /bin/sh

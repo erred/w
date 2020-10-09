@@ -1,12 +1,14 @@
 # Ideas
 
 - portable confs
+- cf for ipv6 translation
 
 - operator, crd
 
 - repro + container
 
-- envoy reverse proxy
+- blog: build with dockerfile vs docker run
+- envoy reverse proxy: dns?
 - write spotify tracker
 - cilium
 - istio
