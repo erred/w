@@ -32,6 +32,8 @@ func serve(svc Service) int {
 	flag.Parse()
 	if addr == "" {
 		addr = ":8080"
+	} else if addr[0] != ':' {
+		addr = ":" + addr
 	}
 
 	mux := http.NewServeMux()

@@ -25,6 +25,9 @@
 
 ## links
 
+knative eventing?
+https://cloudevents.io/
+
 ### observability
 
 https://techbeacon.com/enterprise-it/monitoring-demystified-guide-logging-tracing-metrics
