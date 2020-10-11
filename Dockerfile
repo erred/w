@@ -4,11 +4,11 @@ WORKDIR /workspace
 COPY go.mod .
 COPY go.sum .
 COPY vendor vendor
-COPY render render
 COPY cmd cmd
+COPY internal internal
 RUN CGO_ENABLED=0 go build -trimpath -ldflags='-s -w' -o /bin/ ./...
 COPY public public
-COPY src src
+COPY site site
 RUN ["/bin/webrender"]
 
 FROM scratch
