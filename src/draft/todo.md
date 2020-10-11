@@ -6,7 +6,7 @@
 - operator, crd
 
 - repro + container
-
+- building blocks of cloud native: k8s, envoy, prometheus
 - blog: build with dockerfile vs docker run
 - envoy reverse proxy: dns?
 - write spotify tracker
