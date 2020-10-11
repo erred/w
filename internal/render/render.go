@@ -27,7 +27,8 @@ type PageData struct {
 	Main         string
 
 	// optional
-	Header           string
+	H1               string
+	H2               string
 	Style            string
 	Date             string
 	DisableAnalytics bool
@@ -115,9 +116,8 @@ func ProcessFile(src, dst, u string, disableAnalytics, embedStyle bool) (PageInf
 			pi.Title = pd.Title
 			pi.Date = filepath.Base(u)[:11]
 			pd.Date = filepath.Base(u)[:11]
-			pd.Header = fmt.Sprintf(`
-<h2><a href="/blog/">b<em>log</em></a></h2>
-<p><time datetime="%s">%s</time></p>`, pi.Date, pi.Date)
+			pd.H1 = `<a href="/blog/">b<em>log</em></a>`
+			pd.H2 = fmt.Sprintf(`<time datetime="%s">%s</time>`, pi.Date, pi.Date)
 			break
 		}
 	}
@@ -153,10 +153,9 @@ func blogIndex(dst, urlBase string, pis []PageInfo) (PageInfo, error) {
 		Title:        "blog | seankhliao",
 		Description:  "list of things i wrote",
 		URLCanonical: dstPath,
-		Header: `
-<h2><a href="/blog/">b<em>log</em></a></h2>
-<p>Artisanal, <em>hand-crafted</em> blog posts
-imbued with delayed <em>regrets</em></p>`,
+		H1:           `<a href="/blog/">b<em>log</em></a>`,
+		H2: `Artisanal, <em>hand-crafted</em> blog posts
+imbued with delayed <em>regrets</em>`,
 		Style: `
 ul li {
         white-space: nowrap;

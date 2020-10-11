@@ -1,5 +1,7 @@
 ---
-header: <h2><em>Terms</em> of Service and <em>Privacy</em> Policy</h2>
+description: tos for some login stuff???
+h1: <em>Privacy</em> Policy
+h2: and <em>Terms</em> of Service
 title: privacy | seankhliao
 ---
 

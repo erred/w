@@ -1,6 +1,7 @@
 ---
 description: things i like
-header: <h2><em>Things</em> I Like</h2> <p>lists and tables</p>
+h1: <em>Things</em> I Like
+h2: lists and tables
 title: like
 ---
 

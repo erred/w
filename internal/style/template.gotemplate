@@ -2,9 +2,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="preload" href="https://seankhliao.com/base.css" as="style" crossorigin />
-    <link rel="preload" href="https://seankhliao.com/inconsolata-var.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="https://seankhliao.com/lora-var.woff2" as="font" type="font/woff2" crossorigin />
+    {{ if not .EmbedStyle }}
+    <link rel="preload" href="/base.css" as="style" crossorigin />
+    <link rel="preload" href="/inconsolata-var.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/lora-var.woff2" as="font" type="font/woff2" crossorigin />
+    {{ end }}
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
@@ -14,7 +16,9 @@
     <!-- prettier-ignore -->
     {{ if not .DisableAnalytics }}{{ template "analytics" }}{{ end }}
 
-    <link rel="stylesheet" href="https://seankhliao.com/base.css" crossorigin />
+    {{ if not .EmbedStyle }}
+    <link rel="stylesheet" href="/base.css" crossorigin />
+    {{ end }}
 
     <link rel="canonical" href="{{ .URLCanonical }}" />
     <link rel="manifest" href="/manifest.json" />
@@ -37,30 +41,27 @@
     <!-- prettier-ignore -->
     {{ if not .DisableAnalytics }}{{ template "analytics-fallback" }}{{ end }}
 
-    <header>
-      <h1>
-        <a href="/">
-          <span>S</span>
-          <span>E</span>
-          <span>A</span>
-          <span>N</span>
-          <em>K</em>
-          <em>.</em>
-          <em>H</em>
-          <em>.</em>
-          <span>L</span>
-          <span>I</span>
-          <span>A</span>
-          <span>O</span>
-        </a>
-      </h1>
+    <h1>{{ .H1 }}</h1>
+    <h2>{{ .H2 }}</h2>
 
-      {{ .Header }}
-    </header>
+    <hgroup>
+      <a href="/">
+        <span>S</span>
+        <span>E</span>
+        <span>A</span>
+        <span>N</span>
+        <em>K</em>
+        <em>.</em>
+        <em>H</em>
+        <em>.</em>
+        <span>L</span>
+        <span>I</span>
+        <span>A</span>
+        <span>O</span>
+      </a>
+    </hgroup>
 
-    <main>
-      {{ .Main }}
-    </main>
+    {{ .Main }}
 
     <footer>
       <a href="https://seankhliao.com/">home</a>
