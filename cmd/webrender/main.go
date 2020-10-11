@@ -14,8 +14,8 @@ func main() {
 	flag.StringVar(&src, "src", "site", "source directory or file")
 	flag.StringVar(&dst, "dst", "public", "destination directory or file")
 	flag.StringVar(&baseURL, "url", "https://seankhliao.com", "base url for canonicalization")
-	flag.BoolVar(&embedStyle, "embedStyle", false, "embed stylesheets")
-	flag.BoolVar(&disableAanalytics, "disableAanalytics", false, "disable google analytics")
+	flag.BoolVar(&embedStyle, "embedstyle", false, "embed stylesheets")
+	flag.BoolVar(&disableAanalytics, "disableanalytics", false, "disable google analytics")
 	flag.Parse()
 
 	fi, err := os.Stat(src)

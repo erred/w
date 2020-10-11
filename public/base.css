@@ -97,6 +97,7 @@ table {
   grid-column: 1 / span 5;
   margin: 0 -1vmin;
 }
+h4 img,
 p img,
 picture img {
   width: 100%;
