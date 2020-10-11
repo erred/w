@@ -172,9 +172,11 @@
 
 /* ===== layout general ===== */
 body {
-  display: flex;
-  flex-flow: column nowrap;
+  display: grid;
+  grid: repeat(2, 20vh) 40vh / 1fr repeat(3, minmax(90px, 280px)) 1fr;
+  gap: 0 1em;
   margin: 0;
+  padding: 1vmin;
 
   /* ==override newtab page == */
   background: #000;
@@ -182,71 +184,55 @@ body {
   font: 18px "Inconsolata", monospace;
 }
 
+body > * {
+  grid-column: 2 / span 3;
+}
+
 /* ===== layout header ===== */
-header {
-  display: grid;
-  grid:
-    [r1-s] ".    .    .    title title" 20vh [r1-e]
-    [r1-s] ".    .    .    tag   tag" 20vh [r2-e]
-    [r3-s] ".    .    .    .     ." 20vh [r3-e]
-    [r4-s] "logo logo logo logo  logo" 20vh [r4-e]
-    / 1fr 1fr 1fr 1fr 1fr;
-  padding: 2vmin;
-}
 h1 {
-  font: 700 5vmin "Lora", serif;
-  grid-area: logo;
-  margin: 0;
-  place-self: stretch start;
-}
-h1 a {
-  display: grid;
-  grid: repeat(2, 10vmin) / repeat(8, 10vmin);
-  place-content: center center;
-}
-h1 *:nth-child(n + 5) {
-  grid-row: 2 / span 1;
-}
-h2 {
   font-size: 4.5vmin;
-  grid-area: title;
+  grid-area: 1 / 4 / span 1 / span 2;
   margin: 0;
   place-self: end;
 }
-header p {
+h2 {
   color: #999;
   font-size: 3.5vmin;
-  grid-area: tag;
+  grid-area: 2 / 4 / span 1 / span 2;
   place-self: start end;
   text-align: right;
 }
 
-/* ===== layout main ===== */
-main {
+hgroup {
+  font: 700 5vmin "Lora", serif;
+  grid-area: 3 / 1 / span 1 / span 5;
+  margin: 0;
+  place-self: end start;
+}
+hgroup a {
   display: grid;
-  grid: auto-flow / 1fr minmax(280px, 840px) 1fr;
-  grid-gap: 0 1em;
-  margin: 20vh 0;
+  grid: repeat(2, 10vmin) / repeat(8, 10vmin);
+  place-content: center center;
 }
-main > * {
-  grid-column: 2 / span 1;
+hgroup *:nth-child(n + 5) {
+  grid-row: 2 / span 1;
 }
-main > iframe,
-main > picture,
-main > pre,
-main > table {
-  grid-column: 1 / span 3;
+/* ===== full bleed ===== */
+footer,
+iframe,
+pre,
+table {
+  grid-column: 1 / span 5;
+  margin: 0 -1vmin;
 }
-main > picture {
-  display: grid;
-  margin-top: 25vh;
-}
+h4 img,
 p img,
 picture img {
   width: 100%;
   margin: auto;
 }
 
+/* ===== layout main ===== */
 h3,
 h4 {
   margin: 25vh 0 0.25em 0;
@@ -270,7 +256,7 @@ h6 {
 }
 p {
   line-height: 1.5;
-  margin: 0 0 0.5em 0;
+  margin: 0 0 1em 0;
 }
 
 /* ===== layout footer ===== */
@@ -290,9 +276,12 @@ a:hover {
   transition: color 0.16s;
 }
 
-header a,
-header a:hover,
-header a:visited {
+h1 a,
+h1 a:hover,
+h1 a:visited,
+hgroup a,
+hgroup a:hover,
+hgroup a:visited {
   color: inherit;
   text-decoration: none;
 }
