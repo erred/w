@@ -7,15 +7,15 @@ import (
 	"net/http"
 	"os"
 	"path"
+	"regexp"
 	"strings"
-)
 
-const (
-	name = "go.seankhliao.com/com-seankhliao"
+	"go.seankhliao.com/com-seankhliao/v13/internal/serve"
+	"k8s.io/klog/v2"
 )
 
 func main() {
-	os.Exit(serve(&Server{}))
+	os.Exit(serve.Run(&Server{}))
 }
 
 type Server struct {
@@ -30,14 +30,20 @@ func (s *Server) InitFlags(fs *flag.FlagSet) {
 	fs.StringVar(&s.dir, "dir", "public", "directory to serve")
 }
 
-func (s *Server) Setup(ctx context.Context, c *Components) error {
+func (s *Server) Setup(ctx context.Context, c *serve.Components) error {
 	notfound, _ := ioutil.ReadFile(path.Join(s.dir, "404.html"))
 	s.notfound = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if regexp.MustCompile(`/blog/\d{4}-\d{2}-\d{2}-.*/`).MatchString(r.URL.Path) {
+			http.Redirect(w, r, "/blog/1"+r.URL.Path[6:], http.StatusMovedPermanently)
+			return
+		}
+
 		w.WriteHeader(http.StatusNotFound)
 		w.Write(notfound)
 	})
 
 	c.Mux.Handle("/", s)
+	klog.InfoS("setup complete", "dir", s.dir, "notfound", notfound != nil)
 	return nil
 }
 

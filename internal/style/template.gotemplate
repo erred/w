@@ -1,3 +1,130 @@
+{{ define "layout" }}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preload" href="https://seankhliao.com/base.css" as="style" crossorigin />
+    <link rel="preload" href="https://seankhliao.com/inconsolata-var.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="https://seankhliao.com/lora-var.woff2" as="font" type="font/woff2" crossorigin />
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
+
+    <title>{{ .Title }}</title>
+
+    <!-- prettier-ignore -->
+    {{ if not .DisableAnalytics }}{{ template "analytics" }}{{ end }}
+
+    <link rel="stylesheet" href="https://seankhliao.com/base.css" crossorigin />
+
+    <link rel="canonical" href="{{ .URLCanonical }}" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="{{ .Description }}" />
+
+    <link rel="icon" type="image/png" sizes="512x512" href="https://seankhliao.com/icon-512.png" />
+    <link rel="apple-touch-icon" href="https://seankhliao.com/icon-512.png" />
+    <link rel="shortcut icon" href="https://seankhliao.com/favicon.ico" />
+
+    <style nonce="deadbeef1">
+      /* prettier-ignore */
+      {{ if .EmbedStyle }}{{ template "basecss" }}{{ end }}
+      /* prettier-ignore */
+      {{ .Style }}
+    </style>
+  </head>
+  <body>
+    <!-- prettier-ignore -->
+    {{ if not .DisableAnalytics }}{{ template "analytics-fallback" }}{{ end }}
+
+    <header>
+      <h1>
+        <a href="/">
+          <span>S</span>
+          <span>E</span>
+          <span>A</span>
+          <span>N</span>
+          <em>K</em>
+          <em>.</em>
+          <em>H</em>
+          <em>.</em>
+          <span>L</span>
+          <span>I</span>
+          <span>A</span>
+          <span>O</span>
+        </a>
+      </h1>
+
+      {{ .Header }}
+    </header>
+
+    <main>
+      {{ .Main }}
+    </main>
+
+    <footer>
+      <a href="https://seankhliao.com/">home</a>
+      |
+      <a href="https://seankhliao.com/blog/">blog</a>
+      |
+      <a href="https://github.com/seankhliao">github</a>
+      |
+      <a href="https://seankhliao.com/terms/">terms</a>
+    </footer>
+  </body>
+</html>
+{{ end }}
+
+{{ define "analytics" }}
+<link rel="preconnect" href="https://www.googletagmanager.com" />
+<link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
+
+<!-- Google Tag Manager -->
+<script type="module" nonce="deadbeef2">
+  (function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+    var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s),
+      dl = l != "dataLayer" ? "&l=" + l : "";
+    j.async = true;
+    j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+    f.parentNode.insertBefore(j, f);
+  })(window, document, "script", "dataLayer", "GTM-TLVN7D6");
+
+  import {
+    getCLS,
+    getFCP,
+    getFID,
+    getLCP,
+    getTTFB,
+  } from "https://unpkg.com/web-vitals@0.2.4/dist/web-vitals.es5.min.js?module";
+
+  function sendGTM({ name, delta, id }) {
+    dataLayer.push({
+      event: "web-vitals",
+      event_category: "Web Vitals",
+      event_action: name,
+      event_value: Math.round(name === "CLS" ? delta * 1000 : delta),
+      event_label: id,
+    });
+  }
+
+  getCLS(sendGTM);
+  getFCP(sendGTM);
+  getFID(sendGTM);
+  getLCP(sendGTM);
+  getTTFB(sendGTM);
+</script>
+{{ end }}
+
+{{ define "analytics-fallback" }}
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLVN7D6"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+{{ end }}
+
+{{ define "basecss" }}
 * {
   box-sizing: border-box;
 }
@@ -250,3 +377,4 @@ noscript iframe {
   display: none;
   visibility: hidden;
 }
+{{ end }}

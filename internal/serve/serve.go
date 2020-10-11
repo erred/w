@@ -1,4 +1,4 @@
-package main
+package serve
 
 import (
 	"context"
@@ -24,7 +24,7 @@ type Components struct {
 	Server *http.Server
 }
 
-func serve(svc Service) int {
+func Run(svc Service) int {
 	var addr string
 	flag.StringVar(&addr, "addr", os.Getenv("PORT"), "address")
 	klog.InitFlags(nil)

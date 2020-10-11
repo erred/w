@@ -1,6 +1,6 @@
-module go.seankhliao.com/com-seankhliao/v12
+module go.seankhliao.com/com-seankhliao/v13
 
-go 1.15
+go 1.16
 
 require (
 	github.com/kr/pretty v0.1.0 // indirect

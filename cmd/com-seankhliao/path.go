@@ -14,6 +14,7 @@ func exists(p string) bool {
 	return true
 }
 
+// canonical takes a request path and returns the canonical path,
 func canonical(p string) string {
 	p = strings.TrimSuffix(strings.TrimSuffix(p, ".html"), "index")
 	if p[len(p)-1] != '/' {
