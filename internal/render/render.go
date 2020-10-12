@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"path"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -82,8 +83,8 @@ func ProcessDir(src, dst, baseURL string, disableAnalytics, embedStyle bool) err
 }
 
 func ProcessFile(src, dst, u string, disableAnalytics, embedStyle bool) (PageInfo, error) {
-	if filepath.Ext(src) != ".md" {
-		return PageInfo{}, fmt.Errorf("ProcessFile ext=%s unknown ext", filepath.Ext(src))
+	if path.Ext(src) != ".md" {
+		return PageInfo{}, fmt.Errorf("ProcessFile ext=%s unknown ext", path.Ext(src))
 	}
 	b, err := ioutil.ReadFile(src)
 	if err != nil {
@@ -114,8 +115,8 @@ func ProcessFile(src, dst, u string, disableAnalytics, embedStyle bool) (PageInf
 		if ps == "blog" {
 			pi.BlogPost = true
 			pi.Title = pd.Title
-			pi.Date = filepath.Base(u)[:11]
-			pd.Date = filepath.Base(u)[:11]
+			pi.Date = path.Base(u)[:11]
+			pd.Date = path.Base(u)[:11]
 			pd.H1 = `<a href="/blog/">b<em>log</em></a>`
 			pd.H2 = fmt.Sprintf(`<time datetime="%s">%s</time>`, pi.Date, pi.Date)
 			break
@@ -131,7 +132,7 @@ func ProcessFile(src, dst, u string, disableAnalytics, embedStyle bool) (PageInf
 	pd.Main = buf.String()
 
 	// render template
-	os.MkdirAll(filepath.Dir(dst), 0o755)
+	os.MkdirAll(path.Dir(dst), 0o755)
 	f, err := os.Create(dst)
 	if err != nil {
 		return PageInfo{}, fmt.Errorf("ProcessFile dst=%s create: %w", dst, err)
@@ -146,8 +147,8 @@ func ProcessFile(src, dst, u string, disableAnalytics, embedStyle bool) (PageInf
 }
 
 func blogIndex(dst, urlBase string, pis []PageInfo) (PageInfo, error) {
-	dstPath := filepath.Join(urlBase, "blog")
-	dstFile := filepath.Join(dst, "blog", "index.html")
+	dstPath := path.Join(urlBase, "blog")
+	dstFile := path.Join(dst, "blog", "index.html")
 
 	pd := PageData{
 		Title:        "blog | seankhliao",
@@ -201,7 +202,7 @@ func sitemap(dst string, pis []PageInfo) error {
 		urls[i] = pis[i].URLCanonical
 	}
 	sitemap := strings.Join(urls, "\n")
-	dstFile := filepath.Join(dst, "sitemap.txt")
+	dstFile := path.Join(dst, "sitemap.txt")
 
 	err := ioutil.WriteFile(dstFile, []byte(sitemap), 0o644)
 	if err != nil {
@@ -211,8 +212,8 @@ func sitemap(dst string, pis []PageInfo) error {
 }
 
 func pageName(srcDir, dstDir, urlBase, file string) (dstFile, fullURL string) {
-	relFile, _ := filepath.Rel(srcDir, file)
+	relFile, _ := path.Rel(srcDir, file)
 	noext := strings.TrimSuffix(relFile, ".md")
 	withext := noext + ".html"
-	return filepath.Join(dstDir, withext), filepath.Join(urlBase, noext) + "/"
+	return path.Join(dstDir, withext), path.Join(urlBase, noext) + "/"
 }
