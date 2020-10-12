@@ -147,7 +147,7 @@ func ProcessFile(src, dst, u string, disableAnalytics, embedStyle bool) (PageInf
 }
 
 func blogIndex(dst, urlBase string, pis []PageInfo) (PageInfo, error) {
-	dstPath := path.Join(urlBase, "blog")
+	dstPath := urlBase + "/blog/"
 	dstFile := path.Join(dst, "blog", "index.html")
 
 	pd := PageData{
