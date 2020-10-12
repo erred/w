@@ -2,6 +2,8 @@
 
 - portable confs
 - cf for ipv6 translation
+- proto, textproto, json
+- logging, revisited
 
 - operator, crd
 
