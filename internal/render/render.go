@@ -215,5 +215,5 @@ func pageName(srcDir, dstDir, urlBase, file string) (dstFile, fullURL string) {
 	relFile, _ := filepath.Rel(srcDir, file)
 	noext := strings.TrimSuffix(relFile, ".md")
 	withext := noext + ".html"
-	return path.Join(dstDir, withext), path.Join(urlBase, noext) + "/"
+	return path.Join(dstDir, withext), urlBase + "/" + noext + "/"
 }
