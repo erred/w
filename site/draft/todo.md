@@ -1,21 +1,28 @@
 # Ideas
 
+- blog:
+  - beyondcorp
+  - build with dockerfile vs docker run
+  - building blocks of cloud native: k8s, envoy, prometheus
+  - collaborative vs talk over conversation style
+  - sql builders:
+    - squirrel
+    - sqlx
+    - sqlc
+    - sqlboiler
 - portable confs
-- cf for ipv6 translation
-- proto, textproto, json
-- logging, revisited
-
-- operator, crd
-
-- repro + container
-- building blocks of cloud native: k8s, envoy, prometheus
-- blog: build with dockerfile vs docker run
 - envoy reverse proxy: dns?
+- operator, crd
+- repro + container
 - write spotify tracker
 - cilium
 - istio
 - alertmanager
 - otel collector / jaeger
+- go module scan:
+
+  - license? MIT / Apache
+  - dedupe
 
 - bazel
 - nix
@@ -26,6 +33,12 @@
 - google domains
 
 ## links
+
+### beyondcorp
+
+https://news.ycombinator.com/item?id=24778073
+
+### eventing
 
 knative eventing?
 https://cloudevents.io/
