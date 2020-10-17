@@ -2,9 +2,7 @@
 
 - blog:
   - beyondcorp
-  - build with dockerfile vs docker run
   - building blocks of cloud native: k8s, envoy, prometheus
-  - collaborative vs talk over conversation style
   - sql builders:
     - squirrel
     - sqlx
