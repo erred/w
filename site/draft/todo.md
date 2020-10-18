@@ -1,8 +1,5 @@
 # Ideas
 
-- blog:
-  - beyondcorp
-  - building blocks of cloud native: k8s, envoy, prometheus
 - portable confs
 - envoy reverse proxy: dns?
 - operator, crd
@@ -26,10 +23,6 @@
 - google domains
 
 ## links
-
-### beyondcorp
-
-https://news.ycombinator.com/item?id=24778073
 
 ### eventing
 
