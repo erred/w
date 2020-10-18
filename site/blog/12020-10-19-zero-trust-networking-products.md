@@ -31,7 +31,7 @@ creating finer grained tunnels and access controls than what VPNs offer.
 | [strongDM][strongdm]                    | cloud hosted? | SSH / RDP / k8s? / databases | local proxy, tunnels TCP over TLS, extra support for SSH / RDP / K8s / databases |
 | [Gravitational Teleport][gravitational] | self hosted   | SSH / k8s?                   | reverse proxy for HTTPS / some k8s specific support?                             |
 
-other stuff
+#### _other_
 
 | product                | cloud / self | protocols | notes                                    |
 | ---------------------- | ------------ | --------- | ---------------------------------------- |
