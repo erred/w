@@ -1,26 +1,33 @@
 # Ideas
 
-- portable confs
-- envoy reverse proxy: dns?
 - operator, crd
+- irc host/server
+- regex math
+- serialization, round2: json, protobuf, cbor, flatbuf/capnproto
+- ansible
+- bazel
+- nix
+- envoy reverse proxy: dns?
 - repro + container
 - write spotify tracker
+- google domains
+- vm creation / cloud-init / packer
 - cilium
 - istio
 - alertmanager
 - otel collector / jaeger
-- go module scan:
 
-  - license? MIT / Apache
-  - dedupe
+go module scan:
 
-- bazel
-- nix
+- license? MIT / Apache
+- dedupe
 
-- vm creation / cloud-init / packer
+tools:
 
-- travel, borders, world, population, books
-- google domains
+- ncat
+- gron
+- xsv
+- yq
 
 ## links
 
