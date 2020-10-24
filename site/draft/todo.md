@@ -1,10 +1,6 @@
 # Ideas
 
 - operator, crd
-- irc host/server
-- regex math
-- serialization, round2: json, protobuf, cbor, flatbuf/capnproto
-- ansible
 - bazel
 - nix
 - envoy reverse proxy: dns?
@@ -22,19 +18,7 @@ go module scan:
 - license? MIT / Apache
 - dedupe
 
-tools:
-
-- ncat
-- gron
-- xsv
-- yq
-
 ## links
-
-### eventing
-
-knative eventing?
-https://cloudevents.io/
 
 ### observability
 

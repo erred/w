@@ -29,7 +29,7 @@ creating finer grained tunnels and access controls than what VPNs offer.
 | [Okta Access Gateway][okta]             | self hosted   | HTTPS / SSH                  | reverse proxy for HTTPS / SSH (Adv.Server Access)                                |
 | [Trasa][trasa]                          | self hosted   | HTTPS / SSH / RDP            | reverse proxy for HTTPS / SSH / RDP / ext auth endpoint                          |
 | [strongDM][strongdm]                    | cloud hosted? | SSH / RDP / k8s? / databases | local proxy, tunnels TCP over TLS, extra support for SSH / RDP / K8s / databases |
-| [Gravitational Teleport][gravitational] | self hosted   | SSH / k8s?                   | reverse proxy for HTTPS / some k8s specific support?                             |
+| [Gravitational Teleport][gravitational] | self hosted   | SSH / k8s?                   | reverse proxy for SSH / some k8s specific support?                               |
 
 #### _other_
 
