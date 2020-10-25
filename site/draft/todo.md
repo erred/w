@@ -1,5 +1,13 @@
 # Ideas
 
+- git signing
+  - TUF, docker
+- consensus protocols:
+  - paxos
+- metrics
+  - USE
+  - RED
+- reviewing RFCs
 - operator, crd
 - bazel
 - nix
@@ -19,6 +27,11 @@ go module scan:
 - dedupe
 
 ## links
+
+security, retractions?
+https://editorconfig.org/
+https://semver.org/
+https://keepachangelog.com/en/1.0.0/
 
 ### observability
 
