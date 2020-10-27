@@ -1,7 +1,6 @@
 # Ideas
 
 - git signing
-  - TUF, docker
 - consensus protocols:
   - paxos
 - metrics
