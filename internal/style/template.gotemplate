@@ -173,7 +173,8 @@
 /* ===== layout general ===== */
 body {
   display: grid;
-  grid: repeat(2, 20vh) 40vh / 1fr repeat(3, minmax(90px, 280px)) 1fr;
+  /* account for grid-gap + some absurdly narrow (280px) screens */
+  grid: repeat(2, 20vh) 40vh / 1fr repeat(3, minmax(70px, 280px)) 1fr;
   gap: 0 1em;
   margin: 0;
   padding: 1vmin;

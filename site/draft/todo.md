@@ -1,8 +1,6 @@
 # Ideas
 
 - git signing
-- consensus protocols:
-  - paxos
 - metrics
   - USE
   - RED
