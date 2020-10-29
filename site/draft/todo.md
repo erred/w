@@ -1,10 +1,5 @@
 # Ideas
 
-- git signing
-- metrics
-  - USE
-  - RED
-- reviewing RFCs
 - operator, crd
 - bazel
 - nix
@@ -31,6 +26,10 @@ https://semver.org/
 https://keepachangelog.com/en/1.0.0/
 
 ### observability
+
+- metrics
+  - USE
+  - RED
 
 https://techbeacon.com/enterprise-it/monitoring-demystified-guide-logging-tracing-metrics
 
