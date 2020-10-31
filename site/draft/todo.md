@@ -18,6 +18,8 @@ go module scan:
 - license? MIT / Apache
 - dedupe
 
+sre at non tech company
+
 ## links
 
 security, retractions?
