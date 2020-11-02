@@ -1,12 +1,12 @@
 # Ideas
 
+- CGI
 - operator, crd
 - bazel
 - nix
 - envoy reverse proxy: dns?
 - repro + container
 - write spotify tracker
-- google domains
 - vm creation / cloud-init / packer
 - cilium
 - istio
@@ -29,9 +29,7 @@ https://keepachangelog.com/en/1.0.0/
 
 ### observability
 
-- metrics
-  - USE
-  - RED
+metrics: USE, RED
 
 https://techbeacon.com/enterprise-it/monitoring-demystified-guide-logging-tracing-metrics
 

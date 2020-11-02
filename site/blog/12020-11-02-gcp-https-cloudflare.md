@@ -47,8 +47,3 @@ Your best bet is to do the same (also recommended by a Google engineer for a [no
 - Page rule `Host Override` to rewrite the host to `your-app.a.run.app`
 
 Note: you can't use a Resolve Override because it won't pass cloudflare validation
-
-#### _side_ note
-
-You can combine similar page rules with globbing:
-`storage-*.example.com` and rewrite to `storage-$1.storage.googleapis.com`.
