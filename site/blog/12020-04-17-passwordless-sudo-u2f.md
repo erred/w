@@ -22,9 +22,9 @@ origin and id is set to enforce a stable name
 
 ```sh
 # first key
-pamu2fcfd -i pam://hostname -o pam://hostname > ~/.config/Yubico/u2f_keys
+pamu2fcfg -i pam://hostname -o pam://hostname > ~/.config/Yubico/u2f_keys
 # other keys
-pamu2fcfd -n -i pam://hostname -o pam://hostname > ~/.config/Yubico/u2f_keys
+pamu2fcfg -n -i pam://hostname -o pam://hostname > ~/.config/Yubico/u2f_keys
 ```
 
 ~/.config/Yubico/u2f_keys
