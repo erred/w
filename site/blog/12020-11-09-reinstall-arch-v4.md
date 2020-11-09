@@ -33,6 +33,7 @@ title: reinstall arch v4
    2. `/etc/pam.d/system-auth`: add `auth sufficient pam_u2f.so cue origin=pam://eevee appid=pam://eevee` for 1fa yubikey authentication
    - `pamu2fcfg -i pam://eevee -o pam://eevee > ~/.config/Yubico/u2f_keys` to enroll first key, add `-n` to add more with append
    - replace `eevee` with your hostname
+   - if using `systemd-homed` your home directory is not mounted (an maybe is encrypted) when you're not logged in so the pam-u2f won't be able to find the authorized keys...
 10. setup pacman
     1. `pacman-key --init`
     2. `pacman-key --populate archlinux`
