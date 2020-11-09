@@ -88,6 +88,10 @@ func Run(svc Service) int {
 
 func corsAllowAll(h http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("server", "internal/serve/v13")
+		w.Header().Set("hire-me", "http-header-hire@seankhliao.com")
+		w.Header().Set("easter-egg", "🐇*(🍆-🪴)=🐇🥚")
+
 		switch r.Method {
 		case http.MethodOptions:
 			w.Header().Set("Access-Control-Allow-Origin", "*")

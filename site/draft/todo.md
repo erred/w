@@ -3,7 +3,6 @@
 - CGI
 - operator, crd
 - bazel
-- nix
 - envoy reverse proxy: dns?
 - repro + container
 - write spotify tracker
