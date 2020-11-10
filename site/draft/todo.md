@@ -1,12 +1,12 @@
 # Ideas
 
-- CGI
+- nginx config
 - operator, crd
 - bazel
 - envoy reverse proxy: dns?
-- repro + container
-- write spotify tracker
+- linux audit
 - vm creation / cloud-init / packer
+- rewrite spotify tracker
 - cilium
 - istio
 - alertmanager
