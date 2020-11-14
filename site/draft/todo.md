@@ -1,6 +1,5 @@
 # Ideas
 
-- nginx config
 - operator, crd
 - bazel
 - envoy reverse proxy: dns?
@@ -31,12 +30,6 @@ https://keepachangelog.com/en/1.0.0/
 metrics: USE, RED
 
 https://techbeacon.com/enterprise-it/monitoring-demystified-guide-logging-tracing-metrics
-
-### openapi
-
-https://www.programmableweb.com/apis/directory
-https://www.schemastore.org/json/
-https://apis.guru/openapi-directory/
 
 ### secure boot
 
