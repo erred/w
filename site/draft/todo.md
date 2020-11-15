@@ -1,10 +1,10 @@
 # Ideas
 
-- operator, crd
 - bazel
 - envoy reverse proxy: dns?
 - linux audit
 - vm creation / cloud-init / packer
+- SSE, REST, HATEOAS
 - rewrite spotify tracker
 - cilium
 - istio
@@ -18,12 +18,31 @@ go module scan:
 
 sre at non tech company
 
-## links
+### repo metadata
 
 security, retractions?
 https://editorconfig.org/
 https://semver.org/
 https://keepachangelog.com/en/1.0.0/
+spdx licence detection
+code of conduct
+contributing.md
+`*ignore`
+ci build info
+.github/owners issue/pr template
+gitattributes
+badges
+
+- https://bestpractices.coreinfrastructure.org/en/projects/569
+- code quality
+- release
+- licence
+- downloads
+- package managers
+- arxiv
+- colab
+- community / chat
+- donate
 
 ### observability
 
