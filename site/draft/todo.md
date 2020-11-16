@@ -18,31 +18,7 @@ go module scan:
 
 sre at non tech company
 
-### repo metadata
-
-security, retractions?
-https://editorconfig.org/
-https://semver.org/
-https://keepachangelog.com/en/1.0.0/
-spdx licence detection
-code of conduct
-contributing.md
-`*ignore`
-ci build info
-.github/owners issue/pr template
-gitattributes
-badges
-
-- https://bestpractices.coreinfrastructure.org/en/projects/569
-- code quality
-- release
-- licence
-- downloads
-- package managers
-- arxiv
-- colab
-- community / chat
-- donate
+https://github.com/jrockway/json-logs
 
 ### observability
 
