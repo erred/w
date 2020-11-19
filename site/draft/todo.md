@@ -1,30 +1,21 @@
 # Ideas
 
 - bazel
-- envoy reverse proxy: dns?
-- linux audit
+- knative
 - vm creation / cloud-init / packer
 - SSE, REST, HATEOAS
-- rewrite spotify tracker
-- cilium
-- istio
-- alertmanager
-- otel collector / jaeger
+- appengine as proxy
 
-go module scan:
-
-- license? MIT / Apache
-- dedupe
+- cf-terraforming / gcp terraformer
 
 sre at non tech company
 
 ## links
 
-https://github.com/jrockway/json-logs
-
 ### observability
 
 metrics: USE, RED
+metrics polling rate
 
 https://techbeacon.com/enterprise-it/monitoring-demystified-guide-logging-tracing-metrics
 
