@@ -1,10 +1,10 @@
 # Ideas
 
 - bazel
-- knative
 - vm creation / cloud-init / packer
 - SSE, REST, HATEOAS
-- appengine as proxy
+- nomad
+- consul
 
 - cf-terraforming / gcp terraformer
 
