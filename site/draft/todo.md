@@ -2,7 +2,6 @@
 
 - bazel
 - vm creation / cloud-init / packer
-- SSE, REST, HATEOAS
 - nomad
 - consul
 
