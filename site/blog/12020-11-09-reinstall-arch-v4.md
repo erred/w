@@ -6,7 +6,7 @@ title: reinstall arch v4
 ### _install_
 
 1. setup disks, network, and base install from livecd,
-   refer to eg [yesterday](/blog/12020-11-08-arch-dm-crypt-btrfs).
+   refer to eg [yesterday](/blog/12020-11-08-arch-dm-crypt-btrfs/).
    - sanity check things that were installed with pacstrap:
      `base base-devel linux linux-firmware intel-ucode iwd neovim btrfs-progs zsh zsh-completions sudo git`
 2. Prepare network stuff

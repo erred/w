@@ -2,6 +2,7 @@
 description: vanity imports are vain
 title: go vanity imports
 ---
+
 So how do you get `go get your.domain/package` to work?
 
 ### _go get_
@@ -32,12 +33,12 @@ repo/path/to/package
 the `go` cmd as of go1.12 does not use tls1.3 by default
 (need `GODEBUG=tls13=1`)
 so make sure your server works with at least tls1.2
-if you want stuff like [godoc.org](godoc.org) to work**
+if you want stuff like [godoc.org](https://godoc.org/) to work**
 
 ### _go source_
 
 Documentation is important,
-[godoc.org](godoc.org) is standard for _Go_
+[godoc.org](https://godoc.org) is standard for _Go_
 
 support it with the extra meta tag of the form: `<meta name="go-source" content="module_name link_to_repo link_to_repo_ref_dir link_to_repo_ref_line"`
 
