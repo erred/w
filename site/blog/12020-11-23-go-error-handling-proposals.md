@@ -14,7 +14,8 @@ if err != nil {
 Error handling seems to be a recurring theme in go,
 but most proposals get nowhere.
 
-[Go2ErrorHandlingFeedback](https://github.com/golang/go/wiki/Go2ErrorHandlingFeedback)
+- [Go2ErrorHandlingFeedback](https://github.com/golang/go/wiki/Go2ErrorHandlingFeedback)
+- [label:error-handling](https://github.com/golang/go/issues?q=is%3Aissue+label%3Aerror-handling)
 
 #### _proposals_
 
@@ -23,16 +24,13 @@ baseline code
 ```go
 x, err := foo()
 if err != nil {
-        return nil, err
+        return nil, wrap(err)
 }
 ```
 
-- [result type](https://github.com/golang/go/issues/19991):
-  box of `value|err`
+##### _handling_
 
-##### with error handling
-
-note all the ones that claim to use "plain functions" as error handlers have an implicit double return
+_note:_ almost all the ones that claim to use "plain functions" as error handlers have an implicit nonlocal return
 
 ###### _predeclared_ handlers
 
@@ -51,7 +49,7 @@ note all the ones that claim to use "plain functions" as error handlers have an 
 - [`err := inline(err error){ if err != nil { return _, wrap(err) } }` ; `x, err := foo()`](https://github.com/gooid/gonotes/blob/master/inline_style_error_handle.md): assign to handler
 - [`err := func(err error) (T, error) { return _, wrap(err) }` ; `x, #err := foo()`](https://gist.github.com/the-gigi/3c1acfc521d7991309eec140f40ccc2b): block scoped
 - [`_check = func(err error) (T, error) { return _, wrap(err)}` ; `x, ?err := foo()`](https://gist.github.com/8lall0/cb43e1fa4aae42bc709b138bda02284e): not fully formed idea on return
-- [`handler := func(err error) (T, error) { return^2 _, wrap(err) }` ; `x, handler(err) := foo()`](https://github.com/golang/go/issues/32473): note multilevel return
+- [`handler := func(err error) (T, error) { return^2 _, wrap(err) }` ; `x, handler(err) := foo()`](https://github.com/golang/go/issues/32473): note nonlocal return
 
 ##### _wrapping_
 
@@ -130,6 +128,7 @@ can use `defer` for wrapping
 - [`collect err { x, _! := foo() }` ; `if err != nil { return _, wrap(err) }`](https://github.com/golang/go/issues/25626): err is an value that accumulates errors? does it continue?
 - [`errorhandling(err){ x, err := foo() }`](https://github.com/Konstantin8105/Go2ErrorTree): err is an accumulator? messes with types
 - [`x, err := foo()` ; `handle err1 || err2 || err3 { return _, wrap(err) }`](https://gist.github.com/Kiura/4826db047e22b7720d378ac9ac642027): shorter if chain?
-- [multilevel return](https://github.com/golang/go/issues/35093)
-- [multilevel return with return type](https://github.com/golang/go/issues/42811)
-- [`returnfrom label, err`](https://gist.github.com/spakin/86ea86ca48aefc78b672636914f4fc23): multilevel return
+- [nonlocal return](https://github.com/golang/go/issues/35093)
+- [nonlocal return with return type](https://github.com/golang/go/issues/42811)
+- [`returnfrom label, err`](https://gist.github.com/spakin/86ea86ca48aefc78b672636914f4fc23): nonlocal return
+- [result type](https://github.com/golang/go/issues/19991): box of `value|err` allows passthrough

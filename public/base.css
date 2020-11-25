@@ -164,6 +164,7 @@ ul {
 }
 ul > * {
   margin: 0.5em;
+  line-height: 1.5em;
 }
 ul > li:before {
   content: "»";
@@ -182,12 +183,12 @@ blockquote {
 }
 
 code {
-  background: #404040;
+  background: #303030;
   font: 1em "Inconsolata", monospace;
   padding: 0.1em;
 }
 pre {
-  background: #404040;
+  background: #303030;
   overflow-x: scroll;
   padding: 1em;
 }
