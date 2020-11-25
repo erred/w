@@ -141,11 +141,12 @@ a,
 a:visited {
   color: inherit;
   font-weight: 700;
-  text-decoration: underline;
+  text-decoration: underline 1px #707070;
 }
 a:hover {
   color: #a06be0;
   transition: color 0.16s;
+  text-decoration: underline 1px #a06be0;
 }
 
 h1 a,
