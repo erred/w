@@ -44,7 +44,7 @@ _note:_ almost all the ones that claim to use "plain functions" as error handler
 ###### _call_ specific handler
 
 - [`x, #err := foo()`<br>`catch err { return _, wrap(err) }`](https://github.com/golang/go/issues/27519): tagged error handlers
-- [`x, @err := foo()`<br>`err: return _, wrap(err)`](https://gist.github.com/dpremus/3b141157e7e47418ca6ccb1fc0210fc7): labels and `goto`
+- [`x, @err := foo()`<br>`err: return _, wrap(err)`](https://gist.github.com/dpremus/3b141157e7e47418ca6ccb1fc0210fc7): goto label
 - [`grab err() { if err != nil { return _, wrap(err) } }`<br>`x, err() := foo()`](https://didenko.github.io/grab/grab_worth_it_0.1.1.html#12): assign to handler
 - [`err := inline(err error){ if err != nil { return _, wrap(err) } }`<br>`x, err := foo()`](https://github.com/gooid/gonotes/blob/master/inline_style_error_handle.md): assign to handler
 - [`err := func(err error) (T, error) { return _, wrap(err) }`<br>`x, #err := foo()`](https://gist.github.com/the-gigi/3c1acfc521d7991309eec140f40ccc2b): block scoped
@@ -118,9 +118,9 @@ can use `defer` for wrapping
 - [`check { x := check foo() } handle err { return _, wrap(err) }`](https://gist.github.com/mathieudevos/2bdae70596aca711e50d1f2ff6d7b7cb)
 - [`check { x, err1 := foo() } catch err { return _, wrap(err) }`](https://gist.github.com/eau-de-la-seine/9e2e74d6369aef4a76aa50976e34de6d)
 - [`check { x, err := foo()`<br>`catch: return _, wrap(err) }`](https://github.com/golang/go/issues/32968)
-- [`x, err := foo() !!!`<br>`fail: return _, wrap(err)`](https://github.com/golang/go/issues/34140)
+- [`x, err := foo() !!!`<br>`fail: return _, wrap(err)`](https://github.com/golang/go/issues/34140): goto label
 - [`handle err { x, err := foo()<br>case err != nil: return _, wrap(err) }`](https://github.com/golang/go/issues/35086)
-- [`try { x := foo()<br>if err != nil { return _, wrap(err) } }`](https://github.com/golang/go/issues/35179)
+- [`try { x := foo(); if err != nil { return _, wrap(err) } }`](https://github.com/golang/go/issues/35179)
 
 ##### _others_
 
