@@ -12,13 +12,12 @@ import (
 
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/extension"
+	"github.com/yuin/goldmark/renderer/html"
 	"go.seankhliao.com/com-seankhliao/v13/internal/style"
 	"sigs.k8s.io/yaml"
 )
 
-var (
-	mdParser = goldmark.New(goldmark.WithExtensions(extension.Table))
-)
+var mdParser = goldmark.New(goldmark.WithExtensions(extension.Table), goldmark.WithRendererOptions(html.WithUnsafe()))
 
 type PageData struct {
 	// mandatory
