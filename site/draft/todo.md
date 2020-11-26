@@ -4,6 +4,9 @@
 - vm creation / cloud-init / packer
 - nomad
 - consul
+- https://oracle.github.io/opengrok/
+- skopeo copy
+- grafana heatmap
 
 - cf-terraforming / gcp terraformer
 
