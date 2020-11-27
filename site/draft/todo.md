@@ -4,11 +4,6 @@
 - vm creation / cloud-init / packer
 - nomad
 - consul
-- https://oracle.github.io/opengrok/
-- skopeo copy
-- grafana heatmap
-
-- cf-terraforming / gcp terraformer
 
 sre at non tech company
 
@@ -18,6 +13,7 @@ sre at non tech company
 
 metrics: USE, RED
 metrics polling rate
+grafana heatmap
 
 https://techbeacon.com/enterprise-it/monitoring-demystified-guide-logging-tracing-metrics
 
