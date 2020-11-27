@@ -1,6 +1,10 @@
 ---
 description: go list pattern coverage
 title: go list patterns
+style: |
+  picture {
+    margin-top: 0;
+  }
 ---
 
 ### _list_

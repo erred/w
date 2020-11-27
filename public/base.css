@@ -93,12 +93,11 @@ hgroup *:nth-child(n + 5) {
 footer,
 iframe,
 pre,
-table {
+table,
+picture {
   grid-column: 1 / span 5;
   margin: 0 -1vmin;
 }
-h4 img,
-p img,
 picture img {
   width: 100%;
   margin: auto;
@@ -106,7 +105,8 @@ picture img {
 
 /* ===== layout main ===== */
 h3,
-h4 {
+h4,
+picture {
   margin: 25vh 0 0.25em 0;
 }
 

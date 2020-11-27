@@ -15,10 +15,11 @@ import (
 	"github.com/yuin/goldmark/extension"
 	"github.com/yuin/goldmark/parser"
 	"github.com/yuin/goldmark/renderer/html"
+	"go.seankhliao.com/com-seankhliao/v13/internal/picture"
 	"go.seankhliao.com/com-seankhliao/v13/internal/style"
 )
 
-var mdParser = goldmark.New(goldmark.WithExtensions(extension.Table, meta.Meta), goldmark.WithRendererOptions(html.WithUnsafe()))
+var mdParser = goldmark.New(goldmark.WithExtensions(extension.Table, meta.Meta, picture.Picture), goldmark.WithRendererOptions(html.WithUnsafe()))
 
 type PageData struct {
 	// mandatory
@@ -108,6 +109,7 @@ func ProcessFile(src, dst, u string, disableAnalytics, embedStyle bool) (PageInf
 	metadata := meta.Get(ctx)
 	pd.Title, _ = metadata["title"].(string)
 	pd.Description, _ = metadata["description"].(string)
+	pd.Style, _ = metadata["style"].(string)
 	pd.H1, _ = metadata["h1"].(string)
 	pd.H2, _ = metadata["h2"].(string)
 
