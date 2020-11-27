@@ -18,7 +18,7 @@ import (
 	"go.seankhliao.com/com-seankhliao/v13/internal/style"
 )
 
-var mdParser = goldmark.New(goldmark.WithExtensions(extension.Table), goldmark.WithRendererOptions(html.WithUnsafe()))
+var mdParser = goldmark.New(goldmark.WithExtensions(extension.Table, meta.Meta), goldmark.WithRendererOptions(html.WithUnsafe()))
 
 type PageData struct {
 	// mandatory
@@ -106,10 +106,10 @@ func ProcessFile(src, dst, u string, disableAnalytics, embedStyle bool) (PageInf
 	}
 	pd.Main = buf.String()
 	metadata := meta.Get(ctx)
-	pd.Title = metadata["title"].(string)
-	pd.Description = metadata["description"].(string)
-	pd.H1 = metadata["h1"].(string)
-	pd.H2 = metadata["h2"].(string)
+	pd.Title, _ = metadata["title"].(string)
+	pd.Description, _ = metadata["description"].(string)
+	pd.H1, _ = metadata["h1"].(string)
+	pd.H2, _ = metadata["h2"].(string)
 
 	// extract extra info
 	pi := PageInfo{
@@ -164,7 +164,7 @@ ul li {
 	var buf strings.Builder
 	buf.WriteString(`
 <h3><em>B</em>log</h3>
-<p>web log of things that never made sense,
+<p>we<em>b log</em> of things that never made sense,
 maybe someone will find this useful</p>
 
 <ul>`)
