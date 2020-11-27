@@ -1,5 +1,5 @@
 ---
-descriptions: policy types and enforcement
+description: policy types and enforcement
 title: k8s policy enforcement
 ---
 

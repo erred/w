@@ -11,13 +11,14 @@ import (
 	"strings"
 
 	"github.com/yuin/goldmark"
+	meta "github.com/yuin/goldmark-meta"
 	"github.com/yuin/goldmark/extension"
+	"github.com/yuin/goldmark/parser"
 	"github.com/yuin/goldmark/renderer/html"
 	"go.seankhliao.com/com-seankhliao/v13/internal/style"
-	"sigs.k8s.io/yaml"
 )
 
-var mdParser = goldmark.New(goldmark.WithExtensions(extension.Table), goldmark.WithRendererOptions(html.WithUnsafe()))
+var mdParser = goldmark.New(goldmark.WithExtensions(extension.Table, meta.Meta), goldmark.WithRendererOptions(html.WithUnsafe()))
 
 type PageData struct {
 	// mandatory
@@ -96,15 +97,19 @@ func ProcessFile(src, dst, u string, disableAnalytics, embedStyle bool) (PageInf
 		EmbedStyle:       embedStyle,
 	}
 
-	// extract header indo
-	if bytes.HasPrefix(b, []byte(`---`)) {
-		parts := bytes.SplitN(b, []byte(`---`), 3)
-		err := yaml.Unmarshal(parts[1], &pd)
-		if err != nil {
-			return PageInfo{}, fmt.Errorf("ProcessFile src=%s parse header: %w", src, err)
-		}
-		b = parts[2]
+	// render markdown
+	var buf bytes.Buffer
+	ctx := parser.NewContext()
+	err = mdParser.Convert(b, &buf, parser.WithContext(ctx))
+	if err != nil {
+		return PageInfo{}, fmt.Errorf("ProcessFile src=%s render md: %w", src, err)
 	}
+	pd.Main = buf.String()
+	metadata := meta.Get(ctx)
+	pd.Title, _ = metadata["title"].(string)
+	pd.Description, _ = metadata["description"].(string)
+	pd.H1, _ = metadata["h1"].(string)
+	pd.H2, _ = metadata["h2"].(string)
 
 	// extract extra info
 	pi := PageInfo{
@@ -121,14 +126,6 @@ func ProcessFile(src, dst, u string, disableAnalytics, embedStyle bool) (PageInf
 			break
 		}
 	}
-
-	// render markdown
-	var buf bytes.Buffer
-	err = mdParser.Convert(b, &buf)
-	if err != nil {
-		return PageInfo{}, fmt.Errorf("ProcessFile src=%s render md: %w", src, err)
-	}
-	pd.Main = buf.String()
 
 	// render template
 	os.MkdirAll(path.Dir(dst), 0o755)
@@ -167,7 +164,7 @@ ul li {
 	var buf strings.Builder
 	buf.WriteString(`
 <h3><em>B</em>log</h3>
-<p>web log of things that never made sense,
+<p>we<em>b log</em> of things that never made sense,
 maybe someone will find this useful</p>
 
 <ul>`)
