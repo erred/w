@@ -1,5 +1,5 @@
 ---
-descriptuon: so many different type of package managers
+description: so many different type of package managers
 title: how many package managers
 ---
 
