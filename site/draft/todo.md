@@ -1,13 +1,12 @@
 # Ideas
 
 - bazel
-- vm creation / cloud-init / packer
-- nomad
-- consul
 
 sre at non tech company
 
 ## links
+
+https://github.com/freedomofpress/securedrop
 
 ### observability
 
@@ -25,4 +24,3 @@ https://media.defense.gov/2020/Sep/15/2002497594/-1/-1/0/CTR-UEFI-SECURE-BOOT-CU
 https://mjg59.dreamwidth.org/35742.html
 https://github.com/google/go-tpm-tools
 https://github.com/google/go-attestation
-https://sandrokeil.github.io/yubikey-full-disk-encryption-secure-boot-uefi/guides/arch-linux/
