@@ -1,12 +1,16 @@
 # Ideas
 
 - bazel
-
-sre at non tech company
+- cluster planning
+  - k8s distros
+  - cluster components
 
 ## links
 
 https://github.com/freedomofpress/securedrop
+
+https://github.com/GoogleCloudPlatform/terraformer
+https://github.com/cycloidio/terracognita
 
 ### observability
 
