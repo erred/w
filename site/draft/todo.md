@@ -9,9 +9,6 @@
 
 https://github.com/freedomofpress/securedrop
 
-https://github.com/GoogleCloudPlatform/terraformer
-https://github.com/cycloidio/terracognita
-
 ### observability
 
 metrics: USE, RED
