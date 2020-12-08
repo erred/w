@@ -75,7 +75,7 @@ curl -sfL https://get.k3s.io | sh -
 kubectl get --all-namspaces all
 ```
 
-#### _kubeadm_
+##### _kubeadm_
 
 - provide your own stuff, this is "just" responsible for half the config
 - using the containerd runtime, `--cni-bin-dir` isn't supported, either:
@@ -102,7 +102,8 @@ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documen
 sudo kubectl --kubeconfig /etc/kubernetes/admin.conf get --all-namespaces all
 ```
 
-- cilium
+###### _cilium_
+
 - [system requirements](https://docs.cilium.io/en/v1.9/operations/system_requirements/) is really important, ex that note about systemd and `rp_filter`
 
 ```sh
@@ -123,7 +124,7 @@ kubectl create -f https://raw.githubusercontent.com/cilium/cilium/v1.9/install/k
 sudo kubectl --kubeconfig /etc/kubernetes/admin.conf get --all-namespaces all
 ```
 
-#### _k0s_
+##### _k0s_
 
 [k0s](https://k0sproject.io/)
 
@@ -140,7 +141,7 @@ sudo k0s server
 sudo kubectl --kubeconfig /var/lib/k0s/pki/admin.conf get --all-namespaces all
 ```
 
-#### _kops_
+##### _kops_
 
 [kOps](https://kops.sigs.k8s.io/)
 
