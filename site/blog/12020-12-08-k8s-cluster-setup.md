@@ -118,7 +118,6 @@ sudo systemctl enable --now containerd
 sudo systemctl enable kubelet
 
 sudo kubeadm init
-
 kubectl create -f https://raw.githubusercontent.com/cilium/cilium/v1.9/install/kubernetes/quick-install.yaml
 
 sudo kubectl --kubeconfig /etc/kubernetes/admin.conf get --all-namespaces all
