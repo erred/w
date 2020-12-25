@@ -1,7 +1,7 @@
 FROM golang:rc-alpine AS build
 
 WORKDIR /workspace
-COPY go.mod go.sum ./
+COPY go.mod go.sum .
 COPY vendor vendor
 COPY cmd cmd
 copy internal internal

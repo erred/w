@@ -1,0 +1,31 @@
+substitutions:
+  _IMG: com-seankhliao
+  _REG: us.gcr.io/com-seankhliao
+
+tags:
+  - $SHORT_SHA
+  - $COMMIT_SHA
+
+steps:
+  - id: build-push
+    name: gcr.io/kaniko-project/executor:latest
+    args:
+      - -c=.
+      - -f=Dockerfile
+      - -d=$_REG/$_IMG:latest
+      - -d=$_REG/$_IMG:$SHORT_SHA
+      - --reproducible
+      - --single-snapshot
+      - --cache=true
+      - --use-new-run
+
+  - id: deploy
+    name: gcr.io/cloud-builders/gcloud:latest
+    entrypoint: gcloud
+    args:
+      - run
+      - deploy
+      - web
+      - --image=$_REG/$_IMG:$SHORT_SHA
+      - --region=us-central1
+      - --platform=managed
