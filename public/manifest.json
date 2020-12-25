@@ -16,31 +16,6 @@
       "src": "https://seankhliao.com/icon-192.png",
       "type": "image/png",
       "sizes": "192x192"
-    },
-    {
-      "src": "https://seankhliao.com/icon-128.png",
-      "type": "image/png",
-      "sizes": "128x128"
-    },
-    {
-      "src": "https://seankhliao.com/icon-64.png",
-      "type": "image/png",
-      "sizes": "64x64"
-    },
-    {
-      "src": "https://seankhliao.com/icon-48.png",
-      "type": "image/png",
-      "sizes": "48x48"
-    },
-    {
-      "src": "https://seankhliao.com/icon-32.png",
-      "type": "image/png",
-      "sizes": "32x32"
-    },
-    {
-      "src": "https://seankhliao.com/icon-16.png",
-      "type": "image/png",
-      "sizes": "16x16"
     }
   ]
 }

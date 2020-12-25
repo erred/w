@@ -3,13 +3,14 @@
 <html lang="en">
   <head>
     {{ if not .EmbedStyle }}
-    <link rel="preload" href="/base.css" as="style" crossorigin />
-    <link rel="preload" href="/inconsolata-var.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/lora-var.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/base.css" as="style" crossorigin >
+    <link rel="preload" href="/inconsolata-var.woff2" as="font" type="font/woff2" crossorigin >
+    <link rel="preload" href="/lora-var.woff2" as="font" type="font/woff2" crossorigin >
+    <link rel="preload" href="/web-vitals-1.0.1.js" >
     {{ end }}
 
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
+    <meta charset="utf-8" >
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" >
 
     <title>{{ .Title }}</title>
 
@@ -17,18 +18,18 @@
     {{ if not .DisableAnalytics }}{{ template "analytics" }}{{ end }}
 
     {{ if not .EmbedStyle }}
-    <link rel="stylesheet" href="/base.css" crossorigin />
+    <link rel="stylesheet" href="/base.css" crossorigin >
     {{ end }}
 
-    <link rel="canonical" href="{{ .URLCanonical }}" />
-    <link rel="manifest" href="/manifest.json" />
+    <link rel="canonical" href="{{ .URLCanonical }}" >
+    <link rel="manifest" href="/manifest.json" >
 
-    <meta name="theme-color" content="#000000" />
-    <meta name="description" content="{{ .Description }}" />
+    <meta name="theme-color" content="#000000" >
+    <meta name="description" content="{{ .Description }}" >
 
-    <link rel="icon" type="image/png" sizes="512x512" href="https://seankhliao.com/icon-512.png" />
-    <link rel="apple-touch-icon" href="https://seankhliao.com/icon-512.png" />
-    <link rel="shortcut icon" href="https://seankhliao.com/favicon.ico" />
+    <link rel="icon" href="https://seankhliao.com/favicon.ico" >
+    <link rel="icon" href="https://seankhliao.com/icon.svg" type="image/svg+xml" sizes="any">
+    <link rel="apple-touch-icon" href="https://seankhliao.com/icon-192.png" >
 
     <style nonce="deadbeef1">
       /* prettier-ignore */
@@ -77,8 +78,8 @@
 {{ end }}
 
 {{ define "analytics" }}
-<link rel="preconnect" href="https://www.googletagmanager.com" />
-<link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
+<link rel="preconnect" href="https://www.googletagmanager.com" >
+<link rel="preconnect" href="https://www.google-analytics.com" crossorigin >
 
 <!-- Google Tag Manager -->
 <script type="module" nonce="deadbeef2">
@@ -99,7 +100,7 @@
     getFID,
     getLCP,
     getTTFB,
-  } from "https://unpkg.com/web-vitals@0.2.4/dist/web-vitals.es5.min.js?module";
+  } from "https://seankhliao.com/web-vitals-1.0.1.js";
 
   function sendGTM({ name, delta, id }) {
     dataLayer.push({
@@ -173,8 +174,7 @@
 /* ===== layout general ===== */
 body {
   display: grid;
-  /* account for grid-gap + some absurdly narrow (280px) screens */
-  grid: repeat(2, 20vh) 40vh / 1fr repeat(3, minmax(70px, 280px)) 1fr;
+  grid: repeat(2, 20vh) 40vh / 1fr repeat(3, minmax(90px, 280px)) 1fr;
   gap: 0 1em;
   margin: 0;
   padding: 1vmin;
@@ -222,12 +222,11 @@ hgroup *:nth-child(n + 5) {
 footer,
 iframe,
 pre,
-table {
+table,
+picture {
   grid-column: 1 / span 5;
   margin: 0 -1vmin;
 }
-h4 img,
-p img,
 picture img {
   width: 100%;
   margin: auto;
@@ -235,7 +234,8 @@ picture img {
 
 /* ===== layout main ===== */
 h3,
-h4 {
+h4,
+picture {
   margin: 25vh 0 0.25em 0;
 }
 
@@ -270,11 +270,12 @@ a,
 a:visited {
   color: inherit;
   font-weight: 700;
-  text-decoration: underline;
+  text-decoration: underline 1px #707070;
 }
 a:hover {
   color: #a06be0;
   transition: color 0.16s;
+  text-decoration: underline 1px #a06be0;
 }
 
 h1 a,
@@ -293,6 +294,7 @@ ul {
 }
 ul > * {
   margin: 0.5em;
+  line-height: 1.5em;
 }
 ul > li:before {
   content: "»";
@@ -311,12 +313,12 @@ blockquote {
 }
 
 code {
-  background: #404040;
+  background: #303030;
   font: 1em "Inconsolata", monospace;
   padding: 0.1em;
 }
 pre {
-  background: #404040;
+  background: #303030;
   overflow-x: scroll;
   padding: 1em;
 }
