@@ -1,11 +1,10 @@
-FROM golang:alpine AS build
+FROM golang:rc-alpine AS build
 
 WORKDIR /workspace
-COPY go.mod .
-COPY go.sum .
+COPY go.mod go.sum .
 COPY vendor vendor
 COPY cmd cmd
-COPY internal internal
+copy internal internal
 RUN CGO_ENABLED=0 go build -trimpath -ldflags='-s -w' -o /bin/ ./...
 COPY public public
 COPY site site

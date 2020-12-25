@@ -1,11 +1,8 @@
 .dockerignore
 .git/
-.github/
 .gitignore
 
 cloudbuild.yaml
 Dockerfile
-k9s/
 LICENSE
-Makefile
 README.md
