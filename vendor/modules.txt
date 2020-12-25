@@ -1,8 +1,9 @@
-# github.com/go-logr/logr v0.2.0
+# github.com/go-logr/logr v0.3.0
+## explicit
 github.com/go-logr/logr
 # github.com/kr/pretty v0.1.0
 ## explicit
-# github.com/yuin/goldmark v1.2.1
+# github.com/yuin/goldmark v1.3.0
 ## explicit
 github.com/yuin/goldmark
 github.com/yuin/goldmark/ast
@@ -18,8 +19,9 @@ github.com/yuin/goldmark/util
 github.com/yuin/goldmark-meta
 # gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15
 ## explicit
-# gopkg.in/yaml.v2 v2.3.0
+# gopkg.in/yaml.v2 v2.4.0
+## explicit
 gopkg.in/yaml.v2
-# k8s.io/klog/v2 v2.3.0
+# k8s.io/klog/v2 v2.4.0
 ## explicit
 k8s.io/klog/v2
