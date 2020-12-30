@@ -1,4 +1,6 @@
 ---
+description: spinning up a vm just to run a bash script...
+title: github action pr title fixer
 ---
 
 ### _github_ actions

@@ -1,6 +1,34 @@
 # Ideas
 
 - bazel
+- smtp
+
+  - postfix
+  - exim
+  - https://github.com/albertito/chasquid
+  - sendmail
+  - opensmtpd
+  - qmail
+  - https://github.com/flashmob/go-guerrilla
+  - https://github.com/mhale/smtpd
+  - https://github.com/emersion/go-smtp
+  - https://mailinabox.email/
+  - https://www.iredmail.org/
+  - https://modoboa.org/en/
+  - https://mailu.io/1.7/
+  - https://github.com/tomav/docker-mailserver
+  - https://wildduck.email/
+  - https://archiveopteryx.org/
+  - http://www.dbmail.org/
+  - http://www.elasticinbox.com/
+  - https://mailcow.github.io/mailcow-dockerized-docs/
+  - https://james.apache.org/
+
+- tsdb
+  - influxdb
+  - opentsdb
+  - timescaledb
+  - graphite
 
 ## k8s plan
 
