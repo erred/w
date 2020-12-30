@@ -6,7 +6,7 @@
     <link rel="preload" href="/base.css" as="style" crossorigin >
     <link rel="preload" href="/inconsolata-var.woff2" as="font" type="font/woff2" crossorigin >
     <link rel="preload" href="/lora-var.woff2" as="font" type="font/woff2" crossorigin >
-    <link rel="preload" href="/web-vitals-1.0.1.js" >
+    <link rel="preload" href="/web-vitals-1.0.1.js" as="script">
     {{ end }}
 
     <meta charset="utf-8" >
