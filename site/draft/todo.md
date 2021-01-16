@@ -1,29 +1,7 @@
 # Ideas
 
 - bazel
-- smtp
-
-  - postfix
-  - exim
-  - https://github.com/albertito/chasquid
-  - sendmail
-  - opensmtpd
-  - qmail
-  - https://github.com/flashmob/go-guerrilla
-  - https://github.com/mhale/smtpd
-  - https://github.com/emersion/go-smtp
-  - https://mailinabox.email/
-  - https://www.iredmail.org/
-  - https://modoboa.org/en/
-  - https://mailu.io/1.7/
-  - https://github.com/tomav/docker-mailserver
-  - https://wildduck.email/
-  - https://archiveopteryx.org/
-  - http://www.dbmail.org/
-  - http://www.elasticinbox.com/
-  - https://mailcow.github.io/mailcow-dockerized-docs/
-  - https://james.apache.org/
-
+- neomutt
 - tsdb
   - influxdb
   - opentsdb
@@ -58,11 +36,6 @@ argo rollouts
 argo events
 argo cd
 argo workflows
-
-### learn
-
-https://cloud.google.com/blog/topics/anthos/introducing-the-anthos-developer-sandbox
-https://go.qwiklabs.com/qwiklabs-free?utm_source=google&utm_medium=lp&utm_campaign=GKE
 
 ### secure boot
 
