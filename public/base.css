@@ -96,7 +96,7 @@ pre,
 table,
 picture {
   grid-column: 1 / span 5;
-  margin: 0 -1vmin;
+  margin: 1em -1vmin;
 }
 picture img {
   width: 100%;

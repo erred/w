@@ -56,7 +56,6 @@ func (r *Renderer) renderParagraph(w util.BufWriter, source []byte, n ast.Node, 
 		} else {
 			_, _ = w.WriteString("</p>\n")
 		}
-		_, _ = w.WriteString("</p>\n")
 	}
 	return ast.WalkContinue, nil
 }
