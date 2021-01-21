@@ -9,14 +9,7 @@
   - timescaledb
   - graphite
 
-- ssl
-
-  - mkcert
-  - step-cli
-  - cfssl
-
 - docker build
-- cloudflare bot management
 
 https://github.com/authelia/authelia
 
