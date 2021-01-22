@@ -10,21 +10,10 @@
   - graphite
 
 - docker build
+- cicd
+- issue triage
 
 https://github.com/authelia/authelia
-
-## k8s plan
-
-table stakes?
-
-- istio
-- cert-manager
-- otel-collector
-- promtail
-- loki
-- prometheus
-- jaeger
-- grafana
 
 ### knative stack
 
