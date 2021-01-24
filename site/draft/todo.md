@@ -1,17 +1,17 @@
 # Ideas
 
 - bazel
-- neomutt
-- tsdb
 
   - influxdb
   - opentsdb
   - timescaledb
   - graphite
 
-- docker build
+- init.lua
+- index update
 - cicd
 - issue triage
+- buy vs open source
 
 https://github.com/authelia/authelia
 
