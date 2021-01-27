@@ -2,12 +2,7 @@
 
 - bazel
 
-  - influxdb
-  - opentsdb
-  - timescaledb
-  - graphite
-
-- init.lua
+- go buildmode
 - index update
 - cicd
 - issue triage
