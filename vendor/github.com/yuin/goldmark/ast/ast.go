@@ -45,11 +45,6 @@ type Attribute struct {
 	Value interface{}
 }
 
-var attrNameIDS = []byte("#")
-var attrNameID = []byte("id")
-var attrNameClassS = []byte(".")
-var attrNameClass = []byte("class")
-
 // A Node interface defines basic AST node functionalities.
 type Node interface {
 	// Type returns a type of this node.
@@ -174,7 +169,7 @@ type Node interface {
 	RemoveAttributes()
 }
 
-// A BaseNode struct implements the Node interface.
+// A BaseNode struct implements the Node interface partialliy.
 type BaseNode struct {
 	firstChild Node
 	lastChild  Node

@@ -44,17 +44,10 @@ func Run(svc Service) int {
 			Handler:           corsAllowAll(mux),
 			ReadHeaderTimeout: 10 * time.Second,
 			MaxHeaderBytes:    1 << 20,
-			// ErrorLog
 		},
 	}
 
-	ctx, cancel := context.WithCancel(context.Background())
-	go func() {
-		sigc := make(chan os.Signal, 1)
-		signal.Notify(sigc, syscall.SIGINT, syscall.SIGTERM)
-		<-sigc
-		cancel()
-	}()
+	ctx, cancel := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM)
 
 	err := svc.Setup(ctx, c)
 	if err != nil {
@@ -77,8 +70,11 @@ func Run(svc Service) int {
 		}
 	}()
 
-	<-ctx.Done()
-	err = c.Server.Shutdown(context.Background())
+	select {
+	case <-ctx.Done():
+		err = c.Server.Shutdown(context.Background())
+	case err = <-errc:
+	}
 	if err != nil {
 		klog.ErrorS(err, "server shutdown")
 		return 1
@@ -88,7 +84,7 @@ func Run(svc Service) int {
 
 func corsAllowAll(h http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("server", "internal/serve/v13")
+		w.Header().Set("server", "go.seankhliao.com/com-seankhliao/v14")
 		w.Header().Set("hire-me", "http-header-hire@seankhliao.com")
 		w.Header().Set("easter-egg", "🐇*(🍆-🪴)=🐇🥚")
 

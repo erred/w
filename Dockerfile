@@ -1,16 +1,11 @@
 FROM golang:rc-alpine AS build
 
+ENV CGO_ENABLED=0
 WORKDIR /workspace
-COPY go.mod go.sum .
-COPY vendor vendor
-COPY cmd cmd
-copy internal internal
-RUN CGO_ENABLED=0 go build -trimpath -ldflags='-s -w' -o /bin/ ./...
-COPY public public
-COPY site site
-RUN ["/bin/webrender"]
+COPY . .
+RUN go run ./cmd/webrender && \
+    go build -trimpath -ldflags='-s -w' -o /bin/serve ./cmd/serve
 
 FROM scratch
-COPY --from=build /bin/com-seankhliao /bin/com-seankhliao
-COPY --from=build /workspace/public /var/public
-ENTRYPOINT ["/bin/com-seankhliao", "-dir=/var/public"]
+COPY --from=build /bin/serve /bin/serve
+ENTRYPOINT ["/bin/serve"]

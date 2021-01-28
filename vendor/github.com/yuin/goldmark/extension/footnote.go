@@ -175,6 +175,9 @@ func (s *footnoteParser) Parse(parent gast.Node, block text.Reader, pc parser.Co
 		pc.Set(footnoteLinkListKey, fnlist)
 	}
 	pc.Set(footnoteLinkListKey, append(fnlist, fnlink))
+	if line[0] == '!' {
+		parent.AppendChild(parent, gast.NewTextSegment(text.NewSegment(segment.Start, segment.Start+1)))
+	}
 
 	return fnlink
 }
@@ -252,9 +255,9 @@ func (a *footnoteASTTransformer) Transform(node *gast.Document, reader text.Read
 // FootnoteConfig holds configuration values for the footnote extension.
 //
 // Link* and Backlink* configurations have some variables:
-// Occurances of “^^” in the string will be replaced by the
+// Occurrances of “^^” in the string will be replaced by the
 // corresponding footnote number in the HTML output.
-// Occurances of “%%” will be replaced by a number for the
+// Occurrances of “%%” will be replaced by a number for the
 // reference (footnotes can have multiple references).
 type FootnoteConfig struct {
 	html.Config
