@@ -18,6 +18,7 @@ say hello to [`docker buildx`](https://github.com/docker/buildx)
 You get a fresh build environment every time, use registry caching.
 
 ```Dockerfile
+#syntax=docker/dockerfile:1.2
 FROM golang:rc-alpine AS build
 WORKDIR /workspace
 COPY go.mod go.sum .
@@ -64,6 +65,7 @@ Your workers have a chance to reuse the local cache between builds,
 and even across builds for different apps.
 
 ```Dockerfile
+#syntax=docker/dockerfile:1.2
 FROM golang:rc-alpine AS build
 WORKDIR /workspace
 COPY . .
