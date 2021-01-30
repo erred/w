@@ -3,7 +3,6 @@ package render
 import (
 	"bytes"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path"
 	"path/filepath"
@@ -87,7 +86,7 @@ func ProcessFile(src, dst, u string, disableAnalytics, embedStyle bool) (PageInf
 	if path.Ext(src) != ".md" {
 		return PageInfo{}, fmt.Errorf("ProcessFile ext=%s unknown ext", path.Ext(src))
 	}
-	b, err := ioutil.ReadFile(src)
+	b, err := os.ReadFile(src)
 	if err != nil {
 		return PageInfo{}, fmt.Errorf("ProcessFile src=%s read: %w", src, err)
 	}
@@ -202,7 +201,7 @@ func sitemap(dst string, pis []PageInfo) error {
 	sitemap := strings.Join(urls, "\n")
 	dstFile := path.Join(dst, "sitemap.txt")
 
-	err := ioutil.WriteFile(dstFile, []byte(sitemap), 0o644)
+	err := os.WriteFile(dstFile, []byte(sitemap), 0o644)
 	if err != nil {
 		return fmt.Errorf("generateSitemap dst=%s write: %w", dstFile, err)
 	}
