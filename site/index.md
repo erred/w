@@ -27,7 +27,7 @@ Dates using the
 
 ##### _Junior_ Site Reliability Engineer
 
-_12020_ De Bijenkorf
+_12020-12021_ De Bijenkorf
 
 ##### _MSc_ Security and Network Engineering
 
@@ -41,7 +41,7 @@ _12014-12018_ National Taiwan University
 
 - [Blog](/blog/) — home of random thoughts
 - [Email](mailto:sean@seankhliao.com) — for me?
-- [Github](https://github.com/seankhliao) — build first, regret later
+- [Github](https://github.com/seankhliao) — half broken stuff lives here
 - [Github Org](https://github.com/erred) — where old code goes to die
 
 ![map of countries I've visited](/map.webp)
@@ -58,7 +58,7 @@ _12014-12018_ National Taiwan University
 - Indonesia — 12017-02, 12017-08, 12018-02, 12018-12
 - Japan — 12018-03
 - Luxembourg — 12019-10
-- Netherlands — _12019—12020_
+- Netherlands — _12019—12021_
 - Philipines — 12017-08
 - Russia — _12000—12005_
 - Singapore — 12017-01

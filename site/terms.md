@@ -7,9 +7,15 @@ title: privacy | seankhliao
 
 ### _Terms_ of Service
 
-Be reasonable
+0. Be reasonable
+
+1. I take no responsibility for you blindly copying code off my blog and it breaking things.
 
 ### _Privacy_ Policy
+
+Do I need one?
+Experimenting with SaaS sometimes asks me to link to one,
+so uhh, here it is.
 
 #### Scope
 
@@ -40,11 +46,9 @@ You can turn off cookies in your browser
 
 Third party privacy policies
 
-- [Cloudflare](https://www.cloudflare.com/privacypolicy/) privacy policy
 - [Google](https://policies.google.com/privacy?hl=en) privacy policy
 
 Third party terms of service
 
-- [Cloudflare](https://www.cloudflare.com/website-terms/) terms of service
 - [Google](https://policies.google.com/terms?hl=en) terms of service
 - [Google Analytics](https://www.google.com/analytics/terms/us.html) terms of service
