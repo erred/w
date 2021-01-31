@@ -13,7 +13,8 @@ style: |
 
 I run with shiny new stuff that is always _half-broken_,
 so I know what works and what is just a waste of time.
-Current preferred _tech stack_:
+Current preferred _tech stack_ when I can have GitOps style deployment
+and a full observability stack (logging, metrics, tracing):
 
 Go + Kubernetes
 

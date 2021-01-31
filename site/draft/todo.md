@@ -3,7 +3,6 @@
 - bazel
 
 - go buildmode
-- index update
 - cicd
 - issue triage
 - buy vs open source
