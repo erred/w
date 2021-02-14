@@ -1,4 +1,10 @@
 Canonical: https://seankhliao.com/.well-known/security.txt
+
 Contact: mailto:securitytxt@seankhliao.com
+
+# I know they said don't use it for email but PGP is honestly even worse
+Encryption: age14mg08panez45c6lj2cut2l8nqja0k5vm2vxmv5zvc4ufqgptgy2qcjfmuu
+
 Expires: Fri, 31 Dec 2021 23:59:59 +0000
+
 Preferred-Languages: en
