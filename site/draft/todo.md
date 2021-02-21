@@ -4,7 +4,7 @@
 - go buildmode
 - cicd
 - issue triage
-- jq jsonpath
+- setuid
 - knative
 
 https://github.com/authelia/authelia
