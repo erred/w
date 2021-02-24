@@ -5,7 +5,9 @@
 - cicd
 - issue triage
 - setuid
+- local go proxy
+- grpc-web
 - knative
+- grafana graph plugin
 
 https://github.com/authelia/authelia
-https://docs.google.com/document/d/199PqyG3UsyXlwieHaqbGiWVa8eMWi8zzAn0YfcApr8Q/preview#
