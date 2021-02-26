@@ -9,5 +9,6 @@
 - grpc-web
 - knative
 - grafana graph plugin
+- private doc server?
 
 https://github.com/authelia/authelia

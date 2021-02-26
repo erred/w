@@ -1,5 +1,5 @@
 ---
-description: reading another spec: OpenMetrics
+description: reading another spec OpenMetrics
 title: reading OpenMetrics spec
 ---
 
