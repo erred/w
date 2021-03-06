@@ -49,6 +49,20 @@ $.a[:].x
 $.a[?(@.x == 100)]
 ```
 
+#### _JMESPath_
+
+[JMESPath](https://jmespath.org/)
+
+_tldr:_ `.` separated, no recursive descent(?), `[::]` array access, `|` pipe and use functions.
+
+```jmespath
+# 100, 200
+a[*].x
+
+# { "x": 100 }
+a[?x == 100]
+```
+
 #### _jq_
 
 [jq](https://stedolan.github.io/jq/)
