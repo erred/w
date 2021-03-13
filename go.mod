@@ -12,6 +12,6 @@ require (
 	go.opentelemetry.io/otel v0.18.0
 	go.opentelemetry.io/otel/exporters/metric/prometheus v0.18.0
 	go.opentelemetry.io/otel/sdk v0.18.0
-	go.seankhliao.com/com-seankhliao/v14 v14.0.0-rc.1 // indirect
+	gopkg.in/yaml.v2 v2.4.0 // indirect
 	k8s.io/klog/v2 v2.5.0
 )

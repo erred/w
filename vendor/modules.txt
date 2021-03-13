@@ -111,8 +111,6 @@ go.opentelemetry.io/otel/sdk/metric/processor/basic
 go.opentelemetry.io/otel/sdk/metric/selector/simple
 # go.opentelemetry.io/otel/trace v0.18.0
 go.opentelemetry.io/otel/trace
-# go.seankhliao.com/com-seankhliao/v14 v14.0.0-rc.1
-## explicit
 # golang.org/x/sys v0.0.0-20201214210602-f9fddec55a1e
 golang.org/x/sys/internal/unsafeheader
 golang.org/x/sys/unix
@@ -149,6 +147,7 @@ google.golang.org/protobuf/types/known/anypb
 google.golang.org/protobuf/types/known/durationpb
 google.golang.org/protobuf/types/known/timestamppb
 # gopkg.in/yaml.v2 v2.4.0
+## explicit
 gopkg.in/yaml.v2
 # k8s.io/klog/v2 v2.5.0
 ## explicit

@@ -309,8 +309,6 @@ go.opentelemetry.io/otel/sdk/metric v0.18.0 h1:16ryqzWeYMl6uzwz7or3IQlCDf366Ppfm
 go.opentelemetry.io/otel/sdk/metric v0.18.0/go.mod h1:NY9c56grMpjqdaYvOFon8nnsgMPBaXpde5SO1ulDyCo=
 go.opentelemetry.io/otel/trace v0.18.0 h1:ilCfc/fptVKaDMK1vWk0elxpolurJbEgey9J6g6s+wk=
 go.opentelemetry.io/otel/trace v0.18.0/go.mod h1:FzdUu3BPwZSZebfQ1vl5/tAa8LyMLXSJN57AXIt/iDk=
-go.seankhliao.com/com-seankhliao/v14 v14.0.0-rc.1 h1:JlDRlwhM6cJ8jBN4zs/JX8MOZi3/qOnpmhpP4e3sjpg=
-go.seankhliao.com/com-seankhliao/v14 v14.0.0-rc.1/go.mod h1:DHL7z1d1LyK6/45r+8F1t+5tHypT7tu4PpecLXmEWIA=
 go.uber.org/atomic v1.3.2/go.mod h1:gD2HeocX3+yG+ygLZcrzQJaqmWj9AIm7n08wl/qW/PE=
 go.uber.org/atomic v1.5.0/go.mod h1:sABNBOSYdrvTF6hTgEIbc7YasKWGhgEQZyfxyTvoXHQ=
 go.uber.org/multierr v1.1.0/go.mod h1:wR5kodmAFQ0UK8QlbwjlSNy0Z68gJhDJUG5sjR94q/0=
