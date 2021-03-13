@@ -1,9 +1,10 @@
-# com-seankhliao
+# w
 
-[![License](https://img.shields.io/github/license/seankhliao/com-seankhliao.svg?style=flat-square)](LICENSE)
-![Version](https://img.shields.io/github/v/tag/seankhliao/com-seankhliao?sort=semver&style=flat-square)
+[![License](https://img.shields.io/github/license/seankhliao/w.svg?style=flat-square)](LICENSE)
+![Version](https://img.shields.io/github/v/tag/seankhliao/w?sort=semver&style=flat-square)
+[![Go Reference](https://pkg.go.dev/badge/go.seankhliao.com/w.svg)](https://pkg.go.dev/go.seankhliao.com/w)
 
-handcrafted personal static site
+handcrafted personal site
 
 ## About
 

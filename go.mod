@@ -1,12 +1,17 @@
-module go.seankhliao.com/com-seankhliao/v14
+module go.seankhliao.com/w/v15
 
-go 1.16
+go 1.17
 
 require (
-	github.com/kr/pretty v0.1.0 // indirect
+	github.com/go-logr/logr v0.4.0
 	github.com/yuin/goldmark v1.3.1
 	github.com/yuin/goldmark-meta v1.0.0
-	gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15 // indirect
-	gopkg.in/yaml.v2 v2.4.0 // indirect
+	go.opentelemetry.io/contrib/instrumentation/host v0.18.0
+	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.18.0
+	go.opentelemetry.io/contrib/instrumentation/runtime v0.18.0
+	go.opentelemetry.io/otel v0.18.0
+	go.opentelemetry.io/otel/exporters/metric/prometheus v0.18.0
+	go.opentelemetry.io/otel/sdk v0.18.0
+	go.seankhliao.com/com-seankhliao/v14 v14.0.0-rc.1 // indirect
 	k8s.io/klog/v2 v2.5.0
 )

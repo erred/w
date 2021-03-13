@@ -1,0 +1,21 @@
+{
+  "background_color": "#000",
+  "description": "Hungry dev, will code for food",
+  "display": "standalone",
+  "name": "Sean KH Liao",
+  "short_name": "Sean",
+  "start_url": ".?utm_source=pwa",
+  "theme_color": "#000",
+  "icons": [
+    {
+      "src": "https://seankhliao.com/static/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "https://seankhliao.com/static/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ]
+}

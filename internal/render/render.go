@@ -14,8 +14,8 @@ import (
 	"github.com/yuin/goldmark/extension"
 	"github.com/yuin/goldmark/parser"
 	"github.com/yuin/goldmark/renderer/html"
-	sitedata "go.seankhliao.com/com-seankhliao/v14"
-	"go.seankhliao.com/com-seankhliao/v14/internal/picture"
+	"go.seankhliao.com/w/v15/internal/picture"
+	"go.seankhliao.com/w/v15/internal/static"
 )
 
 var mdParser = goldmark.New(goldmark.WithExtensions(extension.Table, meta.Meta, picture.Picture), goldmark.WithRendererOptions(html.WithUnsafe()))
@@ -135,7 +135,7 @@ func ProcessFile(src, dst, u string, disableAnalytics, embedStyle bool) (PageInf
 		return PageInfo{}, fmt.Errorf("ProcessFile dst=%s create: %w", dst, err)
 	}
 	defer f.Close()
-	err = sitedata.T.ExecuteTemplate(f, "layout.gotemplate", pd)
+	err = static.T.ExecuteTemplate(f, "layout.gotemplate", pd)
 	if err != nil {
 		return PageInfo{}, fmt.Errorf("ProcessFile dst=%s render html: %w", dst, err)
 	}
@@ -183,7 +183,7 @@ maybe someone will find this useful</p>
 	if err != nil {
 		return PageInfo{}, fmt.Errorf("blogIndex dst=%s create: %w", dstFile, err)
 	}
-	err = sitedata.T.ExecuteTemplate(f, "layout.gotemplate", pd)
+	err = static.T.ExecuteTemplate(f, "layout.gotemplate", pd)
 	if err != nil {
 		return PageInfo{}, fmt.Errorf("blogIndex dst=%s render html: %w", dstFile, err)
 	}
