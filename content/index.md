@@ -45,7 +45,7 @@ _12014-12018_ National Taiwan University
 - [Github](https://github.com/seankhliao) — half broken stuff lives here
 - [Github Org](https://github.com/erred) — where old code goes to die
 
-![map of countries I've visited](/map.webp)
+![map of countries I've visited](/static/map.webp)
 
 #### _Travel_ Log
 

@@ -15,4 +15,4 @@ var S, _ = fs.Sub(s, "root")
 var l string
 
 // T contains the parsed templates
-var T = template.Must(template.New("layout").Parse(l))
+var T = template.Must(template.Must(template.New("layout").Parse(l)).New("").ParseFS(S, "base.css"))

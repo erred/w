@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"errors"
+	"flag"
 	"net/http"
 	"net/http/pprof"
 	"os"
@@ -19,6 +20,8 @@ import (
 )
 
 func main() {
+	flag.Parse()
+
 	ctx := context.Background()
 	ctx, _ = signal.NotifyContext(ctx, syscall.SIGINT, syscall.SIGTERM)
 
@@ -32,7 +35,7 @@ func main() {
 	}
 	defer shutdown(context.Background()) // separate shutdown context
 
-	NewW(l, mh).run(ctx)
+	newW(l, mh).run(ctx)
 }
 
 type W struct {
@@ -41,7 +44,7 @@ type W struct {
 	m, h *http.Server
 }
 
-func NewW(l logr.Logger, mh http.Handler) *W {
+func newW(l logr.Logger, mh http.Handler) *W {
 	// metrics server
 	mmux := http.NewServeMux()
 	mmux.HandleFunc("/debug/pprof/", pprof.Index)

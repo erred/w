@@ -1,5 +1,5 @@
 substitutions:
-  _IMG: com-seankhliao
+  _IMG: w
   _REG: us.gcr.io/com-seankhliao
 
 tags:
@@ -25,7 +25,12 @@ steps:
     args:
       - run
       - deploy
-      - web
+      - w
       - --image=$_REG/$_IMG:$SHORT_SHA
       - --region=us-central1
       - --platform=managed
+      - --allow-unauthenticated
+      - --cpu=1
+      - --memory=128Mi
+      - --timeout=10s
+      - --async

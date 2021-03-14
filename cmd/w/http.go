@@ -46,7 +46,7 @@ func newHttp(l logr.Logger, sitedata fs.FS) (*http.ServeMux, error) {
 		// canonical path
 		p := canonicalPath(op)
 
-		l.Info("registering", "path", p)
+		// l.Info("registering", "path", p)
 		mux.HandleFunc(p, func(w http.ResponseWriter, r *http.Request) {
 			// handle unknown paths
 			if r.URL.Path != p {

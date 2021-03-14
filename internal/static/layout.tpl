@@ -4,6 +4,7 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
   <title>{{ .Title }}</title>
 
+  {{- if not .DisableAnalytics }}
   <script>
     (function (w, d, s, l, i) {
       w[l] = w[l] || []; w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
@@ -12,6 +13,7 @@
       f.parentNode.insertBefore(j, f);
     })(window, document, "script", "dataLayer", "GTM-TLVN7D6");
   </script>
+  {{- end }}
 
   <link rel="stylesheet" href="/base.css" crossorigin>
 
@@ -26,10 +28,15 @@
   <link rel="apple-touch-icon" href="https://seankhliao.com/static/icon-192.png">
 
   <style>
+    {{- if .EmbedStyle }}
+    {{ template "base.css" }}
+    {{- end }}
     {{ .Style }}
   </style>
 
+  {{- if not .DisableAnalytics }}
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLVN7D6" height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript>
+  {{- end }}
 
   <h1>{{ .H1 }}</h1>
   <h2>{{ .H2 }}</h2>

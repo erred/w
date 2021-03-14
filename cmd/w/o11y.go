@@ -4,16 +4,32 @@ import (
 	"context"
 	"fmt"
 	"net/http"
+	"runtime/debug"
 
 	"go.opentelemetry.io/contrib/instrumentation/host"
 	"go.opentelemetry.io/contrib/instrumentation/runtime"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/exporters/metric/prometheus"
 	"go.opentelemetry.io/otel/propagation"
+	"go.opentelemetry.io/otel/sdk/metric/controller/basic"
+	"go.opentelemetry.io/otel/sdk/resource"
 	"go.opentelemetry.io/otel/sdk/trace"
+	"go.opentelemetry.io/otel/semconv"
 )
 
 func o11y(ctx context.Context) (func(context.Context), http.Handler, error) {
+	name, version := "go.seankhliao.com/w/cmd/w", "v15"
+	bi, ok := debug.ReadBuildInfo()
+	if ok {
+		name = bi.Main.Path
+		version = bi.Main.Version
+	}
+
+	res := resource.NewWithAttributes(
+		semconv.ServiceNameKey.String(name),
+		semconv.ServiceVersionKey.String(version),
+	)
+
 	// trace and metrics exporter
 	// exporter, err := otlp.NewExporter(ctx, otlpgrpc.NewDriver(
 	// 	otlpgrpc.WithInsecure(),
@@ -26,7 +42,7 @@ func o11y(ctx context.Context) (func(context.Context), http.Handler, error) {
 	// metrics exporter
 	hf, err := prometheus.InstallNewPipeline(
 		prometheus.Config{},
-		// prometheus.WithResource(...),
+		basic.WithResource(res),
 	)
 	if err != nil {
 		return nil, nil, fmt.Errorf("o11y: create prometheus: %w", err)

@@ -135,7 +135,7 @@ func ProcessFile(src, dst, u string, disableAnalytics, embedStyle bool) (PageInf
 		return PageInfo{}, fmt.Errorf("ProcessFile dst=%s create: %w", dst, err)
 	}
 	defer f.Close()
-	err = static.T.ExecuteTemplate(f, "layout.gotemplate", pd)
+	err = static.T.ExecuteTemplate(f, "layout", pd)
 	if err != nil {
 		return PageInfo{}, fmt.Errorf("ProcessFile dst=%s render html: %w", dst, err)
 	}
@@ -183,7 +183,7 @@ maybe someone will find this useful</p>
 	if err != nil {
 		return PageInfo{}, fmt.Errorf("blogIndex dst=%s create: %w", dstFile, err)
 	}
-	err = static.T.ExecuteTemplate(f, "layout.gotemplate", pd)
+	err = static.T.ExecuteTemplate(f, "layout", pd)
 	if err != nil {
 		return PageInfo{}, fmt.Errorf("blogIndex dst=%s render html: %w", dstFile, err)
 	}
