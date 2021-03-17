@@ -17,3 +17,4 @@
 - prometheus labelling
 - grafana dashboarding
 - cpu / memory stats
+- terraform / tanka / ? for k8s

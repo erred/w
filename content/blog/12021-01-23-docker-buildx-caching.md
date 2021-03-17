@@ -61,8 +61,9 @@ cache-save /tmp/docker-cache
 
 ##### _statefull_ build workers
 
-Your workers have a chance to reuse the local cache between builds,
-and even across builds for different apps.
+Your workers have a chance to reuse the local, docker-managed cache between builds,
+and even across builds for different apps,
+but not with the host system.
 
 ```Dockerfile
 #syntax=docker/dockerfile:1.2
