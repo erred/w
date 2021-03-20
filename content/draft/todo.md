@@ -17,4 +17,7 @@
 - prometheus labelling
 - grafana dashboarding
 - cpu / memory stats
-- terraform / tanka / ? for k8s
+
+https://www.colorcet.com/gallery.html
+https://m.youtube.com/watch?v=xAoljeRJ3lU
+https://blog.datawrapper.de/which-color-scale-to-use-in-data-vis/

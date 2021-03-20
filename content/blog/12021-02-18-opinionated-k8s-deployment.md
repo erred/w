@@ -1,6 +1,6 @@
 ---
 description: an opionionated and commented deployment manifest for generic apps
-title: opionionated k0s deployment
+title: opionionated k8s deployment
 ---
 
 ### _kubernetes_ manifests
