@@ -18,5 +18,5 @@
 - cpu / memory stats
 
 https://www.colorcet.com/gallery.html
-https://m.youtube.com/watch?v=xAoljeRJ3lU
 https://blog.datawrapper.de/which-color-scale-to-use-in-data-vis/
+https://m.youtube.com/watch?v=xAoljeRJ3lU
