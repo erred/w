@@ -110,7 +110,7 @@ http://localhost:8080/federate?match[]={job=~".*"}
 
 ##### _example_
 
-repo: [testrepo-cluster-metrics]
+repo: [testrepo-cluster-metrics](https://github.com/seankhliao/testrepo-cluster-metrics)
 
 #### _future_
 
