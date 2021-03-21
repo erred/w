@@ -11,7 +11,6 @@
 - trace sampling
 - go list docs
 - read implementation: go cmd, cilium, envoy
-- otelcol k8s
 - analytics: proxy, offline, recaptcha
 - finance csv
 - prometheus labelling
