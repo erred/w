@@ -1,6 +1,6 @@
 ---
 description: an opionionated and commented deployment manifest for generic apps
-title: opionionated k8s deployment
+title: opinionated k8s deployment
 ---
 
 ### _kubernetes_ manifests
@@ -140,11 +140,10 @@ spec:
       targetPort: otlp # name or number, defaults to port
 
   selector:
-    matchLabels:
-      # these 2 should be enough to uniquely identify apps,
-      # note this value cannot change once created
-      app.kubernetes.io/name: foo
-      app.kubernetes.io/instance: default
+    # these 2 should be enough to uniquely identify apps,
+    # note this value cannot change once created
+    app.kubernetes.io/name: foo
+    app.kubernetes.io/instance: default
 ```
 
 #### _serviceaccount_
