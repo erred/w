@@ -17,6 +17,8 @@
 - grafana dashboarding
 - cpu / memory stats
 
-https://www.colorcet.com/gallery.html
-https://blog.datawrapper.de/which-color-scale-to-use-in-data-vis/
-https://m.youtube.com/watch?v=xAoljeRJ3lU
+color:
+
+- perceptually uniform sequential: viridis, cividis
+- diverging: coolwarm, Spectral,
+- cyclic(?): twilight

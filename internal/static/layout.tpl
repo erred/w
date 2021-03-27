@@ -15,7 +15,9 @@
   </script>
   {{- end }}
 
+  {{- if not .EmbedStyle }}
   <link rel="stylesheet" href="/base.css" crossorigin>
+  {{- end }}
 
   <link rel="canonical" href="{{ .URLCanonical }}">
   <link rel="manifest" href="/manifest.json">
