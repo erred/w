@@ -17,8 +17,51 @@
 - grafana dashboarding
 - cpu / memory stats
 
+review
+
 color:
 
 - perceptually uniform sequential: viridis, cividis
 - diverging: coolwarm, Spectral,
 - cyclic(?): twilight
+
+https://www.usenix.org/sites/default/files/conference/protected-files/srecon18emea_slides_littley.pdf
+https://docs.google.com/document/d/1eoxBe-tkQclixeNmKXcyCMmaF5w1Kh1rBDdLs0-cFsA/edit#heading=h.wk6masqhofu3
+
+medea
+
+alphabet:
+
+- a: arch repo? apis? auth? analytics
+- b: build matrix?
+- c: cdn? code? .config? cert-transparency?
+- d: dns?
+- e: email?
+- f:
+- g: git?
+- h:
+- i: iac? infra?
+- j:
+- k: kluster?
+- l: link shortener?
+- m:
+- n: authn?
+- o: o11y?
+- p: paste
+- q:
+- r: rss?
+- s: code search?
+- t: tag
+- u:
+- v: vanity?
+- w: web
+- x:
+- y:
+- z: authz?
+- 0
+- 1
+- 2
+- 3
+- 4
+- 5
+- 6: ipv6 tunnel?

@@ -1,5 +1,5 @@
 ---
-title: bare git private go modules
+title: plain git private go modules
 description: someone complained it was too hard
 ---
 
