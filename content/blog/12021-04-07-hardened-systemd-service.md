@@ -96,7 +96,7 @@ but you'll want to provide your config files, and secrets.
 ```systemd
 [Unit]
 Description=A foo bar app
-Documentation=https://github.com/seankhliao/x
+Documentation=https://seankhliao.com/blog/12021-04-07-hardened-systemd-service/
 Requires=network-online.target
 After=network-online.target
 
