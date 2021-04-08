@@ -18,7 +18,11 @@ import (
 	"go.seankhliao.com/w/v15/internal/static"
 )
 
-var mdParser = goldmark.New(goldmark.WithExtensions(extension.Table, meta.Meta, picture.Picture), goldmark.WithRendererOptions(html.WithUnsafe()))
+var mdParser = goldmark.New(
+	goldmark.WithExtensions(extension.Table, meta.Meta, picture.Picture),
+	goldmark.WithParserOptions(parser.WithAutoHeadingID()),
+	goldmark.WithRendererOptions(html.WithUnsafe()),
+)
 
 type PageData struct {
 	// mandatory
