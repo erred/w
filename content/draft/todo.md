@@ -17,18 +17,23 @@
 - grafana dashboarding
 - cpu / memory stats
 
-review
-
 color:
 
 - perceptually uniform sequential: viridis, cividis
 - diverging: coolwarm, Spectral,
 - cyclic(?): twilight
 
+go modules blog post
+
+packaging
+
+- docker
+- arch
+
 https://www.usenix.org/sites/default/files/conference/protected-files/srecon18emea_slides_littley.pdf
 https://docs.google.com/document/d/1eoxBe-tkQclixeNmKXcyCMmaF5w1Kh1rBDdLs0-cFsA/edit#heading=h.wk6masqhofu3
 
-medea
+medea, hwaryun
 
 alphabet:
 
