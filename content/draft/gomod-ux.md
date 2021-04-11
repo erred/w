@@ -1,11 +1,12 @@
-#### sources
+#### _sources_
 
 - [wiki][exrep]: experience reports
 - [reddit][reddit]: first 100 results from google
 - [go-nuts][nuts] search "modules" up to 2020
 - [issues][issues]: label modules, also [google search][issues-search]
+- random blogs i found
 
-#### reports
+#### _reports_
 
 summary / comments
 
@@ -64,7 +65,6 @@ summary / comments
 - [Too optimized for remote repos][possible] 2021, tooling changes should stabilize soon, `@ref`, losing clone into `GOPATH/src`
 - [unversioned not latest major][nuts10] 2021, SIV
 - [use branched][reddit17] 2018, @ref allows branches
-- [v2 Problem][v2prob] 2020, better communicate needs /v2 suffix
 - [vendor and modules][reddit7] 2019, it automatically uses vendor now
 - [visualize dependency graph][reddit9] 2019, needs better tooling
 
@@ -112,6 +112,7 @@ summary / comments
 [nuts8]: https://groups.google.com/g/golang-nuts/c/2Xcfb4f7ans/m/M6Eg50DhBwAJ
 [nuts9]: https://groups.google.com/g/golang-nuts/c/d3ZMjah6VGE/m/HULNtwu9BgAJ
 [nuts]: https://groups.google.com/g/golang-nuts/search?q=modules
+[possible]: https://utcc.utoronto.ca/~cks/space/blog/programming/GoModuleBuildsWhatPossible
 [rally]: https://www.rallyhealth.com/coding/docker-moby-go-dependencies
 [reddit10]: https://www.reddit.com/r/golang/comments/98hbvk/go_modules_how_to_deal_with_test_dependencies/
 [reddit11]: https://www.reddit.com/r/golang/comments/kku3ec/local_development_between_2_go_modules/
