@@ -23,6 +23,8 @@ color:
 - diverging: coolwarm, Spectral,
 - cyclic(?): twilight
 
+review https://github.com/golang/go/wiki
+
 go modules blog post
 
 paste
