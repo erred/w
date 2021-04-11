@@ -25,6 +25,11 @@ color:
 
 go modules blog post
 
+paste
+
+- http 303
+- csp?
+
 packaging
 
 - docker
