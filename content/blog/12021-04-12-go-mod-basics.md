@@ -1,4 +1,300 @@
-#### _sources_
+---
+title: go mod basics
+description: is this a faq on modules?
+---
+
+### _modules_
+
+Go [modules](https://golang.org/ref/mod):
+_the_ dependency management system for the Go ecosystem.
+
+What it optimizes for:
+_automatic_ and _stable_ version selection _over time_.
+This means that if your code builds now with a set of recorded dependencies,
+it will continue to build in the future
+no matter what your dependencies publish (or unpublish).
+To do this, it relies on the ecosystem following
+[semantic versioning](https://semver.org/)
+and on shared infrastructure such as a
+[caching proxy](https://proxy.golang.org/)
+and [transparency log](https://sum.golang.org/).
+Recommended reading:
+[semantic import versioning](https://research.swtch.com/vgo-import)
+[minimal version selection](https://research.swtch.com/vgo-mvs)
+[reproducible, verifiable, verified builds](https://research.swtch.com/vgo-repro)
+
+#### _lightning_ round
+
+##### _How_ do I
+
+###### _start_
+
+```sh
+go mod init example.com/some/module
+```
+
+Modules are units of versioning,
+and in most cases you will want a single module at the root of your repository.
+
+Module names are `/` separated ascii, the first segment must contain a dot
+(names without a dot are reserved for the stdlib with the exception of `example` and `test`).
+If you host your code remotely, it should match the code host;
+if it's only available locally, feel free to use one of the
+[reserved](https://tools.ietf.org/html/rfc6761) [tlds](https://tools.ietf.org/html/rfc6762)
+like `some-name.local`.
+Versions 2+ need a `/vN` suffix.
+
+###### _get_ dependencies
+
+`go get some-package@version` or after writing `import "..."` in youf code, `go mod tidy`
+
+The first gives you more control, the second will also trim out unused dependencies.
+
+`@version`, one of:
+
+- `vX.Y.Z`: a version number
+- `@abcdef`: a commit sha
+- `@master`: a branch name
+- `@latest`: one of the special [version queries](https://golang.org/ref/mod#version-queries), latest means highest tagged version
+
+_note:_ indirect references like `@latest` and `@branch` are cached by proxies. use `GOPROXY=direct` to skip the proxy.
+
+###### _update_ dependencies
+
+update all dependencies:
+
+```sh
+go get -u ./...
+```
+
+update all dependencies, but only to patch versions:
+
+```sh
+go get -u=patch ./...`
+```
+
+update only direct dependencies:
+
+```sh
+go get $(go list -f '{{if not (or .Main .Indirect)}}{{.Path}}{{end}}' -m ./...)
+```
+
+##### _list_ the chosen dependencies
+
+Things you actually use:
+
+```sh
+go list -deps -f '{{ if not .Standard }}{{ .Module }}{{ end }}' ./cmd/w | sort | uniq
+
+# or
+
+go version -m $executable
+```
+
+##### _printf_ debug a dependency
+
+`go mod vendor` and edit the files in `vendor/`.
+The next run of `go mod vendor` will wipe away those changes.
+
+If you need more control or expect to contribute a fix upstream,
+clone the repo somewhere and use replace:
+`go mod edit -replace dependency.module/path=../path/to/cloned/repo`.
+
+##### _fork_ a dependency
+
+Is this a temporary or permanent fork?
+
+Temporary: `go mod edit -replace dependency.module/path=forked.module/path@version`
+
+Permanent: rename all instances of the import path in the forked module and treat it like any other dependency.
+
+#### _private_
+
+You want to write private code
+
+##### _init_
+
+If you use one of the more fully featured code hosting software that responds
+with `<meta go-import="...">` or you have a vanity domain setup:
+
+```sh
+go mod init gitlab.corp.example/path/to/repo
+
+go mod init github.com/your/repo
+
+go mod init vanity.example/repo
+```
+
+Otherwise (eg with plain git), use `.git` as part of your module path
+(also import paths):
+
+```sh
+go mod init git.host.example/your/repo.git
+```
+
+##### _git_ config
+
+You'll also want to have git use ssh instead of https:
+
+```sh
+git config --global url."git@github.com:".insteadOf https://github.com/
+
+git config --global url."you@git.host.example".insteadOf https://git.host.example
+```
+
+or if you prefer editing .gitconfig by hand:
+
+```gitconfig
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+[url "you@git.host.example:"]
+    insteadOf = https://git.host.example/
+```
+
+##### _go_ command
+
+Go will use a proxy by default. If you don't have a private one setup,
+exclude module path prefixes from lookup from proxies:
+
+```sh
+GOPRIVATE=github.com/you,git.host.example
+# persist with
+go env -w GOPRIVATE=github.com/you,git.host.example
+```
+
+#### _local_ only code
+
+You never want to share or host your code anywhere.
+
+```sh
+go mod init example.local/app1
+```
+
+if you still want to use multiple modules:
+
+```txt
+code
+├── app1
+│  ├───main.go
+│  └── go.mod
+│        # module example.local/app1
+│        #
+│        # go 1.16
+│        #
+│        # require example.local/some-lib v0.0.0
+│        #
+│        # replace example.local/some-lib => ../some-lib
+│
+└── some-lib
+   ├───lib.go
+   └── go.mod
+         # module example.local/app1
+         #
+         # go 1.16
+```
+
+#### _ci_ and docker
+
+This is [complicated](https://seankhliao.com/blog/12021-01-23-docker-buildx-caching/)
+How to optimize this depends on 2 things:
+are your worker nodes stateful (can they retain a cache/volume between builds)
+and what do you use to build containers (docker, docker buildx, kaniko, ...).
+
+##### _stateful_ workers
+
+Your workers have persistent volumes you can use between builds.
+
+###### _stateful_ worker docker buildx
+
+This shares a module download cache and a build cache between all docker builds.
+Docker currently doesn't allow control over the cache location.
+
+```Dockerfile
+#syntax=docker/dockerfile:1.2
+FROM golang:alpine AS build
+WORKDIR /workspace
+COPY . .
+RUN --mount=type=cache,id=gomod,target=/go/pkg/mod \
+    --mount=type=cache,id=gobuild,target=/root/.cache/go-build \
+    go build -o app
+
+FROM scratch
+COPY --from=build /workspace/app /app
+ENTRYPOINT ["/app"]
+```
+
+###### _stateful_ worker kaniko
+
+This takes advantage of kaniko skipping `/var/run`,
+so we can put our mutable cache there and share it between runs.
+
+```sh
+docker run --rm -it \
+  -v $(pwd):/workspace \
+  -v /path/to/mod/cache:/var/run/go-mod \
+  -v /path/to/build/cache:/var/run/go-build \
+  -w /workspace \
+  gcr.io/kaniko-project/executor:latest \
+  -c=. \
+  -f=Dockerfile \
+  -d=your.docker/registry/image
+
+```
+
+with dockerfile:
+
+```Dockerfile
+FROM golang:alpine AS build
+ENV GOCACHE=/var/run/go-build \
+    GOMODCACHE=/var/run/go-mod
+WORKDIR /workspace
+COPY . .
+RUN go build -o app
+
+FROM scratch
+COPY --from=build /workspace/app /app
+ENTRYPOINT ["/app"]
+```
+
+##### _stateless_ workers
+
+This is complicated,
+you have to trade off between downloading and restoring a cache,
+and just doing the work.
+
+if you just want the download step to be cacheable as a layer:
+
+```Dockerfile
+FROM golang:alpine AS build
+WORKDIR /workspace
+COPY go.mod go.sum .
+RUN go mod download
+
+COPY . .
+RUN go build -o app
+```
+
+and run with the below if you're using multistage builds
+
+```sh
+docker buildx \
+  --cache-from type=registry,ref=your.registry/image \
+  --cache-to   type=registry,ref=your.registry/image,mode=max \
+```
+
+If you also want to share the build cache as a layer,
+the best way might be to build a base image with your code once,
+and update the base image every time you update dependencies.
+
+```Dockerfile
+FROM golang:alpine AS base-image
+WORKDIR /workspace
+COPY . .
+RUN go build ./... && \
+    rm -rf *
+```
+
+#### _places_ i looked for questions
 
 - [wiki][exrep]: experience reports
 - [reddit][reddit]: first 100 results from google
@@ -6,7 +302,7 @@
 - [issues][issues]: label modules, also [google search][issues-search]
 - random blogs i found
 
-#### _reports_
+##### _reports_
 
 summary / comments
 
