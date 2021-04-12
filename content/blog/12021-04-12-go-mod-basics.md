@@ -84,11 +84,21 @@ go get $(go list -f '{{if not (or .Main .Indirect)}}{{.Path}}{{end}}' -m ./...)
 Things you actually use:
 
 ```sh
-go list -deps -f '{{ if not .Standard }}{{ .Module }}{{ end }}' ./cmd/w | sort | uniq
+go list -deps -f '{{ if not .Standard }}{{ .Module }}{{ end }}' ./path/to/package | sort | uniq
 
 # or
 
 go version -m $executable
+```
+
+Why a module is somewhere in the dependency graph
+
+```sh
+go mod why some.module/dependency
+
+# or
+
+go mod graph
 ```
 
 ##### _printf_ debug a dependency
@@ -108,9 +118,9 @@ Temporary: `go mod edit -replace dependency.module/path=forked.module/path@versi
 
 Permanent: rename all instances of the import path in the forked module and treat it like any other dependency.
 
-#### _private_
+#### _private_ code
 
-You want to write private code
+You want to write private code, also as [other blog post](/blog/12021-03-29-plain-git-private-go-modules/).
 
 ##### _init_
 
@@ -195,7 +205,7 @@ code
 
 #### _ci_ and docker
 
-This is [complicated](https://seankhliao.com/blog/12021-01-23-docker-buildx-caching/)
+This is [complicated](/blog/12021-01-23-docker-buildx-caching/)
 How to optimize this depends on 2 things:
 are your worker nodes stateful (can they retain a cache/volume between builds)
 and what do you use to build containers (docker, docker buildx, kaniko, ...).
@@ -238,7 +248,6 @@ docker run --rm -it \
   -c=. \
   -f=Dockerfile \
   -d=your.docker/registry/image
-
 ```
 
 with dockerfile:
@@ -293,6 +302,15 @@ COPY . .
 RUN go build ./... && \
     rm -rf *
 ```
+
+#### _questions_
+
+The better places to ask questions:
+
+`#modules` on [gophers slack](https://gophers.slack.com/),
+[invite link](https://join.slack.com/t/gophers/shared_invite/zt-o2s1e0w3-uQ1wyrfVloMffstqOgKIZQ)
+
+Mailing list: [go-nuts](https://groups.google.com/g/golang-nuts)
 
 #### _places_ i looked for questions
 
