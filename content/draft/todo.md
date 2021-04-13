@@ -27,6 +27,8 @@ review https://github.com/golang/go/wiki
 
 go modules blog post
 
+text to diagram
+
 paste
 
 - http 303
