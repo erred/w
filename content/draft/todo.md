@@ -17,12 +17,6 @@
 - grafana dashboarding
 - cpu / memory stats
 
-color:
-
-- perceptually uniform sequential: viridis, cividis
-- diverging: coolwarm, Spectral,
-- cyclic(?): twilight
-
 review https://github.com/golang/go/wiki
 
 go modules blog post
