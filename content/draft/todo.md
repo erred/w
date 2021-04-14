@@ -23,11 +23,6 @@ go modules blog post
 
 text to diagram
 
-paste
-
-- http 303
-- csp?
-
 packaging
 
 - docker
@@ -48,7 +43,7 @@ alphabet:
 - f:
 - g: git?
 - h:
-- i: iac? infra?
+- i: iac? infra? iperf
 - j:
 - k: kluster?
 - l: link shortener?

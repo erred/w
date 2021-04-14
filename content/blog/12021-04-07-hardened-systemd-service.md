@@ -156,7 +156,7 @@ PrivateMounts=true
 
 # I think this is everything most Go processes would need
 # maybe you can trim it down more?
-SystemCallFilter=@basic-io @file-system @io-event @network-io @sync
+# SystemCallFilter=@basic-io @file-system @io-event @network-io @sync
 SystemCallErrorNumber=EPERM
 SystemCallArchitectures=native
 
@@ -175,4 +175,16 @@ DeviceAllow=
 
 [Install]
 WantedBy=mult-user.target
+```
+
+##### _update_
+
+So if you make outgoing network calls, you'll want DNS and ca-certs.
+Also might want tzdata? but Go can embed that these days.
+
+```systemd
+BindReadOnlyPaths=/usr/bin/feed-agg:/bin/feed-agg \
+    /etc/feed-agg:/etc/feed-agg:rbind \
+    /etc/resolv.conf:/etc/resolv.conf \
+    /etc/ssl/certs/ca-certificates.crt:/etc/ssl/certs/ca-certificates.crt
 ```
