@@ -1,5 +1,5 @@
 ---
-title dns service discovery
+title: dns service discovery
 description: who reads RFCs...
 ---
 
