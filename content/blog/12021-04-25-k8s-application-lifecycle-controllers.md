@@ -23,12 +23,20 @@ and compose / instantiate them with `Applications`.
 Update the `Application`
 and KubeVela will create/update the underlying components for you.
 
+Also does traffic shifting with `AppDeployment`(?)
+
 ##### _kpt_
 
 [kpt](https://googlecontainertools.github.io/kpt/) is like a fancier version of kustomize,
 take in any raw upstream source, add setters/substitutors, and apply with a safer(?) command.
 
 #### _deploying_ new versions
+
+##### _knative_ serving
+
+[Knative Serving](https://knative.dev/docs/serving/) has a `Service` type
+which wraps routing and pod definition into a single resource,
+handling scaling (scale to zero) and a bit of traffic routing.
 
 ##### _flux_
 

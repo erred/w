@@ -28,30 +28,30 @@ names: medea, hwaryun
 
 - a: arch repo? apis? auth? analytics
 - b: build matrix?
-- c: cdn? code? .config? cert-transparency?
-- d: dns?
-- e: email?
+- c: cert-transparency coredns cilium
+- d:
+- e: email
 - f:
-- g: git? go proxy
-- h:
-- i: iac? infra? iperf
-- j:
-- k: kluster?
-- l: link shortener?
-- m:
-- n: authn?
-- o: o11y?
-- p: paste
+- g: gitolite gerrit go proxy grafana
+- h: hubble
+- i: iperf3 istio
+- j: jaeger
+- k: kubevela knative?
+- l: longhorn
+- m: minio
+- n:
+- o: ory otel
+- p: paste pomerium prometheus
 - q:
-- r: rss?
-- s: code search?
-- t: tag
+- r: rss registry
+- s: sourcegraph
+- t: tekton
 - u:
-- v: vanity?
-- w: web
+- v: vanity vault
+- w:
 - x:
 - y:
-- z: authz?
+- z:
 - 0
 - 1
 - 2
