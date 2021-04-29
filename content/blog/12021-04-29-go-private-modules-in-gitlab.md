@@ -37,8 +37,10 @@ So, like all private code,
 set the `GOPRIVATE` environment variable so `go` doesn't reach out to a proxy
 
 ```sh
+# for this session or persist in shell startup files
 export GOPRIVATE=gitlab.com/my-team
-# or
+
+# or persist in Go config file (go env GOENV)
 go env -w GOPRIVATE=gitlab.com/my-team
 ```
 
@@ -46,6 +48,10 @@ Setup git to clone using ssh,
 `go` clones using https but you need a way to authenticate it.
 
 ```gitconfig
+# through cli
+git config --global url."git@gitlab.com:".insteadOf "https://gitlab.com/"
+
+# or in ~/.gitconfig or $XDG_CONFIG_HOME/git/config
 [url "git@gitlab.com:"]
     insteadOf = "https://gitlab.com/"
 ```
