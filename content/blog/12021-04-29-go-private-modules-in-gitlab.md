@@ -67,7 +67,7 @@ And you're all set
 go mod tidy
 ```
 
-#### troubleshooting
+#### _troubleshooting_
 
 ##### _gitconfig_
 
