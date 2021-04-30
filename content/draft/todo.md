@@ -33,6 +33,8 @@ names: medea, hwaryun
 - c: cert-transparency coredns cilium
 - d:
 - e: email
+  - https://github.com/albertito/chasquid
+  - https://github.com/flashmob/go-guerrilla
 - f:
 - g: gitolite gerrit go proxy grafana
 - h: hubble

@@ -36,6 +36,8 @@ create a dependency!
 ```sh
 $ mkdir -p ~/tmp/hello && cd ~/tmp/hello
 
+$ go mod init arch.seankhliao.com/hello.git
+
 $ cat << EOF > hello.go
 package hello
 
