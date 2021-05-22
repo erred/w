@@ -34,29 +34,15 @@ you need to be connected to be able to see history.
 
 ##### server
 
-connect to freenode
-
 ```
-# /server add name-of-server server-domain/port -options
-/server add freenode chat.freenode.net/6697 -ssl -autoconnect
-/connect freenode
-```
-
-register a name
-
-```
-# change to name you want to use
-/nick name-you-want
-/msg NickServ REGISTER your-password your@email.com
-# follow instructions in email
-```
-
-setup login
-
-```
-/secure set name-of-secret your-password
-/set irc.server.freenode.sasl_username name-you-want
-/set irc.server.freenode.sasl_password ${sec.data.name-of-secret}
+/server add oftc irc.oftc.net/6697 -ssl -autoconnect
+/set irc.server.oftc.nicks seankhliao
+/set irc.server.oftc.ssl_cert %h/ssl/freenode.pem
+/connect oftc
+/msg nickserv register password email
+/msg nickserv cert add
+/disconnect oftc
+/connect oftc
 ```
 
 ```

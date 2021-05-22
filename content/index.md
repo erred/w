@@ -13,10 +13,9 @@ style: |
 
 I run with shiny new stuff that is always _half-broken_,
 so I know what works and what is just a waste of time.
-Current preferred _tech stack_ when I can have GitOps style deployment
-and a full observability stack (logging, metrics, tracing):
-
-Go + Kubernetes
+I have a preference for Go, both as something to write and operate,
+and have the most experience with Kubernetes as the deployment platform.
+Mostly into observability stuff (metrics, tracing, logging, alerting).
 
 _No promises_ I'm actually good at anything
 
@@ -26,17 +25,17 @@ Dates using the
 [Holocene Calendar](https://en.wikipedia.org/wiki/Holocene_calendar)
 — the [Human Era](https://www.youtube.com/watch?v=czgOWmtGVGs)
 
-##### _Junior_ Site Reliability Engineer
+##### _Site_ Reliability Engineer
 
-_12020-12021_ De Bijenkorf
+_12020—12021_ de Bijenkorf — observability, platform/cicd, security
 
 ##### _MSc_ Security and Network Engineering
 
-_12019-12020_ University of Amsterdam
+_12019—12020_ University of Amsterdam — infosec, L1-L4 networking
 
 ##### _BBA_ Information Management
 
-_12014-12018_ National Taiwan University
+_12014—12018_ National Taiwan University — programming, machine learning, business, management
 
 #### _Find_ Me
 
