@@ -6,6 +6,7 @@ import (
 	"flag"
 	"net/http"
 	"net/http/pprof"
+	"os"
 	"sync"
 	"time"
 
@@ -63,6 +64,7 @@ func New(ctx context.Context, o *Options) *Server {
 	exp, mh, err := o11y(ctx, o.OtlpEndpoint)
 	if err != nil {
 		o.Logger.Error(err, "setup o11y")
+		os.Exit(1)
 	}
 
 	adm.Handle("/metrics", mh)
@@ -92,6 +94,7 @@ func (s *Server) Run(ctx context.Context) {
 	defer cancel()
 	var wg sync.WaitGroup
 	wg.Add(3)
+	defer wg.Wait()
 
 	go func() {
 		defer wg.Done()

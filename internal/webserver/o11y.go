@@ -22,16 +22,18 @@ import (
 
 func o11y(ctx context.Context, endpoint string) (*otlp.Exporter, http.Handler, error) {
 	r := newResource()
+
 	exp, err := newTrace(ctx, r, endpoint)
 	if err != nil {
-		return nil, nil, err
-	}
-	h, err := newMetrics(r)
-	if err != nil {
-		return nil, nil, err
+		return nil, nil, fmt.Errorf("o11y: setup trace: %w", err)
 	}
 
-	return exp, h, err
+	h, err := newMetrics(r)
+	if err != nil {
+		return nil, nil, fmt.Errorf("o11y: setup metrics: %w", err)
+	}
+
+	return exp, h, nil
 }
 
 func newResource() *resource.Resource {
@@ -65,7 +67,7 @@ func newTrace(ctx context.Context, r *resource.Resource, endpoint string) (*otlp
 		),
 	)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("create otlp exporter: %w", err)
 	}
 
 	// trace provider
@@ -90,17 +92,17 @@ func newMetrics(r *resource.Resource) (http.Handler, error) {
 		basic.WithResource(r),
 	)
 	if err != nil {
-		return nil, fmt.Errorf("o11y: create prometheus: %w", err)
+		return nil, fmt.Errorf("install prometheus: %w", err)
 	}
 
 	// default metrics
 	err = runtime.Start()
 	if err != nil {
-		return nil, fmt.Errorf("o11y: start runtime metrics: %w", err)
+		return nil, fmt.Errorf("start runtime metrics: %w", err)
 	}
 	err = host.Start()
 	if err != nil {
-		return nil, fmt.Errorf("o11y: start host metrics: %w", err)
+		return nil, fmt.Errorf("start host metrics: %w", err)
 	}
 
 	return h, nil
