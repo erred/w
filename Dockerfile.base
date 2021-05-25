@@ -1,0 +1,7 @@
+FROM golang:alpine
+
+ENV CGO_ENABLED=0
+WORKDIR /workspace
+COPY . .
+RUN go build -trimpath -ldflags='-s -w' ./... && \
+    rm -rf *

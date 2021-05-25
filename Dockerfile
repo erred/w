@@ -1,4 +1,5 @@
-FROM golang:alpine AS build
+# FROM golang:alpine AS build
+FROM us.gcr.io/com-seankhliao/w:base AS build
 
 ENV CGO_ENABLED=0
 WORKDIR /workspace
