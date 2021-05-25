@@ -12,6 +12,7 @@ import (
 
 	"github.com/go-logr/logr"
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
+	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/exporters/otlp"
 	"go.seankhliao.com/w/v15/internal/stdlog"
 )
@@ -61,6 +62,7 @@ func New(ctx context.Context, o *Options) *Server {
 	adm.HandleFunc("/readyz", func(w http.ResponseWriter, r *http.Request) { w.Write([]byte("ok")) })
 
 	// o11y
+	otel.SetErrorHandler(&errhandler{o.Logger.WithName("otel")})
 	exp, mh, err := o11y(ctx, o.OtlpEndpoint)
 	if err != nil {
 		o.Logger.Error(err, "setup o11y")
@@ -128,4 +130,12 @@ func (s *Server) Run(ctx context.Context) {
 			s.log.Error(err, "shutdown", "svr", "app")
 		}
 	}()
+}
+
+type errhandler struct {
+	l logr.Logger
+}
+
+func (e *errhandler) Handle(err error) {
+	e.l.Error(err, "")
 }
