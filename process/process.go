@@ -45,7 +45,8 @@ func Dir(o Options, dst, src string) error {
 		urlcanonical, dstf := pageName(o.Canonical, rel)
 		o2 := o
 		o2.Canonical = urlcanonical
-		o2.Compact = strings.Contains(rel, "/") // big header only for root entries
+		// o2.Compact = strings.Contains(rel, "/") // big header only for root entries
+		dstf = filepath.Join(dst, dstf)
 		pi, err := process(o2, dstf, p)
 		if err != nil {
 			return fmt.Errorf("process %s: %w", p, err)
@@ -77,7 +78,7 @@ type pageInfo struct {
 	Date         string
 }
 
-var dateRe = regexp.MustCompile(`^\d{5}-\d{2}-\d{2}-.*`)
+var dateRe = regexp.MustCompile(`^\d{5}-\d{2}-\d{2}`)
 
 func process(o Options, dst, src string) (pageInfo, error) {
 	fin, err := os.Open(src)
@@ -91,13 +92,21 @@ func process(o Options, dst, src string) (pageInfo, error) {
 	}
 	defer fout.Close()
 
+	date := dateRe.FindString(filepath.Base(src))
+	var h1 string
+	if date != "" {
+		h1 = `<a href="/blog/">b<em>log</em></a>`
+	}
+
 	ro := &render.Options{
 		MarkdownSkip: o.Raw,
 		Data: render.PageData{
 			URLCanonical: o.Canonical,
 			GTMID:        o.GTMID,
 			Compact:      o.Compact,
-			Date:         dateRe.FindString(filepath.Base(src)),
+			Date:         date,
+			H1:           h1,
+			H2:           date,
 		},
 	}
 

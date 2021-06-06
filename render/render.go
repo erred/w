@@ -106,11 +106,13 @@ func (d *PageData) FromMap(md map[string]interface{}) {
 	d.H2, _ = md["h2"].(string)
 	d.Style, _ = md["style"].(string)
 
-	if d.H1 == "" {
-		d.H1 = d.Title
-	}
-	if d.H2 == "" {
-		d.H2 = d.Description
+	if d.Compact {
+		if d.H1 == "" {
+			d.H1 = d.Title
+		}
+		if d.H2 == "" {
+			d.H2 = d.Description
+		}
 	}
 }
 

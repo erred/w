@@ -4,5 +4,7 @@
 
 cloudbuild.yaml
 Dockerfile
+kustomize/
 LICENSE
 README.md
+skaffold.yaml

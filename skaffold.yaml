@@ -1,0 +1,22 @@
+apiVersion: skaffold/v2beta16
+kind: Config
+metadata:
+  name: w16
+build:
+  artifacts:
+  - image: europe-north1-docker.pkg.dev/com-seankhliao/kluster/w16
+    kaniko:
+      reproducible: true
+      singleSnapshot: true
+      useNewRun: true
+      whitelistVarRun: true
+      image: gcr.io/kaniko-project/executor:latest
+      registryMirror: mirror.gcr.io
+  cluster:
+    pullSecretName: kaniko-secret
+    namespace: skaffold
+deploy:
+  kubeContext: kind-cluster29a
+  kustomize:
+    paths:
+      - kustomize/overlays/prod

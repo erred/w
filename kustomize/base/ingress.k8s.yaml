@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: w16
+spec:
+  rules:
+    - host: w16.a.k.seankhliao.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: w16
+                port:
+                  name: http
