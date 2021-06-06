@@ -1,29 +1,30 @@
 package main
 
 import (
+	"bytes"
 	"context"
 	"flag"
 	"fmt"
-	"io/fs"
 	"net/http"
 	"os"
 	"os/signal"
-	"path/filepath"
-	"strings"
 	"syscall"
 
-	"github.com/go-logr/logr"
-	"go.seankhliao.com/w/v16/internal/render"
-	"go.seankhliao.com/w/v16/internal/webserver"
+	"go.seankhliao.com/w/v16/render"
+	"go.seankhliao.com/w/v16/webserver"
 	"k8s.io/klog/v2/klogr"
 )
 
 func main() {
-	var o webserver.Options
-	var dir, baseurl string
-	flag.StringVar(&dir, "dir", "public", "path to directory to serve")
-	flag.StringVar(&baseurl, "url", "https://arch.seankhliao.com", "base url for canonicalization")
-	o.InitFlags(flag.CommandLine)
+	var wo webserver.Options
+	var ro render.Options
+	var fn string
+	flag.StringVar(&fn, "file", "index.md", "file to serve")
+	flag.StringVar(&ro.Data.GTMID, "gtm", "", "Google Tag Manager ID for analytics")
+	flag.StringVar(&ro.Data.URLCanonical, "canonical", "https://arch.seankhliao.com", "canonical base url")
+	flag.BoolVar(&ro.Data.Compact, "compact", true, "compact header")
+	flag.BoolVar(&ro.MarkdownSkip, "raw", false, "skip markdown processing")
+	wo.InitFlags(flag.CommandLine)
 	flag.Parse()
 
 	ctx := context.Background()
@@ -31,44 +32,34 @@ func main() {
 
 	l := klogr.New()
 
-	m, err := newHttp(l, dir, baseurl)
+	m, err := newHttp(&ro, fn)
 	if err != nil {
 		l.Error(err, "setup")
 		os.Exit(1)
 	}
 
-	o.Logger = l
-	o.Handler = m
+	wo.Logger = l
+	wo.Handler = m
 
-	webserver.New(ctx, &o).Run(ctx)
+	webserver.New(ctx, &wo).Run(ctx)
 }
 
-func newHttp(l logr.Logger, dir, baseurl string) (*http.ServeMux, error) {
-	tmpdir, err := os.MkdirTemp("", "singlepage")
+func newHttp(ro *render.Options, fn string) (*http.ServeMux, error) {
+	fin, err := os.Open(fn)
 	if err != nil {
-		return nil, fmt.Errorf("temp dir: %w", err)
+		return nil, fmt.Errorf("open %s: %w", fn, err)
 	}
-	filepath.WalkDir(dir, func(p string, d fs.DirEntry, err error) error {
-		if err != nil {
-			return err
-		}
-		rel, err := filepath.Rel(dir, p)
-		if err != nil {
-			return err
-		}
-		if d.IsDir() {
-			err = os.MkdirAll(filepath.Join(tmpdir, rel), 0o755)
-			return err
-		}
-		if filepath.Ext(rel) == ".md" {
-			rel = strings.TrimSuffix(rel, ".md") + ".html"
-		}
-		_, err = render.ProcessFile(p, filepath.Join(tmpdir, rel), baseurl, true, true)
 
-		return err
-	})
+	buf := &bytes.Buffer{}
+	err = render.Render(ro, buf, fin)
+	if err != nil {
+		return nil, fmt.Errorf("render: %w", err)
+	}
+	b := buf.Bytes()
 
 	mux := http.NewServeMux()
-	mux.Handle("/", http.FileServer(http.Dir(tmpdir)))
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Write(b)
+	})
 	return mux, nil
 }

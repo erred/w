@@ -160,7 +160,11 @@ picture img {
 h3,
 h4,
 picture {
+  {{ if .Compact }}
+  margin: 1em 0 0.25em 0;
+  {{ else }}
   margin: 25vh 0 0.25em 0;
+  {{ end }}
 }
 
 h5,

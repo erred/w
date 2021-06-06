@@ -7,8 +7,8 @@ import (
 	"os/signal"
 	"syscall"
 
-	"go.seankhliao.com/w/v16/internal/static"
-	"go.seankhliao.com/w/v16/internal/webserver"
+	"go.seankhliao.com/w/v16/static"
+	"go.seankhliao.com/w/v16/webserver"
 	"k8s.io/klog/v2/klogr"
 )
 

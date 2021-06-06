@@ -4,18 +4,19 @@ import (
 	"flag"
 	"os"
 
-	"go.seankhliao.com/w/v16/internal/render"
+	"go.seankhliao.com/w/v16/process"
 	"k8s.io/klog/v2/klogr"
 )
 
 func main() {
-	var src, dst, baseURL string
-	var embedStyle, disableAanalytics bool
+	var o process.Options
+	var src, dst string
 	flag.StringVar(&src, "src", "content", "source directory or file")
 	flag.StringVar(&dst, "dst", "public", "destination directory or file")
-	flag.StringVar(&baseURL, "url", "https://seankhliao.com", "base url for canonicalization")
-	flag.BoolVar(&embedStyle, "embedstyle", false, "embed stylesheets")
-	flag.BoolVar(&disableAanalytics, "disableanalytics", false, "disable google analytics")
+	flag.StringVar(&o.Canonical, "url", "https://seankhliao.com", "base url for canonicalization")
+	flag.StringVar(&o.GTMID, "gtm", "", "Google Tag Manager ID to enable analytics")
+	flag.BoolVar(&o.Compact, "compact", false, "compact header")
+	flag.BoolVar(&o.Raw, "raw", false, "skip markdown processing")
 	flag.Parse()
 
 	log := klogr.New()
@@ -26,9 +27,9 @@ func main() {
 		os.Exit(1)
 	}
 	if fi.IsDir() {
-		err = render.ProcessDir(src, dst, baseURL, disableAanalytics, embedStyle)
+		err = process.Dir(o, dst, src)
 	} else {
-		_, err = render.ProcessFile(src, dst, baseURL, disableAanalytics, embedStyle)
+		err = process.File(o, dst, src)
 	}
 	if err != nil {
 		log.Error(err, "render")
