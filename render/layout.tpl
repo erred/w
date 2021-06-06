@@ -309,7 +309,11 @@ noscript iframe {
   <h2>{{ .H2 }}</h2>
 
   <hgroup>
+    {{ if .Compact }}
+    <a href="https://seankhliao.com/?utm_medium=sites&utm_source={{.URLCanonical}}">
+    {{ else }}
     <a href="/">
+    {{ end }}
       <span>S</span><span>E</span><span>A</span><span>N</span>
       <em>K</em><em>.</em><em>H</em><em>.</em>
       <span>L</span><span>I</span><span>A</span><span>O</span>
@@ -319,9 +323,9 @@ noscript iframe {
   {{ .Main }}
 
   <footer>
-    <a href="https://seankhliao.com/">home</a>
+    <a href="https://seankhliao.com/{{ if .Compact }}?utm_medium=sites&utm_source={{.URLCanonical}}{{ end }}">home</a>
     |
-    <a href="https://seankhliao.com/blog/">blog</a>
+    <a href="https://seankhliao.com/blog/{{ if .Compact }}?utm_medium=sites&utm_source={{.URLCanonical}}{{ end }}">blog</a>
     |
     <a href="https://github.com/seankhliao">github</a>
   </footer>

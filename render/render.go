@@ -24,7 +24,6 @@ import (
 )
 
 var (
-
 	//go:embed layout.tpl
 	layoutTpl  string
 	layoutName = "layout"
@@ -47,8 +46,6 @@ var (
 			m.AddFunc("text/css", css.Minify)
 			m.AddFunc("image/svg+xml", svg.Minify)
 			m.AddFuncRegexp(regexp.MustCompile("^(application|text)/(x-)?(java|ecma)script$"), js.Minify)
-			// m.AddFuncRegexp(regexp.MustCompile("[/+]json$"), json.Minify)
-			// m.AddFuncRegexp(regexp.MustCompile("[/+]xml$"), xml.Minify)
 			defaultMinifyM = m
 		})
 		return defaultMinifyM
@@ -91,8 +88,8 @@ type PageData struct {
 	// Extracted
 	Title       string
 	Description string
-	H1          string // default to Title
-	H2          string // default to Description
+	H1          string
+	H2          string
 	Style       string
 
 	// Filled
@@ -100,12 +97,11 @@ type PageData struct {
 }
 
 func (d *PageData) FromMap(md map[string]interface{}) {
-	d.Title, _ = md["title"].(string)
-	d.Description, _ = md["description"].(string)
-	d.H1, _ = md["h1"].(string)
-	d.H2, _ = md["h2"].(string)
-	d.Style, _ = md["style"].(string)
-
+	d.Title = first(d.Title, md["title"])
+	d.Description = first(d.Description, md["description"])
+	d.H1 = first(d.H1, md["h1"])
+	d.H2 = first(d.H2, md["h2"])
+	d.Style = first(d.Style, md["style"])
 	if d.Compact {
 		if d.H1 == "" {
 			d.H1 = d.Title
@@ -171,4 +167,15 @@ func extractHeader(b []byte) (int, map[string]interface{}, error) {
 		return 0, nil, fmt.Errorf("unmarshal metadata: %w", err)
 	}
 	return i + 4, m, nil
+}
+
+func first(args ...interface{}) string {
+	for _, a := range args {
+		if s, ok := a.(string); ok {
+			if s != "" {
+				return s
+			}
+		}
+	}
+	return ""
 }

@@ -45,7 +45,6 @@ func Dir(o Options, dst, src string) error {
 		urlcanonical, dstf := pageName(o.Canonical, rel)
 		o2 := o
 		o2.Canonical = urlcanonical
-		// o2.Compact = strings.Contains(rel, "/") // big header only for root entries
 		dstf = filepath.Join(dst, dstf)
 		pi, err := process(o2, dstf, p)
 		if err != nil {
