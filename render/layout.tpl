@@ -1,3 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <title>{{ .Title }}</title>
+
+  {{- if ne .GTMID "" }}
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+      var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != "dataLayer" ? "&l=" + l : "";
+      j.async = true; j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, "script", "dataLayer", "{{ .GTMID }}");
+  </script>
+  {{- end }}
+
+  <link rel="canonical" href="{{ .URLCanonical }}">
+  <link rel="manifest" href="/manifest.json">
+
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="{{ .Description }}">
+
+  <link rel="icon" href="https://seankhliao.com/favicon.ico">
+  <link rel="icon" href="https://seankhliao.com/static/icon.svg" type="image/svg+xml" sizes="any">
+  <link rel="apple-touch-icon" href="https://seankhliao.com/static/icon-192.png">
+
+  <style>
 * {
   box-sizing: border-box;
 }
@@ -46,8 +74,12 @@
 
 /* ===== layout general ===== */
 body {
+  {{ if .Compact }}
+  grid: 3.5vh 3.5vh / 1fr repeat(3, minmax(90px, 280px)) 1fr;
+  {{ else }}
+  grid: 20vh 60vh / 1fr repeat(3, minmax(90px, 280px)) 1fr;
+  {{ end }}
   display: grid;
-  grid: repeat(2, 20vh) 40vh / 1fr repeat(3, minmax(90px, 280px)) 1fr;
   gap: 0 1em;
   margin: 0;
   padding: 1vmin;
@@ -64,28 +96,47 @@ body > * {
 
 /* ===== layout header ===== */
 h1 {
+  {{ if .Compact }}
+  font-size: 3vmin;
+  grid-area: 1 / 4 / span 1 / span 1;
+  {{ else }}
   font-size: 4.5vmin;
   grid-area: 1 / 4 / span 1 / span 2;
+  {{ end }}
   margin: 0;
   place-self: end;
 }
 h2 {
   color: #999;
+  {{ if .Compact }}
+  font-size: 2.5vmin;
+  grid-area: 2 / 4 / span 1 / span 1;
+  {{ else }}
   font-size: 3.5vmin;
   grid-area: 2 / 4 / span 1 / span 2;
+  {{ end }}
   place-self: start end;
   text-align: right;
 }
 
 hgroup {
+  {{ if .Compact }}
+  font: 700 2.5vmin "Lora", serif;
+  grid-area: 1 / 2 / span 2 / span 1;
+  {{ else }}
   font: 700 5vmin "Lora", serif;
-  grid-area: 3 / 1 / span 1 / span 5;
+  grid-area: 1 / 1 / span 2 / span 2;
+  {{ end }}
   margin: 0;
   place-self: end start;
 }
 hgroup a {
   display: grid;
+  {{ if .Compact }}
+  grid: repeat(2, 3vmin) / repeat(8, 4vmin);
+  {{ else }}
   grid: repeat(2, 10vmin) / repeat(8, 10vmin);
+  {{ end }}
   place-content: center center;
 }
 hgroup *:nth-child(n + 5) {
@@ -243,3 +294,31 @@ noscript iframe {
   display: none;
   visibility: hidden;
 }
+    {{ .Style }}
+  </style>
+
+  {{- if ne .GTMID "" }}
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ .GTMID }}" height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript>
+  {{- end }}
+
+  <h1>{{ .H1 }}</h1>
+  <h2>{{ .H2 }}</h2>
+
+  <hgroup>
+    <a href="/">
+      <span>S</span><span>E</span><span>A</span><span>N</span>
+      <em>K</em><em>.</em><em>H</em><em>.</em>
+      <span>L</span><span>I</span><span>A</span><span>O</span>
+    </a>
+  </hgroup>
+
+  {{ .Main }}
+
+  <footer>
+    <a href="https://seankhliao.com/">home</a>
+    |
+    <a href="https://seankhliao.com/blog/">blog</a>
+    |
+    <a href="https://github.com/seankhliao">github</a>
+  </footer>
+</html>

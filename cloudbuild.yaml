@@ -1,10 +1,6 @@
 substitutions:
-  _IMG: w
-  _REG: us.gcr.io/com-seankhliao
-
-tags:
-  - $SHORT_SHA
-  - $COMMIT_SHA
+  _IMG: w16
+  _REG: us-central1-docker.pkg.dev/com-seankhliao/run
 
 steps:
   - id: build-push
@@ -13,7 +9,6 @@ steps:
       - -c=.
       - -f=Dockerfile
       - -d=$_REG/$_IMG:latest
-      - -d=$_REG/$_IMG:$SHORT_SHA
       - --reproducible
       - --single-snapshot
       - --cache=true
@@ -26,7 +21,7 @@ steps:
       - run
       - deploy
       - w
-      - --image=$_REG/$_IMG:$SHORT_SHA
+      - --image=$_REG/$_IMG:latest
       - --region=us-central1
       - --platform=managed
       - --allow-unauthenticated

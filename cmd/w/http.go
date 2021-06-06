@@ -127,7 +127,7 @@ func setHeaders(w http.ResponseWriter, op string) {
 
 func corsAllowAll(h http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("svr", "go.seankhliao.com/w/v15")
+		w.Header().Set("svr", "go.seankhliao.com/w/v16")
 		w.Header().Set("easter-egg", "🐇*(🍆-🪴)=🐇🥚")
 
 		switch r.Method {

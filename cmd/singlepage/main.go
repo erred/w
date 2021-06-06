@@ -13,8 +13,8 @@ import (
 	"syscall"
 
 	"github.com/go-logr/logr"
-	"go.seankhliao.com/w/v15/internal/render"
-	"go.seankhliao.com/w/v15/internal/webserver"
+	"go.seankhliao.com/w/v16/internal/render"
+	"go.seankhliao.com/w/v16/internal/webserver"
 	"k8s.io/klog/v2/klogr"
 )
 

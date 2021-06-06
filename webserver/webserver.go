@@ -14,7 +14,7 @@ import (
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/exporters/otlp"
-	"go.seankhliao.com/w/v15/internal/stdlog"
+	"go.seankhliao.com/w/v16/internal/stdlog"
 )
 
 type Options struct {
