@@ -2,8 +2,6 @@ module example
 
 go 1.17
 
-replace go.seankhliao.com/w/v16 => ../../
-
 require (
 	github.com/tdewolff/minify/v2 v2.9.17 // indirect
 	github.com/yuin/goldmark v1.3.1 // indirect
@@ -12,3 +10,5 @@ require (
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	sigs.k8s.io/yaml v1.1.0 // indirect
 )
+
+replace go.seankhliao.com/w/v16 => ../../
