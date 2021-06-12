@@ -3,6 +3,8 @@ description: overview of error handling proposals in go
 title: go error handling proposals
 ---
 
+_note:_ updated 12021-06-12
+
 ### _error_ handling
 
 ```go
@@ -50,6 +52,7 @@ _note:_ almost all the ones that claim to use "plain functions" as error handler
 - [`err := func(err error) (T, error) { return _, wrap(err) }`<br>`x, #err := foo()`](https://gist.github.com/the-gigi/3c1acfc521d7991309eec140f40ccc2b): block scoped
 - [`_check = func(err error) (T, error) { return _, wrap(err)}`<br>`x, ?err := foo()`](https://gist.github.com/8lall0/cb43e1fa4aae42bc709b138bda02284e): not fully formed idea on return
 - [`handler := func(err error) (T, error) { return^2 _, wrap(err) }`<br>`x, handler(err) := foo()`](https://github.com/golang/go/issues/32473): note nonlocal return
+- [`handler := func(err error, s string) error { return _, fmt.Errorf("%s: %w", s err) }`<br>`x, handler("msg") := foo()`](https://github.com/golang/go/issues/43644): also has currying
 
 ##### _wrapping_
 
@@ -71,6 +74,7 @@ some rely on `wrap` being smart and passing through `nil` (so not `fmt.Errorf`),
 - [`x, err := foo() /* err */ { return _, wrap(err) }`](https://github.com/gooid/gonotes/blob/master/inline_style_error_handle.md), [also](https://github.com/golang/go/issues/41908)
 - [`x, err := foo() ?? { return _, wrap(err) }`](https://github.com/golang/go/issues/37243)
 - [`x, err := foo(); err.return wrap(err)`](https://github.com/golang/go/issues/39372)
+- [`if x, err := foo(); err != nil then return _, wrap(err)`](https://github.com/golang/go/issues/46717)
 - [`x := foo() or err: return _, wrap(err)`](https://github.com/golang/go/issues/33029)
 - [`x := foo() ?err return _, wrap(err)`](https://github.com/golang/go/issues/33074)
 - [`x := check wrap() foo()`](https://gist.github.com/jozef-slezak/93a7d9d3d18d3fce3f8c3990c031f8d0), [also](https://gist.github.com/morikuni/bbe4b2b0384507b42e6a79d4eca5fc61)
@@ -102,14 +106,17 @@ can use `defer` for wrapping
 - [`x, ^err := foo()`](https://github.com/golang/go/issues/42318)
 - [`x, err? := foo()`](https://github.com/golang/go/issues/36390)
 - [`x, err := foo() throws err`](https://github.com/golang/go/issues/32852)
+- [`x, check err := foo()`](https://github.com/golang/go/issues/46655)
 - [`tryfunc func(...){ x := foo() }`](https://github.com/golang/go/issues/32964)
 - [`x, err := foo()`<br>`check(err)`](https://github.com/golang/go/issues/33233): builtin `if err != nil { return ..., err }` macro
 - [`x, err := foo()`<br>`catch(err)`](https://github.com/golang/go/issues/32811): builtin `if err != nil { return ..., err }` macro
 
 ##### _try..catch_
 
-- [`try { x := foo() } catch(e Exception) { ??? }`](https://www.netroby.com/view/3910): literally try catch
+- [`try { x := foo() } catch(e Exception) { ??? }`](https://www.netroby.com/view/3910), [also](https://github.com/golang/go/issues/43777): literally try catch
 - [`try err != nil { x, err := foo() } except { return _, wrap(err) }`](https://github.com/golang/go/issues/33387)
+- [`try { x := foo(); if err != nil { return _, wrap(err) } }`](https://github.com/golang/go/issues/35179)
+- [`try { x, $ := foo() } catch(err) { return _, wrap(err) }`](https://github.com/golang/go/issues/46433)
 - [`until err != nil { check x, err := foo() } else { return _, wrap(err) }`](https://gist.github.com/coquebg/afe44e410f883a313dc849da3e1ff34c): insert after every `check`
 - [`break err != nil { step: x, err := foo() }`](https://github.com/golang/go/issues/27075): insert after every repeatable label
 - [`break err != nil { try x, err := foo() }`](https://github.com/golang/go/issues/27075): insert after every `try`
@@ -119,8 +126,8 @@ can use `defer` for wrapping
 - [`check { x, err1 := foo() } catch err { return _, wrap(err) }`](https://gist.github.com/eau-de-la-seine/9e2e74d6369aef4a76aa50976e34de6d)
 - [`check { x, err := foo()`<br>`catch: return _, wrap(err) }`](https://github.com/golang/go/issues/32968)
 - [`x, err := foo() !!!`<br>`fail: return _, wrap(err)`](https://github.com/golang/go/issues/34140): goto label
-- [`handle err { x, err := foo()<br>case err != nil: return _, wrap(err) }`](https://github.com/golang/go/issues/35086)
-- [`try { x := foo(); if err != nil { return _, wrap(err) } }`](https://github.com/golang/go/issues/35179)
+- [`handle err { x, err := foo()`<br>`case err != nil: return _, wrap(err) }`](https://github.com/golang/go/issues/35086)
+- [`throw "err"`<br>`catch func(err error) { return _, wrap(err) }`]()
 
 ##### _others_
 
@@ -132,3 +139,5 @@ can use `defer` for wrapping
 - [nonlocal return with return type](https://github.com/golang/go/issues/42811)
 - [`returnfrom label, err`](https://gist.github.com/spakin/86ea86ca48aefc78b672636914f4fc23): nonlocal return
 - [result type](https://github.com/golang/go/issues/19991): box of `value|err` allows passthrough
+- [`if x, err := foo().bar().baz(); err != nil { return _, wrap(err) }`](https://github.com/golang/go/issues/44928): chaining method calls with return type `(T, error)`
+- [`func foo() (return, string)`](https://github.com/golang/go/issues/42811): return is a type of bool that does... something
