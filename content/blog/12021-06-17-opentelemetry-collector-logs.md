@@ -80,7 +80,7 @@ so I'm using the [Go time parser](https://pkg.go.dev/time#Parse)
 receivers:
   filelog/json:
     include:
-      - /home/arccy/github/testrepo-otelcol-logs/logs/json.log
+      - json.log
     include_file_name: false
     operators:
       - type: json_parser
@@ -134,7 +134,7 @@ config:
 receivers:
   filelog/klog:
     include:
-      - /home/arccy/github/testrepo-otelcol-logs/logs/klog.log
+      - klog.log
     include_file_name: false
     operators:
       - type: regex_parser
