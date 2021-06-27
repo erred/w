@@ -9,6 +9,8 @@ build:
       reproducible: true
       singleSnapshot: true
       useNewRun: true
+      skipUnusedStages: true
+      target: w16
       whitelistVarRun: true
       image: gcr.io/kaniko-project/executor:latest
       registryMirror: mirror.gcr.io
@@ -16,7 +18,13 @@ build:
     pullSecretName: kaniko-secret
     namespace: skaffold
 deploy:
-  kubeContext: kind-cluster29a
-  kustomize:
-    paths:
-      - kustomize/overlays/prod
+  kubeContext: kind-cluster30
+profiles:
+  - name: singlepage
+    patches:
+      - op: replace
+        path: /build/artifacts/0/image
+        value: europe-north1-docker.pkg.dev/com-seankhliao/kluster/singlepage
+      - op: replace
+        path: /build/artifacts/0/kaniko/target
+        value: singlepage
