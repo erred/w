@@ -8,6 +8,7 @@ require (
 	github.com/yuin/goldmark v1.3.8
 	github.com/yuin/goldmark-meta v1.0.0
 	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.21.0
+	go.opentelemetry.io/contrib/propagators v0.21.0
 	go.opentelemetry.io/otel v1.0.0-RC1
 	go.opentelemetry.io/otel/exporters/otlp/otlpmetric v0.21.0
 	go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc v0.21.0
