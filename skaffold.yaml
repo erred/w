@@ -8,15 +8,32 @@ build:
     kaniko:
       reproducible: true
       singleSnapshot: true
-      useNewRun: true
       skipUnusedStages: true
+      useNewRun: true
       target: w16
       whitelistVarRun: true
       image: gcr.io/kaniko-project/executor:latest
       registryMirror: mirror.gcr.io
+      buildArgs:
+        GOPROXY: http://athens.athens.svc.cluster.local
+        GOCACHE: /var/run/gobuildcache
+        GOMODCACHE: /var/run/gomodcache
+      volumeMounts:
+        - name: modcache
+          mountPath: /var/run/gomodcache
+        - name: buildcache
+          mountPath: /var/run/gobuildcache
   cluster:
     pullSecretName: kaniko-secret
+    pullSecretPath: kaniko-secret
     namespace: skaffold
+    volumes:
+      - name: modcache
+        hostPath:
+          path: /opt/kind/cluster30/kaniko-gomodcache
+      - name: buildcache
+        hostPath:
+          path: /opt/kind/cluster30/kaniko-gobuildcache
 deploy:
   kubeContext: kind-cluster30
 profiles:

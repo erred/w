@@ -1,8 +1,12 @@
 FROM golang:alpine AS build
-ENV CGO_ENABLED=0
+ARG CGO_ENABLED=0
+ARG GOPROXY=https://proxy.golang.org,direct
+ARG GOMODCACHE=/go/pkg/mod
+ARG GOCACHE=/root/.cache/go-build
+ARG GTM=GTM-TLVN7D6
 WORKDIR /workspace
 COPY . .
-RUN go run ./cmd/webrender -src content -dst static/root -gtm GTM-TLVN7D6
+RUN go run ./cmd/webrender -src content -dst static/root -gtm ${GTM}
 RUN go build -trimpath -ldflags='-s -w' -o /usr/local/bin/ ./cmd/...
 
 FROM gcr.io/distroless/static AS singlepage
