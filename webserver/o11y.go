@@ -3,107 +3,84 @@ package webserver
 import (
 	"context"
 	"fmt"
-	"net/http"
-	"runtime/debug"
+	"time"
 
-	"go.opentelemetry.io/contrib/instrumentation/host"
-	"go.opentelemetry.io/contrib/instrumentation/runtime"
 	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/exporters/metric/prometheus"
-	"go.opentelemetry.io/otel/exporters/otlp"
-	"go.opentelemetry.io/otel/exporters/otlp/otlpgrpc"
+	"go.opentelemetry.io/otel/exporters/otlp/otlpmetric"
+	"go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc"
+	"go.opentelemetry.io/otel/exporters/otlp/otlptrace"
+	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
+	"go.opentelemetry.io/otel/metric/global"
 	"go.opentelemetry.io/otel/propagation"
-	"go.opentelemetry.io/otel/sdk/metric/controller/basic"
-	"go.opentelemetry.io/otel/sdk/resource"
-	"go.opentelemetry.io/otel/sdk/trace"
-	"go.opentelemetry.io/otel/semconv"
-	"google.golang.org/grpc"
+
+	controller "go.opentelemetry.io/otel/sdk/metric/controller/basic"
+	processor "go.opentelemetry.io/otel/sdk/metric/processor/basic"
+	"go.opentelemetry.io/otel/sdk/metric/selector/simple"
+	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 )
 
-func o11y(ctx context.Context, endpoint string) (*otlp.Exporter, http.Handler, error) {
-	r := newResource()
-
-	exp, err := newTrace(ctx, r, endpoint)
-	if err != nil {
-		return nil, nil, fmt.Errorf("o11y: setup trace: %w", err)
-	}
-
-	h, err := newMetrics(r)
-	if err != nil {
-		return nil, nil, fmt.Errorf("o11y: setup metrics: %w", err)
-	}
-
-	return exp, h, nil
+type stopper interface {
+	Stop(ctx context.Context) error
 }
 
-func newResource() *resource.Resource {
-	name, version := "go.seankhliao.com/w/cmd/w", "v15"
-	bi, ok := debug.ReadBuildInfo()
-	if ok {
-		name = bi.Main.Path
-		version = bi.Main.Version
-	}
-
-	return resource.NewWithAttributes(
-		semconv.ServiceNameKey.String(name),
-		semconv.ServiceVersionKey.String(version),
-	)
+type shutdowner interface {
+	Shutdown(ctx context.Context) error
 }
 
-func newTrace(ctx context.Context, r *resource.Resource, endpoint string) (*otlp.Exporter, error) {
+type shutdown struct {
+	s1 []shutdowner
+	s2 []stopper
+}
+
+func (s *shutdown) Shutdown(ctx context.Context) error {
+	for _, sd := range s.s1 {
+		otel.Handle(sd.Shutdown(ctx))
+	}
+	for _, sd := range s.s2 {
+		otel.Handle(sd.Stop(ctx))
+	}
+	return nil
+}
+
+func o11y(ctx context.Context, endpoint string) (*shutdown, error) {
 	if endpoint == "" {
 		return nil, nil
 	}
 
-	// exporter
-	exporter, err := otlp.NewExporter(
-		ctx,
-		otlpgrpc.NewDriver(
-			otlpgrpc.WithInsecure(),
-			otlpgrpc.WithEndpoint(endpoint),
-			otlpgrpc.WithDialOption(
-				grpc.WithBlock(),
-			),
-		),
-	)
+	// trace
+	traceExporter, err := otlptrace.New(ctx, otlptracegrpc.NewClient(
+		otlptracegrpc.WithInsecure(),
+		otlptracegrpc.WithEndpoint(endpoint),
+	))
 	if err != nil {
-		return nil, fmt.Errorf("create otlp exporter: %w", err)
+		return nil, fmt.Errorf("create otlptrace exporter: %w", err)
 	}
-
-	// trace provider
-	traceProvider := trace.NewTracerProvider(
-		trace.WithResource(r),
-		trace.WithSampler(trace.AlwaysSample()),
-		trace.WithBatcher(exporter),
+	traceProvider := sdktrace.NewTracerProvider(
+		sdktrace.WithBatcher(traceExporter),
 	)
-
-	// register
 	otel.SetTracerProvider(traceProvider)
 	otel.SetTextMapPropagator(propagation.NewCompositeTextMapPropagator(
 		propagation.Baggage{},
 		propagation.TraceContext{},
 	))
-	return exporter, nil
-}
 
-func newMetrics(r *resource.Resource) (http.Handler, error) {
-	h, err := prometheus.InstallNewPipeline(
-		prometheus.Config{},
-		basic.WithResource(r),
+	// metric
+	metricExporter, err := otlpmetric.New(ctx, otlpmetricgrpc.NewClient(
+		otlpmetricgrpc.WithInsecure(),
+		otlpmetricgrpc.WithEndpoint(endpoint),
+	))
+	if err != nil {
+		return nil, fmt.Errorf("create otlpmetric exporter: %w", err)
+	}
+	pusher := controller.New(
+		processor.New(
+			simple.NewWithExactDistribution(),
+			metricExporter,
+		),
+		controller.WithExporter(metricExporter),
+		controller.WithCollectPeriod(2*time.Second),
 	)
-	if err != nil {
-		return nil, fmt.Errorf("install prometheus: %w", err)
-	}
+	global.SetMeterProvider(pusher.MeterProvider())
 
-	// default metrics
-	err = runtime.Start()
-	if err != nil {
-		return nil, fmt.Errorf("start runtime metrics: %w", err)
-	}
-	err = host.Start()
-	if err != nil {
-		return nil, fmt.Errorf("start host metrics: %w", err)
-	}
-
-	return h, nil
+	return &shutdown{[]shutdowner{traceExporter, traceProvider, metricExporter}, []stopper{pusher}}, nil
 }

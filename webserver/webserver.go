@@ -13,7 +13,6 @@ import (
 	"github.com/go-logr/logr"
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/exporters/otlp"
 	"go.seankhliao.com/w/v16/internal/stdlog"
 )
 
@@ -38,7 +37,7 @@ type Server struct {
 	app *http.Server
 
 	// shutdown
-	exp *otlp.Exporter
+	sd *shutdown
 }
 
 func New(ctx context.Context, o *Options) *Server {
@@ -63,13 +62,13 @@ func New(ctx context.Context, o *Options) *Server {
 
 	// o11y
 	otel.SetErrorHandler(&errhandler{o.Logger.WithName("otel")})
-	exp, mh, err := o11y(ctx, o.OtlpEndpoint)
+	sd, err := o11y(ctx, o.OtlpEndpoint)
 	if err != nil {
 		o.Logger.Error(err, "setup o11y")
 		os.Exit(1)
 	}
 
-	adm.Handle("/metrics", mh)
+	// adm.Handle("/metrics", mh)
 
 	return &Server{
 		log: o.Logger.WithName("webserver"),
@@ -78,16 +77,16 @@ func New(ctx context.Context, o *Options) *Server {
 			Handler:           adm,
 			ReadHeaderTimeout: 10 * time.Second,
 			MaxHeaderBytes:    1 << 10,
-			ErrorLog:          stdlog.New(o.Logger.WithName("admserver"), false),
+			ErrorLog:          stdlog.New(o.Logger.WithName("admsvr"), false),
 		},
 		app: &http.Server{
 			Addr:              o.AppAddr,
 			Handler:           otelhttp.NewHandler(o.Handler, "appserver"),
 			ReadHeaderTimeout: 10 * time.Second,
 			MaxHeaderBytes:    1 << 20,
-			ErrorLog:          stdlog.New(o.Logger.WithName("appserver"), false),
+			ErrorLog:          stdlog.New(o.Logger.WithName("appsvr"), false),
 		},
-		exp: exp,
+		sd: sd,
 	}
 }
 
@@ -104,8 +103,8 @@ func (s *Server) Run(ctx context.Context) {
 
 		s.adm.Shutdown(context.Background())
 		s.app.Shutdown(context.Background())
-		if s.exp != nil {
-			s.exp.Shutdown(context.Background())
+		if s.sd != nil {
+			s.sd.Shutdown(context.Background())
 		}
 	}()
 
@@ -137,5 +136,7 @@ type errhandler struct {
 }
 
 func (e *errhandler) Handle(err error) {
-	e.l.Error(err, "")
+	if err != nil {
+		e.l.Error(err, "")
+	}
 }
