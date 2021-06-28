@@ -61,8 +61,6 @@ func o11y(ctx context.Context, endpoint string) (*shutdown, error) {
 
 	opts := []resource.Option{
 		resource.WithAttributes(attrs...),
-		resource.WithProcessRuntimeName(),
-		resource.WithProcessRuntimeVersion(),
 		resource.WithProcessRuntimeDescription(),
 	}
 
