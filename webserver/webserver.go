@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"flag"
+	"net"
 	"net/http"
 	"net/http/pprof"
 	"os"
@@ -87,10 +88,15 @@ func New(ctx context.Context, o *Options) *Server {
 		},
 		app: &http.Server{
 			Addr:              o.AppAddr,
-			Handler:           otelhttp.NewHandler(o.Handler, "appserver"),
+			Handler:           otelhttp.NewHandler(o.Handler, "appsvr"),
 			ReadHeaderTimeout: 10 * time.Second,
 			MaxHeaderBytes:    1 << 20,
-			ErrorLog:          stdlog.New(o.Logger.WithName("appsvr"), false),
+			BaseContext: func(net.Listener) context.Context {
+				ctx := context.Background()
+				ctx = logr.NewContext(ctx, o.Logger.WithName("handler"))
+				return ctx
+			},
+			ErrorLog: stdlog.New(o.Logger.WithName("appsvr"), false),
 		},
 		sd: sd,
 	}
