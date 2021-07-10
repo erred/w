@@ -24,6 +24,12 @@ type Options struct {
 	Handler      http.Handler
 }
 
+func NewOptions(fs *flag.FlagSet) *Options {
+	var o Options
+	o.InitFlags(fs)
+	return &o
+}
+
 func (o *Options) InitFlags(fs *flag.FlagSet) {
 	fs.StringVar(&o.AdmAddr, "adm.addr", ":8090", "listen address for admin")
 	fs.StringVar(&o.AppAddr, "web.addr", ":8080", "listen address for main app")
