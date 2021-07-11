@@ -1,3 +1,5 @@
+# moved to monorepo: https://github.com/seankhlao/mono
+
 # w
 
 [![License](https://img.shields.io/github/license/seankhliao/w.svg?style=flat-square)](LICENSE)
