@@ -1,4 +1,4 @@
-# moved to monorepo: https://github.com/seankhlao/mono
+# moved to monorepo: https://github.com/seankhliao/mono
 
 # w
 
